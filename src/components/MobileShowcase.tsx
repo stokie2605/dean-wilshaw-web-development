@@ -148,14 +148,6 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
 
             {/* Modal Footer */}
             <div className="p-5 border-t border-slate-800 bg-slate-900/50 flex flex-col sm:flex-row gap-3 justify-end items-center">
-              <a 
-                href="https://github.com/stokie2605/client-mockups" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-lg text-sm font-semibold transition-colors text-center"
-              >
-                View Repo on GitHub
-              </a>
               <button 
                 onClick={() => {
                   setActiveModal(null);
