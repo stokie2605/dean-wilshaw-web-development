@@ -79,7 +79,7 @@ export default function App() {
 
       {/* Main Page Content */}
       <main className="flex-grow pb-20 md:pb-0">
-        <div className="bg-white">
+        <div className="bg-slate-950">
           <Hero onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
         <div className="bg-[#111111]">
@@ -97,7 +97,7 @@ export default function App() {
         <div className="bg-white">
           <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
-        <div className="bg-[#f7f9fb]">
+        <div className="bg-slate-950">
           <SpeedTestTool onBenchmarkComplete={handleBenchmarkComplete} />
         </div>
         <div className="bg-white">

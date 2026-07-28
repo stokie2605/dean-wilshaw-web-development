@@ -10,19 +10,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
   const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false);
 
   return (
-    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 grid-bg overflow-hidden border-b border-[#c6c6cd]/40">
+    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-slate-950 overflow-hidden border-b border-slate-800 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:40px_40px]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Column: Hero Copy & Actions */}
         <div className="lg:col-span-7 flex flex-col gap-6 items-start text-left z-10">
           {/* Engineered Badge */}
-          <div className="bg-[#f1f5f9] text-[#191c1e] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-[#c6c6cd] shadow-2xs">
+          <div className="bg-slate-900/90 text-slate-300 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-slate-800 shadow-2xs">
             <span>⚡ Blazing-Fast Web Development</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
           </div>
 
           {/* Main Display Headline */}
-          <h1 className="font-geist font-bold text-3xl sm:text-5xl lg:text-6xl text-[#191c1e] leading-[1.15] tracking-tight">
+          <h1 className="font-geist font-bold text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.15] tracking-tight">
             Websites That Actually Make Your{' '}
             <span className="text-[#991b1b] bg-gradient-to-r from-[#991b1b] to-[#dc2626] bg-clip-text text-transparent">
               Phone Ring.
@@ -30,7 +30,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-lg sm:text-xl text-[#45464d] leading-relaxed max-w-2xl font-normal">
+          <p className="text-lg sm:text-xl text-slate-400 leading-relaxed max-w-2xl font-normal">
             Custom, mobile-first websites built to turn visitors into paying customers for ambitious businesses across Cheshire & Stoke-on-Trent. No tech jargon, no hidden fees.
           </p>
 
@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
 
             <button
               onClick={onOpenWhatsApp}
-              className="border border-[#191c1e] text-[#191c1e] bg-white hover:bg-[#eceef0] px-6 py-3.5 rounded-lg font-semibold text-sm sm:text-base text-center transition-all flex justify-center items-center gap-2"
+              className="border border-slate-700 text-white bg-slate-900/90 hover:bg-slate-800 px-6 py-3.5 rounded-lg font-semibold text-sm sm:text-base text-center transition-all flex justify-center items-center gap-2"
             >
               <MessageCircle className="w-4 h-4 text-emerald-600" />
               Message on WhatsApp
@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
           </div>
 
           {/* Micro Proof Bar */}
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-[#c6c6cd]/50 w-full max-w-xl text-xs sm:text-sm text-[#45464d]">
+          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-800 w-full max-w-xl text-xs sm:text-sm text-slate-400">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Looks Great on Mobile</span>
@@ -74,7 +74,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
         <div className="lg:col-span-5 relative w-full">
           <div 
             onClick={() => setIsCaseStudyOpen(true)}
-            className="bg-slate-900/80 backdrop-blur-md border border-slate-800 hover:border-red-500/50 rounded-xl shadow-2xl overflow-hidden transition-all transform hover:-translate-y-1 duration-300 p-6 flex flex-col gap-4 cursor-pointer group"
+            className="bg-slate-900/90 border border-slate-800 hover:border-red-500/50 text-white rounded-2xl shadow-2xl overflow-hidden transition-all transform hover:-translate-y-1 duration-300 p-6 flex flex-col gap-4 cursor-pointer group"
           >
             <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center gap-3">
@@ -83,16 +83,15 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
                 </div>
                 <div>
                   <h3 className="font-geist font-bold text-white flex items-center gap-2">
-                    Latest Technical Build
+                    Custom React Booking & Quote Engine
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   </h3>
-                  <p className="text-xs text-slate-400">School IT Refresh Project</p>
                 </div>
               </div>
             </div>
 
             <p className="text-sm text-slate-300 leading-relaxed">
-              A comprehensive technical refresh and modernization project for a local school's IT infrastructure, ensuring speed, security, and ease of use.
+              A high-performance, mobile-first web app built with React and TypeScript, delivering instant quote calculations and seamless WhatsApp lead routing.
             </p>
 
             <div className="flex flex-wrap gap-2 mt-2">
