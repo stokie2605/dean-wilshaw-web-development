@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Zap, CheckCircle2 } from 'lucide-react';
 import { PlumberMockup } from './mockups/PlumberMockup';
 import { RooferMockup } from './mockups/RooferMockup';
@@ -10,6 +10,15 @@ interface MobileShowcaseProps {
 
 export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) => {
   const [activeModal, setActiveModal] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveModal(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const trades = [
     {
       title: 'Emergency Plumbing',

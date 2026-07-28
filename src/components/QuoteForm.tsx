@@ -63,7 +63,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#f7f9fb] border-b border-[#c6c6cd]/50">
+    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#f7f9fb] border-b border-[#c6c6cd]/50 scroll-mt-20">
       <div className="max-w-4xl mx-auto">
         
         {/* Header */}

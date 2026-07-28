@@ -89,7 +89,7 @@ export const ServicesBento: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   return (
-    <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#ffffff] border-b border-[#c6c6cd]/50">
+    <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#ffffff] border-b border-[#c6c6cd]/50 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CheckCircle2 } from 'lucide-react';
 import { VanguardMockup } from './mockups/VanguardMockup';
 import { ApexMockup } from './mockups/ApexMockup';
@@ -10,6 +10,14 @@ interface PortfolioProps {
 
 export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
   const [activeModal, setActiveModal] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setActiveModal(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const projects = [
     {
@@ -60,7 +68,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
   ];
 
   return (
-    <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#ffffff] border-b border-[#c6c6cd]/50">
+    <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#ffffff] border-b border-[#c6c6cd]/50 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16 flex flex-col items-center">

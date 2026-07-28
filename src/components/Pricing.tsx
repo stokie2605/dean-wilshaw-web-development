@@ -38,7 +38,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp })
   const spotsGone = SPOTS_REMAINING <= 0;
 
   return (
-    <section id="pricing" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-[#e0e3e5]">
+    <section id="pricing" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white border-b border-[#e0e3e5] scroll-mt-20">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}

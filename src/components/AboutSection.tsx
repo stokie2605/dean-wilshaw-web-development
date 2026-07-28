@@ -17,7 +17,7 @@ export const AboutSection: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#f2f4f6] border-b border-[#c6c6cd]/50">
+    <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#f2f4f6] border-b border-[#c6c6cd]/50 scroll-mt-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Column: Visual Card "25 Years Operational Discipline" */}

@@ -47,7 +47,7 @@ export const ProcessTimeline: React.FC = () => {
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
           <p className="mt-4 text-[#45464d] max-w-xl text-sm sm:text-base">
-            From initial strategy call to live deployment in 2-3 weeks. No endless revisions, no missed launch dates.
+            From initial strategy call to live deployment in 1-2 weeks. No endless revisions, no missed launch dates.
           </p>
         </div>
 
