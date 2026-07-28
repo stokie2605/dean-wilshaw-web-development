@@ -55,7 +55,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
                   (e.target as HTMLElement).style.display = 'none';
                 }}
               />
-              />
               <span className="font-geist font-bold text-lg text-slate-900 dark:text-white tracking-tight group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
                 Dean Wilshaw
               </span>
