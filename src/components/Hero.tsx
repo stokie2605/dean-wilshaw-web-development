@@ -66,7 +66,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
             </div>
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>2-3 Wk Turnaround</span>
+              <span>1-2 Wk Turnaround</span>
             </div>
           </div>
         </div>
