@@ -19,6 +19,13 @@
     <meta name="twitter:title" content="Dean Wilshaw | Modern Web Development" />
     <meta name="twitter:description" content="High-converting, app-native websites for local businesses in Cheshire & Stoke-on-Trent." />
     <meta name="twitter:image" content="/og-image.png" />
+    <script>
+      if (localStorage.getItem('theme') === 'light' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

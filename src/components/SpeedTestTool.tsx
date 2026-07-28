@@ -106,28 +106,28 @@ export const SpeedTestTool: React.FC<SpeedTestToolProps> = ({ onBenchmarkComplet
   };
 
   return (
-    <section id="speed-test" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-950 border-b border-slate-800">
+    <section id="speed-test" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-12 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-400 px-3.5 py-1 rounded-full text-xs font-mono font-semibold mb-3">
-            <Gauge className="w-3.5 h-3.5 text-[#dc2626]" />
+          <div className="inline-flex items-center gap-2 bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 px-3.5 py-1 rounded-full text-xs font-mono font-semibold mb-3">
+            <Gauge className="w-3.5 h-3.5 text-red-600 dark:text-red-500" />
             <span>Interactive Speed Benchmark</span>
           </div>
-          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-white mb-3">
+          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-white mb-3">
             How Much Speed Are You Losing?
           </h2>
-          <p className="text-slate-400 max-w-2xl text-sm sm:text-base">
+          <p className="text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
             According to Google research, 53% of mobile users abandon sites that take longer than 3 seconds to load. Compare standard WordPress templates vs Dean's Custom React engine.
           </p>
         </div>
 
         {/* Input Controls Card */}
-        <div className="bg-slate-900/90 backdrop-blur-md border border-slate-800 rounded-2xl p-6 text-white shadow-2xl mb-8 max-w-4xl mx-auto">
+        <div className="bg-white dark:bg-slate-900/90 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl p-6 text-slate-900 dark:text-white shadow-2xl mb-8 max-w-4xl mx-auto">
           <form onSubmit={handleRunAudit} className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
             <div className="md:col-span-5 w-full">
-              <label htmlFor="urlInput" className="text-xs font-semibold tracking-wider text-slate-300 uppercase mb-2 block whitespace-nowrap">
+              <label htmlFor="urlInput" className="text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-300 uppercase mb-2 block whitespace-nowrap">
                 Enter Your Website Domain:
               </label>
               <input
@@ -136,19 +136,19 @@ export const SpeedTestTool: React.FC<SpeedTestToolProps> = ({ onBenchmarkComplet
                 placeholder="e.g. mybusiness.co.uk"
                 value={urlInput}
                 onChange={(e) => setUrlInput(e.target.value)}
-                className="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white placeholder-slate-500 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none w-full transition-colors text-sm"
+                className="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none w-full transition-colors text-sm"
               />
             </div>
 
             <div className="md:col-span-4 w-full">
-              <label htmlFor="industrySelect" className="text-xs font-semibold tracking-wider text-slate-300 uppercase mb-2 block whitespace-nowrap">
+              <label htmlFor="industrySelect" className="text-xs font-semibold tracking-wider text-slate-500 dark:text-slate-300 uppercase mb-2 block whitespace-nowrap">
                 Local Industry Benchmark:
               </label>
               <select
                 id="industrySelect"
                 value={selectedIndustry}
                 onChange={(e) => setSelectedIndustry(e.target.value)}
-                className="bg-slate-950 border border-slate-700 rounded-xl pl-4 pr-10 py-2.5 text-white placeholder-slate-500 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none w-full transition-colors text-xs md:text-sm truncate"
+                className="bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-xl pl-4 pr-10 py-2.5 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 outline-none w-full transition-colors text-xs md:text-sm truncate"
               >
                 <option value="Plumbing, Heating & Gas">Plumbing, Heating &amp; Gas</option>
                 <option value="Building, Roofing & General Trades">Building, Roofing &amp; General Trades</option>
@@ -171,7 +171,7 @@ export const SpeedTestTool: React.FC<SpeedTestToolProps> = ({ onBenchmarkComplet
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full h-[42px] bg-[#dc2626] hover:bg-[#b91c1c] text-white rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-xs disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full h-[42px] bg-red-600 hover:bg-red-500 text-white rounded-xl text-sm font-semibold transition-all flex items-center justify-center gap-2 shadow-lg shadow-red-600/30 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {loading ? (
                   <>

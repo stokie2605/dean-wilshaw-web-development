@@ -68,28 +68,28 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
   ];
 
   return (
-    <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#ffffff] border-b border-[#c6c6cd]/50 scroll-mt-20">
+    <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16 flex flex-col items-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#991b1b] font-semibold mb-2 bg-red-50 px-3 py-1 rounded-full border border-red-100">
+          <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
             What I Can Do
           </span>
-          <h2 className="font-geist font-bold text-3xl sm:text-4xl text-[#191c1e] mb-4">
+          <h2 className="font-geist font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mb-4">
             Websites for Every Stage of Business.
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full mb-6"></div>
-          <p className="text-[#45464d] max-w-2xl text-base sm:text-lg">
+          <p className="text-slate-600 dark:text-slate-300 max-w-2xl text-base sm:text-lg">
             Whether you're a one-man band just starting out, or an established company looking to dominate local searches, I build exactly what you need to get the job done.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
-            <div key={idx} className="group flex flex-col bg-white border border-[#c6c6cd]/80 hover:border-[#dc2626] rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300">
+            <div key={idx} className="group flex flex-col bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl hover:border-red-600 dark:hover:border-red-500 transition-all duration-300">
               {/* Image Container with Zoom Effect */}
               <div 
-                className="relative aspect-[4/3] overflow-hidden bg-slate-100 border-b border-[#e0e3e5] cursor-pointer"
+                className="relative aspect-[4/3] overflow-hidden bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 cursor-pointer"
                 onClick={() => setActiveModal(idx)}
               >
                 <div className="w-full h-full transform group-hover:scale-[1.02] transition-transform duration-500 ease-in-out pointer-events-none">
@@ -100,17 +100,17 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
               
               {/* Content Box */}
               <div className="p-6 flex flex-col flex-grow">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-[#dc2626] font-semibold mb-1">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-1">
                   {project.industryLabel}
                 </span>
-                <h3 className="font-geist font-bold text-xl text-[#191c1e] mb-1">{project.title}</h3>
-                <p className="text-sm font-semibold text-[#191c1e] mb-2">{project.subtitle}</p>
-                <p className="text-xs text-[#76777d] italic leading-relaxed mb-6 flex-grow">
+                <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white mb-1">{project.title}</h3>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">{project.subtitle}</p>
+                <p className="text-xs text-slate-600 dark:text-slate-400 italic leading-relaxed mb-6 flex-grow">
                   {project.uiFocus}
                 </p>
                 <button 
                   onClick={() => setActiveModal(idx)}
-                  className="block w-full bg-[#f7f9fb] group-hover:bg-[#dc2626] border border-[#c6c6cd] group-hover:border-[#dc2626] group-hover:text-white text-[#191c1e] py-3 rounded-lg text-sm font-semibold text-center transition-colors cursor-pointer"
+                  className="block w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 py-3 rounded-lg text-sm font-semibold text-center transition-colors cursor-pointer"
                 >
                   View Case Study
                 </button>
@@ -125,15 +125,15 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       {activeModal !== null && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn" onClick={() => setActiveModal(null)}>
           <div 
-            className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl transform transition-all"
+            className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl transform transition-all"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="flex justify-between items-center p-5 border-b border-slate-800">
-              <h3 className="font-geist font-bold text-xl text-white">{projects[activeModal].title}</h3>
+            <div className="flex justify-between items-center p-5 border-b border-slate-200 dark:border-slate-800">
+              <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white">{projects[activeModal].title}</h3>
               <button 
                 onClick={() => setActiveModal(null)}
-                className="text-slate-400 hover:text-white p-1 rounded-md hover:bg-slate-800 transition-colors"
+                className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
               </button>
@@ -142,16 +142,16 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
             {/* Modal Body */}
             <div className="p-6 space-y-6">
               <div>
-                <p className="text-sm text-slate-300 leading-relaxed">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {projects[activeModal].modalOverview}
                 </p>
               </div>
 
-              <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Key Features:</p>
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50">
+                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Key Features:</p>
                 <ul className="space-y-3">
                   {projects[activeModal].features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
@@ -160,10 +160,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
               </div>
 
               <div>
-                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tech Stack & Tags:</p>
+                <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">Tech Stack & Tags:</p>
                 <div className="flex flex-wrap gap-2">
                   {projects[activeModal].badges.map((badge, i) => (
-                    <span key={i} className="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-700">
+                    <span key={i} className="bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-200 dark:border-slate-700">
                       {badge}
                     </span>
                   ))}
@@ -172,13 +172,13 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
             </div>
 
             {/* Modal Footer */}
-            <div className="p-5 border-t border-slate-800 bg-slate-900/50 flex flex-col sm:flex-row gap-3 justify-end items-center">
+            <div className="p-5 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex flex-col sm:flex-row gap-3 justify-end items-center">
               <button 
                 onClick={() => {
                   setActiveModal(null);
                   onOpenQuote();
                 }}
-                className="w-full sm:w-auto px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-semibold transition-colors text-center"
+                className="w-full sm:w-auto px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 rounded-lg text-sm font-semibold transition-colors text-center"
               >
                 Request Similar Build
               </button>

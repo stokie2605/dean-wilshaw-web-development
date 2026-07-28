@@ -69,7 +69,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#f7f9fb] text-[#191c1e] font-sans selection:bg-[#dc2626]/20">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-[#191c1e] dark:text-white font-sans selection:bg-red-500/30 transition-colors duration-300">
       {/* Navigation */}
       <Header 
         onOpenQuote={handleOpenQuote} 
@@ -78,29 +78,29 @@ export default function App() {
       />
 
       {/* Main Page Content */}
-      <main className="flex-grow pb-20 md:pb-0">
-        <div className="bg-slate-950">
+      <main className="flex-grow pb-20 md:pb-0 transition-colors duration-300">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <Hero onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
-        <div className="bg-[#111111]">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <MobileShowcase onOpenQuote={handleOpenQuote} />
         </div>
-        <div className="bg-[#f7f9fb]">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <AboutSection />
         </div>
-        <div className="bg-white">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <Portfolio onOpenQuote={handleOpenQuote} />
         </div>
-        <div className="bg-[#f7f9fb]">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <ServicesBento />
         </div>
-        <div className="bg-white">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
-        <div className="bg-slate-950">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <SpeedTestTool onBenchmarkComplete={handleBenchmarkComplete} />
         </div>
-        <div className="bg-white">
+        <div className="bg-slate-50 dark:bg-slate-950">
           <QuoteForm onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
         </div>
       </main>

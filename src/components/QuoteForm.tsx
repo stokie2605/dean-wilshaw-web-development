@@ -63,31 +63,31 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
   };
 
   return (
-    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#f7f9fb] border-b border-[#c6c6cd]/50 scroll-mt-20">
+    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-4xl mx-auto">
         
         {/* Header */}
         <div className="text-center mb-10 flex flex-col items-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#991b1b] font-semibold mb-2 bg-red-50 px-3 py-1 rounded-full border border-red-100">
+          <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
             Direct Studio Inquiry
           </span>
-          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-[#191c1e] mb-3">
+          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-white mb-3">
             Get a Free Quote
           </h2>
-          <p className="text-[#45464d] text-sm sm:text-base max-w-lg">
+          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-lg">
             Tell me what package you need and a little about your business. I'll review it and get back to you with a direct price.
           </p>
         </div>
 
         {/* Form Container */}
-        <div className="bg-[#ffffff] border border-[#c6c6cd] p-6 sm:p-10 rounded-xl shadow-xs relative">
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl p-6 sm:p-10 relative">
           
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Row 1: Name & Company */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block font-geist font-semibold text-xs text-[#191c1e] uppercase tracking-wider mb-1.5" htmlFor="name">
+                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="name">
                   Name <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -97,12 +97,12 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   placeholder="John Doe"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-[#ffffff] border border-[#c6c6cd] rounded-lg px-3.5 py-2.5 text-sm text-[#191c1e] focus:border-[#191c1e] focus:ring-1 focus:ring-[#191c1e] focus:outline-none transition-colors"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block font-geist font-semibold text-xs text-[#191c1e] uppercase tracking-wider mb-1.5" htmlFor="company">
+                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="company">
                   Company / Trade Name (Optional)
                 </label>
                 <input
@@ -111,7 +111,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   placeholder="Acme Roofing"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="w-full bg-[#ffffff] border border-[#c6c6cd] rounded-lg px-3.5 py-2.5 text-sm text-[#191c1e] focus:border-[#191c1e] focus:ring-1 focus:ring-[#191c1e] focus:outline-none transition-colors"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
                 />
               </div>
             </div>
@@ -119,7 +119,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
             {/* Row 2: Email & Phone */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block font-geist font-semibold text-xs text-[#191c1e] uppercase tracking-wider mb-1.5" htmlFor="email">
+                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="email">
                   Email <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -129,12 +129,12 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-[#ffffff] border border-[#c6c6cd] rounded-lg px-3.5 py-2.5 text-sm text-[#191c1e] focus:border-[#191c1e] focus:ring-1 focus:ring-[#191c1e] focus:outline-none transition-colors"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block font-geist font-semibold text-xs text-[#191c1e] uppercase tracking-wider mb-1.5" htmlFor="phone">
+                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="phone">
                   Phone <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -144,14 +144,14 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   placeholder="07700 900123"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-[#ffffff] border border-[#c6c6cd] rounded-lg px-3.5 py-2.5 text-sm text-[#191c1e] focus:border-[#191c1e] focus:ring-1 focus:ring-[#191c1e] focus:outline-none transition-colors"
+                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
                 />
               </div>
             </div>
 
             {/* Row 3: Project Type Selection */}
             <div>
-              <label className="block font-geist font-semibold text-xs text-[#191c1e] uppercase tracking-wider mb-2.5">
+              <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-2.5">
                 Which package do you need?
               </label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -160,13 +160,13 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   onClick={() => setFormData({ ...formData, projectType: 'business-site' })}
                   className={`p-4 rounded-xl border text-left flex flex-col transition-all ${
                     formData.projectType === 'business-site' 
-                      ? 'border-[#dc2626] bg-[#dc2626]/5 ring-1 ring-[#dc2626]' 
-                      : 'border-[#c6c6cd] hover:border-[#191c1e] bg-white'
+                      ? 'border-red-600 bg-red-500/5 ring-1 ring-red-600' 
+                      : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
                   }`}
                 >
-                  <Smartphone className={`w-5 h-5 mb-2 ${formData.projectType === 'business-site' ? 'text-[#dc2626]' : 'text-slate-400'}`} />
-                  <span className="font-geist font-bold text-[#191c1e] text-sm">Business Site</span>
-                  <span className="text-xs text-[#76777d] mt-1">Lead gen & local SEO</span>
+                  <Smartphone className={`w-5 h-5 mb-2 ${formData.projectType === 'business-site' ? 'text-red-600 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">Business Site</span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Lead gen & local SEO</span>
                 </button>
 
                 <button
@@ -174,13 +174,13 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   onClick={() => setFormData({ ...formData, projectType: 'custom-app' })}
                   className={`p-4 rounded-xl border text-left flex flex-col transition-all ${
                     formData.projectType === 'custom-app' 
-                      ? 'border-[#dc2626] bg-[#dc2626]/5 ring-1 ring-[#dc2626]' 
-                      : 'border-[#c6c6cd] hover:border-[#191c1e] bg-white'
+                      ? 'border-red-600 bg-red-500/5 ring-1 ring-red-600' 
+                      : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
                   }`}
                 >
-                  <Database className={`w-5 h-5 mb-2 ${formData.projectType === 'custom-app' ? 'text-[#dc2626]' : 'text-slate-400'}`} />
-                  <span className="font-geist font-bold text-[#191c1e] text-sm">Custom App</span>
-                  <span className="text-xs text-[#76777d] mt-1">Dashboards & internal tools</span>
+                  <Database className={`w-5 h-5 mb-2 ${formData.projectType === 'custom-app' ? 'text-red-600 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">Custom App</span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Dashboards & internal tools</span>
                 </button>
 
                 <button
@@ -188,20 +188,20 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   onClick={() => setFormData({ ...formData, projectType: 'ai-integration' })}
                   className={`p-4 rounded-xl border text-left flex flex-col transition-all ${
                     formData.projectType === 'ai-integration' 
-                      ? 'border-[#dc2626] bg-[#dc2626]/5 ring-1 ring-[#dc2626]' 
-                      : 'border-[#c6c6cd] hover:border-[#191c1e] bg-white'
+                      ? 'border-red-600 bg-red-500/5 ring-1 ring-red-600' 
+                      : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
                   }`}
                 >
-                  <Monitor className={`w-5 h-5 mb-2 ${formData.projectType === 'ai-integration' ? 'text-[#dc2626]' : 'text-slate-400'}`} />
-                  <span className="font-geist font-bold text-[#191c1e] text-sm">AI Integration</span>
-                  <span className="text-xs text-[#76777d] mt-1">Chatbots & automation</span>
+                  <Monitor className={`w-5 h-5 mb-2 ${formData.projectType === 'ai-integration' ? 'text-red-600 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">AI Integration</span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Chatbots & automation</span>
                 </button>
               </div>
             </div>
 
             {/* Row 4: Project Details */}
             <div>
-              <label className="block font-geist font-semibold text-xs text-[#191c1e] uppercase tracking-wider mb-1.5" htmlFor="details">
+              <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="details">
                 Project Details
               </label>
               <textarea
@@ -211,7 +211,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                 placeholder="What does your business do and what do you need the website to achieve? (e.g. Local plumber needing a site that looks good on mobile and gets more quote requests...)"
                 value={formData.details}
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                className="w-full bg-[#ffffff] border border-[#c6c6cd] rounded-lg px-3.5 py-2.5 text-sm text-[#191c1e] focus:border-[#191c1e] focus:ring-1 focus:ring-[#191c1e] focus:outline-none transition-colors"
+                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
               ></textarea>
             </div>
 
@@ -222,10 +222,10 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                   id="gdpr-consent"
                   type="checkbox"
                   required
-                  className="w-4 h-4 rounded border-[#c6c6cd] text-[#dc2626] focus:ring-[#dc2626] cursor-pointer"
+                  className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-red-600 focus:ring-red-600 cursor-pointer"
                 />
               </div>
-              <div className="text-xs text-[#45464d] leading-relaxed">
+              <div className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                 <label htmlFor="gdpr-consent" className="cursor-pointer">
                   I consent to Dean Wilshaw storing my details to contact me regarding this quote.
                 </label>
@@ -236,7 +236,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#dc2626] hover:bg-[#b91c1c] text-white py-3.5 rounded-lg font-geist font-semibold text-sm sm:text-base transition-opacity shadow-sm flex items-center justify-center gap-2"
+              className="w-full bg-red-600 hover:bg-red-500 text-white py-3.5 rounded-lg font-geist font-bold text-sm sm:text-base transition-all shadow-lg shadow-red-600/30 flex items-center justify-center gap-2"
             >
               {loading ? (
                 <span>Sending Request...</span>
@@ -249,11 +249,11 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
             </button>
 
             <div className="text-center pt-2 space-y-1.5">
-              <span className="text-xs text-[#76777d] flex items-center justify-center gap-1.5">
+              <span className="text-xs text-slate-600 dark:text-slate-400 flex items-center justify-center gap-1.5">
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 No obligations. I will respond with a direct price within 24 hours.
               </span>
-              <p className="text-[11px] text-[#76777d]">
+              <p className="text-[11px] text-slate-500 dark:text-slate-500">
                 🔒 Your details go directly to Dean's inbox. No databases, no marketing lists, no spam.
               </p>
             </div>
@@ -264,29 +264,29 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
 
         {/* Confirmation Modal */}
         {result && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-fadeIn">
-            <div className="bg-white border border-[#c6c6cd] rounded-xl max-w-md w-full p-6 shadow-2xl relative space-y-5">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-5">
               <button
                 onClick={() => setResult(null)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100"
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
 
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center shrink-0">
+                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border border-emerald-500/20 rounded-full flex items-center justify-center shrink-0">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-[10px] font-mono bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">
+                  <span className="text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border border-emerald-500/20 px-2 py-0.5 rounded font-bold">
                     REQUEST RECEIVED #{result.refNumber}
                   </span>
-                  <h3 className="font-geist font-bold text-xl text-slate-900">Request Logged!</h3>
+                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white mt-1">Request Logged!</h3>
                 </div>
               </div>
 
-              <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs space-y-2 text-slate-700">
-                <p className="font-medium">{result.message}</p>
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 text-xs space-y-2 text-slate-700 dark:text-slate-300">
+                <p className="font-medium leading-relaxed">{result.message}</p>
               </div>
 
               <div className="space-y-2 pt-2">
@@ -295,7 +295,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
                     setResult(null);
                     onOpenWhatsApp();
                   }}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-lg text-xs font-semibold flex justify-center items-center gap-2"
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 py-2.5 rounded-lg text-xs font-semibold flex justify-center items-center gap-2 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4" />
                   Speed Up: Send via WhatsApp Too
@@ -303,7 +303,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
 
                 <button
                   onClick={() => setResult(null)}
-                  className="w-full border border-slate-300 text-slate-700 hover:bg-slate-50 py-2.5 rounded-lg text-xs font-semibold"
+                  className="w-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 py-2.5 rounded-lg text-xs font-semibold transition-colors"
                 >
                   Close Confirmation
                 </button>
