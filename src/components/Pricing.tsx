@@ -15,7 +15,7 @@ const packages = [
   },
   {
     name: 'Website Redesign',
-    description: 'Take your existing site and rebuild it faster, cleaner, and modern.',
+    description: 'Take your existing site and rebuild it to be faster, cleaner, and more modern.',
     normalPrice: 349,
     earlyPrice: 314,
     features: ['Keep your branding', 'Massively faster load times', 'Mobile-friendly rebuild', 'Fresh modern layout', 'Delivered in 1–2 weeks'],

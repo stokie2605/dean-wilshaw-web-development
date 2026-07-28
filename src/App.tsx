@@ -82,7 +82,7 @@ export default function App() {
           <Hero onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
         <div className="bg-[#111111]">
-          <MobileShowcase />
+          <MobileShowcase onOpenQuote={handleOpenQuote} />
         </div>
         <div className="bg-[#f7f9fb]">
           <AboutSection />
