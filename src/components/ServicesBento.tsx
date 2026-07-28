@@ -19,7 +19,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'mobile-first',
     title: 'Looks Great on Mobile',
     badge: 'Mobile Optimized',
-    icon: <Gauge className="w-6 h-6 text-[#191c1e]" />,
+    icon: <Gauge className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'smartphone',
     description: 'Over 80% of your customers will look you up on their phone. I build sites that look perfect on all iPhones and Androids.',
     tags: ['MOBILE', 'FAST', 'EASY TO USE'],
@@ -36,7 +36,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'more-calls',
     title: 'Gets Your Phone Ringing',
     badge: 'More Leads',
-    icon: <TrendingUp className="w-6 h-6 text-[#191c1e]" />,
+    icon: <TrendingUp className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'trending_up',
     description: 'A website should be your best salesperson. I design layouts that convince local people to stop browsing and call you for a quote.',
     tags: ['CALLS', 'WHATSAPP', 'QUOTES'],
@@ -53,7 +53,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'google-ready',
     title: 'Findable on Google',
     badge: 'Local Search',
-    icon: <Search className="w-6 h-6 text-[#191c1e]" />,
+    icon: <Search className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'search',
     description: 'I build websites the way Google likes them, helping you show up when local people search for "Roofer near me" or "Plumber in Stoke".',
     tags: ['GOOGLE', 'LOCAL', 'SEO'],
@@ -70,7 +70,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'zero-stress',
     title: 'Zero Stress, Zero Hidden Fees',
     badge: 'Honest Pricing',
-    icon: <Layers className="w-6 h-6 text-[#191c1e]" />,
+    icon: <Layers className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'handshake',
     description: 'I am a local freelancer, not a massive agency. I give you one clear price, talk in plain English, and don\'t trap you in monthly contracts.',
     tags: ['HONEST', 'LOCAL', 'NO TRAPS'],
@@ -115,15 +115,15 @@ export const ServicesBento: React.FC = () => {
               className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 rounded-2xl p-6 shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden cursor-pointer"
             >
               {/* Background Icon Watermark */}
-              <div className="absolute top-2 right-2 p-2 opacity-[0.03] dark:opacity-5 group-hover:opacity-10 transition-opacity pointer-events-none">
-                <span className="material-symbols-outlined text-[80px] text-slate-900 dark:text-white">
+              <div className="absolute top-2 right-2 p-2 pointer-events-none">
+                <span className="material-symbols-outlined text-[80px] text-slate-200/60 dark:text-slate-800/40 pointer-events-none transition-colors duration-300">
                   {service.bgIconName}
                 </span>
               </div>
 
               <div>
                 {/* Icon Box */}
-                <div className="w-12 h-12 bg-slate-100 dark:bg-slate-950 rounded-lg flex items-center justify-center text-slate-900 dark:text-white mb-5 border border-slate-200 dark:border-slate-800 group-hover:border-red-600 dark:group-hover:border-red-500 group-hover:bg-red-500/10 transition-colors shadow-sm">
+                <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 inline-flex items-center justify-center mb-5 group-hover:border-red-600 dark:group-hover:border-red-500 group-hover:bg-red-500/10 transition-colors shadow-sm">
                   {service.icon}
                 </div>
 

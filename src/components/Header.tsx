@@ -78,16 +78,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
           </a>
         </nav>
 
-        {/* Desktop CTA Buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        {/* Action Buttons Container */}
+        <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="p-2 border border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors flex items-center justify-center"
+            className="p-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg min-w-[40px] min-h-[40px] flex items-center justify-center transition-colors"
             title="Toggle Dark/Light Mode"
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-          <button
+          
+          {/* Desktop CTA Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <button
             onClick={onOpenStitch}
             className="border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
             title="Ask Client Support AI"
@@ -111,6 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
             Get a Quote
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
+          </div>
         </div>
 
       </div>
