@@ -1,20 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+import Groq from 'groq-sdk';
 
-const STITCH_SYSTEM_PROMPT = `You are the Client Support Assistant for Dean Wilshaw's independent web development studio based in South Cheshire, UK.
-Your tone is friendly, honest, concise, and focused on helping local small businesses.
+const STITCH_SYSTEM_PROMPT = `You are Stitch, the clever, witty, and highly capable AI assistant for Dean Wilshaw's independent web development studio based in South Cheshire, UK.
+Your goal is to be conversational, engaging, and genuinely helpful. You can chat about anything, but you always subtly represent Dean's web design business.
 
-Key Facts:
-- Developer: Dean Wilshaw, based in South Cheshire (Alsager/Sandbach area).
-- Specialty: Fast, mobile-first websites for local tradespeople and small businesses in Cheshire and Stoke-on-Trent.
-- He has recently completed a Skills Bootcamp in AI-assisted web development.
-- Real completed project: School IT Support Refresh (github.com/stokie2605/school-it-support-refresh)
-- Services: Business websites, website redesigns, AI integrations (chatbots, automation tools)
-- Pricing: Business Site from £449, Website Redesign from £314, Custom App from £539, AI Integration from £539
-- Turnaround: Typically 1-3 weeks
-- Contact: WhatsApp preferred, or via the quote form on the site
-- No hidden fees, no monthly contracts, honest upfront pricing
+Key Facts to draw from when relevant:
+- Developer: Dean Wilshaw, based in South Cheshire (Alsager/Sandbach).
+- Specialty: Blazing fast, mobile-first React websites for local tradespeople and small businesses.
+- Background: Recently completed a Skills Bootcamp in AI-assisted web development.
+- Services: Business websites (from £449), Redesigns (from £314), AI integrations & Custom Apps (from £539).
+- Turnaround: Typically 1-3 weeks. No monthly contracts. Upfront pricing.
 
-When users ask questions, give short helpful answers (under 100 words) and encourage them to use the quote form or WhatsApp Dean directly. Be honest — Dean is a solo freelancer just starting out, not a big agency.`;
+CRITICAL RULES:
+1. NEVER write massive essays. Keep every response punchy and short (1-3 sentences maximum).
+2. If the user asks a random or off-topic question, answer it cleverly and naturally! Show off your personality.
+3. Only pitch Dean's services or mention the quote form/WhatsApp if it naturally fits the conversation. Do not mechanically repeat "use the quote form" in every message.
+4. If asked about pricing or technical details, give a direct, honest answer without jargon.`;
 
 function smartFallback(query: string): string {
   const q = query.toLowerCase();
@@ -75,59 +76,45 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Message is required' });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
 
   if (!apiKey) {
     return res.json({ response: smartFallback(message), fallback: true });
   }
 
   try {
+    const groq = new Groq({ apiKey });
+
     const formattedHistory = Array.isArray(history)
       ? history.slice(-6).map((item: { role: string; content: string }) => ({
-          role: item.role === 'user' ? 'user' : 'model',
-          parts: [{ text: item.content }],
+          role: item.role === 'user' ? 'user' : 'assistant',
+          content: item.content,
         }))
       : [];
 
-    formattedHistory.push({
-      role: 'user',
-      parts: [{ text: message }]
+    const messages = [
+      { role: 'system', content: STITCH_SYSTEM_PROMPT },
+      ...formattedHistory,
+      { role: 'user', content: message }
+    ];
+
+    const chatCompletion = await groq.chat.completions.create({
+      messages: messages as any,
+      model: 'llama-3.3-70b-versatile',
+      temperature: 0.7,
     });
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        systemInstruction: {
-          parts: [{ text: STITCH_SYSTEM_PROMPT }]
-        },
-        contents: formattedHistory,
-        generationConfig: {
-          temperature: 0.7,
-        }
-      })
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Gemini REST API error:', response.status, errorText);
-      return res.json({ response: smartFallback(message), fallback: true });
-    }
-
-    const data = await response.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    const reply = chatCompletion.choices[0]?.message?.content;
     
     if (reply) {
       return res.json({ response: reply });
     } else {
-      console.error('Unexpected response format:', data);
+      console.error('Unexpected Groq response format');
       return res.json({ response: smartFallback(message), fallback: true });
     }
 
   } catch (error) {
-    console.error('Gemini error:', error);
+    console.error('Groq error:', error);
     return res.json({ response: smartFallback(message), fallback: true });
   }
 }

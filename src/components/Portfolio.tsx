@@ -1,7 +1,64 @@
-import React from 'react';
-import { Smartphone, Monitor, Database, Check } from 'lucide-react';
+import React, { useState } from 'react';
+import { CheckCircle2 } from 'lucide-react';
+import { VanguardMockup } from './mockups/VanguardMockup';
+import { ApexMockup } from './mockups/ApexMockup';
+import { KilnMockup } from './mockups/KilnMockup';
 
-export const Portfolio: React.FC = () => {
+interface PortfolioProps {
+  onOpenQuote: () => void;
+}
+
+export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
+  const [activeModal, setActiveModal] = useState<number | null>(null);
+
+  const projects = [
+    {
+      industryLabel: 'Emergency & Trades',
+      title: 'Vanguard Roadside Recovery',
+      subtitle: 'Rapid Emergency Dispatch & Transport Platform',
+      uiFocus: 'Engineered for high-contrast visibility, sub-second 4G mobile rendering, and instant 1-tap emergency call routing.',
+      component: <VanguardMockup />,
+      modalOverview: 'A high-converting emergency response platform built with a bold dark industrial theme and vibrant safety-amber accents. Engineered for 24/7 roadside recovery dispatch and fleet transport scheduling.',
+      features: [
+        'Emergency dispatch call routing',
+        'Mobile roadside request flow',
+        'Fleet transfer booking',
+        'Clear service breakdowns'
+      ],
+      badges: ['Mobile-First UI/UX', 'High-Conversion Design', 'Tailwind CSS', 'Emergency Dispatch UI']
+    },
+    {
+      industryLabel: 'B2B Logistics & Corporate',
+      title: 'Cheshire Apex Logistics',
+      subtitle: 'Secure Client Portal & Enterprise Routing',
+      uiFocus: 'Built for enterprise reliability, featuring secure client portal routing and structured data-driven UX.',
+      component: <ApexMockup />,
+      modalOverview: 'A professional B2B portal designed for logistics and transport corporations. Features a clean, data-first interface for tracking fleet schedules and managing corporate accounts.',
+      features: [
+        'Secure client login portal',
+        'Fleet routing overview',
+        'Data-driven dashboards',
+        'Corporate B2B lead capture'
+      ],
+      badges: ['Client Portal', 'Enterprise UX', 'Secure Routing', 'Responsive Layout']
+    },
+    {
+      industryLabel: 'Local Retail & Hospitality',
+      title: 'The Kiln & Craft Artisan Market',
+      subtitle: 'Community Event Platform & Producer Showcase',
+      uiFocus: 'Designed for high-traffic weekend browsing with warm, inviting typography and frictionless event navigation.',
+      component: <KilnMockup />,
+      modalOverview: 'A vibrant community-focused portal designed for local produce markets and artisan retail. Highlights independent producers, seasonal events, and frictionless weekend navigation.',
+      features: [
+        'Stallholder showcases',
+        'Live event schedule',
+        'Interactive weekend maps',
+        'Clean mobile navigation'
+      ],
+      badges: ['Community Platform', 'Event Scheduling', 'Clean Typography', 'Zero-Mile Branding']
+    }
+  ];
+
   return (
     <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#ffffff] border-b border-[#c6c6cd]/50">
       <div className="max-w-7xl mx-auto">
@@ -20,84 +77,115 @@ export const Portfolio: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          
-          {/* Modern Business Websites */}
-          <div className="bg-[#f7f9fb] border border-[#c6c6cd]/80 hover:border-[#dc2626] rounded-xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col relative">
-            <div className="w-14 h-14 bg-white rounded-xl shadow-sm border border-[#c6c6cd] flex items-center justify-center mb-6">
-              <Smartphone className="w-7 h-7 text-[#991b1b]" />
+          {projects.map((project, idx) => (
+            <div key={idx} className="group flex flex-col bg-white border border-[#c6c6cd]/80 hover:border-[#dc2626] rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300">
+              {/* Image Container with Zoom Effect */}
+              <div 
+                className="relative aspect-[4/3] overflow-hidden bg-slate-100 border-b border-[#e0e3e5] cursor-pointer"
+                onClick={() => setActiveModal(idx)}
+              >
+                <div className="w-full h-full transform group-hover:scale-[1.02] transition-transform duration-500 ease-in-out pointer-events-none">
+                  {project.component}
+                </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+              </div>
+              
+              {/* Content Box */}
+              <div className="p-6 flex flex-col flex-grow">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-[#dc2626] font-semibold mb-1">
+                  {project.industryLabel}
+                </span>
+                <h3 className="font-geist font-bold text-xl text-[#191c1e] mb-1">{project.title}</h3>
+                <p className="text-sm font-semibold text-[#191c1e] mb-2">{project.subtitle}</p>
+                <p className="text-xs text-[#76777d] italic leading-relaxed mb-6 flex-grow">
+                  {project.uiFocus}
+                </p>
+                <button 
+                  onClick={() => setActiveModal(idx)}
+                  className="block w-full bg-[#f7f9fb] group-hover:bg-[#dc2626] border border-[#c6c6cd] group-hover:border-[#dc2626] group-hover:text-white text-[#191c1e] py-3 rounded-lg text-sm font-semibold text-center transition-colors cursor-pointer"
+                >
+                  View Case Study
+                </button>
+              </div>
             </div>
-            <h3 className="font-geist font-bold text-2xl text-[#191c1e] mb-2">Modern Business Websites</h3>
-            <p className="text-sm text-[#45464d] leading-relaxed mb-6 flex-grow">
-              Fast, responsive websites designed to get local tradesmen and businesses more phone calls and quote requests. Built from scratch, no bloated templates.
-            </p>
-            
-            <div className="bg-white rounded-lg p-4 border border-[#e0e3e5] mb-6">
-              <p className="text-xs font-bold uppercase text-[#191c1e] mb-3 font-mono">My Approach:</p>
-              <ul className="space-y-2 text-sm text-[#45464d]">
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /> Mobile-first responsive design</li>
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /> Built-in lead capture forms</li>
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /> Local Google SEO setup</li>
-              </ul>
-            </div>
-            
-            <a href="#contact" className="block w-full bg-white hover:bg-[#eceef0] border border-[#191c1e] text-[#191c1e] py-3 rounded-lg text-sm font-semibold text-center transition-colors">
-              Discuss a Project
-            </a>
-          </div>
-
-          {/* Custom Web Applications */}
-          <div className="bg-[#191c1e] border border-[#191c1e] rounded-xl p-8 shadow-xl transform md:-translate-y-4 transition-all duration-300 flex flex-col relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-[#991b1b] to-[#dc2626]"></div>
-            
-            <div className="w-14 h-14 bg-white/10 rounded-xl border border-white/20 flex items-center justify-center mb-6">
-              <Database className="w-7 h-7 text-white" />
-            </div>
-            <h3 className="font-geist font-bold text-2xl text-white mb-2">Custom Web Applications</h3>
-            <p className="text-sm text-slate-300 leading-relaxed mb-6 flex-grow">
-              Complex software solutions to help you run your business. From staff rota systems to custom booking dashboards and secure internal tools.
-            </p>
-            
-            <div className="bg-white/5 rounded-lg p-4 border border-white/10 mb-6">
-              <p className="text-xs font-bold uppercase text-white mb-3 font-mono">My Approach:</p>
-              <ul className="space-y-2 text-sm text-slate-300">
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" /> Secure authentication systems</li>
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" /> Custom database architecture</li>
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" /> Operational admin dashboards</li>
-              </ul>
-            </div>
-            
-            <a href="#contact" className="block w-full bg-[#dc2626] hover:bg-[#b91c1c] text-white py-3 rounded-lg text-sm font-semibold text-center transition-colors">
-              Discuss a Project
-            </a>
-          </div>
-
-          {/* AI & Tech Integrations */}
-          <div className="bg-[#f7f9fb] border border-[#c6c6cd]/80 hover:border-[#dc2626] rounded-xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col relative">
-            <div className="w-14 h-14 bg-white rounded-xl shadow-sm border border-[#c6c6cd] flex items-center justify-center mb-6">
-              <Monitor className="w-7 h-7 text-[#991b1b]" />
-            </div>
-            <h3 className="font-geist font-bold text-2xl text-[#191c1e] mb-2">AI & Tech Integrations</h3>
-            <p className="text-sm text-[#45464d] leading-relaxed mb-6 flex-grow">
-              I constantly learn new technologies to give businesses an edge. Need an intelligent AI chatbot like the one on this site? I can build and integrate it.
-            </p>
-            
-            <div className="bg-white rounded-lg p-4 border border-[#e0e3e5] mb-6">
-              <p className="text-xs font-bold uppercase text-[#191c1e] mb-3 font-mono">My Approach:</p>
-              <ul className="space-y-2 text-sm text-[#45464d]">
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /> Custom AI chatbot assistants</li>
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /> Automated email & SMS workflows</li>
-                <li className="flex gap-2 items-start"><Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" /> 3rd-party API integrations</li>
-              </ul>
-            </div>
-            
-            <a href="#contact" className="block w-full bg-white hover:bg-[#eceef0] border border-[#191c1e] text-[#191c1e] py-3 rounded-lg text-sm font-semibold text-center transition-colors">
-              Discuss a Project
-            </a>
-          </div>
-
+          ))}
         </div>
 
       </div>
+
+      {/* Case Study Modal */}
+      {activeModal !== null && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn" onClick={() => setActiveModal(null)}>
+          <div 
+            className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl transform transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-5 border-b border-slate-800">
+              <h3 className="font-geist font-bold text-xl text-white">{projects[activeModal].title}</h3>
+              <button 
+                onClick={() => setActiveModal(null)}
+                className="text-slate-400 hover:text-white p-1 rounded-md hover:bg-slate-800 transition-colors"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            
+            {/* Modal Body */}
+            <div className="p-6 space-y-6">
+              <div>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  {projects[activeModal].modalOverview}
+                </p>
+              </div>
+
+              <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Key Features:</p>
+                <ul className="space-y-3">
+                  {projects[activeModal].features.map((feature, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tech Stack & Tags:</p>
+                <div className="flex flex-wrap gap-2">
+                  {projects[activeModal].badges.map((badge, i) => (
+                    <span key={i} className="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-700">
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-5 border-t border-slate-800 bg-slate-900/50 flex flex-col sm:flex-row gap-3 justify-end items-center">
+              <a 
+                href="https://github.com/stokie2605/client-mockups" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-5 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-lg text-sm font-semibold transition-colors text-center"
+              >
+                View Repo on GitHub
+              </a>
+              <button 
+                onClick={() => {
+                  setActiveModal(null);
+                  onOpenQuote();
+                }}
+                className="w-full sm:w-auto px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-semibold transition-colors text-center"
+              >
+                Request Similar Build
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

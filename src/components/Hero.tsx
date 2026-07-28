@@ -7,7 +7,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
-  const [activeTab, setActiveTab] = useState<'preview' | 'code' | 'audit'>('preview');
+  const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false);
 
   return (
     <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 grid-bg overflow-hidden border-b border-[#c6c6cd]/40">
@@ -17,8 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
         <div className="lg:col-span-7 flex flex-col gap-6 items-start text-left z-10">
           {/* Engineered Badge */}
           <div className="bg-[#f1f5f9] text-[#191c1e] px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-[#c6c6cd] shadow-2xs">
-            <Rocket className="w-4 h-4 text-[#dc2626]" />
-            <span>Built for Local Tradesmen</span>
+            <span>⚡ Blazing-Fast Web Development</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
           </div>
 
@@ -32,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-[#45464d] leading-relaxed max-w-2xl font-normal">
-            Simple, professional websites designed to get roofers, plumbers, and builders more quote requests in Cheshire & Stoke-on-Trent. No tech jargon, no hidden fees.
+            Custom, mobile-first websites built to turn visitors into paying customers for ambitious businesses across Cheshire & Stoke-on-Trent. No tech jargon, no hidden fees.
           </p>
 
           {/* Action Buttons */}
@@ -73,60 +72,123 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
 
         {/* Right Column: Real Project Showcase */}
         <div className="lg:col-span-5 relative w-full">
-          <a
-            href="https://github.com/stokie2605/school-it-support-refresh"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block group"
-            title="View project on GitHub"
+          <div 
+            onClick={() => setIsCaseStudyOpen(true)}
+            className="bg-slate-900/80 backdrop-blur-md border border-slate-800 hover:border-red-500/50 rounded-xl shadow-2xl overflow-hidden transition-all transform hover:-translate-y-1 duration-300 p-6 flex flex-col gap-4 cursor-pointer group"
           >
-          <div className="bg-white rounded-xl border border-[#c6c6cd] shadow-xl overflow-hidden transition-all transform hover:-translate-y-1 group-hover:border-[#dc2626] group-hover:shadow-2xl duration-300 p-6 flex flex-col gap-4 cursor-pointer">
-            
-            <div className="flex items-center justify-between border-b border-[#e0e3e5] pb-4">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#dc2626]/10 rounded-lg flex items-center justify-center group-hover:bg-[#dc2626]/20 transition-colors">
-                  <Code2 className="w-5 h-5 text-[#991b1b]" />
+                <div className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center group-hover:bg-red-500/10 transition-colors">
+                  <Code2 className="w-5 h-5 text-red-400 group-hover:text-red-500 transition-colors" />
                 </div>
                 <div>
-                  <h3 className="font-geist font-bold text-[#191c1e]">Recent Work</h3>
-                  <p className="text-xs text-[#76777d]">School IT Refresh Project</p>
+                  <h3 className="font-geist font-bold text-white flex items-center gap-2">
+                    Latest Technical Build
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  </h3>
+                  <p className="text-xs text-slate-400">School IT Refresh Project</p>
                 </div>
               </div>
-              <span className="text-xs font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-1 rounded font-semibold">
-                Completed
-              </span>
             </div>
 
-            <p className="text-sm text-[#45464d] leading-relaxed">
+            <p className="text-sm text-slate-300 leading-relaxed">
               A comprehensive technical refresh and modernization project for a local school's IT infrastructure, ensuring speed, security, and ease of use.
             </p>
 
-            <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 mt-2">
-              <p className="text-xs font-semibold text-slate-700 uppercase tracking-wider mb-3">Key Deliverables:</p>
-              <ul className="space-y-2">
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span>Hardware & Software Auditing</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span>Performance Optimization</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm text-slate-600">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                  <span>Modernization Strategy</span>
-                </li>
-              </ul>
+            <div className="flex flex-wrap gap-2 mt-2">
+              <span className="bg-slate-800 text-slate-300 px-2 py-1 rounded text-[10px] font-mono border border-slate-700">React</span>
+              <span className="bg-slate-800 text-slate-300 px-2 py-1 rounded text-[10px] font-mono border border-slate-700">Vite</span>
+              <span className="bg-slate-800 text-slate-300 px-2 py-1 rounded text-[10px] font-mono border border-slate-700">Tailwind CSS</span>
+              <span className="bg-slate-800 text-slate-300 px-2 py-1 rounded text-[10px] font-mono border border-slate-700">TypeScript</span>
             </div>
 
-            <p className="text-xs text-[#991b1b] font-medium flex items-center gap-1 mt-1">
-              View on GitHub →
+            <p className="text-xs text-red-400 font-medium flex items-center gap-1 mt-3 group-hover:text-red-300 transition-colors">
+              Click to explore technical case study →
             </p>
           </div>
-          </a>
         </div>
 
       </div>
+      {/* Case Study Modal */}
+      {isCaseStudyOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn" onClick={() => setIsCaseStudyOpen(false)}>
+          <div 
+            className="bg-slate-900 border border-slate-700 rounded-2xl w-full max-w-2xl overflow-hidden shadow-2xl transform transition-all"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex justify-between items-center p-5 border-b border-slate-800">
+              <h3 className="font-geist font-bold text-xl text-white">Project Case Study</h3>
+              <button 
+                onClick={() => setIsCaseStudyOpen(false)}
+                className="text-slate-400 hover:text-white p-1 rounded-md hover:bg-slate-800 transition-colors"
+              >
+                <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            
+            {/* Modal Body */}
+            <div className="p-6 space-y-6">
+              <div>
+                <h4 className="text-lg font-semibold text-white mb-2">School IT Support Refresh</h4>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  Modernizing legacy school IT systems to deliver clean, maintainable, and high-performance digital infrastructure. This project focuses on replacing outdated processes with a lightning-fast, reliable web interface designed for everyday school operations.
+                </p>
+              </div>
+
+              <div className="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Project Highlights:</p>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2 text-sm text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span><strong>Frontend Modernization:</strong> Replaced outdated processes with a clean React interface.</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span><strong>Performance Optimization:</strong> Built with Vite and Tailwind for lightning-fast load times.</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span><strong>Operational Reliability:</strong> Leveraged 25 years of strict operational discipline in logistics to deliver highly reliable software systems.</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Tech Stack Used:</p>
+                <div className="flex flex-wrap gap-2">
+                  <span className="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-700">React</span>
+                  <span className="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-700">Vite</span>
+                  <span className="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-700">Tailwind CSS</span>
+                  <span className="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-700">TypeScript</span>
+                  <span className="bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md text-xs font-mono border border-slate-700">Vercel</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="p-5 border-t border-slate-800 bg-slate-900/50 flex flex-col sm:flex-row gap-3 justify-end items-center">
+              <a 
+                href="https://github.com/stokie2605/school-it-support-refresh" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-5 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-lg text-sm font-semibold transition-colors text-center"
+              >
+                View Code on GitHub
+              </a>
+              <button 
+                onClick={() => {
+                  setIsCaseStudyOpen(false);
+                  onOpenQuote();
+                }}
+                className="w-full sm:w-auto px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg text-sm font-semibold transition-colors text-center"
+              >
+                Request Similar Scope
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

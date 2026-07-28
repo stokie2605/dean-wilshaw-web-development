@@ -8,11 +8,11 @@ try:
 except ImportError:
     print("Error: The 'python-dotenv' package is not installed. Run: pip install python-dotenv")
     sys.exit(1)
+
 try:
-    from google import genai
-    from google.genai import types
+    from groq import Groq
 except ImportError:
-    print("Error: The 'google-genai' package is not installed. Run: pip install google-genai")
+    print("Error: The 'groq' package is not installed. Run: pip install groq")
     sys.exit(1)
 
 try:
@@ -39,9 +39,9 @@ def get_latest_commit_message():
         sys.exit(1)
 
 def main():
-    api_key = os.environ.get("GEMINI_API_KEY")
+    api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
-        print("Error: GEMINI_API_KEY environment variable is missing.")
+        print("Error: GROQ_API_KEY environment variable is missing in your .env file.")
         sys.exit(1)
 
     commit_message = get_latest_commit_message()
@@ -50,27 +50,34 @@ def main():
         sys.exit(1)
 
     print(f"Latest commit found: '{commit_message.splitlines()[0]}...'")
-    print("Drafting LinkedIn update with Gemini...\n")
+    print("Drafting LinkedIn update with Groq (Llama-3.3)...\n")
 
-    client = genai.Client(api_key=api_key)
+    client = Groq(api_key=api_key)
 
     system_instruction = (
         "Generate a brief, 2-sentence update suitable for LinkedIn based on the provided git commit message. "
         "Use plain English and a grounded, reliable tone. "
-        "Avoid buzzwords, corporate jargon, or hype."
+        "Avoid buzzwords, corporate jargon, or hype. "
+        "Do not mention specific pricing, discounts, costs, or money."
     )
 
     try:
-        response = client.models.generate_content(
-            model='gemini-2.0-flash',
-            contents=commit_message,
-            config=types.GenerateContentConfig(
-                system_instruction=system_instruction,
-                temperature=0.7,
-            )
+        chat_completion = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": system_instruction,
+                },
+                {
+                    "role": "user",
+                    "content": commit_message,
+                }
+            ],
+            model="llama-3.3-70b-versatile",
+            temperature=0.7,
         )
         
-        linkedin_post = response.text.strip()
+        linkedin_post = chat_completion.choices[0].message.content.strip()
         
         # Copy to clipboard
         pyperclip.copy(linkedin_post)
@@ -81,7 +88,7 @@ def main():
         print("✅ Post copied to clipboard! Just press Ctrl+V on LinkedIn.")
 
     except Exception as e:
-        print(f"Error generating content with Gemini API: {e}")
+        print(f"Error generating content with Groq API: {e}")
         sys.exit(1)
 
 if __name__ == "__main__":

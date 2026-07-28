@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, Clock, MessageSquare, Target, Wrench } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
+  const navigate = useNavigate();
+  const [clickTimes, setClickTimes] = useState<number[]>([]);
+
+  const handleAvatarClick = () => {
+    const now = Date.now();
+    const newTimes = [...clickTimes, now].slice(-3);
+    setClickTimes(newTimes);
+
+    if (newTimes.length === 3 && now - newTimes[0] < 500) {
+      navigate('/outreach');
+    }
+  };
+
   return (
     <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#f2f4f6] border-b border-[#c6c6cd]/50">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Column: Visual Card "25 Years Operational Discipline" */}
-        <div className="lg:col-span-5 order-2 lg:order-1 relative">
-          <div className="bg-white border border-[#c6c6cd] rounded-xl overflow-hidden shadow-sm p-8 sm:p-12 flex flex-col justify-center items-center text-center relative group hover:border-[#dc2626] transition-all">
-            
-            <div className="w-24 h-24 sm:w-28 sm:h-28 bg-[#f1f5f9] rounded-2xl flex items-center justify-center text-[#c6c6cd] group-hover:text-[#dc2626] transition-colors mb-6 border border-[#c6c6cd]/50">
-              <span className="material-symbols-outlined text-[64px]">engineering</span>
-            </div>
-
-            <h4 className="font-geist font-bold text-3xl sm:text-4xl text-[#191c1e] mb-2">
-              25 Years
-            </h4>
-            <p className="text-base text-[#45464d] font-medium">
-              Operational Discipline
-            </p>
-            <p className="text-xs text-[#76777d] mt-2 font-mono">
-              Logistics Leadership &rarr; Software Engineering
-            </p>
+        <div className="lg:col-span-5 order-2 lg:order-1 relative h-full">
+          <div 
+            onClick={handleAvatarClick}
+            className="bg-[#f2f4f6] border border-[#c6c6cd] rounded-xl overflow-hidden shadow-sm relative group hover:border-[#dc2626] transition-all w-full aspect-square sm:aspect-auto sm:h-full min-h-[300px] cursor-pointer"
+          >
+            <img src="/avatar-cartoon.webp" alt="Dean Wilshaw" className="w-full h-full object-cover" />
           </div>
 
           {/* Floating Badge */}

@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, MessageSquare, ShieldCheck, X, Smartphone, Monitor, Database } from 'lucide-react';
 import { QuoteResult } from '../types';
 
 interface QuoteFormProps {
   onOpenWhatsApp: () => void;
+  prefilledDetails?: string;
 }
 
-export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp }) => {
+export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledDetails }) => {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -18,6 +19,15 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp }) => {
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any | null>(null);
+
+  useEffect(() => {
+    if (prefilledDetails) {
+      setFormData(prev => ({
+        ...prev,
+        details: `${prefilledDetails}\n\n${prev.details}`.trim()
+      }));
+    }
+  }, [prefilledDetails]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -203,6 +213,23 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp }) => {
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                 className="w-full bg-[#ffffff] border border-[#c6c6cd] rounded-lg px-3.5 py-2.5 text-sm text-[#191c1e] focus:border-[#191c1e] focus:ring-1 focus:ring-[#191c1e] focus:outline-none transition-colors"
               ></textarea>
+            </div>
+
+            {/* GDPR Consent Checkbox */}
+            <div className="flex items-start gap-3 mt-4">
+              <div className="flex items-center h-5">
+                <input
+                  id="gdpr-consent"
+                  type="checkbox"
+                  required
+                  className="w-4 h-4 rounded border-[#c6c6cd] text-[#dc2626] focus:ring-[#dc2626] cursor-pointer"
+                />
+              </div>
+              <div className="text-xs text-[#45464d] leading-relaxed">
+                <label htmlFor="gdpr-consent" className="cursor-pointer">
+                  I consent to Dean Wilshaw storing my details to contact me regarding this quote.
+                </label>
+              </div>
             </div>
 
             {/* Submit Button */}

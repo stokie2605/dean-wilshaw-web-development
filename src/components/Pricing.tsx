@@ -60,8 +60,8 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp })
             <div className="flex items-center gap-3">
               <Star className="w-5 h-5 text-yellow-300 shrink-0" />
               <div>
-                <p className="font-geist font-bold text-sm sm:text-base">10% Discount — First {TOTAL_SPOTS} Clients Only</p>
-                <p className="text-red-100 text-xs sm:text-sm">Prices return to standard rate once all spots are taken.</p>
+                <p className="font-geist font-bold text-sm sm:text-base">Early Adopter Bonus: Get 10% off your custom project quote.</p>
+                <p className="text-red-100 text-xs sm:text-sm">Discount applied to the final estimated scope of work.</p>
               </div>
             </div>
             <div className="bg-white/20 rounded-lg px-4 py-2 text-center shrink-0">
@@ -81,20 +81,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp })
               <h3 className="font-geist font-bold text-[#191c1e] text-lg mb-1">{pkg.name}</h3>
               <p className="text-[#76777d] text-sm mb-4">{pkg.description}</p>
 
-              <div className="mb-5">
-                {!spotsGone ? (
-                  <>
-                    <p className="text-[#76777d] text-sm line-through">£{pkg.normalPrice}</p>
-                    <p className="font-geist font-bold text-3xl text-[#dc2626]">£{pkg.earlyPrice}</p>
-                    <p className="text-xs text-[#76777d] mt-0.5">10% off applied</p>
-                  </>
-                ) : (
-                  <>
-                    <p className="font-geist font-bold text-3xl text-[#191c1e]">£{pkg.normalPrice}</p>
-                    <p className="text-xs text-[#76777d] mt-0.5">Standard rate</p>
-                  </>
-                )}
-              </div>
+              {/* Pricing values removed per user request */}
 
               <ul className="space-y-2 mb-6 flex-grow">
                 {pkg.features.map((f) => (
@@ -107,9 +94,9 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp })
 
               <button
                 onClick={onOpenQuote}
-                className="w-full bg-[#dc2626] hover:bg-[#b91c1c] text-white py-2.5 rounded-lg font-geist font-semibold text-sm transition-colors"
+                className="w-full bg-[#dc2626] hover:bg-[#b91c1c] text-white py-2.5 rounded-lg font-geist font-semibold text-sm transition-colors mt-auto"
               >
-                Get a Quote
+                Request Scope / Estimate
               </button>
             </div>
           ))}

@@ -43,13 +43,14 @@ Key Studio Facts & Services:
   2. Lead-Gen & Conversion Optimization (CRO): Strategic layouts, clear CTAs, integrated lead capture forms.
   3. Modern Technical SEO & Schema: Structured data, semantic HTML to outrank competitors.
   4. Operational Discipline: Zero missed deadlines, transparent pricing, direct WhatsApp communication.
-- Pricing & Timelines:
-  - Custom Landing Pages / Starter Sites: ~£250 - £450 (1-2 weeks)
-  - Full Business Websites / Lead Portals: ~£500 - £850 (2-3 weeks)
-  - Bespoke Web Apps / Custom Dashboards: £1,200+ (3-4 weeks)
+- Turnaround Times: ALL standard websites and landing pages are built and delivered strictly within 1 to 2 weeks. Never quote 3 weeks.
+- Pricing Tiers:
+  - Local Tradesman Landing Page (Single Page): Starts at £449 (£404.10 with the 10% early-bird discount). Built specifically for high-converting mobile lead generation and instant load speeds.
+  - Core Business Website (4–6 Pages): Starts at £749 (£674.10 with discount). Built for established businesses needing service breakdowns, about pages, local SEO schema, and social sharing cards.
+  - Custom Apps & AI Integration: Starts at £1,200+ depending on scope. Custom interactive tools, automated pipelines, or chatbots built using cutting-edge techniques from Dean's Skills Bootcamp training.
 - Comparison vs WordPress: WordPress templates are slow, plugin-heavy, vulnerable, and require constant maintenance. Dean's custom React builds are stateless, lightning fast, highly secure, and tailored 100% to brand goals.
 
-When users ask questions, provide clear answers and suggest using the "Request a Quote" form or clicking "Message on WhatsApp" to get in touch directly with Dean. Keep answers concise (under 120 words).`;
+Strict Rule: When asked about pricing or packages, always explain which tier fits their needs, apply the 10% promo math if asked, and ALWAYS end your response by asking for the user's name and contact details to lock in their quote. Keep answers concise (under 120 words).`;
 
 async function startServer() {
   const app = express();
@@ -113,21 +114,21 @@ async function startServer() {
 
     const refNumber = "DW-" + Math.floor(100000 + Math.random() * 900000);
 
-    let estimatedCost = "£299 - £599";
+    let estimatedCost = "£449 - £749";
     let turnaround = "10 - 14 Business Days";
     let packageLabel = "Business Site";
 
     if (projectType === "business-site") {
-      estimatedCost = "£299 - £599";
+      estimatedCost = "£449 - £749";
       turnaround = "10 - 14 Business Days";
       packageLabel = "Business Site";
     } else if (projectType === "custom-app") {
-      estimatedCost = "£599 - £1,200";
-      turnaround = "14 - 21 Business Days";
+      estimatedCost = "£1,200+";
+      turnaround = "21+ Business Days";
       packageLabel = "Custom App / Dashboard";
     } else if (projectType === "ai-integration") {
-      estimatedCost = "£399 - £799";
-      turnaround = "7 - 14 Business Days";
+      estimatedCost = "£1,200+";
+      turnaround = "14 - 21 Business Days";
       packageLabel = "AI Integration";
     }
 
@@ -233,13 +234,13 @@ async function startServer() {
 function getSmartFallbackResponse(query: string): string {
   const q = query.toLowerCase();
   if (q.includes("cost") || q.includes("price") || q.includes("quote") || q.includes("budget") || q.includes("how much")) {
-    return "Dean's bespoke websites typically range from £250 for starter landing pages up to £850 for full lead-generation business portals. Every site is custom built with React for maximum speed and zero monthly plugin bloat. Would you like to use our Quote Calculator below?";
+    return "Dean's bespoke websites range from £449 for a Local Tradesman Landing Page up to £749 for a Core Business Website, with a 10% early-bird discount available! Would you like to use our Quote form below to lock in a price or give Dean your number so he can call you?";
   }
   if (q.includes("speed") || q.includes("performance") || q.includes("wordpress") || q.includes("slow")) {
     return "Unlike WordPress templates that load 20+ plugins and heavy themes, Dean builds clean React applications with Vite. This guarantees sub-second load times, 100/100 Core Web Vitals scores, and significantly higher Google rankings and conversion rates.";
   }
   if (q.includes("time") || q.includes("long") || q.includes("deadline")) {
-    return "Most builds are delivered in 2 to 3 weeks. Coming from 25 years in logistics operations, Dean maintains a strict operational policy: zero missed deadlines and complete transparency throughout the project.";
+    return "Most builds are delivered in 1 to 2 weeks. Coming from 25 years in logistics operations, Dean maintains a strict operational policy: zero missed deadlines and complete transparency throughout the project.";
   }
   if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("location") || q.includes("cheshire") || q.includes("stoke")) {
     return "Dean is based in Cheshire & Stoke-on-Trent, serving local businesses across the North West and nationwide. You can message Dean directly on WhatsApp or fill out the Quote Request form on this page for a 24-hour response.";
