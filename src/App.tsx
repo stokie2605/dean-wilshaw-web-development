@@ -10,6 +10,7 @@ import { AboutSection } from './components/AboutSection';
 import { Pricing } from './components/Pricing';
 import { QuoteForm } from './components/QuoteForm';
 import { Footer } from './components/Footer';
+import { BottomTabBar } from './components/BottomTabBar';
 import { StitchBot } from './components/StitchBot';
 import { WhatsAppModal } from './components/WhatsAppModal';
 import { SpeedTestTool } from './components/SpeedTestTool';
@@ -77,7 +78,7 @@ export default function App() {
       />
 
       {/* Main Page Content */}
-      <main className="flex-grow">
+      <main className="flex-grow pb-20 md:pb-0">
         <div className="bg-white">
           <Hero onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
@@ -120,8 +121,8 @@ export default function App() {
         onOpenWhatsApp={handleOpenWhatsApp} 
       />
 
-      {/* Floating Buttons Layer */}
-      <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40">
+      {/* Floating Buttons Layer - Hidden on Mobile */}
+      <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40 hidden md:flex">
         <button 
           onClick={() => {
             document.getElementById('speed-test')?.scrollIntoView({ behavior: 'smooth' });
@@ -133,7 +134,7 @@ export default function App() {
         </button>
       </div>
 
-      <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 flex flex-col gap-3">
+      <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 hidden md:flex flex-col gap-3">
         <button 
           onClick={() => setWhatsappModalOpen(true)}
           className="bg-[#25D366] hover:bg-[#20bd5a] text-white w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] flex items-center justify-center transition-transform hover:scale-105 border border-white/40"
@@ -150,6 +151,12 @@ export default function App() {
           </button>
         )}
       </div>
+
+      {/* Mobile Bottom Tab Bar */}
+      <BottomTabBar 
+        onOpenStitch={() => setStitchModalOpen(true)}
+        onOpenWhatsApp={handleOpenWhatsApp}
+      />
 
       {/* WhatsApp Modal */}
       <WhatsAppModal isOpen={whatsappModalOpen} onClose={() => setWhatsappModalOpen(false)} />

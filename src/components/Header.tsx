@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Menu, X, ArrowRight, MessageSquare, Phone, Bot } from 'lucide-react';
+import React from 'react';
+import { ArrowRight, MessageSquare, Phone, Bot } from 'lucide-react';
 
 interface HeaderProps {
   onOpenQuote: () => void;
@@ -10,8 +10,6 @@ interface HeaderProps {
 const AVATAR_URL = "https://lh3.googleusercontent.com/aida-public/AB6AXuA8e_CVpDqlJmvVgwq8mfsfv1MN4Xh0R1At79k3YteVYCQD7jQasQqs7QuztqDYFk_FHxuFPxS1tPjfap95ATBzdxT9JWbXfcpAEcK4BEb1jdYnHB-ljlsDzdm7QW0mY6cCAarD6uzfOgFUWCsOvkJmtlFTFj9TickLiAZuczAGbXe4hL1hwoulVe6eJ0D-hqciw0CIPXvZnTTUytNQX2u2nynEleEJWs7d31mlWssjVI7reTt7yOWkMxmw5RDiDea0U9jVUAl0Y9E";
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onOpenStitch }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#f7f9fb]/90 backdrop-blur-md border-b border-[#c6c6cd]/50 transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center">
@@ -88,78 +86,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#191c1e] hover:bg-[#eceef0] rounded-lg transition-colors"
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
       </div>
-
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-[#f7f9fb] border-b border-[#c6c6cd] px-4 pt-2 pb-6 flex flex-col gap-4 shadow-lg animate-fadeIn">
-          <nav className="flex flex-col gap-3 font-medium text-[#191c1e] pt-2">
-            <a
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-[#e0e3e5] hover:text-[#991b1b]"
-            >
-              About Me
-            </a>
-            <a
-              href="#portfolio"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 border-b border-[#e0e3e5] hover:text-[#991b1b]"
-            >
-              My Work
-            </a>
-            <a
-              href="#services"
-              onClick={() => setMobileMenuOpen(false)}
-              className="py-2 hover:text-[#991b1b]"
-            >
-              Services
-            </a>
-          </nav>
-
-          <div className="flex flex-col gap-2.5 pt-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenStitch();
-              }}
-              className="w-full border border-[#191c1e] text-[#191c1e] bg-white hover:bg-[#eceef0] py-3 rounded-lg font-semibold text-sm flex justify-center items-center gap-2 shadow-sm"
-            >
-              <Bot className="w-4 h-4 text-[#991b1b]" />
-              Ask AI Support
-            </button>
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenQuote();
-              }}
-              className="w-full bg-[#dc2626] hover:bg-[#b91c1c] text-white py-3 rounded-lg font-semibold text-sm flex justify-center items-center gap-2 shadow-sm"
-            >
-              Get a Quote
-              <ArrowRight className="w-4 h-4" />
-            </button>
-
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenWhatsApp();
-              }}
-              className="w-full border border-[#191c1e] text-[#191c1e] hover:bg-[#eceef0] py-3 rounded-lg font-semibold text-sm flex justify-center items-center gap-2"
-            >
-              <MessageSquare className="w-4 h-4 text-emerald-600" />
-              Message on WhatsApp
-            </button>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
