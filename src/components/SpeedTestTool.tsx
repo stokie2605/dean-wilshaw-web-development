@@ -194,7 +194,7 @@ export const SpeedTestTool: React.FC<SpeedTestToolProps> = ({ onBenchmarkComplet
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch animate-fadeIn">
           
           {/* Left Box: WordPress / Template Performance */}
-          <div className="bg-white border border-rose-200 rounded-xl p-6 shadow-sm flex flex-col justify-between relative overflow-hidden">
+          <div className="bg-white dark:bg-slate-900 border border-rose-200 dark:border-slate-800 dark:text-white rounded-xl p-6 shadow-sm flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-rose-500 text-white text-[10px] font-mono font-bold px-3 py-1 rounded-bl-lg">
               SLUGGISH TEMPLATE
             </div>
@@ -249,7 +249,7 @@ export const SpeedTestTool: React.FC<SpeedTestToolProps> = ({ onBenchmarkComplet
           </div>
 
           {/* Right Box: Dean Wilshaw Custom React Build */}
-          <div className="bg-white border-2 border-[#dc2626] rounded-xl p-6 shadow-md flex flex-col justify-between relative overflow-hidden">
+          <div className="bg-white dark:bg-slate-900 border-2 border-[#dc2626] dark:border-slate-800 dark:text-white rounded-xl p-6 shadow-md flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 bg-[#dc2626] text-white text-[10px] font-mono font-bold px-3 py-1 rounded-bl-lg flex items-center gap-1">
               <Trophy className="w-3 h-3" /> DEAN WILSHAW BUILD
             </div>

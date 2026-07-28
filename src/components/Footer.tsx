@@ -11,7 +11,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onOpenPrivacy, onOpenTerms }) => {
   return (
-    <footer className="bg-[#eceef0] text-[#191c1e] w-full border-t border-[#c6c6cd] py-10 px-4 sm:px-6 lg:px-8 mt-auto">
+    <footer className="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-white w-full border-t border-slate-200 dark:border-slate-800 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
         {/* Left Side: Avatar & Copyright */}
@@ -25,21 +25,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
-            <span className="font-geist font-bold text-base text-[#191c1e]">
+            <span className="font-geist font-bold text-base text-slate-900 dark:text-white">
               Dean Wilshaw
             </span>
           </div>
 
-          <p className="text-xs text-[#45464d] text-center md:text-left font-normal">
+          <p className="text-xs text-slate-600 dark:text-slate-400 text-center md:text-left font-normal">
             &copy; 2026 Dean Wilshaw. Made in Cheshire. All rights reserved.
           </p>
         </div>
 
         {/* Right Side: Social & Contact Links */}
-        <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium text-[#45464d]">
+        <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
           <button
             onClick={onOpenWhatsApp}
-            className="hover:text-[#991b1b] underline transition-colors"
+            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
           >
             WhatsApp
           </button>
@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
             href="https://www.linkedin.com/in/dean-wilshaw-239b4b379"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#991b1b] underline transition-colors"
+            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
           >
             LinkedIn
           </a>
@@ -57,21 +57,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
             href="https://github.com/stokie2605"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-[#991b1b] underline transition-colors"
+            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
           >
             GitHub
           </a>
 
           <button
             onClick={onOpenPrivacy}
-            className="hover:text-[#991b1b] underline transition-colors"
+            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
           >
             Privacy Policy
           </button>
 
           <button
             onClick={onOpenTerms}
-            className="hover:text-[#991b1b] underline transition-colors"
+            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
           >
             Terms & Conditions
           </button>
