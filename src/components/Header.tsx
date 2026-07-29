@@ -35,31 +35,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center">
         {/* Brand Logo & Name */}
         <a href="#" className="flex items-center gap-3 group">
-          <div className="relative flex items-center justify-center">
-            {/* SVG Logo matching the image: <DW> icon mark */}
-            <div className="h-10 px-2 py-1 bg-[#111111] text-white rounded font-geist font-extrabold text-sm sm:text-base flex items-center tracking-tighter shadow-sm group-hover:bg-[#dc2626] transition-colors">
-              <span className="text-[#dc2626] group-hover:text-white mr-0.5">&lt;</span>
-              <span className="font-bold tracking-tight">DW</span>
-              <span className="text-[#dc2626] group-hover:text-white ml-0.5">&gt;</span>
-            </div>
-          </div>
-          
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <img
-                src={AVATAR_URL}
-                alt="Dean Wilshaw"
-                className="w-7 h-7 rounded-full object-cover border border-[#c6c6cd]"
-                onError={(e) => {
-                  // Fallback avatar if URL blocked
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
-              />
-              <span className="font-geist font-bold text-lg text-slate-900 dark:text-white tracking-tight group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
-                Dean Wilshaw
-              </span>
-            </div>
-            <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-500 dark:text-slate-400 hidden sm:inline-block">
+          <img
+            src="/dsw-logo.png"
+            alt="DSW Atom Logo"
+            className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(220,38,38,0.5)] transition-transform group-hover:scale-105"
+          />
+          <div className="flex flex-col justify-center mt-1">
+            <span className="font-geist font-bold text-lg text-slate-900 dark:text-white tracking-tight group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors leading-none">
+              Dean Wilshaw
+            </span>
+            <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-500 dark:text-slate-400 mt-1 leading-none">
               Web Development
             </span>
           </div>
