@@ -28,6 +28,30 @@ const defaultProspects: Prospect[] = [
   },
   {
     id: '2',
+    businessName: 'FW Power Generators',
+    type: 'B2B Industrial',
+    location: 'South Cheshire',
+    dateContacted: '',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Mobile: 39, Desktop: 55, Best Practices: 58. High-ticket B2B industrial target with critical mobile performance and console/security errors.'
+  },
+  {
+    id: '3',
+    businessName: 'Webb House Furnishers',
+    type: 'Retail / Showroom',
+    location: 'South Cheshire',
+    dateContacted: '',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Mobile: 43, Desktop: 60, SEO: 83. High-end showroom site in deep red. Slow gallery load times hurting mobile shoppers.'
+  },
+  {
+    id: '4',
     businessName: 'Hall Smith Whittingham Solicitors',
     type: 'Legal Services',
     location: 'South Cheshire',
@@ -39,7 +63,19 @@ const defaultProspects: Prospect[] = [
     notes: '[PRIORITY: MEDIUM] Mobile: 55, Desktop: 78. Outdated mobile performance causing bounce rate on legal enquiries.'
   },
   {
-    id: '3',
+    id: '5',
+    businessName: 'AJ Joinery & Building Ltd',
+    type: 'Trade / Construction',
+    location: 'South Cheshire',
+    dateContacted: '',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: MEDIUM] Mobile: 56, Desktop: 74. High-value local trade lead. Slow mobile load time affecting project portfolio views.'
+  },
+  {
+    id: '6',
     businessName: 'Bowcock Cuerden LLP',
     type: 'Legal Services',
     location: 'South Cheshire',
@@ -49,42 +85,6 @@ const defaultProspects: Prospect[] = [
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: MEDIUM] Mobile: 64, Desktop: 71, SEO: 85. Dual opportunity: Mobile speed upgrade + technical SEO ranking fixes.'
-  },
-  {
-    id: '4',
-    businessName: 'Premier Recoveries',
-    type: 'Vehicle Recovery',
-    location: 'Stoke-on-Trent',
-    dateContacted: '',
-    contactMethod: 'WhatsApp',
-    videoLinkSent: '',
-    status: 'Pending',
-    followUpDate: '',
-    notes: 'Needs 4s load time fixed.'
-  },
-  {
-    id: '5',
-    businessName: 'Burke Bros Recovery',
-    type: 'Vehicle Recovery',
-    location: 'Stafford',
-    dateContacted: '',
-    contactMethod: 'WhatsApp',
-    videoLinkSent: '',
-    status: 'Pending',
-    followUpDate: '',
-    notes: 'M6 Corridor lead.'
-  },
-  {
-    id: '6',
-    businessName: 'D L Evans & Son Roofing',
-    type: 'Roofing',
-    location: 'Crewe',
-    dateContacted: '',
-    contactMethod: 'Email',
-    videoLinkSent: '',
-    status: 'Pending',
-    followUpDate: '',
-    notes: 'Heritage brand.'
   }
 ];
 
