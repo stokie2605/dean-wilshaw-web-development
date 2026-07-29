@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
-import { VanguardMockup } from './mockups/VanguardMockup';
-import { ApexMockup } from './mockups/ApexMockup';
-import { KilnMockup } from './mockups/KilnMockup';
 
 const MagneticCard = ({ children, className = '', onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -55,7 +52,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       title: 'Vanguard Roadside Recovery',
       subtitle: 'Rapid Emergency Dispatch & Transport Platform',
       uiFocus: 'Engineered for high-contrast visibility, sub-second 4G mobile rendering, and instant 1-tap emergency call routing.',
-      component: <VanguardMockup />,
+      desktopImage: '/mockups/vanguard-desktop.png',
+      mobileImage: '/mockups/vanguard-mobile.png',
       modalOverview: 'A high-converting emergency response platform built with a bold dark industrial theme and vibrant safety-amber accents. Engineered for 24/7 roadside recovery dispatch and fleet transport scheduling.',
       features: [
         'Emergency dispatch call routing',
@@ -70,7 +68,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       title: 'Cheshire Apex Logistics',
       subtitle: 'Secure Client Portal & Enterprise Routing',
       uiFocus: 'Built for enterprise reliability, featuring secure client portal routing and structured data-driven UX.',
-      component: <ApexMockup />,
+      desktopImage: '/mockups/apex-desktop.png',
+      mobileImage: '/mockups/apex-mobile.png',
       modalOverview: 'A professional B2B portal designed for logistics and transport corporations. Features a clean, data-first interface for tracking fleet schedules and managing corporate accounts.',
       features: [
         'Secure client login portal',
@@ -85,7 +84,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       title: 'The Kiln & Craft Artisan Market',
       subtitle: 'Community Event Platform & Producer Showcase',
       uiFocus: 'Designed for high-traffic weekend browsing with warm, inviting typography and frictionless event navigation.',
-      component: <KilnMockup />,
+      desktopImage: '/mockups/kiln-desktop.png',
+      mobileImage: '/mockups/kiln-mobile.png',
       modalOverview: 'A vibrant community-focused portal designed for local produce markets and artisan retail. Highlights independent producers, seasonal events, and frictionless weekend navigation.',
       features: [
         'Stallholder showcases',
@@ -137,9 +137,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                       // iPad for the 3rd card to vary it up slightly
                       <div className="absolute w-48 h-64 bg-[#111] rounded-2xl border-[4px] border-[#333] shadow-2xl overflow-hidden -ml-8 transform group-hover:rotate-2 group-hover:scale-105 transition-all duration-500 ease-out z-10">
                         <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                          <div className="w-[300%] h-[300%] origin-top-left scale-[0.333] absolute top-0 left-0 pointer-events-none">
-                            {project.component}
-                          </div>
+                          <img src={project.desktopImage} alt={`${project.title} iPad`} className="w-full h-full object-cover object-top opacity-90" />
                           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                         </div>
                       </div>
@@ -150,9 +148,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                           <div className="w-1 h-1 bg-[#444] rounded-full"></div>
                         </div>
                         <div className="flex-grow bg-[#0a0a0a] relative overflow-hidden">
-                          <div className="w-[300%] h-[300%] origin-top-left scale-[0.333] absolute top-0 left-0 pointer-events-none">
-                            {project.component}
-                          </div>
+                          <img src={project.desktopImage} alt={`${project.title} Desktop`} className="w-full h-full object-cover object-top opacity-90" />
                           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                         </div>
                         <div className="w-full h-2 bg-[#2a2a2a] rounded-b-md border-t border-[#444]"></div>
@@ -165,9 +161,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                         <div className="w-8 h-3 bg-[#111] rounded-b-lg border-b border-l border-r border-[#333]"></div>
                       </div>
                       <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                        <div className="w-[400%] h-[400%] origin-top-left scale-[0.25] absolute top-0 left-0 pointer-events-none">
-                          {project.component}
-                        </div>
+                        <img src={project.mobileImage} alt={`${project.title} Mobile`} className="w-full h-full object-cover object-top opacity-90" />
                         <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
                       </div>
                     </div>
@@ -188,6 +182,15 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
               </MagneticCard>
             );
           })}
+        </div>
+
+        {/* Disclaimer */}
+        <div className="flex justify-center mt-12 md:mt-16 px-4">
+          <div className="bg-white/5 border border-white/10 rounded-full px-6 py-3 shadow-xl max-w-4xl backdrop-blur-sm">
+            <p className="text-sm text-slate-400 text-center tracking-wide leading-relaxed">
+              <span className="font-semibold text-white">Note:</span> The layouts showcased above are high-performance prototypes. Every system we build is fully bespoke, giving you complete control over the final design, features, and brand aesthetics.
+            </p>
+          </div>
         </div>
 
       </div>
