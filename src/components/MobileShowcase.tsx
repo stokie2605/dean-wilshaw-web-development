@@ -78,19 +78,33 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6 lg:gap-12">
           {trades.map((trade, idx) => (
-            <div key={idx} className="flex flex-col items-center group">
+            <div key={idx} className="flex flex-col items-center group relative [perspective:1000px]">
               
-              {/* iPhone Frame */}
+              {/* Floating Speed Badge */}
+              <div className="absolute -top-4 -right-4 md:-right-8 z-30 bg-[#191c1e]/90 backdrop-blur-md border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold px-3 py-1.5 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 flex items-center gap-1.5 pointer-events-none">
+                <Zap className="w-3.5 h-3.5 fill-emerald-500" />
+                95+ Speed
+              </div>
+
+              {/* Ambient Neon Glow */}
+              <div className="absolute inset-0 bg-emerald-500/20 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full scale-75 pointer-events-none"></div>
+
+              {/* 3D iPhone Frame */}
               <div 
-                className="relative w-full max-w-[280px] aspect-[9/19] bg-black rounded-[2.5rem] border-[8px] border-slate-800 shadow-2xl overflow-hidden transform group-hover:-translate-y-2 group-hover:scale-[1.02] cursor-pointer transition-transform duration-500"
+                className="relative w-full max-w-[280px] aspect-[9/19] bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-out transform-gpu group-hover:[transform:rotateX(10deg)_rotateY(-12deg)_scale(1.05)] group-hover:shadow-[25px_25px_40px_rgba(0,0,0,0.5)] z-10"
                 onClick={() => setActiveModal(idx)}
               >
-                {/* iPhone Notch */}
-                <div className="absolute top-0 inset-x-0 h-6 bg-slate-800 rounded-b-xl w-32 mx-auto z-20"></div>
+                {/* iPhone Notch with Camera */}
+                <div className="absolute top-0 inset-x-0 h-6 bg-[#222] rounded-b-2xl w-32 mx-auto z-20 flex justify-center items-center gap-2">
+                   <div className="w-12 h-1.5 bg-black/60 rounded-full shadow-inner"></div>
+                   <div className="w-1.5 h-1.5 bg-blue-900/50 rounded-full shadow-inner"></div>
+                </div>
                 
-                {/* Scrollable / Clipped Screen */}
-                <div className="absolute inset-0 bg-white overflow-hidden pointer-events-none">
+                {/* Screen Content */}
+                <div className="absolute inset-0 bg-white overflow-hidden pointer-events-none rounded-b-[1.8rem] pt-3">
                   {trade.component}
+                  {/* Glass Reflection */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 </div>
               </div>
 
