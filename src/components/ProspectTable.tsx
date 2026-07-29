@@ -85,6 +85,42 @@ const defaultProspects: Prospect[] = [
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: MEDIUM] Mobile: 64, Desktop: 71, SEO: 85. Dual opportunity: Mobile speed upgrade + technical SEO ranking fixes.'
+  },
+  {
+    id: '7',
+    businessName: 'Premier Recoveries',
+    type: 'Vehicle Recovery',
+    location: 'Stoke-on-Trent',
+    dateContacted: '',
+    contactMethod: 'WhatsApp',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: 'Needs 4s load time fixed.'
+  },
+  {
+    id: '8',
+    businessName: 'Burke Bros Recovery',
+    type: 'Vehicle Recovery',
+    location: 'Stafford',
+    dateContacted: '',
+    contactMethod: 'WhatsApp',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: 'M6 Corridor lead.'
+  },
+  {
+    id: '9',
+    businessName: 'D L Evans & Son Roofing',
+    type: 'Roofing',
+    location: 'Crewe',
+    dateContacted: '',
+    contactMethod: 'Email',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: 'Heritage brand.'
   }
 ];
 
