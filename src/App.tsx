@@ -1,21 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { ServicesBento } from './components/ServicesBento';
-import { Portfolio } from './components/Portfolio';
-import { MobileShowcase } from './components/MobileShowcase';
-import { AboutSection } from './components/AboutSection';
-
-import { Pricing } from './components/Pricing';
-import { QuoteForm } from './components/QuoteForm';
-import { Footer } from './components/Footer';
 import { BottomTabBar } from './components/BottomTabBar';
-import { StitchBot } from './components/StitchBot';
-import { WhatsAppModal } from './components/WhatsAppModal';
-import { SpeedTestTool } from './components/SpeedTestTool';
-import { PrivacyPolicy } from './components/PrivacyPolicy';
-import { TermsConditions } from './components/TermsConditions';
+
+// Lazy load below-the-fold components
+const ServicesBento = lazy(() => import('./components/ServicesBento').then(m => ({ default: m.ServicesBento })));
+const Portfolio = lazy(() => import('./components/Portfolio').then(m => ({ default: m.Portfolio })));
+const MobileShowcase = lazy(() => import('./components/MobileShowcase').then(m => ({ default: m.MobileShowcase })));
+const AboutSection = lazy(() => import('./components/AboutSection').then(m => ({ default: m.AboutSection })));
+const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
+const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
+const StitchBot = lazy(() => import('./components/StitchBot').then(m => ({ default: m.StitchBot })));
+const WhatsAppModal = lazy(() => import('./components/WhatsAppModal').then(m => ({ default: m.WhatsAppModal })));
+const SpeedTestTool = lazy(() => import('./components/SpeedTestTool').then(m => ({ default: m.SpeedTestTool })));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
+const TermsConditions = lazy(() => import('./components/TermsConditions').then(m => ({ default: m.TermsConditions })));
 
 type Page = 'home' | 'privacy' | 'terms';
 
@@ -61,11 +62,19 @@ export default function App() {
   };
 
   if (currentPage === 'privacy') {
-    return <PrivacyPolicy onBack={() => handleOpenPage('home')} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+        <PrivacyPolicy onBack={() => handleOpenPage('home')} />
+      </Suspense>
+    );
   }
 
   if (currentPage === 'terms') {
-    return <TermsConditions onBack={() => handleOpenPage('home')} />;
+    return (
+      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+        <TermsConditions onBack={() => handleOpenPage('home')} />
+      </Suspense>
+    );
   }
 
   return (
@@ -82,44 +91,46 @@ export default function App() {
         <div className="bg-slate-50 dark:bg-slate-950">
           <Hero onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
-        <div className="bg-slate-50 dark:bg-slate-950">
-          <MobileShowcase onOpenQuote={handleOpenQuote} />
-        </div>
-        <div className="bg-slate-50 dark:bg-slate-950">
-          <AboutSection />
-        </div>
-        <div className="bg-slate-50 dark:bg-slate-950">
-          <Portfolio onOpenQuote={handleOpenQuote} />
-        </div>
-        <div className="bg-slate-50 dark:bg-slate-950">
-          <ServicesBento />
-        </div>
-        <div className="bg-slate-50 dark:bg-slate-950">
-          <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
-        </div>
-        <div className="bg-slate-50 dark:bg-slate-950">
-          <SpeedTestTool onBenchmarkComplete={handleBenchmarkComplete} />
-        </div>
-        <div className="bg-slate-50 dark:bg-slate-950">
-          <QuoteForm onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
-        </div>
+        <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <MobileShowcase onOpenQuote={handleOpenQuote} />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <AboutSection />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <Portfolio onOpenQuote={handleOpenQuote} />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <ServicesBento />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <SpeedTestTool onBenchmarkComplete={handleBenchmarkComplete} />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <QuoteForm onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
+          </div>
+        </Suspense>
       </main>
 
-      {/* Footer */}
-      <Footer 
-        onOpenWhatsApp={handleOpenWhatsApp} 
-        onOpenQuote={handleOpenQuote}
-        onOpenPrivacy={() => handleOpenPage('privacy')}
-        onOpenTerms={() => handleOpenPage('terms')}
-      />
-
-      {/* Stitch AI Assistant Widget */}
-      <StitchBot 
-        isOpen={stitchModalOpen}
-        onClose={() => setStitchModalOpen(false)}
-        onOpenQuote={handleOpenQuote} 
-        onOpenWhatsApp={handleOpenWhatsApp} 
-      />
+      {/* Footer & Modals */}
+      <Suspense fallback={null}>
+        <Footer 
+          onOpenWhatsApp={handleOpenWhatsApp} 
+          onOpenQuote={handleOpenQuote}
+          onOpenPrivacy={() => handleOpenPage('privacy')}
+          onOpenTerms={() => handleOpenPage('terms')}
+        />
+        <StitchBot 
+          isOpen={stitchModalOpen}
+          onClose={() => setStitchModalOpen(false)}
+          onOpenQuote={handleOpenQuote} 
+          onOpenWhatsApp={handleOpenWhatsApp} 
+        />
+      </Suspense>
 
       {/* Floating Buttons Layer - Hidden on Mobile */}
       <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40 hidden md:flex">
@@ -159,7 +170,9 @@ export default function App() {
       />
 
       {/* WhatsApp Modal */}
-      <WhatsAppModal isOpen={whatsappModalOpen} onClose={() => setWhatsappModalOpen(false)} />
+      <Suspense fallback={null}>
+        <WhatsAppModal isOpen={whatsappModalOpen} onClose={() => setWhatsappModalOpen(false)} />
+      </Suspense>
 
       {/* Global Toast Notification */}
       {showToast && (
