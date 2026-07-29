@@ -21,6 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
               src={AVATAR_URL}
               alt="Dean Wilshaw"
               className="w-6 h-6 rounded-full grayscale opacity-80 border border-[#c6c6cd]"
+              loading="lazy"
               onError={(e) => {
                 (e.target as HTMLElement).style.display = 'none';
               }}
