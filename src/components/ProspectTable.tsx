@@ -16,6 +16,42 @@ export interface Prospect {
 const defaultProspects: Prospect[] = [
   {
     id: '1',
+    businessName: 'Watts Mortgage & Wealth Management',
+    type: 'Financial Services',
+    location: 'South Cheshire',
+    dateContacted: '',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Mobile: 36, Desktop: 86. Severely slow mobile load speed on high-ticket financial lead gen site.'
+  },
+  {
+    id: '2',
+    businessName: 'Hall Smith Whittingham Solicitors',
+    type: 'Legal Services',
+    location: 'South Cheshire',
+    dateContacted: '',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: MEDIUM] Mobile: 55, Desktop: 78. Outdated mobile performance causing bounce rate on legal enquiries.'
+  },
+  {
+    id: '3',
+    businessName: 'Bowcock Cuerden LLP',
+    type: 'Legal Services',
+    location: 'South Cheshire',
+    dateContacted: '',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: MEDIUM] Mobile: 64, Desktop: 71, SEO: 85. Dual opportunity: Mobile speed upgrade + technical SEO ranking fixes.'
+  },
+  {
+    id: '4',
     businessName: 'Premier Recoveries',
     type: 'Vehicle Recovery',
     location: 'Stoke-on-Trent',
@@ -27,7 +63,7 @@ const defaultProspects: Prospect[] = [
     notes: 'Needs 4s load time fixed.'
   },
   {
-    id: '2',
+    id: '5',
     businessName: 'Burke Bros Recovery',
     type: 'Vehicle Recovery',
     location: 'Stafford',
@@ -39,7 +75,7 @@ const defaultProspects: Prospect[] = [
     notes: 'M6 Corridor lead.'
   },
   {
-    id: '3',
+    id: '6',
     businessName: 'D L Evans & Son Roofing',
     type: 'Roofing',
     location: 'Crewe',
