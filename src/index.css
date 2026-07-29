@@ -49,3 +49,45 @@ h1, h2, h3, h4, h5, h6, .font-geist {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Elite Portfolio Utilities */
+@layer utilities {
+  .floating {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .floating-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  @keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(1deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+  }
+
+  .magnetic-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      var(--mouse-angle, 0deg),
+      rgba(16, 185, 129, 0.4) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(139, 92, 246, 0.4) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .portfolio-card:hover .magnetic-border::before {
+    opacity: 1;
+  }
+}

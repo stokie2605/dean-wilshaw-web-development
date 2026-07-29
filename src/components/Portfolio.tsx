@@ -1,8 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { VanguardMockup } from './mockups/VanguardMockup';
 import { ApexMockup } from './mockups/ApexMockup';
 import { KilnMockup } from './mockups/KilnMockup';
+
+const MagneticCard = ({ children, className = '', onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    
+    let angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+    angle = angle + 90;
+    
+    cardRef.current.style.setProperty('--mouse-angle', `${angle}deg`);
+  };
+
+  return (
+    <article 
+      ref={cardRef}
+      className={`portfolio-card group bg-[#09090B] border border-white/10 rounded-3xl overflow-hidden relative magnetic-border cursor-pointer flex flex-col h-full transition-colors ${className}`}
+      onMouseMove={handleMouseMove}
+      onClick={onClick}
+    >
+      {children}
+    </article>
+  );
+};
 
 interface PortfolioProps {
   onOpenQuote: () => void;
@@ -68,81 +98,96 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
   ];
 
   return (
-    <section id="portfolio" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
+    <section id="portfolio" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-black border-b border-white/10 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         
-        <div className="text-center mb-16 flex flex-col items-center">
-          <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
-            What I Can Do
+        <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-3 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20">
+            Precision Engineered
           </span>
-          <h2 className="font-geist font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mb-4">
-            Websites for Every Stage of Business.
+          <h2 className="font-geist font-bold text-4xl sm:text-5xl text-white mb-6 tracking-tight">
+            A showcase of high-performance digital solutions.
           </h2>
-          <div className="w-16 h-1 bg-[#dc2626] rounded-full mb-6"></div>
-          <p className="text-slate-600 dark:text-slate-300 max-w-2xl text-base sm:text-lg">
-            Whether you're a one-man band just starting out, or an established company looking to dominate local searches, I build exactly what you need to get the job done.
+          <p className="text-slate-400 max-w-2xl text-lg leading-relaxed">
+            Built for elite brands and enterprise platforms. These are not templates; they are tailored business engines designed to capture leads, secure contracts, and dominate search results.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {projects.map((project, idx) => (
-            <div key={idx} className="group flex flex-col bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-white shadow-xl rounded-2xl overflow-hidden hover:shadow-2xl hover:border-red-600 dark:hover:border-red-500 transition-all duration-300">
-              {/* 3D MacBook Container */}
-              <div 
-                className="relative bg-slate-100 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 p-8 sm:p-10 pb-0 flex justify-center items-end [perspective:1200px] cursor-pointer"
-                onClick={() => setActiveModal(idx)}
-              >
-                {/* Floating Performance Badge */}
-                <div className="absolute top-4 right-4 md:right-8 z-30 bg-[#191c1e]/90 backdrop-blur-md border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold px-3 py-1.5 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)] opacity-0 group-hover:opacity-100 transition-all duration-500 -translate-y-4 group-hover:translate-y-0 flex items-center gap-1.5 pointer-events-none">
-                  <CheckCircle2 className="w-3.5 h-3.5" />
-                  100/100 Core Vitals
-                </div>
-
-                {/* Ambient Neon Glow */}
-                <div className="absolute inset-0 bg-emerald-500/10 blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-t-2xl"></div>
-
-                {/* MacBook Mockup */}
-                <div className="relative w-full max-w-lg aspect-[16/10] bg-[#111] rounded-t-xl border-[4px] border-[#2a2f32] border-b-0 shadow-2xl overflow-visible transition-all duration-700 ease-out transform-gpu group-hover:[transform:rotateX(6deg)_rotateY(-6deg)_scale(1.05)_translateY(-10px)] group-hover:shadow-[20px_30px_50px_rgba(0,0,0,0.6)] z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, idx) => {
+            const macbookClass = idx === 1 ? "ml-12" : "-ml-12";
+            const iphoneClass = idx === 1 ? "-ml-24 mt-8 group-hover:-translate-x-2 group-hover:-translate-y-1" : idx === 2 ? "ml-24 mt-16 group-hover:translate-x-4 group-hover:-translate-y-1" : "ml-24 mt-12 group-hover:translate-x-2 group-hover:-translate-y-1";
+            
+            return (
+              <MagneticCard key={idx} onClick={() => setActiveModal(idx)}>
+                <div className="relative h-64 sm:h-72 w-full overflow-hidden flex items-center justify-center p-6 border-b border-white/5 bg-[#09090B]">
+                  {/* Ambient Glows */}
+                  <div className={`absolute inset-0 blur-[80px] rounded-full w-48 h-48 top-1/2 transform -translate-y-1/2 mix-blend-screen opacity-50 group-hover:opacity-80 transition-opacity duration-700 ${idx === 0 ? 'bg-emerald-500/20 left-1/2 -translate-x-1/2' : idx === 1 ? 'bg-indigo-500/20 left-1/2 -translate-x-1/2' : 'bg-rose-500/20 left-1/2 -translate-x-1/2'}`}></div>
                   
-                  {/* MacBook Camera */}
-                  <div className="absolute top-1 inset-x-0 h-1.5 flex justify-center z-20 pointer-events-none">
-                    <div className="w-1.5 h-1.5 bg-black rounded-full border border-gray-800 shadow-inner"></div>
+                  {/* Badges */}
+                  <div className="absolute top-6 right-6 z-20 bg-[#09090B]/80 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className="text-emerald-400 text-xs">⚡</span>
+                    <span className="font-mono text-white text-xs font-medium">{idx === 1 ? '98+' : idx === 2 ? '92+' : '95+'} Score</span>
                   </div>
                   
-                  {/* Screen Content */}
-                  <div className="absolute top-3 inset-x-1 bottom-0 bg-white dark:bg-slate-900 overflow-hidden rounded-t-sm pointer-events-none">
-                     {project.component}
-                     {/* Glass Reflection overlay */}
-                     <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                  </div>
-
-                  {/* MacBook Bottom Lip (Simulated via positioning) */}
-                  <div className="absolute top-full -inset-x-6 h-4 bg-gradient-to-b from-[#3a3f42] to-[#111] rounded-b-2xl shadow-xl flex justify-center items-start pointer-events-none">
-                    {/* Trackpad notch */}
-                    <div className="w-20 h-1 bg-[#1a1c1e] rounded-b-md mx-auto shadow-inner"></div>
+                  {/* Device Mockups container */}
+                  <div className="relative w-full max-w-sm h-full flex items-center justify-center z-10 floating">
+                    {/* Main Device (MacBook / iPad) */}
+                    {idx === 2 ? (
+                      // iPad for the 3rd card to vary it up slightly
+                      <div className="absolute w-48 h-64 bg-[#111] rounded-2xl border-[4px] border-[#333] shadow-2xl overflow-hidden -ml-8 transform group-hover:rotate-2 group-hover:scale-105 transition-all duration-500 ease-out z-10">
+                        <div className="w-full h-full bg-[#050505] relative overflow-hidden">
+                          <div className="w-[300%] h-[300%] origin-top-left scale-[0.333] absolute top-0 left-0 pointer-events-none">
+                            {project.component}
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+                        </div>
+                      </div>
+                    ) : (
+                      // MacBook
+                      <div className={`absolute w-56 h-36 sm:w-64 sm:h-40 bg-[#1a1a1a] rounded-t-lg rounded-b-md border border-[#333] shadow-2xl flex flex-col overflow-hidden ${macbookClass} transform group-hover:-translate-y-2 group-hover:scale-105 transition-all duration-500 ease-out z-10`}>
+                        <div className="w-full h-2 bg-[#222] border-b border-[#333] flex justify-center items-center">
+                          <div className="w-1 h-1 bg-[#444] rounded-full"></div>
+                        </div>
+                        <div className="flex-grow bg-[#0a0a0a] relative overflow-hidden">
+                          <div className="w-[300%] h-[300%] origin-top-left scale-[0.333] absolute top-0 left-0 pointer-events-none">
+                            {project.component}
+                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
+                        </div>
+                        <div className="w-full h-2 bg-[#2a2a2a] rounded-b-md border-t border-[#444]"></div>
+                      </div>
+                    )}
+                    
+                    {/* iPhone */}
+                    <div className={`absolute w-20 h-40 bg-[#111] rounded-2xl border-[3px] border-[#333] shadow-2xl overflow-hidden ${iphoneClass} group-hover:scale-110 transition-all duration-500 ease-out z-20 floating-delayed`}>
+                      <div className="absolute top-0 w-full h-4 flex justify-center z-20">
+                        <div className="w-8 h-3 bg-[#111] rounded-b-lg border-b border-l border-r border-[#333]"></div>
+                      </div>
+                      <div className="w-full h-full bg-[#050505] relative overflow-hidden">
+                        <div className="w-[400%] h-[400%] origin-top-left scale-[0.25] absolute top-0 left-0 pointer-events-none">
+                          {project.component}
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-              
-              {/* Content Box */}
-              <div className="p-6 flex flex-col flex-grow">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-1">
-                  {project.industryLabel}
-                </span>
-                <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white mb-1">{project.title}</h3>
-                <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">{project.subtitle}</p>
-                <p className="text-xs text-slate-600 dark:text-slate-400 italic leading-relaxed mb-6 flex-grow">
-                  {project.uiFocus}
-                </p>
-                <button 
-                  onClick={() => setActiveModal(idx)}
-                  className="block w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-700 py-3 rounded-lg text-sm font-semibold text-center transition-colors cursor-pointer"
-                >
-                  View Case Study
-                </button>
-              </div>
-            </div>
-          ))}
+                
+                <div className="p-8 flex flex-col flex-grow z-10">
+                  <span className="font-mono text-[10px] text-red-500 tracking-wider uppercase mb-3">{project.industryLabel}</span>
+                  <h2 className="font-geist font-bold text-2xl text-white mb-2">{project.title}</h2>
+                  <h3 className="text-slate-300 font-medium text-sm mb-4">{project.subtitle}</h3>
+                  <p className="text-slate-400 text-sm mb-8 flex-grow leading-relaxed">{project.uiFocus}</p>
+                  
+                  <button className="self-start px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white text-sm font-semibold transition-colors duration-300 flex items-center gap-2">
+                    View Case Study
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </MagneticCard>
+            );
+          })}
         </div>
 
       </div>
@@ -215,4 +260,3 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
     </section>
   );
 };
-
