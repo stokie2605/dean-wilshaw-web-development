@@ -36,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
         {/* Brand Logo & Name */}
         <a href="#" className="flex items-center gap-3 group">
           <img
-            src="/dsw-logo.png"
+            src="/dsw-logo.svg"
             alt="DSW Atom Logo"
             className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(220,38,38,0.5)] transition-transform group-hover:scale-105"
           />

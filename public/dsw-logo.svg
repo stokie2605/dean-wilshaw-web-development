@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <!-- Glow filter for the red orbital rings -->
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g transform="translate(100, 100)" filter="url(#neon-glow)">
+    <!-- Orbit 1 -->
+    <ellipse cx="0" cy="0" rx="35" ry="85" fill="none" stroke="#dc2626" stroke-width="2.5" />
+    
+    <!-- Orbit 2 -->
+    <ellipse cx="0" cy="0" rx="35" ry="85" fill="none" stroke="#dc2626" stroke-width="2.5" transform="rotate(60)" />
+    
+    <!-- Orbit 3 -->
+    <ellipse cx="0" cy="0" rx="35" ry="85" fill="none" stroke="#dc2626" stroke-width="2.5" transform="rotate(120)" />
+
+    <!-- Center Nucleus / Text Background -->
+    <circle cx="0" cy="0" r="30" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" />
+    
+    <!-- DSW Text -->
+    <text x="0" y="7" font-family="Arial, sans-serif" font-weight="900" font-size="22" fill="#ffffff" text-anchor="middle" letter-spacing="1">DSW</text>
+  </g>
+</svg>
