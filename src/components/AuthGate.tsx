@@ -15,7 +15,7 @@ export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Use an environment variable or default secure PIN
-    const correctPin = import.meta.env.VITE_CRM_PIN || '849201';
+    const correctPin = import.meta.env.VITE_CRM_PIN || '260585';
     if (pin === correctPin) {
       sessionStorage.setItem('admin_token', 'authenticated');
       setIsAuthenticated(true);
