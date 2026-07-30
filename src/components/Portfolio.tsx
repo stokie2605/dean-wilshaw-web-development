@@ -22,7 +22,7 @@ const MagneticCard = ({ children, className = '', onClick }: { children: React.R
   return (
     <article 
       ref={cardRef}
-      className={`portfolio-card group bg-[#09090B] border border-white/10 rounded-3xl overflow-hidden relative magnetic-border cursor-pointer flex flex-col h-full transition-colors ${className}`}
+      className={`portfolio-card group bg-white dark:bg-[#09090B] border border-slate-200 dark:border-white/10 rounded-3xl overflow-hidden relative magnetic-border cursor-pointer flex flex-col h-full transition-colors shadow-sm dark:shadow-none ${className}`}
       onMouseMove={handleMouseMove}
       onClick={onClick}
     >
@@ -98,17 +98,17 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
   ];
 
   return (
-    <section id="portfolio" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-black border-b border-white/10 scroll-mt-20">
+    <section id="portfolio" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-3 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-semibold mb-3 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20">
             Precision Engineered
           </span>
-          <h2 className="font-geist font-bold text-4xl sm:text-5xl text-white mb-6 tracking-tight">
+          <h2 className="font-geist font-bold text-4xl sm:text-5xl text-slate-900 dark:text-white mb-6 tracking-tight">
             A showcase of high-performance digital solutions.
           </h2>
-          <p className="text-slate-400 max-w-2xl text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl text-lg leading-relaxed">
             Built for elite brands and enterprise platforms. These are not templates; they are tailored business engines designed to capture leads, secure contracts, and dominate search results.
           </p>
         </div>
@@ -120,14 +120,14 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
             
             return (
               <MagneticCard key={idx} onClick={() => setActiveModal(idx)}>
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden flex items-center justify-center p-6 border-b border-white/5 bg-[#09090B]">
+                <div className="relative h-64 sm:h-72 w-full overflow-hidden flex items-center justify-center p-6 border-b border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-[#09090B]">
                   {/* Ambient Glows */}
                   <div className={`absolute inset-0 blur-[80px] rounded-full w-48 h-48 top-1/2 transform -translate-y-1/2 mix-blend-screen opacity-50 group-hover:opacity-80 transition-opacity duration-700 ${idx === 0 ? 'bg-emerald-500/20 left-1/2 -translate-x-1/2' : idx === 1 ? 'bg-indigo-500/20 left-1/2 -translate-x-1/2' : 'bg-rose-500/20 left-1/2 -translate-x-1/2'}`}></div>
                   
                   {/* Badges */}
-                  <div className="absolute top-6 right-6 z-20 bg-[#09090B]/80 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <span className="text-emerald-400 text-xs">⚡</span>
-                    <span className="font-mono text-white text-xs font-medium">{idx === 1 ? '98+' : idx === 2 ? '92+' : '95+'} Score</span>
+                  <div className="absolute top-6 right-6 z-20 bg-white/90 dark:bg-[#09090B]/80 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <span className="text-emerald-500 dark:text-emerald-400 text-xs">⚡</span>
+                    <span className="font-mono text-slate-900 dark:text-white text-xs font-medium">{idx === 1 ? '98+' : idx === 2 ? '92+' : '95+'} Score</span>
                   </div>
                   
                   {/* Device Mockups container */}
@@ -169,12 +169,12 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                 </div>
                 
                 <div className="p-8 flex flex-col flex-grow z-10">
-                  <span className="font-mono text-[10px] text-red-500 tracking-wider uppercase mb-3">{project.industryLabel}</span>
-                  <h2 className="font-geist font-bold text-2xl text-white mb-2">{project.title}</h2>
-                  <h3 className="text-slate-300 font-medium text-sm mb-4">{project.subtitle}</h3>
-                  <p className="text-slate-400 text-sm mb-8 flex-grow leading-relaxed">{project.uiFocus}</p>
+                  <span className="font-mono text-[10px] text-red-600 dark:text-red-500 tracking-wider uppercase mb-3">{project.industryLabel}</span>
+                  <h2 className="font-geist font-bold text-2xl text-slate-900 dark:text-white mb-2">{project.title}</h2>
+                  <h3 className="text-slate-600 dark:text-slate-300 font-medium text-sm mb-4">{project.subtitle}</h3>
+                  <p className="text-slate-500 dark:text-slate-400 text-sm mb-8 flex-grow leading-relaxed">{project.uiFocus}</p>
                   
-                  <button className="self-start px-6 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white text-sm font-semibold transition-colors duration-300 flex items-center gap-2">
+                  <button className="self-start px-6 py-2.5 rounded-full border border-slate-300 dark:border-white/10 bg-slate-50 dark:bg-white/5 hover:bg-slate-100 dark:hover:bg-white/10 text-slate-700 dark:text-white text-sm font-semibold transition-colors duration-300 flex items-center gap-2">
                     View Case Study
                     <ArrowRight className="w-4 h-4" />
                   </button>
@@ -186,9 +186,9 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
 
         {/* Disclaimer */}
         <div className="flex justify-center mt-12 md:mt-16 px-4">
-          <div className="bg-white/5 border border-white/10 rounded-full px-6 py-3 shadow-xl max-w-4xl backdrop-blur-sm">
-            <p className="text-sm text-slate-400 text-center tracking-wide leading-relaxed">
-              <span className="font-semibold text-white">Note:</span> The layouts showcased above are high-performance prototypes. Every system we build is fully bespoke, giving you complete control over the final design, features, and brand aesthetics.
+          <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-6 py-3 shadow-xl max-w-4xl backdrop-blur-sm">
+            <p className="text-sm text-slate-600 dark:text-slate-400 text-center tracking-wide leading-relaxed">
+              <span className="font-semibold text-slate-900 dark:text-white">Note:</span> The layouts showcased above are high-performance prototypes. Every system we build is fully bespoke, giving you complete control over the final design, features, and brand aesthetics.
             </p>
           </div>
         </div>
