@@ -104,10 +104,13 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
                 onClick={() => setActiveModal(idx)}
               >
                 {/* 3D Flip Inner Container */}
-                <div className={`w-full h-full relative transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] transform-gpu [transform-style:preserve-3d] md:group-hover/card:[transform:rotateY(180deg)_scale(1.05)] ${flippedCards[idx] ? '[transform:rotateY(180deg)_scale(1.05)]' : ''}`}>
+                <div 
+                  className="w-full h-full relative transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] transform-gpu [transform-style:preserve-3d] [-webkit-transform-style:preserve-3d] md:group-hover/card:[transform:rotateY(180deg)_scale(1.05)]"
+                  style={{ transform: flippedCards[idx] ? 'rotateY(180deg) scale(1.05)' : undefined }}
+                >
                   
                   {/* FRONT FACE */}
-                  <div className="absolute inset-0 bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden [backface-visibility:hidden]">
+                  <div className="absolute inset-0 bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden [backface-visibility:hidden] [-webkit-backface-visibility:hidden]">
                     {/* iPhone Notch with Camera */}
                     <div className="absolute top-0 inset-x-0 h-6 bg-[#222] rounded-b-2xl w-32 mx-auto z-20 flex justify-center items-center gap-2">
                        <div className="w-12 h-1.5 bg-black/60 rounded-full shadow-inner"></div>
@@ -122,7 +125,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
                   </div>
 
                   {/* BACK FACE */}
-                  <div className="absolute inset-0 bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                  <div className="absolute inset-0 bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden [backface-visibility:hidden] [-webkit-backface-visibility:hidden] [transform:rotateY(180deg)]">
                     {/* iPhone Notch with Camera */}
                     <div className="absolute top-0 inset-x-0 h-6 bg-[#222] rounded-b-2xl w-32 mx-auto z-20 flex justify-center items-center gap-2">
                        <div className="w-12 h-1.5 bg-black/60 rounded-full shadow-inner"></div>
@@ -140,10 +143,11 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
               </div>
 
               {/* Mobile Flip Button */}
-              <div className="mt-6 flex justify-center">
+              <div className="mt-6 flex justify-center relative z-20">
                 <button 
                   onClick={(e) => toggleFlip(idx, e)}
-                  className="md:hidden px-4 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold rounded-full border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition-colors"
+                  type="button"
+                  className="md:hidden px-5 py-2.5 bg-white dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-700 text-xs font-bold tracking-wide rounded-full border border-slate-200 dark:border-slate-700 flex items-center gap-2 shadow-lg shadow-black/5 transition-all active:scale-95"
                 >
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
