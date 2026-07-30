@@ -34,24 +34,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
             Custom, mobile-first websites built to turn visitors into paying customers for ambitious businesses across Cheshire & Stoke-on-Trent.
           </p>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3.5 pt-2 w-full sm:w-auto">
-            <button
-              onClick={onOpenQuote}
-              className="bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-6 py-3.5 rounded-lg font-semibold text-sm sm:text-base text-center transition-all flex justify-center items-center gap-2 group"
-            >
-              Get a Quote
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
 
-            <button
-              onClick={onOpenWhatsApp}
-              className="border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white bg-white dark:bg-slate-900/90 hover:bg-slate-50 dark:hover:bg-slate-800 px-6 py-3.5 rounded-lg font-semibold text-sm sm:text-base text-center transition-all flex justify-center items-center gap-2"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-600" />
-              Message on WhatsApp
-            </button>
-          </div>
 
           {/* Micro Proof Pills */}
           <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-200 dark:border-slate-800 w-full max-w-2xl">

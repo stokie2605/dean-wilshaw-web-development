@@ -119,7 +119,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-semibold mb-3 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20">
+          <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-3 bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20">
             BUILT FROM THE GROUND UP
           </span>
           <h2 className="font-geist font-bold text-4xl sm:text-5xl text-slate-900 dark:text-white mb-6 tracking-tight">
