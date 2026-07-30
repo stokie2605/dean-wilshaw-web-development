@@ -121,6 +121,90 @@ const defaultProspects: Prospect[] = [
     status: 'Pending',
     followUpDate: '',
     notes: 'Heritage brand.'
+  },
+  {
+    id: '10',
+    businessName: 'Wall Street Clothing',
+    type: 'Menswear / Tailoring',
+    location: 'Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Video Sent',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Smart suit & outfit finder. Prototype: https://wallstreet-clothing.web.app'
+  },
+  {
+    id: '11',
+    businessName: "Alexandra's of Alsager Jewellers",
+    type: 'Luxury Jewellery',
+    location: 'Alsager',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Video Sent',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Custom ring builder & consultation booking. Prototype: https://alexandras-jewellers.web.app'
+  },
+  {
+    id: '12',
+    businessName: 'Handmade Naturals',
+    type: 'Organic Skincare',
+    location: 'Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Video Sent',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Personalized 3-step skincare routine finder. Prototype: https://handmade-naturals.web.app'
+  },
+  {
+    id: '13',
+    businessName: 'Alsager Computers',
+    type: 'IT / Tech Repair',
+    location: 'Alsager',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Video Sent',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Repair cost estimator & shop drop-off booking. Prototype: https://alsager-computers.web.app'
+  },
+  {
+    id: '14',
+    businessName: 'Smart Choice Uniforms',
+    type: 'School & Workwear',
+    location: 'South Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Video Sent',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] School uniform bundler & workwear quote app. Prototype: https://smartchoice-uniforms.web.app'
+  },
+  {
+    id: '15',
+    businessName: 'RM Cybernetics',
+    type: 'High-Tech Hardware',
+    location: 'Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Video Sent',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] High-voltage spec finder & custom circuit app. Prototype: https://rm-cybernetics.web.app'
+  },
+  {
+    id: '16',
+    businessName: 'Alec Ross Carpets',
+    type: 'Flooring & Carpets',
+    location: 'South Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Video Sent',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Room area estimator & home measuring visit app. Prototype: https://alecross-carpets.web.app'
   }
 ];
 
@@ -132,7 +216,15 @@ export const ProspectTable: React.FC = () => {
   useEffect(() => {
     const saved = localStorage.getItem('dw_outreach_leads');
     if (saved) {
-      setProspects(JSON.parse(saved));
+      const parsed = JSON.parse(saved);
+      const newProspects = defaultProspects.filter(dp => !parsed.some((p: Prospect) => p.id === dp.id || p.businessName === dp.businessName));
+      if (newProspects.length > 0) {
+        const merged = [...parsed, ...newProspects];
+        setProspects(merged);
+        localStorage.setItem('dw_outreach_leads', JSON.stringify(merged));
+      } else {
+        setProspects(parsed);
+      }
     } else {
       setProspects(defaultProspects);
       localStorage.setItem('dw_outreach_leads', JSON.stringify(defaultProspects));
