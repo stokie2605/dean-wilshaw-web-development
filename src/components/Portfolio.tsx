@@ -52,8 +52,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       title: 'Roadside Tactical 24/7',
       subtitle: 'Rapid Emergency Dispatch & Transport Platform',
       uiFocus: 'Engineered for high-contrast safety UI, sub-second 4G rendering, and 24/7 urgent dispatch call routing.',
-      desktopImage: '/mockups/bs-logistic.webp',
-      mobileImage: '/mockups/bs-logistic.webp',
+      desktopImage: '/mockups/vanguard-desktop.webp',
+      mobileImage: '/mockups/vanguard-mobile.webp',
       modalOverview: 'A high-converting emergency response platform built with a bold dark industrial theme. Engineered for maximum speed with sub-second 4G rendering and live fleet tracking capabilities.',
       features: [
         'Sub-second 4G mobile rendering',
