@@ -117,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
                     <div className="w-8 h-3 bg-[#111] rounded-b-lg border-b border-l border-r border-[#333]"></div>
                   </div>
                   <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                    <img src="/mockups/con-ed-mockup.webp" alt="CE Con Ed Mobile" width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
+                    <img src="/mockups/con-ed-mockup.webp" alt="CE Con Ed Mobile" width={1200} height={800} fetchPriority="high" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                     <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
                   </div>
                 </div>
