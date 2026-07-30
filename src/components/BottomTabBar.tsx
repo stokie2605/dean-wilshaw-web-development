@@ -1,58 +1,60 @@
-import React from 'react';
-import { Briefcase, Zap, Tag, Bot, MessageCircle } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { Briefcase, Zap, Tag } from 'lucide-react';
 
-interface BottomTabBarProps {
-  onOpenStitch: () => void;
-  onOpenWhatsApp: () => void;
-}
+interface BottomTabBarProps {}
 
-export const BottomTabBar: React.FC<BottomTabBarProps> = ({ onOpenStitch, onOpenWhatsApp }) => {
+export const BottomTabBar: React.FC<BottomTabBarProps> = () => {
+  const [activeTab, setActiveTab] = useState<string>('');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveTab(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    const sections = ['portfolio', 'services', 'pricing'];
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setActiveTab(id);
   };
 
+  const tabs = [
+    { id: 'portfolio', label: 'Work', icon: Briefcase },
+    { id: 'services', label: 'Services', icon: Zap },
+    { id: 'pricing', label: 'Rates', icon: Tag },
+  ];
+
   return (
-    <div className="fixed bottom-0 inset-x-0 z-50 bg-slate-900/90 border-t border-slate-800 backdrop-blur-xl h-16 px-2 py-1 flex justify-around items-center md:hidden pb-safe">
-      <button 
-        onClick={() => scrollTo('portfolio')}
-        className="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors p-2"
-      >
-        <Briefcase className="w-5 h-5" />
-        <span className="text-[10px] font-medium font-sans">Work</span>
-      </button>
-
-      <button 
-        onClick={() => scrollTo('services')}
-        className="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors p-2"
-      >
-        <Zap className="w-5 h-5" />
-        <span className="text-[10px] font-medium font-sans">Services</span>
-      </button>
-
-      <button 
-        onClick={() => scrollTo('pricing')}
-        className="flex flex-col items-center gap-1 text-slate-400 hover:text-white transition-colors p-2"
-      >
-        <Tag className="w-5 h-5" />
-        <span className="text-[10px] font-medium font-sans">Pricing</span>
-      </button>
-
-      <button 
-        onClick={onOpenStitch}
-        className="flex flex-col items-center gap-1 text-slate-400 hover:text-red-500 transition-colors p-2"
-      >
-        <Bot className="w-5 h-5" />
-        <span className="text-[10px] font-medium font-sans">Ask AI</span>
-      </button>
-
-      <button 
-        onClick={onOpenWhatsApp}
-        className="flex flex-col items-center gap-1 text-emerald-500 hover:text-emerald-400 transition-colors p-2"
-      >
-        <MessageCircle className="w-5 h-5" />
-        <span className="text-[10px] font-medium font-sans">WhatsApp</span>
-      </button>
+    <div className="fixed bottom-0 inset-x-0 z-[60] bg-slate-900/95 border-t border-slate-800 backdrop-blur-xl h-16 px-4 py-1 flex justify-around items-center md:hidden pb-safe">
+      {tabs.map((tab) => {
+        const Icon = tab.icon;
+        const isActive = activeTab === tab.id;
+        return (
+          <button 
+            key={tab.id}
+            onClick={() => scrollTo(tab.id)}
+            className={`flex flex-col items-center gap-1 transition-all duration-300 p-2 w-16 ${isActive ? 'text-red-500 scale-110' : 'text-slate-400 hover:text-white'}`}
+          >
+            <Icon className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'translate-y-[-2px]' : ''}`} />
+            <span className={`text-[10px] font-sans transition-all duration-300 ${isActive ? 'font-bold' : 'font-medium'}`}>{tab.label}</span>
+          </button>
+        );
+      })}
     </div>
   );
 };

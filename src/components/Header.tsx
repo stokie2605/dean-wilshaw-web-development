@@ -83,22 +83,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
           
           {/* Desktop CTA Buttons */}
           <div className="hidden md:flex items-center gap-3">
-            <button
-            onClick={onOpenStitch}
-            className="border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
-            title="Ask Client Support AI"
-          >
-            <Bot className="w-3.5 h-3.5 text-red-600 dark:text-red-500" />
-            Ask AI
-          </button>
-          <button
-            onClick={onOpenWhatsApp}
-            className="border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 px-3.5 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
-            title="Chat directly on WhatsApp"
-          >
-            <Phone className="w-3.5 h-3.5 text-emerald-600" />
-            WhatsApp
-          </button>
           
           <button
             onClick={onOpenQuote}
