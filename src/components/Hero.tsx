@@ -32,7 +32,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Custom, mobile-first websites built to turn visitors into paying customers for ambitious businesses across Cheshire & Stoke-on-Trent. No tech jargon, no hidden fees.
+            Custom, mobile-first websites built to turn visitors into paying customers for ambitious businesses across Cheshire & Stoke-on-Trent.
           </p>
 
           {/* Action Buttons */}

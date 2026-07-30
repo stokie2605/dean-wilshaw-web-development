@@ -109,7 +109,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
             A showcase of high-performance digital solutions.
           </h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl text-lg leading-relaxed">
-            Built for elite brands and enterprise platforms. These are not templates; they are tailored business engines designed to capture leads, secure contracts, and dominate search results.
+            Built for elite brands and enterprise platforms.
           </p>
         </div>
 

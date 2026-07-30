@@ -72,7 +72,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
             Built for the 4G World.
           </h2>
           <p className="text-slate-600 dark:text-slate-300 max-w-2xl text-base sm:text-lg">
-            Your customers are searching for tradesmen on their phones while standing in the rain, not sitting at a desk. We build sub-second loading mobile experiences that convert instantly.
+            We build sub-second loading mobile experiences that convert instantly.
           </p>
         </div>
 

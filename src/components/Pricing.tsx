@@ -50,7 +50,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp })
             Simple, Honest Prices
           </h2>
           <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-lg mx-auto">
-            No hidden fees, no monthly retainers, no surprises. You own your site outright.
+            No hidden fees, no surprises. You own your site outright.
           </p>
         </div>
 
