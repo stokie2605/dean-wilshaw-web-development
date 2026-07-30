@@ -54,19 +54,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
             </button>
           </div>
 
-          {/* Micro Proof Bar */}
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200 dark:border-slate-800 w-full max-w-xl text-xs sm:text-sm text-slate-600 dark:text-slate-400 transition-colors duration-300">
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Looks Great on Mobile</span>
+          {/* Micro Proof Pills */}
+          <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-200 dark:border-slate-800 w-full max-w-2xl">
+            <div className="bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-1.5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span>📱 Looks Great on Mobile</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5"></span>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Google Friendly</span>
+            <div className="bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-1.5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span>🔍 Google Friendly</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5"></span>
             </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>1-2 Wk Turnaround</span>
+            <div className="bg-white dark:bg-slate-900/90 text-slate-700 dark:text-slate-300 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-1.5 border border-slate-200 dark:border-slate-800 shadow-sm">
+              <span>⏱️ 1-2 Wk Turnaround</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5"></span>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
                 </div>
                 <div>
                   <h3 className="font-geist font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    Custom React Booking & Quote Engine
+                    High-Conversion Lead Generation Platform
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                   </h3>
                 </div>
@@ -92,7 +92,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
             </div>
 
             <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-              A high-performance, mobile-first web app built with React and TypeScript, delivering instant quote calculations and seamless WhatsApp lead routing.
+              A bespoke, mobile-first web application engineered to maximize local business inquiries, featuring instant loading speeds and optimized lead capture.
             </p>
 
             <div className="flex flex-wrap gap-2 mt-2">
@@ -130,9 +130,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
             {/* Modal Body */}
             <div className="p-6 space-y-6">
               <div>
-                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">Custom React Booking & Quote Engine</h4>
+                <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">High-Conversion Lead Generation Platform</h4>
                 <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                  A high-performance, mobile-first web app built with React and TypeScript, delivering instant quote calculations and seamless WhatsApp lead routing.
+                  A bespoke, mobile-first web application engineered to maximize local business inquiries, featuring instant loading speeds and optimized lead capture.
                 </p>
               </div>
 
@@ -149,7 +149,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
                   </li>
                   <li className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <span><strong>Operational Reliability:</strong> Leveraged 25 years of strict operational discipline in logistics to deliver highly reliable software systems.</span>
+                    <span><strong>Operational Reliability:</strong> Built with strict engineering discipline to deliver a rock-solid, highly reliable digital presence.</span>
                   </li>
                 </ul>
               </div>
@@ -168,14 +168,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
 
             {/* Modal Footer */}
             <div className="p-5 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 flex flex-col sm:flex-row gap-3 justify-end items-center">
-              <a 
-                href="https://github.com/stokie2605/school-it-support-refresh" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-2.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg text-sm font-semibold transition-colors text-center"
-              >
-                View Code on GitHub
-              </a>
               <button 
                 onClick={() => {
                   setIsCaseStudyOpen(false);
