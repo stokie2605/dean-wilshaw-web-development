@@ -205,6 +205,54 @@ const defaultProspects: Prospect[] = [
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Room area estimator & home measuring visit app. Prototype: https://alecross-carpets.web.app'
+  },
+  {
+    id: '17',
+    businessName: 'Just Roofs Cheshire',
+    type: 'Roofing / Construction',
+    location: 'Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Trading Standards-approved. Needs mobile performance review and high-ticket service UX upgrade.'
+  },
+  {
+    id: '18',
+    businessName: 'Cheshire Roofing',
+    type: 'Roofing / Construction',
+    location: 'Macclesfield',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Covers Congleton, Knutsford, Wilmslow. Prime candidate for emergency call-out high-conversion landing page.'
+  },
+  {
+    id: '19',
+    businessName: 'Apex Roofing Cheshire',
+    type: 'Roofing / Construction',
+    location: 'Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Emergency roofing services. Target for sub-second mobile rendering to capture urgent traffic.'
+  },
+  {
+    id: '20',
+    businessName: 'P D Roofing & Building Contractors',
+    type: 'Roofing / Construction',
+    location: 'Cheshire',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Multi-service (slate, tile, flat). Needs portfolio restructure and modern lead capture forms.'
   }
 ];
 
