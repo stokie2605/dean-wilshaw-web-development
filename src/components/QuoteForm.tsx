@@ -82,7 +82,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
 
           {/* Header */}
           <div className="text-center mb-10 flex flex-col items-center pt-2">
-          <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
+          <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
             Direct Studio Inquiry
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-white mb-3">
@@ -174,7 +174,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                       : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
                   }`}
                 >
-                  <Smartphone className={`w-5 h-5 mb-2 ${formData.projectType === 'business-site' ? 'text-red-600 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <Smartphone className={`w-5 h-5 mb-2 ${formData.projectType === 'business-site' ? 'text-red-700 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
                   <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">Business Site</span>
                   <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Lead gen & local SEO</span>
                 </button>
@@ -188,7 +188,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                       : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
                   }`}
                 >
-                  <Database className={`w-5 h-5 mb-2 ${formData.projectType === 'custom-app' ? 'text-red-600 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <Database className={`w-5 h-5 mb-2 ${formData.projectType === 'custom-app' ? 'text-red-700 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
                   <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">Custom App</span>
                   <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Dashboards & internal tools</span>
                 </button>
@@ -202,7 +202,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                       : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
                   }`}
                 >
-                  <Monitor className={`w-5 h-5 mb-2 ${formData.projectType === 'ai-integration' ? 'text-red-600 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
+                  <Monitor className={`w-5 h-5 mb-2 ${formData.projectType === 'ai-integration' ? 'text-red-700 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
                   <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">AI Integration</span>
                   <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Chatbots & automation</span>
                 </button>
@@ -232,7 +232,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                   id="gdpr-consent"
                   type="checkbox"
                   required
-                  className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-red-600 focus:ring-red-600 cursor-pointer"
+                  className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-red-700 focus:ring-red-600 cursor-pointer"
                 />
               </div>
               <div className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">

@@ -41,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
             className="w-10 h-10 object-contain drop-shadow-[0_0_8px_rgba(220,38,38,0.5)] transition-transform group-hover:scale-105"
           />
           <div className="flex flex-col justify-center mt-1">
-            <span className="font-geist font-bold text-lg text-slate-900 dark:text-white tracking-tight group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors leading-none">
+            <span className="font-geist font-bold text-lg text-slate-900 dark:text-white tracking-tight group-hover:text-red-700 dark:group-hover:text-red-500 transition-colors leading-none">
               Dean Wilshaw
             </span>
             <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-500 dark:text-slate-400 mt-1 leading-none">
@@ -52,13 +52,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
-          <a href="#about" className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
+          <a href="#about" className="hover:text-red-700 dark:hover:text-red-500 transition-colors">
             About Me
           </a>
-          <a href="#portfolio" className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
+          <a href="#portfolio" className="hover:text-red-700 dark:hover:text-red-500 transition-colors">
             My Work
           </a>
-          <a href="#services" className="hover:text-red-600 dark:hover:text-red-500 transition-colors">
+          <a href="#services" className="hover:text-red-700 dark:hover:text-red-500 transition-colors">
             Services
           </a>
         </nav>

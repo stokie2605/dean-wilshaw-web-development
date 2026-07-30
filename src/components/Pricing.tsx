@@ -44,7 +44,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp, o
 
         {/* Header */}
         <div className="text-center mb-10">
-          <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 inline-block">
+          <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 inline-block">
             Transparent Pricing
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-white mt-3 mb-3">
@@ -87,7 +87,7 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp, o
               <ul className="space-y-2 mb-6 flex-grow">
                 {pkg.features.map((f) => (
                   <li key={f} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
-                    <CheckCircle2 className="w-4 h-4 text-red-600 dark:text-red-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-red-700 dark:text-red-500 shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}

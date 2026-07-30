@@ -31,7 +31,7 @@ export const AboutSection: React.FC = () => {
 
           {/* Floating Badge */}
           <div className="absolute -bottom-5 -right-2 sm:-right-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-3 rounded-lg shadow-md flex items-center gap-3">
-            <ShieldCheck className="w-5 h-5 text-red-600 dark:text-red-500" />
+            <ShieldCheck className="w-5 h-5 text-red-700 dark:text-red-500" />
             <span className="font-geist font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
               Reliable Execution
             </span>
@@ -41,8 +41,8 @@ export const AboutSection: React.FC = () => {
         {/* Right Column: Copy & Principles */}
         <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-6">
           
-          <div className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-red-600 dark:text-red-500 px-3 py-1 rounded-full text-xs font-mono font-semibold w-fit">
-            <Wrench className="w-3.5 h-3.5 text-red-600 dark:text-red-500" />
+          <div className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-red-700 dark:text-red-500 px-3 py-1 rounded-full text-xs font-mono font-semibold w-fit">
+            <Wrench className="w-3.5 h-3.5 text-red-700 dark:text-red-500" />
             <span>Adaptable & Driven</span>
           </div>
 

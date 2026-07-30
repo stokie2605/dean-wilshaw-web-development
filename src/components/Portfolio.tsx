@@ -102,7 +102,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       <div className="max-w-7xl mx-auto">
         
         <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
-          <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-3 bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20">
+          <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-3 bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20">
             BUILT FROM THE GROUND UP
           </span>
           <h2 className="font-geist font-bold text-4xl sm:text-5xl text-slate-900 dark:text-white mb-6 tracking-tight">
@@ -137,7 +137,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                       // iPad for the 2nd card (Enterprise Logistics)
                       <div className="absolute w-48 h-64 bg-[#111] rounded-2xl border-[4px] border-[#333] shadow-2xl overflow-hidden -ml-8 transform group-hover:rotate-2 group-hover:scale-105 transition-all duration-500 ease-out z-10">
                         <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                          <img src={project.desktopImage} alt={`${project.title} iPad`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
+                          <img src={project.desktopImage} srcSet={`${project.desktopImage.replace('.webp', '-small.webp')} 600w, ${project.desktopImage} 1200w`} sizes="(max-width: 640px) 600px, 1200px" alt={`${project.title} iPad`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                         </div>
                       </div>
@@ -148,7 +148,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                           <div className="w-1 h-1 bg-[#444] rounded-full"></div>
                         </div>
                         <div className="flex-grow bg-[#0a0a0a] relative overflow-hidden">
-                          <img src={project.desktopImage} alt={`${project.title} Desktop`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
+                          <img src={project.desktopImage} srcSet={`${project.desktopImage.replace('.webp', '-small.webp')} 600w, ${project.desktopImage} 1200w`} sizes="(max-width: 640px) 600px, 1200px" alt={`${project.title} Desktop`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                         </div>
                         <div className="w-full h-2 bg-[#2a2a2a] rounded-b-md border-t border-[#444]"></div>
@@ -161,7 +161,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                         <div className="w-8 h-3 bg-[#111] rounded-b-lg border-b border-l border-r border-[#333]"></div>
                       </div>
                       <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                        <img src={project.mobileImage} alt={`${project.title} Mobile`} width={400} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
+                        <img src={project.mobileImage} srcSet={`${project.mobileImage.replace('.webp', '-small.webp')} 600w, ${project.mobileImage} 1200w`} sizes="(max-width: 640px) 600px, 1200px" alt={`${project.title} Mobile`} width={400} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                         <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
                       </div>
                     </div>
@@ -169,7 +169,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                 </div>
                 
                 <div className="p-8 flex flex-col flex-grow z-10">
-                  <span className="font-mono text-[10px] text-red-600 dark:text-red-500 tracking-wider uppercase mb-3">{project.industryLabel}</span>
+                  <span className="font-mono text-[10px] text-red-700 dark:text-red-500 tracking-wider uppercase mb-3">{project.industryLabel}</span>
                   <h2 className="font-geist font-bold text-2xl text-slate-900 dark:text-white mb-2">{project.title}</h2>
                   <h3 className="text-slate-600 dark:text-slate-300 font-medium text-sm mb-4">{project.subtitle}</h3>
                   <p className="text-slate-500 dark:text-slate-400 text-sm mb-8 flex-grow leading-relaxed">{project.uiFocus}</p>

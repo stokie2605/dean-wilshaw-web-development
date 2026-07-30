@@ -40,7 +40,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
         <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
           <button
             onClick={onOpenWhatsApp}
-            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
+            className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
           >
             WhatsApp
           </button>
@@ -49,7 +49,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
             href="https://www.linkedin.com/in/dean-wilshaw-239b4b379"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
+            className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
           >
             LinkedIn
           </a>
@@ -58,21 +58,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
             href="https://github.com/stokie2605"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
+            className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
           >
             GitHub
           </a>
 
           <button
             onClick={onOpenPrivacy}
-            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
+            className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
           >
             Privacy Policy
           </button>
 
           <button
             onClick={onOpenTerms}
-            className="hover:text-red-600 dark:hover:text-red-500 underline transition-colors"
+            className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
           >
             Terms & Conditions
           </button>

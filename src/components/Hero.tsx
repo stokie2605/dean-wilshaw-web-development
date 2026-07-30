@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
           {/* Main Display Headline */}
           <h1 className="font-geist font-bold text-3xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-white leading-[1.15] tracking-tight transition-colors duration-300">
             Websites That Actually Make Your{' '}
-            <span className="text-red-600 dark:text-red-500 bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
+            <span className="text-red-700 dark:text-red-500 bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
               Phone Ring.
             </span>
           </h1>
@@ -105,7 +105,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
                     <div className="w-1 h-1 bg-[#444] rounded-full"></div>
                   </div>
                   <div className="flex-grow bg-[#0a0a0a] relative overflow-hidden">
-                    <img src="/mockups/con-ed-mockup.webp" alt="CE Con Ed Desktop" width={1200} height={800} fetchPriority="high" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
+                    <img src="/mockups/con-ed-mockup.webp" srcSet="/mockups/con-ed-mockup-small.webp 600w, /mockups/con-ed-mockup.webp 1200w" sizes="(max-width: 640px) 600px, 1200px" alt="CE Con Ed Desktop" width={1200} height={800} fetchPriority="high" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                   </div>
                   <div className="w-full h-2 bg-[#2a2a2a] rounded-b-md border-t border-[#444]"></div>
@@ -117,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
                     <div className="w-8 h-3 bg-[#111] rounded-b-lg border-b border-l border-r border-[#333]"></div>
                   </div>
                   <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                    <img src="/mockups/con-ed-mockup.webp" alt="CE Con Ed Mobile" width={1200} height={800} fetchPriority="high" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
+                    <img src="/mockups/con-ed-mockup.webp" srcSet="/mockups/con-ed-mockup-small.webp 600w, /mockups/con-ed-mockup.webp 1200w" sizes="(max-width: 640px) 600px, 1200px" alt="CE Con Ed Mobile" width={1200} height={800} fetchPriority="high" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                     <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
                   </div>
                 </div>
@@ -125,7 +125,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
             </div>
             
             <div className="p-8 flex flex-col flex-grow z-10 bg-white dark:bg-[#09090B]">
-              <span className="font-mono text-[10px] text-red-600 dark:text-red-500 tracking-wider uppercase mb-3">EDUTECH & COMPETITOR AUDIT</span>
+              <span className="font-mono text-[10px] text-red-700 dark:text-red-500 tracking-wider uppercase mb-3">EDUTECH & COMPETITOR AUDIT</span>
               <h2 className="font-geist font-bold text-2xl text-slate-900 dark:text-white mb-2">CE Con Ed — School IT Support</h2>
               <h3 className="text-slate-600 dark:text-slate-300 font-medium text-sm mb-4">A modern UX rebuild and competitor market audit for a Hertfordshire school IT provider.</h3>
               <p className="text-slate-500 dark:text-slate-400 text-sm mb-2 flex-grow leading-relaxed">Engineered with live SLA tracking widgets, plain-English service packages, and sub-second performance.</p>
