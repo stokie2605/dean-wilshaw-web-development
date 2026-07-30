@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, Star } from 'lucide-react';
+import { CheckCircle2, Star, Bot } from 'lucide-react';
 
 // ⚙️ UPDATE THIS NUMBER as you take on clients (starts at 10, count down)
 const SPOTS_REMAINING = 10;
@@ -32,9 +32,10 @@ const packages = [
 interface PricingProps {
   onOpenQuote: () => void;
   onOpenWhatsApp: () => void;
+  onOpenStitch: () => void;
 }
 
-export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
+export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp, onOpenStitch }) => {
   const spotsGone = SPOTS_REMAINING <= 0;
 
   return (
@@ -93,10 +94,11 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp })
               </ul>
 
               <button
-                onClick={onOpenQuote}
-                className="w-full bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/30 text-white py-2.5 rounded-lg font-geist font-semibold text-sm transition-colors mt-auto"
+                onClick={onOpenStitch}
+                className="w-full bg-red-600 hover:bg-red-500 shadow-lg shadow-red-600/30 text-white py-2.5 rounded-lg font-geist font-semibold text-sm transition-colors mt-auto flex items-center justify-center gap-2"
               >
-                Request Scope / Estimate
+                <Bot className="w-4 h-4" />
+                Get AI Estimate
               </button>
             </div>
           ))}

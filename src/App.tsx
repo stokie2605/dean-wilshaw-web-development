@@ -92,7 +92,7 @@ export default function App() {
             <ServicesBento />
           </div>
           <div className="bg-slate-50 dark:bg-slate-950">
-            <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
+            <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} onOpenStitch={() => setStitchModalOpen(true)} />
           </div>
           <div className="bg-slate-50 dark:bg-slate-950">
             <AboutSection />

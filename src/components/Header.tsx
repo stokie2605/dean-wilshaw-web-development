@@ -66,6 +66,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
         {/* Action Buttons Container */}
         <div className="flex items-center gap-3">
           <button
+            onClick={onOpenQuote}
+            className="md:hidden bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
+            title="Get a Quote"
+          >
+            Quote
+          </button>
+          
+          <button
             onClick={toggleTheme}
             className="p-2 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg min-w-[40px] min-h-[40px] flex items-center justify-center transition-colors"
             title="Toggle Dark/Light Mode"
