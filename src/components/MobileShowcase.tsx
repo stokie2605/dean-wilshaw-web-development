@@ -24,6 +24,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       title: 'Emergency Plumbing',
       name: 'RapidRepair 24/7',
       component: <PlumberMockup />,
+      altImage: '/mockups/plumber-mobile-dark.png',
       modalOverview: 'A high-converting mobile interface designed specifically for emergency plumbing services. Features sub-second loading and instant tap-to-call routing to capture desperate leads instantly.',
       features: [
         'Prominent click-to-call buttons',
@@ -37,6 +38,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       title: 'Premium Roofing',
       name: 'Armor Roofing',
       component: <RooferMockup />,
+      altImage: '/mockups/roofer-mobile-light.png',
       modalOverview: 'A premium, trust-building mobile showcase designed for high-ticket trades. Features a sleek dark mode aesthetic with vibrant trust indicators and a built-in project gallery.',
       features: [
         'Trust-building dark mode UI',
@@ -50,6 +52,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       title: 'Bespoke Landscaping',
       name: 'Lumen Stone',
       component: <LandscaperMockup />,
+      altImage: '/mockups/landscaper-mobile-dark.png',
       modalOverview: 'An elegant, earthy mobile interface designed for bespoke landscaping and driveway specialists. Uses clean typography and a visual service selector to guide users to book a consultation.',
       features: [
         'Visual service selector grid',
@@ -89,22 +92,44 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
               {/* Ambient Neon Glow */}
               <div className="absolute inset-0 bg-emerald-500/20 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-full scale-75 pointer-events-none"></div>
 
-              {/* 3D iPhone Frame */}
+              {/* 3D iPhone Frame (Outer Container) */}
               <div 
-                className="relative w-full max-w-[280px] aspect-[9/19] bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden cursor-pointer transition-all duration-500 ease-out transform-gpu group-hover:[transform:rotateX(10deg)_rotateY(-12deg)_scale(1.05)] group-hover:shadow-[25px_25px_40px_rgba(0,0,0,0.5)] z-10"
+                className="relative w-full max-w-[280px] aspect-[9/19] cursor-pointer z-10 group/card"
                 onClick={() => setActiveModal(idx)}
               >
-                {/* iPhone Notch with Camera */}
-                <div className="absolute top-0 inset-x-0 h-6 bg-[#222] rounded-b-2xl w-32 mx-auto z-20 flex justify-center items-center gap-2">
-                   <div className="w-12 h-1.5 bg-black/60 rounded-full shadow-inner"></div>
-                   <div className="w-1.5 h-1.5 bg-blue-900/50 rounded-full shadow-inner"></div>
-                </div>
-                
-                {/* Screen Content */}
-                <div className="absolute inset-0 bg-white overflow-hidden pointer-events-none rounded-b-[1.8rem] pt-3">
-                  {trade.component}
-                  {/* Glass Reflection */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                {/* 3D Flip Inner Container */}
+                <div className="w-full h-full relative transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] transform-gpu [transform-style:preserve-3d] group-hover/card:[transform:rotateY(180deg)_scale(1.05)]">
+                  
+                  {/* FRONT FACE */}
+                  <div className="absolute inset-0 bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden [backface-visibility:hidden]">
+                    {/* iPhone Notch with Camera */}
+                    <div className="absolute top-0 inset-x-0 h-6 bg-[#222] rounded-b-2xl w-32 mx-auto z-20 flex justify-center items-center gap-2">
+                       <div className="w-12 h-1.5 bg-black/60 rounded-full shadow-inner"></div>
+                       <div className="w-1.5 h-1.5 bg-blue-900/50 rounded-full shadow-inner"></div>
+                    </div>
+                    {/* Screen Content */}
+                    <div className="absolute inset-0 bg-white overflow-hidden pointer-events-none rounded-b-[1.8rem] pt-3">
+                      {trade.component}
+                      {/* Glass Reflection */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                    </div>
+                  </div>
+
+                  {/* BACK FACE */}
+                  <div className="absolute inset-0 bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden [backface-visibility:hidden] [transform:rotateY(180deg)]">
+                    {/* iPhone Notch with Camera */}
+                    <div className="absolute top-0 inset-x-0 h-6 bg-[#222] rounded-b-2xl w-32 mx-auto z-20 flex justify-center items-center gap-2">
+                       <div className="w-12 h-1.5 bg-black/60 rounded-full shadow-inner"></div>
+                       <div className="w-1.5 h-1.5 bg-blue-900/50 rounded-full shadow-inner"></div>
+                    </div>
+                    {/* Screen Content */}
+                    <div className="absolute inset-0 bg-black overflow-hidden pointer-events-none rounded-b-[1.8rem] pt-3">
+                      <img src={trade.altImage} alt={`${trade.title} Alt Theme`} className="w-full h-full object-cover object-top" />
+                      {/* Glass Reflection */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-100 pointer-events-none"></div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
 
