@@ -253,6 +253,54 @@ const defaultProspects: Prospect[] = [
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Multi-service (slate, tile, flat). Needs portfolio restructure and modern lead capture forms.'
+  },
+  {
+    id: '21',
+    businessName: 'Octagon Bespoke',
+    type: 'Luxury Home Builders',
+    location: 'London (Remote)',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] High-end residential. Needs sub-second mobile performance for HNW clients.'
+  },
+  {
+    id: '22',
+    businessName: 'London Projects',
+    type: 'Bespoke Prime Residential',
+    location: 'London (Remote)',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Prime property renovations. Target for luxury portfolio rendering speeds.'
+  },
+  {
+    id: '23',
+    businessName: '75 Harley Street Dental',
+    type: 'Private Dentist',
+    location: 'London (Remote)',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Harley street clinic. High-ticket cosmetic treatments. Mobile booking speed is critical.'
+  },
+  {
+    id: '24',
+    businessName: 'E11even Dental',
+    type: 'Private Dentist',
+    location: 'London (Remote)',
+    dateContacted: '2026-07-30',
+    contactMethod: '',
+    videoLinkSent: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Elite dental clinic. Target for custom patient onboarding web app.'
   }
 ];
 
