@@ -48,6 +48,23 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
 
   const projects = [
     {
+      industryLabel: 'EDUTECH & COMPETITOR AUDIT',
+      title: 'CE Con Ed — School IT Support',
+      subtitle: 'A modern UX rebuild and competitor market audit for a Hertfordshire school IT provider.',
+      uiFocus: 'Engineered with live SLA tracking widgets, plain-English service packages, and sub-second performance.',
+      desktopImage: '/mockups/con-ed-mockup.png',
+      mobileImage: '/mockups/con-ed-mockup.png',
+      modalTitle: 'CE Con Ed — Hertfordshire School IT Engine',
+      modalOverview: 'A complete strategic refresh translating complex school IT SLAs into high-trust, plain-English support portals for headteachers and school governors across Watford and Hertfordshire.',
+      features: [
+        'Comprehensive competitor & market audit across regional school IT providers',
+        'Interactive live support status widget (99.9% uptime & SLA tracking)',
+        'Plain-English service packages tailored specifically for KS1 & KS2 leadership',
+        'Sub-second React & Tailwind frontend architecture built for speed'
+      ],
+      badges: ['EduTech UX', 'Competitor Audit', 'React Architecture', 'Tailwind CSS']
+    },
+    {
       industryLabel: 'Emergency & Trades',
       title: 'Roadside Tactical 24/7',
       subtitle: 'Rapid Emergency Dispatch & Transport Platform',
@@ -197,7 +214,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
           >
             {/* Modal Header */}
             <div className="flex justify-between items-center p-5 border-b border-slate-200 dark:border-slate-800">
-              <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white">{projects[activeModal].title}</h3>
+              <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white">{projects[activeModal].modalTitle || projects[activeModal].title}</h3>
               <button 
                 onClick={() => setActiveModal(null)}
                 className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
