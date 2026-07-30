@@ -139,16 +139,11 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
                 </div>
               </div>
 
-              {/* Trade Label */}
-              <div className="mt-8 text-center flex flex-col items-center gap-2">
-                <div>
-                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white mb-1">{trade.title}</h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">{trade.name}</p>
-                </div>
-                {/* Mobile Flip Button */}
+              {/* Mobile Flip Button */}
+              <div className="mt-6 flex justify-center">
                 <button 
                   onClick={(e) => toggleFlip(idx, e)}
-                  className="md:hidden mt-2 px-4 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold rounded-full border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition-colors"
+                  className="md:hidden px-4 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold rounded-full border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition-colors"
                 >
                   <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
@@ -160,6 +155,15 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
 
             </div>
           ))}
+        </div>
+
+        {/* Disclaimer */}
+        <div className="flex justify-center mt-12 md:mt-16 px-4">
+          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-full px-6 py-3 shadow-xl max-w-4xl">
+            <p className="text-sm text-slate-600 dark:text-slate-400 text-center tracking-wide leading-relaxed">
+              <span className="font-semibold text-slate-900 dark:text-white">Note:</span> The layouts showcased above are high-performance prototypes. Every system we build is fully bespoke, giving you complete control over the final design, features, and brand aesthetics.
+            </p>
+          </div>
         </div>
       </div>
 

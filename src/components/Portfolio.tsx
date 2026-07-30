@@ -184,14 +184,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
           })}
         </div>
 
-        {/* Disclaimer */}
-        <div className="flex justify-center mt-12 md:mt-16 px-4">
-          <div className="bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-full px-6 py-3 shadow-xl max-w-4xl backdrop-blur-sm">
-            <p className="text-sm text-slate-600 dark:text-slate-400 text-center tracking-wide leading-relaxed">
-              <span className="font-semibold text-slate-900 dark:text-white">Note:</span> The layouts showcased above are high-performance prototypes. Every system we build is fully bespoke, giving you complete control over the final design, features, and brand aesthetics.
-            </p>
-          </div>
-        </div>
+
 
       </div>
 
