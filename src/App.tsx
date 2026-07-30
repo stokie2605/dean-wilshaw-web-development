@@ -14,7 +14,6 @@ const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ defau
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 const StitchBot = lazy(() => import('./components/StitchBot').then(m => ({ default: m.StitchBot })));
 const WhatsAppModal = lazy(() => import('./components/WhatsAppModal').then(m => ({ default: m.WhatsAppModal })));
-const SpeedTestTool = lazy(() => import('./components/SpeedTestTool').then(m => ({ default: m.SpeedTestTool })));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const TermsConditions = lazy(() => import('./components/TermsConditions').then(m => ({ default: m.TermsConditions })));
 
@@ -38,12 +37,6 @@ export default function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [navigate]);
-
-  const handleBenchmarkComplete = (domain: string, industry: string) => {
-    setCapturedDetails(`Speed Audit Request for: ${domain} (${industry}) - Looking to optimize speed and mobile performance.`);
-    setShowToast(true);
-    setTimeout(() => setShowToast(false), 5000);
-  };
 
   const handleOpenPage = (page: Page) => {
     setCurrentPage(page);
@@ -108,9 +101,6 @@ export default function App() {
             <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
           </div>
           <div className="bg-slate-50 dark:bg-slate-950">
-            <SpeedTestTool onBenchmarkComplete={handleBenchmarkComplete} />
-          </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
             <QuoteForm onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
           </div>
         </Suspense>
@@ -133,18 +123,6 @@ export default function App() {
       </Suspense>
 
       {/* Floating Buttons Layer - Hidden on Mobile */}
-      <div className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 z-40 hidden md:flex">
-        <button 
-          onClick={() => {
-            document.getElementById('speed-test')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-          className="bg-[#0f1113] hover:bg-[#191c1e] text-white px-5 py-3 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.4)] flex items-center gap-3 border border-white/20 transition-transform hover:scale-105"
-        >
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <span className="font-geist font-semibold text-sm">Free Website Audit</span>
-        </button>
-      </div>
-
       <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 hidden md:flex flex-col gap-3">
         <button 
           onClick={() => setWhatsappModalOpen(true)}
