@@ -3,11 +3,13 @@ import { Send, CheckCircle2, MessageSquare, ShieldCheck, X, Smartphone, Monitor,
 import { QuoteResult } from '../types';
 
 interface QuoteFormProps {
+  isOpen: boolean;
+  onClose: () => void;
   onOpenWhatsApp: () => void;
   prefilledDetails?: string;
 }
 
-export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledDetails }) => {
+export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWhatsApp, prefilledDetails }) => {
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -62,12 +64,24 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
     }
   };
 
+  if (!isOpen) return null;
+
   return (
-    <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
-      <div className="max-w-4xl mx-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn overflow-y-auto">
+      <div className="max-w-3xl w-full my-auto relative">
         
-        {/* Header */}
-        <div className="text-center mb-10 flex flex-col items-center">
+        {/* Form Container */}
+        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl p-6 sm:p-10 relative mt-10 md:mt-0 max-h-[90vh] overflow-y-auto custom-scrollbar">
+          
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors z-10"
+          >
+            <X className="w-6 h-6" />
+          </button>
+
+          {/* Header */}
+          <div className="text-center mb-10 flex flex-col items-center pt-2">
           <span className="text-xs font-mono uppercase tracking-widest text-red-600 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
             Direct Studio Inquiry
           </span>
@@ -78,10 +92,6 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
             Tell me what package you need and a little about your business. I'll review it and get back to you with a direct price.
           </p>
         </div>
-
-        {/* Form Container */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl p-6 sm:p-10 relative">
-          
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Row 1: Name & Company */}
@@ -313,7 +323,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ onOpenWhatsApp, prefilledD
         )}
 
       </div>
-    </section>
+    </div>
   );
 };
 

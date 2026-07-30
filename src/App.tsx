@@ -25,7 +25,7 @@ export default function App() {
   const [stitchModalOpen, setStitchModalOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [capturedDetails, setCapturedDetails] = useState<string>('');
-  const [showToast, setShowToast] = useState(false);
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -44,10 +44,7 @@ export default function App() {
   };
 
   const handleOpenQuote = () => {
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
+    setQuoteModalOpen(true);
   };
 
   const handleOpenWhatsApp = () => {
@@ -95,13 +92,7 @@ export default function App() {
             <Portfolio onOpenQuote={handleOpenQuote} />
           </div>
           <div className="bg-slate-50 dark:bg-slate-950">
-            <ServicesBento />
-          </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
             <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
-          </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
-            <QuoteForm onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
           </div>
         </Suspense>
       </main>
@@ -119,6 +110,12 @@ export default function App() {
           onClose={() => setStitchModalOpen(false)}
           onOpenQuote={handleOpenQuote} 
           onOpenWhatsApp={handleOpenWhatsApp} 
+        />
+        <QuoteForm 
+          isOpen={quoteModalOpen}
+          onClose={() => setQuoteModalOpen(false)}
+          onOpenWhatsApp={handleOpenWhatsApp} 
+          prefilledDetails={capturedDetails} 
         />
       </Suspense>
 
@@ -152,17 +149,6 @@ export default function App() {
         <WhatsAppModal isOpen={whatsappModalOpen} onClose={() => setWhatsappModalOpen(false)} />
       </Suspense>
 
-      {/* Global Toast Notification */}
-      {showToast && (
-        <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[150] animate-fadeIn">
-          <div className="bg-[#191c1e] text-white px-5 py-3 rounded-xl shadow-2xl border border-[#c6c6cd]/20 flex items-center gap-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
-            <p className="text-sm font-semibold">
-              Domain captured! Fill in your email to receive your full speed fix estimate.
-            </p>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
