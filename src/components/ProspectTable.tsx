@@ -7,7 +7,8 @@ export interface Prospect {
   location: string;
   dateContacted: string;
   contactMethod: string;
-  videoLinkSent: string;
+  email: string;
+  phone: string;
   status: 'Pending' | 'Video Sent' | 'Replied' | 'Meeting Booked' | 'Closed';
   followUpDate: string;
   notes: string;
@@ -21,7 +22,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Mobile: 36, Desktop: 86. Severely slow mobile load speed on high-ticket financial lead gen site.'
@@ -33,7 +35,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Mobile: 39, Desktop: 55, Best Practices: 58. High-ticket B2B industrial target with critical mobile performance and console/security errors.'
@@ -45,7 +48,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Mobile: 43, Desktop: 60, SEO: 83. High-end showroom site in deep red. Slow gallery load times hurting mobile shoppers.'
@@ -57,7 +61,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: MEDIUM] Mobile: 55, Desktop: 78. Outdated mobile performance causing bounce rate on legal enquiries.'
@@ -69,7 +74,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: MEDIUM] Mobile: 56, Desktop: 74. High-value local trade lead. Slow mobile load time affecting project portfolio views.'
@@ -81,7 +87,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: MEDIUM] Mobile: 64, Desktop: 71, SEO: 85. Dual opportunity: Mobile speed upgrade + technical SEO ranking fixes.'
@@ -93,7 +100,8 @@ const defaultProspects: Prospect[] = [
     location: 'Stoke-on-Trent',
     dateContacted: '',
     contactMethod: 'WhatsApp',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: 'Needs 4s load time fixed.'
@@ -105,7 +113,8 @@ const defaultProspects: Prospect[] = [
     location: 'Stafford',
     dateContacted: '',
     contactMethod: 'WhatsApp',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: 'M6 Corridor lead.'
@@ -117,7 +126,8 @@ const defaultProspects: Prospect[] = [
     location: 'Crewe',
     dateContacted: '',
     contactMethod: 'Email',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: 'Heritage brand.'
@@ -129,7 +139,8 @@ const defaultProspects: Prospect[] = [
     location: 'Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Smart suit & outfit finder. Prototype: https://wallstreet-clothing.web.app'
@@ -141,7 +152,8 @@ const defaultProspects: Prospect[] = [
     location: 'Alsager',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Custom ring builder & consultation booking. Prototype: https://alexandras-jewellers.web.app'
@@ -153,7 +165,8 @@ const defaultProspects: Prospect[] = [
     location: 'Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Personalized 3-step skincare routine finder. Prototype: https://handmade-naturals.web.app'
@@ -165,7 +178,8 @@ const defaultProspects: Prospect[] = [
     location: 'Alsager',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Repair cost estimator & shop drop-off booking. Prototype: https://alsager-computers.web.app'
@@ -177,7 +191,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] School uniform bundler & workwear quote app. Prototype: https://smartchoice-uniforms.web.app'
@@ -189,7 +204,8 @@ const defaultProspects: Prospect[] = [
     location: 'Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] High-voltage spec finder & custom circuit app. Prototype: https://rm-cybernetics.web.app'
@@ -201,7 +217,8 @@ const defaultProspects: Prospect[] = [
     location: 'South Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Video Sent',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Room area estimator & home measuring visit app. Prototype: https://alecross-carpets.web.app'
@@ -213,7 +230,8 @@ const defaultProspects: Prospect[] = [
     location: 'Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Trading Standards-approved. Needs mobile performance review and high-ticket service UX upgrade.'
@@ -225,7 +243,8 @@ const defaultProspects: Prospect[] = [
     location: 'Macclesfield',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Covers Congleton, Knutsford, Wilmslow. Prime candidate for emergency call-out high-conversion landing page.'
@@ -237,7 +256,8 @@ const defaultProspects: Prospect[] = [
     location: 'Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Emergency roofing services. Target for sub-second mobile rendering to capture urgent traffic.'
@@ -249,7 +269,8 @@ const defaultProspects: Prospect[] = [
     location: 'Cheshire',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Multi-service (slate, tile, flat). Needs portfolio restructure and modern lead capture forms.'
@@ -261,7 +282,8 @@ const defaultProspects: Prospect[] = [
     location: 'London (Remote)',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] High-end residential. Needs sub-second mobile performance for HNW clients.'
@@ -273,7 +295,8 @@ const defaultProspects: Prospect[] = [
     location: 'London (Remote)',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Prime property renovations. Target for luxury portfolio rendering speeds.'
@@ -285,7 +308,8 @@ const defaultProspects: Prospect[] = [
     location: 'London (Remote)',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Harley street clinic. High-ticket cosmetic treatments. Mobile booking speed is critical.'
@@ -297,7 +321,8 @@ const defaultProspects: Prospect[] = [
     location: 'London (Remote)',
     dateContacted: '2026-07-30',
     contactMethod: '',
-    videoLinkSent: '',
+    email: '',
+    phone: '',
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Elite dental clinic. Target for custom patient onboarding web app.'
@@ -351,7 +376,8 @@ export const ProspectTable: React.FC = () => {
       location: '',
       dateContacted: new Date().toISOString().split('T')[0],
       contactMethod: '',
-      videoLinkSent: '',
+      email: '',
+    phone: '',
       status: 'Pending',
       followUpDate: '',
       notes: ''
@@ -361,14 +387,15 @@ export const ProspectTable: React.FC = () => {
   };
 
   const exportCSV = () => {
-    const headers = ['Business Name', 'Type', 'Location', 'Date Contacted', 'Contact Method', 'Video Link Sent', 'Status', 'Follow-up Date', 'Notes'];
+    const headers = ['Business Name', 'Type', 'Location', 'Date Contacted', 'Contact Method', 'Email', 'Phone', 'Status', 'Follow-up Date', 'Notes'];
     const rows = prospects.map(p => [
       `"${p.businessName}"`,
       `"${p.type}"`,
       `"${p.location}"`,
       `"${p.dateContacted}"`,
       `"${p.contactMethod}"`,
-      `"${p.videoLinkSent}"`,
+      `"${p.email}"`,
+      `"${p.phone}"`,
       `"${p.status}"`,
       `"${p.followUpDate}"`,
       `"${p.notes}"`
@@ -415,7 +442,8 @@ export const ProspectTable: React.FC = () => {
             <tr>
               <th className="px-4 py-3">Business</th>
               <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Video Link</th>
+              <th className="px-4 py-3">Email</th>
+              <th className="px-4 py-3">Phone</th>
               <th className="px-4 py-3">Date</th>
               <th className="px-4 py-3">Notes</th>
               <th className="px-4 py-3">Actions</th>
@@ -447,9 +475,16 @@ export const ProspectTable: React.FC = () => {
                 </td>
                 <td className="px-4 py-3">
                   {isEditing === p.id ? (
-                    <input value={p.videoLinkSent} onChange={e => handleUpdateField(p.id, 'videoLinkSent', e.target.value)} className="bg-black/50 border border-white/20 rounded px-2 py-1 text-white w-full" placeholder="https://loom.com/..." />
+                    <input value={p.email || ''} onChange={e => handleUpdateField(p.id, 'email', e.target.value)} className="bg-black/50 border border-white/20 rounded px-2 py-1 text-white w-full" placeholder="Email" />
                   ) : (
-                    p.videoLinkSent ? <a href={p.videoLinkSent} target="_blank" rel="noreferrer" className="text-emerald-400 hover:underline">View Video</a> : <span className="text-[#aeb1b4] italic">Not sent</span>
+                    p.email || <span className="text-[#aeb1b4] italic">-</span>
+                  )}
+                </td>
+                <td className="px-4 py-3">
+                  {isEditing === p.id ? (
+                    <input value={p.phone || ''} onChange={e => handleUpdateField(p.id, 'phone', e.target.value)} className="bg-black/50 border border-white/20 rounded px-2 py-1 text-white w-full" placeholder="Phone" />
+                  ) : (
+                    p.phone || <span className="text-[#aeb1b4] italic">-</span>
                   )}
                 </td>
                 <td className="px-4 py-3">
@@ -478,7 +513,7 @@ export const ProspectTable: React.FC = () => {
             ))}
             {prospects.length === 0 && (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-[#aeb1b4]">
+                <td colSpan={7} className="px-4 py-8 text-center text-[#aeb1b4]">
                   No prospects yet. Add a lead to get started.
                 </td>
               </tr>
