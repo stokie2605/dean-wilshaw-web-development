@@ -10,6 +10,12 @@ interface MobileShowcaseProps {
 
 export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) => {
   const [activeModal, setActiveModal] = useState<number | null>(null);
+  const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
+
+  const toggleFlip = (idx: number, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFlippedCards(prev => ({...prev, [idx]: !prev[idx]}));
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -98,7 +104,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
                 onClick={() => setActiveModal(idx)}
               >
                 {/* 3D Flip Inner Container */}
-                <div className="w-full h-full relative transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] transform-gpu [transform-style:preserve-3d] group-hover/card:[transform:rotateY(180deg)_scale(1.05)]">
+                <div className={`w-full h-full relative transition-transform duration-700 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] transform-gpu [transform-style:preserve-3d] md:group-hover/card:[transform:rotateY(180deg)_scale(1.05)] ${flippedCards[idx] ? '[transform:rotateY(180deg)_scale(1.05)]' : ''}`}>
                   
                   {/* FRONT FACE */}
                   <div className="absolute inset-0 bg-[#111] rounded-[2.5rem] border-[8px] border-[#222] shadow-2xl overflow-hidden [backface-visibility:hidden]">
@@ -134,9 +140,22 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
               </div>
 
               {/* Trade Label */}
-              <div className="mt-8 text-center">
-                <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white mb-1">{trade.title}</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">{trade.name}</p>
+              <div className="mt-8 text-center flex flex-col items-center gap-2">
+                <div>
+                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white mb-1">{trade.title}</h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-400 font-medium">{trade.name}</p>
+                </div>
+                {/* Mobile Flip Button */}
+                <button 
+                  onClick={(e) => toggleFlip(idx, e)}
+                  className="md:hidden mt-2 px-4 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold rounded-full border border-slate-300 dark:border-slate-700 flex items-center gap-1.5 transition-colors"
+                >
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
+                    <path d="M21 3v5h-5" />
+                  </svg>
+                  Tap to Flip
+                </button>
               </div>
 
             </div>
