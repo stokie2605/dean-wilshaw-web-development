@@ -83,16 +83,19 @@ export default function App() {
         </div>
         <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
           <div className="bg-slate-50 dark:bg-slate-950">
-            <MobileShowcase onOpenQuote={handleOpenQuote} />
-          </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
-            <AboutSection />
-          </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
             <Portfolio onOpenQuote={handleOpenQuote} />
           </div>
           <div className="bg-slate-50 dark:bg-slate-950">
+            <MobileShowcase onOpenQuote={handleOpenQuote} />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <ServicesBento />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
             <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
+          </div>
+          <div className="bg-slate-50 dark:bg-slate-950">
+            <AboutSection />
           </div>
         </Suspense>
       </main>
