@@ -48,23 +48,6 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
 
   const projects = [
     {
-      industryLabel: 'EDUTECH & COMPETITOR AUDIT',
-      title: 'CE Con Ed — School IT Support',
-      subtitle: 'A modern UX rebuild and competitor market audit for a Hertfordshire school IT provider.',
-      uiFocus: 'Engineered with live SLA tracking widgets, plain-English service packages, and sub-second performance.',
-      desktopImage: '/mockups/con-ed-mockup.png',
-      mobileImage: '/mockups/con-ed-mockup.png',
-      modalTitle: 'CE Con Ed — Hertfordshire School IT Engine',
-      modalOverview: 'A complete strategic refresh translating complex school IT SLAs into high-trust, plain-English support portals for headteachers and school governors across Watford and Hertfordshire.',
-      features: [
-        'Comprehensive competitor & market audit across regional school IT providers',
-        'Interactive live support status widget (99.9% uptime & SLA tracking)',
-        'Plain-English service packages tailored specifically for KS1 & KS2 leadership',
-        'Sub-second React & Tailwind frontend architecture built for speed'
-      ],
-      badges: ['EduTech UX', 'Competitor Audit', 'React Architecture', 'Tailwind CSS']
-    },
-    {
       industryLabel: 'Emergency & Trades',
       title: 'Roadside Tactical 24/7',
       subtitle: 'Rapid Emergency Dispatch & Transport Platform',
@@ -139,19 +122,19 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
               <MagneticCard key={idx} onClick={() => setActiveModal(idx)}>
                 <div className="relative h-64 sm:h-72 w-full overflow-hidden flex items-center justify-center p-6 border-b border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-[#09090B]">
                   {/* Ambient Glows */}
-                  <div className={`absolute inset-0 blur-[80px] rounded-full w-48 h-48 top-1/2 transform -translate-y-1/2 mix-blend-screen opacity-50 group-hover:opacity-80 transition-opacity duration-700 ${idx === 0 ? 'bg-emerald-500/20 left-1/2 -translate-x-1/2' : idx === 1 ? 'bg-indigo-500/20 left-1/2 -translate-x-1/2' : 'bg-rose-500/20 left-1/2 -translate-x-1/2'}`}></div>
+                  <div className={`absolute inset-0 blur-[80px] rounded-full w-48 h-48 top-1/2 transform -translate-y-1/2 mix-blend-screen opacity-50 group-hover:opacity-80 transition-opacity duration-700 ${idx === 0 ? 'bg-indigo-500/20 left-1/2 -translate-x-1/2' : idx === 1 ? 'bg-rose-500/20 left-1/2 -translate-x-1/2' : 'bg-amber-500/20 left-1/2 -translate-x-1/2'}`}></div>
                   
                   {/* Badges */}
                   <div className="absolute top-6 right-6 z-20 bg-white/90 dark:bg-[#09090B]/80 backdrop-blur-md border border-slate-200 dark:border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg group-hover:translate-y-0 translate-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
                     <span className="text-emerald-500 dark:text-emerald-400 text-xs">⚡</span>
-                    <span className="font-mono text-slate-900 dark:text-white text-xs font-medium">{idx === 1 ? '98+' : idx === 2 ? '92+' : '95+'} Score</span>
+                    <span className="font-mono text-slate-900 dark:text-white text-xs font-medium">{idx === 0 ? '98+' : idx === 1 ? '92+' : '95+'} Score</span>
                   </div>
                   
                   {/* Device Mockups container */}
                   <div className="relative w-full max-w-sm h-full flex items-center justify-center z-10 floating">
                     {/* Main Device (MacBook / iPad) */}
-                    {idx === 2 ? (
-                      // iPad for the 3rd card to vary it up slightly
+                    {idx === 1 ? (
+                      // iPad for the 2nd card (Enterprise Logistics)
                       <div className="absolute w-48 h-64 bg-[#111] rounded-2xl border-[4px] border-[#333] shadow-2xl overflow-hidden -ml-8 transform group-hover:rotate-2 group-hover:scale-105 transition-all duration-500 ease-out z-10">
                         <div className="w-full h-full bg-[#050505] relative overflow-hidden">
                           <img src={project.desktopImage} alt={`${project.title} iPad`} className="w-full h-full object-cover object-top opacity-90" />
