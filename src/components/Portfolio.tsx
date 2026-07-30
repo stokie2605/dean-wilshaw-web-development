@@ -49,31 +49,31 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
   const projects = [
     {
       industryLabel: 'Emergency & Trades',
-      title: 'Vanguard Roadside Recovery',
+      title: 'Roadside Tactical 24/7',
       subtitle: 'Rapid Emergency Dispatch & Transport Platform',
-      uiFocus: 'Engineered for high-contrast visibility, sub-second 4G mobile rendering, and instant 1-tap emergency call routing.',
+      uiFocus: 'Engineered for high-contrast safety UI, sub-second 4G rendering, and 24/7 urgent dispatch call routing.',
       desktopImage: '/mockups/vanguard-desktop.png',
       mobileImage: '/mockups/vanguard-mobile.png',
-      modalOverview: 'A high-converting emergency response platform built with a bold dark industrial theme and vibrant safety-amber accents. Engineered for 24/7 roadside recovery dispatch and fleet transport scheduling.',
+      modalOverview: 'A high-converting emergency response platform built with a bold dark industrial theme. Engineered for maximum speed with sub-second 4G rendering and live fleet tracking capabilities.',
       features: [
-        'Emergency dispatch call routing',
-        'Mobile roadside request flow',
-        'Fleet transfer booking',
-        'Clear service breakdowns'
+        'Sub-second 4G mobile rendering',
+        '24/7 urgent dispatch call routing',
+        'Live fleet data tracking',
+        'High-contrast safety UI'
       ],
       badges: ['Mobile-First UI/UX', 'High-Conversion Design', 'Tailwind CSS', 'Emergency Dispatch UI']
     },
     {
       industryLabel: 'B2B Logistics & Corporate',
-      title: 'Cheshire Apex Logistics',
+      title: 'Enterprise Logistics Portal',
       subtitle: 'Secure Client Portal & Enterprise Routing',
-      uiFocus: 'Built for enterprise reliability, featuring secure client portal routing and structured data-driven UX.',
+      uiFocus: 'Built for enterprise reliability, featuring optimized & secure B2B client login and data-driven dashboards.',
       desktopImage: '/mockups/apex-desktop.png',
       mobileImage: '/mockups/apex-mobile.png',
-      modalOverview: 'A professional B2B portal designed for logistics and transport corporations. Features a clean, data-first interface for tracking fleet schedules and managing corporate accounts.',
+      modalOverview: 'A professional B2B portal designed for logistics corporations. Features a clean, data-first interface focusing on real-time fleet routing and secure enterprise access.',
       features: [
-        'Secure client login portal',
-        'Fleet routing overview',
+        'Optimized & secure B2B client login',
+        'Real-time fleet routing overview',
         'Data-driven dashboards',
         'Corporate B2B lead capture'
       ],
@@ -83,15 +83,15 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       industryLabel: 'Local Retail & Hospitality',
       title: 'The Kiln & Craft Artisan Market',
       subtitle: 'Community Event Platform & Producer Showcase',
-      uiFocus: 'Designed for high-traffic weekend browsing with warm, inviting typography and frictionless event navigation.',
+      uiFocus: 'Designed with a handcrafted community feel, highlighting featured stallholders and zero-mile branding.',
       desktopImage: '/mockups/kiln-desktop.png',
       mobileImage: '/mockups/kiln-mobile.png',
-      modalOverview: 'A vibrant community-focused portal designed for local produce markets and artisan retail. Highlights independent producers, seasonal events, and frictionless weekend navigation.',
+      modalOverview: 'A vibrant community-focused portal designed for local produce markets and artisan retail. Emphasizes a handcrafted aesthetic with deep roots in local zero-mile branding.',
       features: [
-        'Stallholder showcases',
-        'Live event schedule',
-        'Interactive weekend maps',
-        'Clean mobile navigation'
+        'Handcrafted community feel',
+        'Featured stallholder showcases',
+        'Live event schedules',
+        'Zero-mile branding'
       ],
       badges: ['Community Platform', 'Event Scheduling', 'Clean Typography', 'Zero-Mile Branding']
     }
@@ -103,13 +103,13 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
         
         <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
           <span className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-semibold mb-3 bg-emerald-500/10 px-4 py-1.5 rounded-full border border-emerald-500/20">
-            Precision Engineered
+            BUILT FROM THE GROUND UP
           </span>
           <h2 className="font-geist font-bold text-4xl sm:text-5xl text-slate-900 dark:text-white mb-6 tracking-tight">
-            A showcase of high-performance digital solutions.
+            A showcase of custom web engines built for real business growth.
           </h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-2xl text-lg leading-relaxed">
-            Built for elite brands and enterprise platforms.
+            Designed and coded directly by a performance web specialist.
           </p>
         </div>
 

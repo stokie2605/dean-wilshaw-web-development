@@ -27,7 +27,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
 
   const trades = [
     {
-      title: 'Emergency Plumbing',
+      title: 'RapidRepair 24/7 Dispatch',
       name: 'RapidRepair 24/7',
       component: <PlumberMockup />,
       altImage: '/mockups/plumber-mobile-dark.png',
@@ -41,7 +41,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       badges: ['Mobile-First UI', 'Tap-To-Call', 'High Conversion', 'Tailwind CSS']
     },
     {
-      title: 'Premium Roofing',
+      title: 'Armor Roofing Premium Showcase',
       name: 'Armor Roofing',
       component: <RooferMockup />,
       altImage: '/mockups/roofer-mobile-light.png',
@@ -55,7 +55,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       badges: ['Dark Mode', 'Trust Signals', 'Project Gallery', 'Responsive UX']
     },
     {
-      title: 'Bespoke Landscaping',
+      title: 'Lumen Stone Landscaping',
       name: 'Lumen Stone',
       component: <LandscaperMockup />,
       altImage: '/mockups/landscaper-mobile-dark.png',

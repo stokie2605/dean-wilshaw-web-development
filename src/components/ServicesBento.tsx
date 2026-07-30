@@ -21,16 +21,15 @@ const SERVICES: ServiceDetail[] = [
     badge: 'Mobile Optimized',
     icon: <Gauge className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'smartphone',
-    description: 'Over 80% of your customers will look you up on their phone. I build sites that look perfect on all iPhones and Androids.',
+    description: '',
     tags: ['MOBILE', 'FAST', 'EASY TO USE'],
     features: [
-      'Looks perfect on iPhones & Androids',
-      'Loads instantly so people don\'t click away',
-      'Big, clear phone numbers that are easy to tap',
-      'Simple navigation for all your customers'
+      'Sub-second mobile loading speeds',
+      'Hand-crafted React responsive layout',
+      'Flawless display across iOS & Android'
     ],
-    techStack: 'Professional responsive design that automatically adapts to any screen size.',
-    roiImpact: 'Stops you losing customers who click away from slow, broken mobile sites.'
+    techStack: '',
+    roiImpact: ''
   },
   {
     id: 'more-calls',
@@ -38,16 +37,15 @@ const SERVICES: ServiceDetail[] = [
     badge: 'More Leads',
     icon: <TrendingUp className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'trending_up',
-    description: 'A website should be your best salesperson. I design layouts that convince local people to stop browsing and call you for a quote.',
+    description: '',
     tags: ['CALLS', 'WHATSAPP', 'QUOTES'],
     features: [
-      'Clear "Call Now" and "Get Quote" buttons',
-      'WhatsApp integration built straight in',
-      'Clean contact forms that actually send to your email',
-      'Highlights your local coverage area (Cheshire/Stoke)'
+      'Sticky tap-to-call action buttons',
+      'Instant WhatsApp lead routing',
+      'Frictionless mobile quote forms'
     ],
-    techStack: 'Simple, direct contact methods built right into the design.',
-    roiImpact: 'Turns your website from a digital business card into a machine that gets you jobs.'
+    techStack: '',
+    roiImpact: ''
   },
   {
     id: 'google-ready',
@@ -55,33 +53,31 @@ const SERVICES: ServiceDetail[] = [
     badge: 'Local Search',
     icon: <Search className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'search',
-    description: 'I build websites the way Google likes them, helping you show up when local people search for "Roofer near me" or "Plumber in Stoke".',
+    description: '',
     tags: ['GOOGLE', 'LOCAL', 'SEO'],
     features: [
-      'Properly set up to rank in local Google searches',
-      'Helps people find you when they search your trade locally',
-      'Connected to your Google Business Profile',
-      'Fast, clean code that Google loves to reward'
+      'Built for local SEO & search ranking',
+      'Clean semantic HTML architecture',
+      'Structured local Schema markup'
     ],
-    techStack: 'Built from scratch to meet all of Google\'s modern requirements.',
-    roiImpact: 'Gets you in front of people actively looking to hire a tradesman today.'
+    techStack: '',
+    roiImpact: ''
   },
   {
     id: 'zero-stress',
-    title: 'Zero Stress, Zero Hidden Fees',
+    title: '100% Code Ownership',
     badge: 'Honest Pricing',
     icon: <Layers className="w-6 h-6 text-slate-900 dark:text-white" />,
     bgIconName: 'handshake',
-    description: 'I am a local freelancer, not a massive agency. I give you one clear price, talk in plain English, and don\'t trap you in monthly contracts.',
+    description: '',
     tags: ['HONEST', 'LOCAL', 'NO TRAPS'],
     features: [
-      'One clear price upfront, no surprise monthly bills',
-      'You own the website forever',
-      'Includes professional domain and email setup if needed',
-      'Direct communication with me on WhatsApp anytime'
+      'Zero proprietary template lock-ins',
+      'Direct, 1-on-1 developer support',
+      'Optional £40/mo maintenance & care'
     ],
-    techStack: 'No expensive recurring software subscriptions required.',
-    roiImpact: 'Saves you money and stops the headache of dealing with faceless agencies.'
+    techStack: '',
+    roiImpact: ''
   }
 ];
 
@@ -111,8 +107,7 @@ export const ServicesBento: React.FC = () => {
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              onClick={() => setSelectedService(service)}
-              className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 rounded-2xl p-6 shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden cursor-pointer"
+              className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 rounded-2xl p-6 shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden"
             >
               {/* Background Icon Watermark */}
               <div className="absolute top-2 right-2 p-2 pointer-events-none">
@@ -127,16 +122,20 @@ export const ServicesBento: React.FC = () => {
                   {service.icon}
                 </div>
 
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-geist font-bold text-lg text-slate-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-500 transition-colors">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-geist font-bold text-lg text-slate-900 dark:text-white transition-colors">
                     {service.title}
                   </h3>
-                  <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-red-600 dark:group-hover:text-red-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </div>
 
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                  {service.description}
-                </p>
+                <ul className="space-y-3 mb-6">
+                  {service.features.map((feat, i) => (
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+                      <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                      <span className="leading-relaxed">{feat}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               {/* Footer Tags */}
@@ -154,70 +153,7 @@ export const ServicesBento: React.FC = () => {
           ))}
         </div>
 
-        {/* Interactive Detail Modal */}
-        {selectedService && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-lg w-full p-6 shadow-2xl relative space-y-5">
-              
-              <button
-                onClick={() => setSelectedService(null)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
 
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-red-500/10 text-red-600 dark:text-red-500 rounded-lg flex items-center justify-center border border-red-500/20">
-                  {selectedService.icon}
-                </div>
-                <div>
-                  <span className="text-[10px] font-mono uppercase bg-red-500/10 text-red-600 dark:text-red-500 px-2 py-0.5 rounded font-bold border border-red-500/20">
-                    {selectedService.badge}
-                  </span>
-                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white">{selectedService.title}</h3>
-                </div>
-              </div>
-
-              <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">{selectedService.description}</p>
-
-              <div className="space-y-2">
-                <p className="text-xs font-bold uppercase text-slate-900 dark:text-white tracking-wider font-mono">Key Features Included:</p>
-                <ul className="space-y-2">
-                  {selectedService.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
-                      <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                      <span>{feat}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-200 dark:border-slate-700 text-xs space-y-1">
-                <p className="font-semibold text-slate-900 dark:text-white">Tech Stack &amp; Implementation:</p>
-                <p className="text-slate-600 dark:text-slate-400 font-mono">{selectedService.techStack}</p>
-              </div>
-
-              <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/30 rounded-lg text-xs text-emerald-900 dark:text-emerald-400 space-y-1">
-                <p className="font-bold">Business ROI &amp; Conversion Impact:</p>
-                <p>{selectedService.roiImpact}</p>
-              </div>
-
-              <div className="flex gap-2 pt-2">
-                <button
-                  onClick={() => {
-                    setSelectedService(null);
-                    const form = document.getElementById('contact');
-                    if (form) form.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  className="w-full bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 py-2.5 rounded-lg text-xs font-semibold text-center transition-colors"
-                >
-                  Request This Solution
-                </button>
-              </div>
-
-            </div>
-          </div>
-        )}
 
       </div>
     </section>
