@@ -52,8 +52,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       title: 'Roadside Tactical 24/7',
       subtitle: 'Rapid Emergency Dispatch & Transport Platform',
       uiFocus: 'Engineered for high-contrast safety UI, sub-second 4G rendering, and 24/7 urgent dispatch call routing.',
-      desktopImage: '/mockups/vanguard-desktop.png',
-      mobileImage: '/mockups/vanguard-mobile.png',
+      desktopImage: '/mockups/bs-logistic.webp',
+      mobileImage: '/mockups/bs-logistic.webp',
       modalOverview: 'A high-converting emergency response platform built with a bold dark industrial theme. Engineered for maximum speed with sub-second 4G rendering and live fleet tracking capabilities.',
       features: [
         'Sub-second 4G mobile rendering',
@@ -68,8 +68,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       title: 'Enterprise Logistics Portal',
       subtitle: 'Secure Client Portal & Enterprise Routing',
       uiFocus: 'Built for enterprise reliability, featuring optimized & secure B2B client login and data-driven dashboards.',
-      desktopImage: '/mockups/apex-desktop.png',
-      mobileImage: '/mockups/apex-mobile.png',
+      desktopImage: '/mockups/apex-desktop.webp',
+      mobileImage: '/mockups/apex-mobile.webp',
       modalOverview: 'A professional B2B portal designed for logistics corporations. Features a clean, data-first interface focusing on real-time fleet routing and secure enterprise access.',
       features: [
         'Optimized & secure B2B client login',
@@ -84,8 +84,8 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
       title: 'The Kiln & Craft Artisan Market',
       subtitle: 'Community Event Platform & Producer Showcase',
       uiFocus: 'Designed with a handcrafted community feel, highlighting featured stallholders and zero-mile branding.',
-      desktopImage: '/mockups/kiln-desktop.png',
-      mobileImage: '/mockups/kiln-mobile.png',
+      desktopImage: '/mockups/kiln-desktop.webp',
+      mobileImage: '/mockups/kiln-mobile.webp',
       modalOverview: 'A vibrant community-focused portal designed for local produce markets and artisan retail. Emphasizes a handcrafted aesthetic with deep roots in local zero-mile branding.',
       features: [
         'Handcrafted community feel',
@@ -137,7 +137,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                       // iPad for the 2nd card (Enterprise Logistics)
                       <div className="absolute w-48 h-64 bg-[#111] rounded-2xl border-[4px] border-[#333] shadow-2xl overflow-hidden -ml-8 transform group-hover:rotate-2 group-hover:scale-105 transition-all duration-500 ease-out z-10">
                         <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                          <img src={project.desktopImage} alt={`${project.title} iPad`} className="w-full h-full object-cover object-top opacity-90" />
+                          <img src={project.desktopImage} alt={`${project.title} iPad`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                         </div>
                       </div>
@@ -148,7 +148,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                           <div className="w-1 h-1 bg-[#444] rounded-full"></div>
                         </div>
                         <div className="flex-grow bg-[#0a0a0a] relative overflow-hidden">
-                          <img src={project.desktopImage} alt={`${project.title} Desktop`} className="w-full h-full object-cover object-top opacity-90" />
+                          <img src={project.desktopImage} alt={`${project.title} Desktop`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
                         </div>
                         <div className="w-full h-2 bg-[#2a2a2a] rounded-b-md border-t border-[#444]"></div>
@@ -161,7 +161,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                         <div className="w-8 h-3 bg-[#111] rounded-b-lg border-b border-l border-r border-[#333]"></div>
                       </div>
                       <div className="w-full h-full bg-[#050505] relative overflow-hidden">
-                        <img src={project.mobileImage} alt={`${project.title} Mobile`} className="w-full h-full object-cover object-top opacity-90" />
+                        <img src={project.mobileImage} alt={`${project.title} Mobile`} width={400} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top opacity-90" />
                         <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent pointer-events-none"></div>
                       </div>
                     </div>

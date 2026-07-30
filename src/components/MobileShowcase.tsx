@@ -30,7 +30,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       title: 'RapidRepair 24/7 Dispatch',
       name: 'RapidRepair 24/7',
       component: <PlumberMockup />,
-      altImage: '/mockups/plumber-mobile-dark.png',
+      altImage: '/mockups/plumber-mobile-dark.webp',
       modalOverview: 'A high-converting mobile interface designed specifically for emergency plumbing services. Features sub-second loading and instant tap-to-call routing to capture desperate leads instantly.',
       features: [
         'Prominent click-to-call buttons',
@@ -44,7 +44,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       title: 'Armor Roofing Premium Showcase',
       name: 'Armor Roofing',
       component: <RooferMockup />,
-      altImage: '/mockups/roofer-mobile-light.png',
+      altImage: '/mockups/roofer-mobile-light.webp',
       modalOverview: 'A premium, trust-building mobile showcase designed for high-ticket trades. Features a sleek dark mode aesthetic with vibrant trust indicators and a built-in project gallery.',
       features: [
         'Trust-building dark mode UI',
@@ -58,7 +58,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       title: 'Lumen Stone Landscaping',
       name: 'Lumen Stone',
       component: <LandscaperMockup />,
-      altImage: '/mockups/landscaper-mobile-dark.png',
+      altImage: '/mockups/landscaper-mobile-dark.webp',
       modalOverview: 'An elegant, earthy mobile interface designed for bespoke landscaping and driveway specialists. Uses clean typography and a visual service selector to guide users to book a consultation.',
       features: [
         'Visual service selector grid',
@@ -133,7 +133,7 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
                     </div>
                     {/* Screen Content */}
                     <div className="absolute inset-0 bg-black overflow-hidden pointer-events-none rounded-b-[1.8rem] pt-3">
-                      <img src={trade.altImage} alt={`${trade.title} Alt Theme`} className="w-full h-full object-cover object-top" />
+                      <img src={trade.altImage} alt={`${trade.title} Alt Theme`} width={400} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />
                       {/* Glass Reflection */}
                       <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/5 to-white/10 opacity-100 pointer-events-none"></div>
                     </div>

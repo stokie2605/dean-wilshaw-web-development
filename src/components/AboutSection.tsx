@@ -26,7 +26,7 @@ export const AboutSection: React.FC = () => {
             onClick={handleAvatarClick}
             className="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm relative group hover:border-red-600 dark:hover:border-red-500 transition-all w-full aspect-square sm:aspect-auto sm:h-full min-h-[300px] cursor-pointer"
           >
-            <img src="/avatar-cartoon.webp" alt="Dean Wilshaw" className="w-full h-full object-cover" loading="lazy" />
+            <img src="/avatar-cartoon.webp" alt="Dean Wilshaw" width={600} height={600} loading="lazy" decoding="async" className="w-full h-full object-cover" />
           </div>
 
           {/* Floating Badge */}
