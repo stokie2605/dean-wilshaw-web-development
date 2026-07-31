@@ -326,6 +326,71 @@ const defaultProspects: Prospect[] = [
     status: 'Pending',
     followUpDate: '',
     notes: '[PRIORITY: HIGH] Elite dental clinic. Target for custom patient onboarding web app.'
+  },
+  {
+    id: '25',
+    businessName: 'Bee Scaffolding Manchester',
+    type: 'Scaffolding',
+    location: 'Manchester',
+    dateContacted: '',
+    contactMethod: '',
+    email: '',
+    phone: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Trades target. Needs mobile speed audit for 4G contractor call-outs.'
+  },
+  {
+    id: '26',
+    businessName: 'Base Scaffolding Services',
+    type: 'Scaffolding',
+    location: 'Manchester',
+    dateContacted: '',
+    contactMethod: '',
+    email: '',
+    phone: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] B2B Trades target.'
+  },
+  {
+    id: '27',
+    businessName: 'Stoke Plant Hire',
+    type: 'Heavy Machinery',
+    location: 'Stoke-on-Trent',
+    dateContacted: '',
+    contactMethod: '',
+    email: '',
+    phone: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: HIGH] Plant hire for construction. Target mobile load speeds for on-site managers.'
+  },
+  {
+    id: '28',
+    businessName: 'Instant Tool and Plant Hire',
+    type: 'B2B Equipment',
+    location: 'Newcastle-under-Lyme',
+    dateContacted: '',
+    contactMethod: '',
+    email: '',
+    phone: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: MEDIUM] Staffordshire/Cheshire multi-location plant hire.'
+  },
+  {
+    id: '29',
+    businessName: 'Clee Hill Plant Hire',
+    type: 'B2B Equipment',
+    location: 'Stoke-on-Trent',
+    dateContacted: '',
+    contactMethod: '',
+    email: '',
+    phone: '',
+    status: 'Pending',
+    followUpDate: '',
+    notes: '[PRIORITY: MEDIUM] B2B Equipment hire.'
   }
 ];
 
@@ -384,6 +449,14 @@ export const ProspectTable: React.FC = () => {
     };
     saveToStorage([newProspect, ...prospects]);
     setIsEditing(newProspect.id);
+  };
+
+  const handleDeleteProspect = (id: string) => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this lead?');
+    if (confirmDelete) {
+      const updated = prospects.filter(p => p.id !== id);
+      saveToStorage(updated);
+    }
   };
 
   const exportCSV = () => {
@@ -502,12 +575,20 @@ export const ProspectTable: React.FC = () => {
                   )}
                 </td>
                 <td className="px-4 py-3">
-                  <button 
-                    onClick={() => isEditing === p.id ? setIsEditing(null) : setIsEditing(p.id)}
-                    className="text-[#aeb1b4] hover:text-white transition-colors"
-                  >
-                    {isEditing === p.id ? 'Save' : 'Edit'}
-                  </button>
+                  <div className="flex gap-2 items-center">
+                    <button 
+                      onClick={() => isEditing === p.id ? setIsEditing(null) : setIsEditing(p.id)}
+                      className="text-[#aeb1b4] hover:text-white transition-colors"
+                    >
+                      {isEditing === p.id ? 'Save' : 'Edit'}
+                    </button>
+                    <button 
+                      onClick={() => handleDeleteProspect(p.id)}
+                      className="text-red-500/70 hover:text-red-500 transition-colors text-xs ml-2"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
