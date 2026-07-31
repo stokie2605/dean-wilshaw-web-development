@@ -14,7 +14,39 @@ export interface Prospect {
   notes: string;
 }
 
-const defaultProspects: Prospect[] = [];
+const defaultProspects: Prospect[] = [
+  // Wealth Management
+  { id: '1', businessName: 'Dunham Wealth', type: 'Wealth Management', location: 'Altrincham', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. Needs sub-second Financial Dashboard aesthetic.' },
+  { id: '2', businessName: 'Blue Circle Wealth Management', type: 'Wealth Management', location: 'Wilmslow', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. Golden Triangle location.' },
+  { id: '3', businessName: 'Apogee Wealth Management', type: 'Wealth Management', location: 'Knutsford', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. Target with Navy Blue/Gold Prestige mockup.' },
+  { id: '4', businessName: 'Chronos Wealth Management', type: 'Wealth Management', location: 'Altrincham', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Flawless mobile rendering needed for older wealthy clients.' },
+  
+  // Luxury Automotive
+  { id: '5', businessName: 'Trevor Farrington Ltd', type: 'Classic Car Restoration', location: 'Knutsford', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. E-Types & Rolls Royce. Needs ultra-fast image loading.' },
+  { id: '6', businessName: 'JMH Automotive Ltd', type: 'Specialist Automotive', location: 'Holmes Chapel', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. Ferrari/Porsche specialists.' },
+  { id: '7', businessName: 'DAP Cars', type: 'Luxury Automotive', location: 'Nether Alderley', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Pitch dark-mode Performance UI.' },
+  { id: '8', businessName: 'FocusFive Autoworks', type: 'Classic Restoration', location: 'Cheshire', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Perfect for premium video-background hero.' },
+
+  // Property & Surveyors
+  { id: '9', businessName: 'Millar Sandy', type: 'Commercial Surveyors', location: 'Stafford', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Mobile property listings need to load in sub-seconds.' },
+  { id: '10', businessName: 'Croft Architecture', type: 'Architects', location: 'Stafford', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Portfolio needs to load flawlessly during pitch meetings.' },
+  { id: '11', businessName: 'Rushton Hickman', type: 'Commercial Agency', location: 'Staffordshire', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Frictionless B2B Lead Capture.' },
+  { id: '12', businessName: 'LK Luxury Landscapers', type: 'Luxury Landscaping', location: 'Alderley Edge', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. High-end Cheshire postcodes.' },
+  { id: '13', businessName: 'Cheshire Bespoke Building Ltd', type: 'Bespoke Builders', location: 'Macclesfield', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. High-ticket extensions and custom builds.' },
+  { id: '14', businessName: 'Kimble Roden Architects', type: 'Architects', location: 'Alderley Edge', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. Super homes architects.' },
+
+  // Healthcare
+  { id: '15', businessName: 'Globe Dental Practice', type: 'Private Dentist', location: 'Nantwich', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. High-conversion mobile booking needed.' },
+  { id: '16', businessName: 'Crown Bank Dental', type: 'Private Dentist', location: 'Sandbach', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. Specialist Implant Clinic.' },
+  { id: '17', businessName: 'The Nantwich Clinic', type: 'Private Clinic', location: 'Nantwich', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '10/10 Priority. Multi-specialty.' },
+
+  // Engineering & Logistics
+  { id: '18', businessName: 'Glebe Engineering', type: 'Precision Engineering', location: 'Stoke-on-Trent', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Deals with motorsport/aerospace.' },
+  { id: '19', businessName: 'Beagle Engineering', type: 'Precision Engineering', location: 'Stoke-on-Trent', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Aerospace / Defence Machining.' },
+  { id: '20', businessName: 'Lingl UK', type: 'Manufacturing', location: 'Congleton', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '9/10 Priority. Massive B2B scale.' },
+  { id: '21', businessName: 'Boughey Logistics', type: 'Logistics', location: 'Crewe', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '8/10 Priority. Target for corporate B2B digital transformation.' },
+  { id: '22', businessName: 'Chris Bennett (Heavy Haulage) Ltd', type: 'Logistics', location: 'Stoke-on-Trent', dateContacted: '', contactMethod: '', email: '', phone: '', status: 'Pending', followUpDate: '', notes: '8/10 Priority. FORS Gold accredited.' }
+];
 
 export const ProspectTable: React.FC = () => {
   const [prospects, setProspects] = useState<Prospect[]>([]);
@@ -22,27 +54,27 @@ export const ProspectTable: React.FC = () => {
 
   // Load from LocalStorage
   useEffect(() => {
-    const saved = localStorage.getItem('dw_crm_v2');
+    const saved = localStorage.getItem('dw_crm_v3');
     if (saved) {
       const parsed = JSON.parse(saved);
       const newProspects = defaultProspects.filter(dp => !parsed.some((p: Prospect) => p.id === dp.id || p.businessName === dp.businessName));
       if (newProspects.length > 0) {
         const merged = [...parsed, ...newProspects];
         setProspects(merged);
-        localStorage.setItem('dw_crm_v2', JSON.stringify(merged));
+        localStorage.setItem('dw_crm_v3', JSON.stringify(merged));
       } else {
         setProspects(parsed);
       }
     } else {
       setProspects(defaultProspects);
-      localStorage.setItem('dw_crm_v2', JSON.stringify(defaultProspects));
+      localStorage.setItem('dw_crm_v3', JSON.stringify(defaultProspects));
     }
   }, []);
 
   // Save to LocalStorage
   const saveToStorage = (data: Prospect[]) => {
     setProspects(data);
-    localStorage.setItem('dw_crm_v2', JSON.stringify(data));
+    localStorage.setItem('dw_crm_v3', JSON.stringify(data));
   };
 
   const handleStatusChange = (id: string, newStatus: Prospect['status']) => {
