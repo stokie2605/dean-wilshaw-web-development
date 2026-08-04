@@ -91,7 +91,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
   return (
     <aside
       id="chatbot-container"
-      className="fixed right-3 sm:right-6 bottom-3 sm:bottom-6 z-50 w-[calc(100vw-24px)] sm:w-80 md:w-96 rounded-xl overflow-hidden border border-[#c6c6cd] shadow-2xl bg-white flex flex-col h-[480px] sm:h-[520px] transition-all animate-fadeIn"
+      className="fixed right-3 sm:right-6 bottom-[4.5rem] sm:bottom-6 z-50 w-[calc(100vw-24px)] sm:w-80 md:w-96 rounded-xl overflow-hidden border border-[#c6c6cd] shadow-2xl bg-white flex flex-col h-[480px] sm:h-[520px] transition-all animate-fadeIn"
     >
       {/* Chat Header */}
       <div className="bg-[#111111] p-3.5 sm:p-4 flex items-center justify-between border-b border-[#c6c6cd]/30 shrink-0 text-white">
