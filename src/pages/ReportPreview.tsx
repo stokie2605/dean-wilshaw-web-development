@@ -14,6 +14,16 @@ export function ReportPreview() {
   }, [slug]);
 
   const businessName = slug ? slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Your Business';
+  
+  // Use a simulated score since it's a preview shell
+  const score = 32;
+  
+  const calculateEnquiryLoss = (auditScore: number) => {
+    if (auditScore >= 90) return { status: 'Optimized', range: null };
+    if (auditScore >= 50) return { status: 'At Risk', range: '4–7' };
+    return { status: 'Critical', range: '8–12' };
+  };
+  const { range } = calculateEnquiryLoss(score);
 
   return (
     <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-rose-500/30 relative pb-24">
@@ -56,12 +66,21 @@ export function ReportPreview() {
                <div className="flex flex-col md:flex-row items-center gap-10 relative z-10">
                  {/* Score */}
                  <div className="relative w-40 h-40 flex flex-col items-center justify-center bg-[#161B22] rounded-full border-2 border-rose-500 shadow-[0_0_40px_rgba(244,63,94,0.2)] flex-shrink-0 mx-auto md:mx-0">
-                   <div className="text-5xl font-black text-rose-500 mb-1">32</div>
+                   <div className="text-5xl font-black text-rose-500 mb-1">{score}</div>
                    <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">/100</div>
                  </div>
 
                  {/* Stats */}
                  <div className="flex-1 space-y-4">
+                   {range && (
+                     <div className="bg-rose-500/10 border border-rose-500/20 p-5 rounded-2xl flex items-center justify-between shadow-sm mb-4">
+                       <div>
+                         <div className="text-rose-400 font-bold mb-1">Enquiry Loss Volume</div>
+                         <div className="text-slate-400 text-xs font-medium">Due to mobile drop-off rates</div>
+                       </div>
+                       <div className="text-xl font-black text-rose-500 drop-shadow-sm">Est. {range} Missed Enquiries/mo</div>
+                     </div>
+                   )}
                    <div className="flex items-start gap-4 bg-slate-900/50 p-5 rounded-2xl border border-slate-800/50">
                      <Clock className="w-6 h-6 text-rose-400 flex-shrink-0 mt-1" />
                      <div>
@@ -81,7 +100,7 @@ export function ReportPreview() {
             </div>
 
             {/* The Pitch */}
-            <div className="bg-[#0B0F17] rounded-3xl border border-slate-800 p-8 text-center relative overflow-hidden">
+            <div className="bg-[#0B0F17] rounded-3xl border border-slate-800 p-8 text-center relative overflow-hidden mt-8">
               <div className="absolute -left-10 -bottom-10 w-40 h-40 bg-rose-500/10 rounded-full blur-3xl"></div>
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold mb-4 text-white">Stop Losing Leads to Competitors</h3>
