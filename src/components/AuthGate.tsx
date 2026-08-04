@@ -23,7 +23,7 @@ export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) 
     } else {
       setError(true);
       setPin('');
-      // After a short delay, we could optionally redirect to home,
+      // After a short delay, I could optionally redirect to home,
       // but keeping them here lets them retry.
     }
   };

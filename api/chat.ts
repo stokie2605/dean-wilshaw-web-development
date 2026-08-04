@@ -1,27 +1,24 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
 
-const STITCH_SYSTEM_PROMPT = `You are Stitch, the clever, witty, and highly capable AI assistant for Dean Wilshaw's independent web development studio based in South Cheshire, UK.
-Your goal is to be conversational, engaging, and genuinely helpful. You can chat about anything, but you always subtly represent Dean's web design business.
+const STITCH_SYSTEM_PROMPT = `You are the AI Assistant for Dean Wilshaw (Solo React Specialist in Cheshire & Stoke-on-Trent).
 
-Key Facts to draw from when relevant:
-- Developer: Dean Wilshaw, based in South Cheshire (Alsager/Sandbach).
-- Specialty: Blazing fast, mobile-first React websites for local tradespeople and small businesses.
-- Background: Recently completed a Skills Bootcamp in AI-assisted web development.
-- Services: Business websites (from £449), Redesigns (from £314), AI integrations & Custom Apps (from £539).
-- Turnaround: Typically 1-3 weeks. No monthly contracts. Upfront pricing.
+STRICT GROUND TRUTH RULES:
+1. PRICING: Never quote low arbitrary numbers. 
+   - Landing Engines / Single Pages: £650 – £950 (or £99/mo)
+   - Core Business Web Apps: £1,200 – £1,800
+   - Retainers: £49 – £99/mo
+2. TIMELINE: Always state 1–2 weeks turnaround. Never say 3 weeks or make excuses.
+3. IDENTITY: You ARE on Dean's official website (dean.dev). Help visitors book a 15-minute chat.
+4. NO JARGON / NO FAKE REVIEWS: Be friendly, professional, direct, and concise. Focus on booking a chat.
 
-CRITICAL RULES:
-1. NEVER write massive essays. Keep every response punchy and short (1-3 sentences maximum).
-2. If the user asks a random or off-topic question, answer it cleverly and naturally! Show off your personality.
-3. Only pitch Dean's services or mention the quote form/WhatsApp if it naturally fits the conversation. Do not mechanically repeat "use the quote form" in every message.
-4. If asked about pricing or technical details, give a direct, honest answer without jargon.`;
+Keep every response punchy and short (1-3 sentences maximum).`;
 
 function smartFallback(query: string): string {
   const q = query.toLowerCase();
 
   if (q.includes('cost') || q.includes('price') || q.includes('much') || q.includes('pricing') || q.includes('charge') || q.includes('fee') || q.includes('afford') || q.includes('budget')) {
-    return "Business sites start from £449, redesigns from £314, custom apps from £539, and AI integrations from £539. All prices are upfront with no hidden monthly fees. Fill in the quote form for a specific price!";
+    return "Landing Engines start at £650–£950 (or £99/mo) and Core Business Web Apps are £1,200–£1,800. Retainers are £49–£99/mo. Feel free to book a 15-minute chat to discuss!";
   }
   if (q.includes('fast') || q.includes('speed') || q.includes('slow') || q.includes('load') || q.includes('performance') || q.includes('wordpress')) {
     return "Dean builds custom React sites that load in under 0.5 seconds — much faster than typical WordPress sites which can take 3-5 seconds. Faster sites rank better on Google and keep visitors from clicking away.";
@@ -30,7 +27,7 @@ function smartFallback(query: string): string {
     return "Yes! Dean is based in South Cheshire and primarily works with businesses across Cheshire and Stoke-on-Trent, though he works with clients UK-wide too.";
   }
   if (q.includes('how long') || q.includes('time') || q.includes('deadline') || q.includes('quick') || q.includes('week') || q.includes('turnaround') || q.includes('deliver')) {
-    return "Most business websites are delivered in 1-2 weeks. More complex projects take 2-3 weeks. Dean is transparent about timelines from the start.";
+    return "Projects have a strict 1-2 weeks turnaround time. Dean moves fast to get your business live.";
   }
   if (q.includes('aftercare') || q.includes('after care') || q.includes('support') || q.includes('maintain') || q.includes('maintenance') || q.includes('update') || q.includes('help after') || q.includes('ongoing') || q.includes('after build') || q.includes('once built')) {
     return "After the site is live, Dean is available on WhatsApp for any questions or small changes. For larger updates, he offers a simple hourly rate with no retainer required. You own your site outright — no lock-in.";
@@ -54,13 +51,13 @@ function smartFallback(query: string): string {
     return "AI integrations start from £539. Dean can add chatbots, automated enquiry handling, or AI-powered features to your website — like the assistant you're chatting to right now!";
   }
   if (q.includes('booking') || q.includes('appointment') || q.includes('calendar') || q.includes('schedule') || q.includes('reservation') || q.includes('system') || q.includes('dashboard') || q.includes('portal')) {
-    return "Yes! Custom web apps like booking systems and dashboards are available from £539. Dean has built tools like this — check out his GitHub at github.com/stokie2605 for examples. Fill in the quote form to discuss your specific needs.";
+    return "Yes! Core Business Web Apps (£1,200–£1,800) include custom client portals, dashboards, and booking systems.";
   }
   if (q.includes('example') || q.includes('portfolio') || q.includes('previous') || q.includes('work') || q.includes('seen') || q.includes('show') || q.includes('past') || q.includes('project')) {
     return "Dean's main completed project is a School IT Support Refresh — you can view it on his GitHub at github.com/stokie2605. He also produces mockup redesigns for local businesses as part of his pitch process.";
   }
   if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('morning') || q.includes('evening') || q.includes('afternoon')) {
-    return "Hi there! Great to hear from you. I'm Dean's support assistant — ask me anything about pricing, timelines, coverage, or what Dean can build for you!";
+    return "Hi there! Great to hear from you. I'm the AI Assistant for Dean Wilshaw. Can I help you book a 15-minute chat with Dean?";
   }
   return "Good question! The best way to get a proper answer is to fill in the quote form below or message Dean directly on WhatsApp — he typically replies within a few hours.";
 }

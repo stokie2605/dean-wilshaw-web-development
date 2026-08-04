@@ -33,28 +33,23 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = () => {
     setActiveTab(id);
   };
 
-  const tabs = [
-    { id: 'portfolio', label: 'Work', icon: Briefcase },
-    { id: 'services', label: 'Services', icon: Zap },
-    { id: 'pricing', label: 'Rates', icon: Tag },
-  ];
-
   return (
-    <div className="fixed bottom-0 inset-x-0 z-[60] bg-slate-900/95 border-t border-slate-800 backdrop-blur-xl h-16 px-4 py-1 flex justify-around items-center md:hidden pb-safe">
-      {tabs.map((tab) => {
-        const Icon = tab.icon;
-        const isActive = activeTab === tab.id;
-        return (
-          <button 
-            key={tab.id}
-            onClick={() => scrollTo(tab.id)}
-            className={`flex flex-col items-center gap-1 transition-all duration-300 p-2 w-16 ${isActive ? 'text-red-500 scale-110' : 'text-slate-400 hover:text-white'}`}
-          >
-            <Icon className={`w-5 h-5 transition-transform duration-300 ${isActive ? 'translate-y-[-2px]' : ''}`} />
-            <span className={`text-[10px] font-sans transition-all duration-300 ${isActive ? 'font-bold' : 'font-medium'}`}>{tab.label}</span>
-          </button>
-        );
-      })}
+    <div className="fixed bottom-0 inset-x-0 z-[60] bg-[#111111] border-t border-black h-16 flex items-center md:hidden pb-safe w-full">
+      <button 
+        onClick={() => window.location.href = 'tel:01782000000'}
+        className="flex-1 h-full bg-[#ff4d4d] text-white font-geist font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors hover:bg-[#ff3333]"
+      >
+        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 1.01-.63 1.01-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+        CALL DEAN
+      </button>
+      
+      <button 
+        onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+        className="flex-1 h-full bg-[#111111] text-white font-geist font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors hover:bg-[#222222]"
+      >
+        <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        BOOK CHAT
+      </button>
     </div>
   );
 };

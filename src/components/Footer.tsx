@@ -11,7 +11,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onOpenPrivacy, onOpenTerms }) => {
   return (
-    <footer className="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-white w-full border-t border-slate-200 dark:border-slate-800 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
+    <footer className="bg-slate-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 w-full border-t border-slate-200 dark:border-zinc-800 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
         {/* Left Side: Avatar & Copyright */}
@@ -26,18 +26,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
                 (e.target as HTMLElement).style.display = 'none';
               }}
             />
-            <span className="font-geist font-bold text-base text-slate-900 dark:text-white">
+            <span className="font-geist font-bold text-base text-slate-900 dark:text-zinc-100">
               Dean Wilshaw
             </span>
           </div>
 
-          <p className="text-xs text-slate-600 dark:text-slate-400 text-center md:text-left font-normal">
+          <p className="text-xs text-slate-600 dark:text-zinc-400 text-center md:text-left font-normal">
             &copy; 2026 Dean Wilshaw. Made in Cheshire. All rights reserved.
           </p>
         </div>
 
         {/* Right Side: Social & Contact Links */}
-        <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
+        <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-zinc-400">
           <button
             onClick={onOpenWhatsApp}
             className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"

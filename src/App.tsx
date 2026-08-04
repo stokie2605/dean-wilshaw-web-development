@@ -5,9 +5,7 @@ import { Hero } from './components/Hero';
 import { BottomTabBar } from './components/BottomTabBar';
 
 // Lazy load below-the-fold components
-const ServicesBento = lazy(() => import('./components/ServicesBento').then(m => ({ default: m.ServicesBento })));
 const Portfolio = lazy(() => import('./components/Portfolio').then(m => ({ default: m.Portfolio })));
-const MobileShowcase = lazy(() => import('./components/MobileShowcase').then(m => ({ default: m.MobileShowcase })));
 const AboutSection = lazy(() => import('./components/AboutSection').then(m => ({ default: m.AboutSection })));
 const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
 const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
@@ -31,7 +29,7 @@ export default function App() {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'o') {
         e.preventDefault();
-        navigate('/outreach');
+        navigate('/admin');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -53,7 +51,7 @@ export default function App() {
 
   if (currentPage === 'privacy') {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
         <PrivacyPolicy onBack={() => handleOpenPage('home')} />
       </Suspense>
     );
@@ -61,14 +59,14 @@ export default function App() {
 
   if (currentPage === 'terms') {
     return (
-      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-zinc-950 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
         <TermsConditions onBack={() => handleOpenPage('home')} />
       </Suspense>
     );
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-[#191c1e] dark:text-white font-sans selection:bg-red-500/30 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950 text-[#191c1e] dark:text-white font-sans selection:bg-red-500/30 transition-colors duration-300">
       {/* Navigation */}
       <Header 
         onOpenQuote={handleOpenQuote} 
@@ -78,24 +76,21 @@ export default function App() {
 
       {/* Main Page Content */}
       <main className="flex-grow pb-20 md:pb-0 transition-colors duration-300">
-        <div className="bg-slate-50 dark:bg-slate-950">
+        <div className="bg-slate-50 dark:bg-zinc-950">
           <Hero onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
         <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
-          <div className="bg-slate-50 dark:bg-slate-950">
+          <div className="bg-slate-50 dark:bg-zinc-950">
             <Portfolio onOpenQuote={handleOpenQuote} />
           </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
-            <MobileShowcase onOpenQuote={handleOpenQuote} />
+          <div className="bg-slate-50 dark:bg-zinc-950">
+            <AboutSection />
           </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
-            <ServicesBento />
-          </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
+          <div className="bg-slate-50 dark:bg-zinc-950">
             <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} onOpenStitch={() => setStitchModalOpen(true)} />
           </div>
-          <div className="bg-slate-50 dark:bg-slate-950">
-            <AboutSection />
+          <div className="bg-slate-50 dark:bg-zinc-950">
+            <QuoteForm isOpen={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
           </div>
         </Suspense>
       </main>

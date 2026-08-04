@@ -159,27 +159,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Suggested Fast Prompts */}
-      <div className="bg-[#f1f5f9] px-3 py-2 border-t border-[#c6c6cd]/50 flex items-center gap-1.5 overflow-x-auto hide-scrollbar text-[11px]">
-        <button
-          onClick={() => handleSendMessage("How much does a custom website cost?")}
-          className="shrink-0 bg-white hover:bg-red-50 text-[#991b1b] border border-[#c6c6cd] px-2.5 py-1 rounded-full font-medium transition-colors"
-        >
-          💰 Cost &amp; Pricing
-        </button>
-        <button
-          onClick={() => handleSendMessage("How fast are Dean's React websites?")}
-          className="shrink-0 bg-white hover:bg-red-50 text-[#991b1b] border border-[#c6c6cd] px-2.5 py-1 rounded-full font-medium transition-colors"
-        >
-          ⚡ Speed &amp; Vitals
-        </button>
-        <button
-          onClick={() => handleSendMessage("Do you cover Cheshire & Stoke-on-Trent?")}
-          className="shrink-0 bg-white hover:bg-red-50 text-[#991b1b] border border-[#c6c6cd] px-2.5 py-1 rounded-full font-medium transition-colors"
-        >
-          📍 Coverage
-        </button>
-      </div>
+
 
       {/* Chat Input Area */}
       <div className="p-3 bg-white border-t border-[#c6c6cd] shrink-0">
@@ -209,7 +189,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
 
         <div className="flex items-center justify-between mt-2 pt-1 text-[10px] text-[#76777d]">
           <button onClick={onOpenQuote} className="hover:underline text-[#991b1b] font-medium">
-            Request Quote Directly
+            Book 15-Min Chat
           </button>
           <button onClick={onOpenWhatsApp} className="hover:underline text-emerald-700 font-medium">
             WhatsApp Dean

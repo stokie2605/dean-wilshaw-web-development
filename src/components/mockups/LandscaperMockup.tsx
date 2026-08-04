@@ -21,7 +21,7 @@ export const LandscaperMockup = () => (
       </div>
 
       <div className="p-4 flex-1 bg-white rounded-t-2xl -mt-3 relative z-20 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
-        <h3 className="text-center font-bold text-[#204030] text-sm mb-4">Our Expertise</h3>
+        <h3 className="text-center font-bold text-[#204030] text-sm mb-4">My Expertise</h3>
         
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-slate-50 border border-slate-100 rounded-xl p-3 flex flex-col items-center justify-center text-center gap-2 aspect-square">

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ShieldCheck, Clock, MessageSquare, Target, Wrench } from 'lucide-react';
+import { MapPin, Zap, Lock, ShieldCheck } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const navigate = useNavigate();
@@ -17,71 +17,49 @@ export const AboutSection: React.FC = () => {
   };
 
   return (
-    <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
+    <section id="about" className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
-        {/* Left Column: Visual Card "25 Years Operational Discipline" */}
+        {/* Left Column: Visual Card */}
         <div className="lg:col-span-5 order-2 lg:order-1 relative h-full">
           <div 
             onClick={handleAvatarClick}
-            className="bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm relative group hover:border-red-600 dark:hover:border-red-500 transition-all w-full aspect-square sm:aspect-auto sm:h-full min-h-[300px] cursor-pointer"
+            className="bg-slate-50 dark:bg-zinc-900/60/50 border border-slate-200 dark:border-zinc-800 rounded-2xl overflow-hidden shadow-sm relative group hover:border-red-600 dark:hover:border-red-500 transition-all w-full aspect-square sm:aspect-auto sm:h-full min-h-[300px] cursor-pointer"
           >
             <img src="/avatar-cartoon.webp" alt="Dean Wilshaw" width={600} height={600} loading="lazy" decoding="async" className="w-full h-full object-cover" />
-          </div>
-
-          {/* Floating Badge */}
-          <div className="absolute -bottom-5 -right-2 sm:-right-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-4 py-3 rounded-lg shadow-md flex items-center gap-3">
-            <ShieldCheck className="w-5 h-5 text-red-700 dark:text-red-500" />
-            <span className="font-geist font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-              Reliable Execution
-            </span>
           </div>
         </div>
 
         {/* Right Column: Copy & Principles */}
         <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-6">
           
-          <div className="inline-flex items-center gap-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-red-700 dark:text-red-500 px-3 py-1 rounded-full text-xs font-mono font-semibold w-fit">
-            <Wrench className="w-3.5 h-3.5 text-red-700 dark:text-red-500" />
-            <span>Adaptable & Driven</span>
-          </div>
-
-          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-white leading-snug">
-            Logistics Background. <br className="hidden sm:block"/> Technology Future.
+          <h2 className="font-geist font-bold text-3xl sm:text-5xl text-slate-900 dark:text-zinc-100 leading-snug tracking-tight">
+            Hi, I'm Dean.
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-            I spent 25 years in the trenches of logistics and warehousing. It taught me hard work and operational discipline, but my true passion has always been technology.
-          </p>
+          <h3 className="text-xl sm:text-2xl font-semibold text-red-700 dark:text-red-500 leading-snug">
+            A solo React specialist building sub-second websites for ambitious local businesses.
+          </h3>
 
-          <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-            I completely pivoted my career to master modern web development and AI. I am constantly learning, highly adaptable, and willing to tackle any technical challenge. Whether you need a simple landing page or a complex custom web application, I will figure it out and build it right.
+          <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-300 leading-relaxed">
+            I build custom React engines from scratch so your site loads in milliseconds, looks great, and turns visitors into paying clients. As a local solo freelancer, when you hire me, you get me directly—no account managers, no junior devs, and zero tech jargon.
           </p>
 
           {/* Core Principles */}
-          <ul className="space-y-4 pt-2">
-            <li className="flex items-start gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-sm">
-              <span className="w-1.5 h-6 bg-red-600 dark:bg-red-500 rounded-sm shrink-0 mt-0.5"></span>
-              <div>
-                <p className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Hungry for Knowledge.</p>
-                <p className="text-xs text-slate-600 dark:text-slate-300">Always expanding my skillset with the latest frameworks and AI integrations.</p>
-              </div>
+          <ul className="space-y-4 pt-4">
+            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
+              <MapPin className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
+              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Based in Cheshire & Stoke-on-Trent (Local & Accountable)</span>
             </li>
 
-            <li className="flex items-start gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-sm">
-              <span className="w-1.5 h-6 bg-red-600 dark:bg-red-500 rounded-sm shrink-0 mt-0.5"></span>
-              <div>
-                <p className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Highly Adaptable.</p>
-                <p className="text-xs text-slate-600 dark:text-slate-300">No rigid agency rules. I assess your specific problem and build the exact tool you need.</p>
-              </div>
+            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
+              <Zap className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
+              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Direct 1-on-1 Access (No Middlemen)</span>
             </li>
 
-            <li className="flex items-start gap-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 rounded-xl shadow-sm">
-              <span className="w-1.5 h-6 bg-red-600 dark:bg-red-500 rounded-sm shrink-0 mt-0.5"></span>
-              <div>
-                <p className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Reliable Execution.</p>
-                <p className="text-xs text-slate-600 dark:text-slate-300">I bring 25 years of operational discipline to every single line of code I write.</p>
-              </div>
+            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
+              <Lock className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
+              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Fixed Pricing & Zero Hidden Monthly Fees</span>
             </li>
           </ul>
 
@@ -91,4 +69,3 @@ export const AboutSection: React.FC = () => {
     </section>
   );
 };
-

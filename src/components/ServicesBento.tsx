@@ -19,7 +19,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'mobile-first',
     title: 'Looks Great on Mobile',
     badge: 'Mobile Optimized',
-    icon: <Gauge className="w-6 h-6 text-slate-900 dark:text-white" />,
+    icon: <Gauge className="w-6 h-6 text-slate-900 dark:text-zinc-100" />,
     bgIconName: 'smartphone',
     description: '',
     tags: ['MOBILE', 'FAST', 'EASY TO USE'],
@@ -35,7 +35,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'more-calls',
     title: 'Gets Your Phone Ringing',
     badge: 'More Leads',
-    icon: <TrendingUp className="w-6 h-6 text-slate-900 dark:text-white" />,
+    icon: <TrendingUp className="w-6 h-6 text-slate-900 dark:text-zinc-100" />,
     bgIconName: 'trending_up',
     description: '',
     tags: ['CALLS', 'WHATSAPP', 'QUOTES'],
@@ -51,7 +51,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'google-ready',
     title: 'Findable on Google',
     badge: 'Local Search',
-    icon: <Search className="w-6 h-6 text-slate-900 dark:text-white" />,
+    icon: <Search className="w-6 h-6 text-slate-900 dark:text-zinc-100" />,
     bgIconName: 'search',
     description: '',
     tags: ['GOOGLE', 'LOCAL', 'SEO'],
@@ -67,7 +67,7 @@ const SERVICES: ServiceDetail[] = [
     id: 'zero-stress',
     title: '100% Code Ownership',
     badge: 'Honest Pricing',
-    icon: <Layers className="w-6 h-6 text-slate-900 dark:text-white" />,
+    icon: <Layers className="w-6 h-6 text-slate-900 dark:text-zinc-100" />,
     bgIconName: 'handshake',
     description: '',
     tags: ['HONEST', 'LOCAL', 'NO TRAPS'],
@@ -85,7 +85,7 @@ export const ServicesBento: React.FC = () => {
   const [selectedService, setSelectedService] = useState<ServiceDetail | null>(null);
 
   return (
-    <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 scroll-mt-20 transition-colors duration-300">
+    <section id="services" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
@@ -93,11 +93,11 @@ export const ServicesBento: React.FC = () => {
           <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
             A Genuine Investment
           </span>
-          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-white mb-3">
+          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mb-3">
             Honest, High-Performance Web Design.
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
-          <p className="mt-4 text-slate-600 dark:text-slate-300 max-w-2xl text-sm sm:text-base">
+          <p className="mt-4 text-slate-600 dark:text-zinc-300 max-w-2xl text-sm sm:text-base">
             I build websites focused on speed and mobile usability. A clean, fast website is a simple investment that helps local people find you on Google, trust your business, and easily contact you for a quote.
           </p>
         </div>
@@ -107,7 +107,7 @@ export const ServicesBento: React.FC = () => {
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className="bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 rounded-2xl p-6 shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden"
+              className="bg-white dark:bg-zinc-900/60/90 border border-slate-200 dark:border-zinc-800 hover:border-red-600 dark:hover:border-red-500 rounded-2xl p-6 shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden"
             >
               {/* Background Icon Watermark */}
               <div className="absolute top-2 right-2 p-2 pointer-events-none">
@@ -118,19 +118,19 @@ export const ServicesBento: React.FC = () => {
 
               <div>
                 {/* Icon Box */}
-                <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-3 inline-flex items-center justify-center mb-5 group-hover:border-red-600 dark:group-hover:border-red-500 group-hover:bg-red-500/10 transition-colors shadow-sm">
+                <div className="bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-zinc-800 rounded-xl p-3 inline-flex items-center justify-center mb-5 group-hover:border-red-600 dark:group-hover:border-red-500 group-hover:bg-red-500/10 transition-colors shadow-sm">
                   {service.icon}
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-geist font-bold text-lg text-slate-900 dark:text-white transition-colors">
+                  <h3 className="font-geist font-bold text-lg text-slate-900 dark:text-zinc-100 transition-colors">
                     {service.title}
                   </h3>
                 </div>
 
                 <ul className="space-y-3 mb-6">
                   {service.features.map((feat, i) => (
-                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-slate-300">
+                    <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
                       <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{feat}</span>
                     </li>
@@ -139,11 +139,11 @@ export const ServicesBento: React.FC = () => {
               </div>
 
               {/* Footer Tags */}
-              <div className="flex gap-1.5 flex-wrap pt-2 border-t border-slate-200 dark:border-slate-800">
+              <div className="flex gap-1.5 flex-wrap pt-2 border-t border-slate-200 dark:border-zinc-800">
                 {service.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-2 py-0.5 bg-slate-100 dark:bg-slate-950 text-slate-700 dark:text-slate-300 text-[10px] font-mono font-semibold rounded border border-slate-200 dark:border-slate-800 group-hover:border-red-600/40 dark:group-hover:border-red-500/40"
+                    className="px-2 py-0.5 bg-slate-100 dark:bg-zinc-950 text-slate-700 dark:text-zinc-300 text-[10px] font-mono font-semibold rounded border border-slate-200 dark:border-zinc-800 group-hover:border-red-600/40 dark:group-hover:border-red-500/40"
                   >
                     {tag}
                   </span>

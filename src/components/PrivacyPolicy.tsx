@@ -73,7 +73,7 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
 
           <section>
             <h2 className="font-geist font-bold text-lg text-[#191c1e] mb-3">6. How Long I Keep Your Data</h2>
-            <p>I retain your enquiry details for up to 6 months from the date of submission, or until our project is complete — whichever is longer. After this period, your details are deleted from my inbox.</p>
+            <p>I retain your enquiry details for up to 6 months from the date of submission, or until My project is complete — whichever is longer. After this period, your details are deleted from my inbox.</p>
           </section>
 
           <section>

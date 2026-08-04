@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Send, CheckCircle2, MessageSquare, ShieldCheck, X, Smartphone, Monitor, Database } from 'lucide-react';
-import { QuoteResult } from '../types';
+import { Send, CheckCircle2, ShieldCheck, X } from 'lucide-react';
 
 interface QuoteFormProps {
   isOpen: boolean;
@@ -9,13 +8,11 @@ interface QuoteFormProps {
   prefilledDetails?: string;
 }
 
-export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWhatsApp, prefilledDetails }) => {
+export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, prefilledDetails }) => {
   const [formData, setFormData] = useState({
     name: '',
-    company: '',
     email: '',
     phone: '',
-    projectType: 'business-site',
     details: '',
   });
 
@@ -46,18 +43,17 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
         const json = await res.json();
         setResult(json);
       } else {
-        // Fallback result
         setResult({
           refNumber: 'DW-' + Math.floor(100000 + Math.random() * 900000),
           clientName: formData.name || 'Valued Client',
-          message: `Thank you, ${formData.name || 'friend'}! Your request has been logged. Dean will review your requirements and get in touch at ${formData.email} to give you a bespoke price.`,
+          message: `Thank you, ${formData.name || 'friend'}! Your request has been logged. Dean will review your requirements and WhatsApp you at ${formData.phone} to arrange a time.`,
         });
       }
     } catch (err) {
       setResult({
         refNumber: 'ERR-500',
         clientName: formData.name || 'Valued Client',
-        message: `We're sorry, ${formData.name || 'friend'}. There was a network error sending your request. Please message Dean directly on WhatsApp.`,
+        message: `I'm sorry, ${formData.name || 'friend'}. There was a network error sending your request. Please message Dean directly on WhatsApp.`,
       });
     } finally {
       setLoading(false);
@@ -68,10 +64,10 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn overflow-y-auto">
-      <div className="max-w-3xl w-full my-auto relative">
+      <div className="max-w-2xl w-full my-auto relative">
         
         {/* Form Container */}
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl rounded-2xl p-6 sm:p-10 relative mt-10 md:mt-0 max-h-[90vh] overflow-y-auto custom-scrollbar">
+        <div className="bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 shadow-2xl rounded-2xl p-6 sm:p-10 relative mt-10 md:mt-0 max-h-[90vh] overflow-y-auto custom-scrollbar">
           
           <button
             onClick={onClose}
@@ -83,53 +79,37 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
           {/* Header */}
           <div className="text-center mb-10 flex flex-col items-center pt-2">
           <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
-            Direct Studio Inquiry
+            Let's Talk
           </span>
-          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-white mb-3">
-            Get a Free Quote
+          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mb-3">
+            Book 15-Min Chat
           </h2>
-          <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-lg">
-            Tell me what package you need and a little about your business. I'll review it and get back to you with a direct price.
+          <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base max-w-lg">
+            Let's discuss your business goals and see if we're a good fit. Fill out the quick form below and I'll WhatsApp you to arrange a time.
           </p>
         </div>
           <form onSubmit={handleSubmit} className="space-y-6">
             
-            {/* Row 1: Name & Company */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <div>
-                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="name">
-                  Name <span className="text-rose-500">*</span>
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  required
-                  placeholder="John Doe"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="company">
-                  Company / Trade Name (Optional)
-                </label>
-                <input
-                  id="company"
-                  type="text"
-                  placeholder="Acme Roofing"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
-                />
-              </div>
+            {/* Row 1: Name */}
+            <div>
+              <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-zinc-100 uppercase tracking-wider mb-1.5" htmlFor="name">
+                Name <span className="text-rose-500">*</span>
+              </label>
+              <input
+                id="name"
+                type="text"
+                required
+                placeholder="John Doe"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
+              />
             </div>
 
             {/* Row 2: Email & Phone */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="email">
+                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-zinc-100 uppercase tracking-wider mb-1.5" htmlFor="email">
                   Email <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -139,13 +119,13 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                   placeholder="john@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
+                  className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
-                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="phone">
-                  Phone <span className="text-rose-500">*</span>
+                <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-zinc-100 uppercase tracking-wider mb-1.5" htmlFor="phone">
+                  Phone (WhatsApp) <span className="text-rose-500">*</span>
                 </label>
                 <input
                   id="phone"
@@ -154,92 +134,25 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                   placeholder="07700 900123"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
+                  className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
                 />
               </div>
             </div>
 
-            {/* Row 3: Project Type Selection */}
+            {/* Row 3: Project Details */}
             <div>
-              <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-2.5">
-                Which package do you need?
-              </label>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, projectType: 'business-site' })}
-                  className={`p-4 rounded-xl border text-left flex flex-col transition-all ${
-                    formData.projectType === 'business-site' 
-                      ? 'border-red-600 bg-red-500/5 ring-1 ring-red-600' 
-                      : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
-                  }`}
-                >
-                  <Smartphone className={`w-5 h-5 mb-2 ${formData.projectType === 'business-site' ? 'text-red-700 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
-                  <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">Business Site</span>
-                  <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Lead gen & local SEO</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, projectType: 'custom-app' })}
-                  className={`p-4 rounded-xl border text-left flex flex-col transition-all ${
-                    formData.projectType === 'custom-app' 
-                      ? 'border-red-600 bg-red-500/5 ring-1 ring-red-600' 
-                      : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
-                  }`}
-                >
-                  <Database className={`w-5 h-5 mb-2 ${formData.projectType === 'custom-app' ? 'text-red-700 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
-                  <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">Custom App</span>
-                  <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Dashboards & internal tools</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, projectType: 'ai-integration' })}
-                  className={`p-4 rounded-xl border text-left flex flex-col transition-all ${
-                    formData.projectType === 'ai-integration' 
-                      ? 'border-red-600 bg-red-500/5 ring-1 ring-red-600' 
-                      : 'border-slate-200 dark:border-slate-800 hover:border-red-600 dark:hover:border-red-500 bg-slate-50 dark:bg-slate-950'
-                  }`}
-                >
-                  <Monitor className={`w-5 h-5 mb-2 ${formData.projectType === 'ai-integration' ? 'text-red-700 dark:text-red-500' : 'text-slate-400 dark:text-slate-500'}`} />
-                  <span className="font-geist font-bold text-slate-900 dark:text-white text-sm">AI Integration</span>
-                  <span className="text-xs text-slate-600 dark:text-slate-400 mt-1">Chatbots & automation</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Row 4: Project Details */}
-            <div>
-              <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-white uppercase tracking-wider mb-1.5" htmlFor="details">
-                Project Details
+              <label className="block font-geist font-semibold text-xs text-slate-900 dark:text-zinc-100 uppercase tracking-wider mb-1.5" htmlFor="details">
+                What would you like to discuss?
               </label>
               <textarea
                 id="details"
                 rows={4}
                 required
-                placeholder="What does your business do and what do you need the website to achieve? (e.g. Local plumber needing a site that looks good on mobile and gets more quote requests...)"
+                placeholder="A brief overview of your business and what you're looking to achieve..."
                 value={formData.details}
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
-                className="w-full bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
+                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
               ></textarea>
-            </div>
-
-            {/* GDPR Consent Checkbox */}
-            <div className="flex items-start gap-3 mt-4">
-              <div className="flex items-center h-5">
-                <input
-                  id="gdpr-consent"
-                  type="checkbox"
-                  required
-                  className="w-4 h-4 rounded border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-950 text-red-700 focus:ring-red-600 cursor-pointer"
-                />
-              </div>
-              <div className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                <label htmlFor="gdpr-consent" className="cursor-pointer">
-                  I consent to Dean Wilshaw storing my details to contact me regarding this quote.
-                </label>
-              </div>
             </div>
 
             {/* Submit Button */}
@@ -252,22 +165,16 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                 <span>Sending Request...</span>
               ) : (
                 <>
-                  <span>Send Details For Price</span>
+                  <span>Request Chat</span>
                   <Send className="w-4 h-4" />
                 </>
               )}
             </button>
-
             <div className="text-center pt-2 space-y-1.5">
-              <span className="text-xs text-slate-600 dark:text-slate-400 flex items-center justify-center gap-1.5">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                No obligations. I will respond with a direct price within 24 hours.
-              </span>
               <p className="text-[11px] text-slate-500 dark:text-slate-500">
                 🔒 Your details go directly to Dean's inbox. No databases, no marketing lists, no spam.
               </p>
             </div>
-
           </form>
 
         </div>
@@ -275,7 +182,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
         {/* Confirmation Modal */}
         {result && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-            <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-5">
+            <div className="bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-5">
               <button
                 onClick={() => setResult(null)}
                 className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
@@ -291,31 +198,23 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                   <span className="text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border border-emerald-500/20 px-2 py-0.5 rounded font-bold">
                     REQUEST RECEIVED #{result.refNumber}
                   </span>
-                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white mt-1">Request Logged!</h3>
+                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-zinc-100 mt-1">Request Logged!</h3>
                 </div>
               </div>
 
-              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-slate-700 text-xs space-y-2 text-slate-700 dark:text-slate-300">
+              <div className="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-lg border border-slate-200 dark:border-zinc-800 text-xs space-y-2 text-slate-700 dark:text-zinc-300">
                 <p className="font-medium leading-relaxed">{result.message}</p>
               </div>
 
-              <div className="space-y-2 pt-2">
+              <div className="flex gap-3">
                 <button
                   onClick={() => {
                     setResult(null);
-                    onOpenWhatsApp();
+                    onClose();
                   }}
-                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/30 py-2.5 rounded-lg text-xs font-semibold flex justify-center items-center gap-2 transition-colors"
+                  className="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold py-2.5 rounded-lg text-sm"
                 >
-                  <MessageSquare className="w-4 h-4" />
-                  Speed Up: Send via WhatsApp Too
-                </button>
-
-                <button
-                  onClick={() => setResult(null)}
-                  className="w-full border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 py-2.5 rounded-lg text-xs font-semibold transition-colors"
-                >
-                  Close Confirmation
+                  Close
                 </button>
               </div>
             </div>
@@ -326,4 +225,3 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
     </div>
   );
 };
-

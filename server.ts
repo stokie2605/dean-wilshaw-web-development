@@ -4,6 +4,8 @@ import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
 import { Resend } from "resend";
 import dotenv from "dotenv";
+import { createOpenAI } from "@ai-sdk/openai";
+import { streamText } from "ai";
 
 dotenv.config();
 
@@ -38,19 +40,14 @@ Your tone is professional, friendly, concise, and focused on business growth and
 Key Studio Facts & Services:
 - Engineer: Dean Wilshaw (25 years operational discipline in logistics, now building high-performance web applications).
 - Specialty: Custom React + Vite websites designed for local business lead generation (Cheshire, Stoke-on-Trent, Manchester, & UK-wide).
-- Core Offerings:
-  1. Custom React Builds: Instant load times (<0.5s LCP), 100/100 Core Web Vitals, zero template bloat.
-  2. Lead-Gen & Conversion Optimization (CRO): Strategic layouts, clear CTAs, integrated lead capture forms.
-  3. Modern Technical SEO & Schema: Structured data, semantic HTML to outrank competitors.
-  4. Operational Discipline: Zero missed deadlines, transparent pricing, direct WhatsApp communication.
 - Turnaround Times: ALL standard websites and landing pages are built and delivered strictly within 1 to 2 weeks. Never quote 3 weeks.
-- Pricing Tiers:
-  - Local Tradesman Landing Page (Single Page): Starts at £449 (£404.10 with the 10% early-bird discount). Built specifically for high-converting mobile lead generation and instant load speeds.
-  - Core Business Website (4–6 Pages): Starts at £749 (£674.10 with discount). Built for established businesses needing service breakdowns, about pages, local SEO schema, and social sharing cards.
-  - Custom Apps & AI Integration: Starts at £1,200+ depending on scope. Custom interactive tools, automated pipelines, or chatbots built using cutting-edge techniques from Dean's Skills Bootcamp training.
 - Comparison vs WordPress: WordPress templates are slow, plugin-heavy, vulnerable, and require constant maintenance. Dean's custom React builds are stateless, lightning fast, highly secure, and tailored 100% to brand goals.
 
-Strict Rule: When asked about pricing or packages, always explain which tier fits their needs, apply the 10% promo math if asked, and ALWAYS end your response by asking for the user's name and contact details to lock in their quote. Keep answers concise (under 120 words).`;
+Strict Rules: 
+1. Answer technical FAQs (React vs WordPress, turnaround times, hosting, support).
+2. NEVER calculate custom prices, offer discounts, or give out specific price figures.
+3. If asked about pricing, kindly explain that Dean provides custom quotes after a quick discovery chat to understand the exact business requirements.
+4. ALWAYS end your response by directing them to use the "Book 15-Min Chat" or "WhatsApp Dean" links below to get in touch.`;
 
 async function startServer() {
   const app = express();
@@ -183,6 +180,100 @@ async function startServer() {
       message: `Thank you, ${name || 'friend'}! Your request has been logged under reference ${refNumber}. Dean will review your requirements and contact you at ${email || 'your email'} within 24 hours.`,
       receivedAt: new Date().toISOString(),
     });
+  });
+
+  // AI Completion endpoint (Groq / Vercel AI SDK streaming + Vision support)
+  app.post("/api/completion", async (req, res) => {
+    try {
+      const { prompt, system, image } = req.body;
+
+      if ((!prompt || typeof prompt !== "string") && !image) {
+        return res.status(400).json({ error: "A prompt or image payload is required." });
+      }
+
+      const groqApiKey = process.env.GROQ_API_KEY;
+      if (!groqApiKey) {
+        return res.status(500).json({ error: "GROQ_API_KEY is not configured on the server." });
+      }
+
+      const groq = createOpenAI({
+        baseURL: "https://api.groq.com/openai/v1",
+        apiKey: groqApiKey,
+      });
+
+      let modelName = "llama-3.3-70b-versatile";
+      let userPromptContent: any = prompt ? prompt.trim() : "Analyze this mobile UI screenshot for conversion barriers.";
+
+      if (image && typeof image === "string" && image.startsWith("data:image/")) {
+        modelName = "llama-3.2-11b-vision-preview";
+        userPromptContent = [
+          { type: "text", text: prompt && prompt.trim() ? prompt.trim() : "Analyze this mobile UI screenshot for conversion barriers." },
+          { type: "image", image: image }
+        ];
+      }
+
+      const result = streamText({
+        model: groq(modelName),
+        system: typeof system === "string" && system.trim().length > 0
+          ? system
+          : "You are a World-Class Mobile UI/UX Specialist & Conversion Rate Optimizer.",
+        messages: [
+          {
+            role: "user",
+            content: userPromptContent,
+          }
+        ],
+        maxTokens: 1024,
+        onError: ({ error }) => {
+          console.error("Groq streamText error:", error);
+        },
+      });
+
+      // Stream the response back as plain text
+      res.setHeader("Content-Type", "text/plain; charset=utf-8");
+      res.setHeader("Transfer-Encoding", "chunked");
+      res.setHeader("X-Vercel-AI-Data-Stream", "v1");
+
+      result.toDataStreamResponse().body
+        ?.pipeTo(
+          new WritableStream({
+            write(chunk) {
+              res.write(chunk);
+            },
+            close() {
+              res.end();
+            },
+            abort(err) {
+              console.error("Stream aborted:", err);
+              res.end();
+            },
+          })
+        )
+        .catch((err: Error) => {
+          console.error("Stream pipe error:", err);
+          if (!res.headersSent) {
+            res.status(500).json({ error: "Stream failed." });
+          } else {
+            res.end();
+          }
+        });
+
+    } catch (error: unknown) {
+      console.error("/api/completion error:", error);
+      const isRateLimit =
+        typeof error === "object" &&
+        error !== null &&
+        "status" in error &&
+        (error as { status: number }).status === 429;
+
+      if (isRateLimit) {
+        return res.status(429).json({ error: "Groq rate limit reached. Please wait a moment and try again." });
+      }
+
+      if (!res.headersSent) {
+        return res.status(500).json({ error: "Internal server error during completion." });
+      }
+    }
   });
 
   // Speed Benchmark Simulator endpoint

@@ -7,7 +7,7 @@ const STEPS = [
     title: 'Discovery & Local Strategy',
     icon: <Search className="w-5 h-5 text-[#991b1b]" />,
     duration: '1 - 2 Days',
-    description: 'We review your target market across Cheshire, Stoke-on-Trent, or nationwide. We map out your key services, ideal lead profiles, and competitor gaps.'
+    description: 'I review your target market across Cheshire, Stoke-on-Trent, or nationwide. I map out your key services, ideal lead profiles, and competitor gaps.'
   },
   {
     step: '02',
