@@ -135,7 +135,7 @@ async function startServer() {
       try {
         await resend.emails.send({
           from: "onboarding@resend.dev",
-          to: "dean.wilshaw.web@gmail.com",
+          to: ["dean.wilshaw.web@gmail.com"],
           subject: `New Quote Request [${refNumber}] — ${packageLabel} from ${name || "Unknown"}`,
           html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
