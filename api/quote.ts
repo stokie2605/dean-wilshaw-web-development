@@ -48,7 +48,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     await resend.emails.send({
       from: 'onboarding@resend.dev',
-      to: 'stokie2605@gmail.com',
+      to: ['dean.wilshaw.web@gmail.com'],
       subject: `New Quote Request [${refNumber}] — ${packageLabel} from ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
