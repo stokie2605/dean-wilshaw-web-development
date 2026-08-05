@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 
 /* -------------------------------------------------------------------------- */
-/* useGroqStream — plain fetch() + ReadableStream, zero SDK dependency        */
+/* useGroqStream - plain fetch() + ReadableStream, zero SDK dependency        */
 /* -------------------------------------------------------------------------- */
 function useGroqStream() {
   const [completion, setCompletion] = useState('');
@@ -49,7 +49,7 @@ function useGroqStream() {
       }
     } catch (err: any) {
       if (err?.name === 'AbortError') return; // user cancelled
-      setError(err?.message || 'Network error — could not reach /api/completion');
+      setError(err?.message || 'Network error - could not reach /api/completion');
     } finally {
       setIsLoading(false);
     }
@@ -69,7 +69,7 @@ function useGroqStream() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Simple Markdown Renderer — handles ### headings and **bold**               */
+/* Simple Markdown Renderer - handles ### headings and **bold**               */
 /* -------------------------------------------------------------------------- */
 const renderMarkdown = (text: string): React.ReactNode[] => {
   return text.split('\n').map((line, i) => {
@@ -157,7 +157,7 @@ const OutputCard: React.FC<OutputCardProps> = ({ isLoading, completion, error, l
 /* -------------------------------------------------------------------------- */
 type Tab = 'ad-bleed' | 'scope-estimator' | 'ux-critique';
 
-// Industry is now auto-detected by the AI from the URL — no hardcoded list needed.
+// Industry is now auto-detected by the AI from the URL - no hardcoded list needed.
 
 const SCOPE_PROMPT_PILLS = [
   'Luxury Auto Restoration Site with 3D Configurator & Quote Form',
@@ -276,7 +276,7 @@ const AdBleedAuditor: React.FC = () => {
     let targetUrl = url.trim();
     if (!/^https?:\/\//i.test(targetUrl)) targetUrl = 'https://' + targetUrl;
 
-    // ── Step 1: PageSpeed — null on failure, no hardcoded defaults ───────────
+    // ── Step 1: PageSpeed - null on failure, no hardcoded defaults ───────────
     setIsFetchingSpeed(true);
     setAuditStep('Fetching Live Mobile Speed Data...');
 
@@ -298,17 +298,17 @@ const AdBleedAuditor: React.FC = () => {
         if (typeof rawLcp === 'string') lcp = rawLcp;
       }
     } catch {
-      // API unavailable — score and lcp remain null
+      // API unavailable - score and lcp remain null
     }
 
     setSpeedData({ score, lcp });
     setIsFetchingSpeed(false);
 
-    // ── Step 2: Groq AI — pass real data or note it was unavailable ──────────
+    // ── Step 2: Groq AI - pass real data or note it was unavailable ──────────
     setAuditStep('AI Auto-Detecting Industry & Calculating Ad Bleed...');
     const speedContext = score !== null && lcp !== null
       ? `Mobile PageSpeed Score: ${score}/100\nMobile Page Load Time: ${lcp}`
-      : `Mobile speed data was unavailable for this URL. Base your estimate on typical load speeds for a website of this type — assume an average performing site.`;
+      : `Mobile speed data was unavailable for this URL. Base your estimate on typical load speeds for a website of this type - assume an average performing site.`;
     const prompt = `Website URL: ${targetUrl}\n${speedContext}`;
 
     const system = `You are an expert who helps UK business owners understand why their website is losing them money.
@@ -317,19 +317,19 @@ You will be given a website URL and how fast it loads on mobile.
 
 First, work out what type of business it is from the domain name. Be specific and direct (e.g. "a sand and aggregate supplier" or "a private dental practice").
 
-Write a short, plain-English report with these four sections. Talk directly to the business owner — no tech jargon, no acronyms. Use £ figures and real numbers.
+Write a short, plain-English report with these four sections. Talk directly to the business owner - no tech jargon, no acronyms. Use £ figures and real numbers.
 
 ### 🏢 What Your Business Does
 One sentence on what the business is. Then state what businesses like this typically spend on Google Ads per month in the UK, and roughly what they pay each time someone clicks their ad.
 
 ### 🚨 How Many Customers You're Losing
-In plain English, explain what percentage of people on phones are leaving before the page even loads — and what that means in real terms. Never use the words "bounce rate" — say "people leaving before they see anything". Keep it relatable.
+In plain English, explain what percentage of people on phones are leaving before the page even loads - and what that means in real terms. Never use the words "bounce rate" - say "people leaving before they see anything". Keep it relatable.
 
 ### 💸 How Much Ad Budget Is Going in the Bin
 Give a specific £ range for how much money is being wasted every month on clicks that go nowhere. Make it feel real with a relatable comparison (e.g. "That's roughly the cost of a weekend away, every single month, with nothing to show for it").
 
 ### ⚡ What Dean Wilshaw Can Do About It
-Two short sentences. Explain that Dean builds websites that load in under half a second on any phone, so every click they pay for actually reaches a real customer. Focus on their money and their customers — not technology.`;
+Two short sentences. Explain that Dean builds websites that load in under half a second on any phone, so every click they pay for actually reaches a real customer. Focus on their money and their customers - not technology.`;
 
     await complete({ prompt, system });
     setAuditStep('');
@@ -351,7 +351,7 @@ Two short sentences. Explain that Dean builds websites that load in under half a
         <div className="md:col-span-2">
           <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
             Target Website URL
-            <span className="ml-2 text-amber-400 font-normal normal-case tracking-normal">— AI auto-detects industry &amp; CPC</span>
+            <span className="ml-2 text-amber-400 font-normal normal-case tracking-normal"> - AI auto-detects industry &amp; CPC</span>
           </label>
           <input
             type="text"
@@ -473,17 +473,17 @@ const ScopeEstimator: React.FC<ScopeEstimatorProps> = ({ onOpenQuote }) => {
     reset();
 
     const prompt = `Project Description: ${description.trim()}`;
-    const system = `You are Dean Wilshaw's AI project assistant. Dean is a solo UK web developer based in Cheshire who builds fast, beautiful websites for local businesses and premium brands — typically delivered in 1 to 2 weeks.
+    const system = `You are Dean Wilshaw's AI project assistant. Dean is a solo UK web developer based in Cheshire who builds fast, beautiful websites for local businesses and premium brands - typically delivered in 1 to 2 weeks.
 
 Dean always builds with: React + Vite, Tailwind CSS, deployed on Vercel. He does not build mobile apps, e-commerce platforms, or enterprise software. He builds marketing websites, portfolio sites, and lead generation pages.
 
-The user will describe a project. Output ONLY a JSON object — no extra text, no markdown fences.
+The user will describe a project. Output ONLY a JSON object - no extra text, no markdown fences.
 
 Rules:
-- architecture: Always "React + Vite, Tailwind CSS, Vercel Edge CDN" — never suggest Next.js, GraphQL, microservices, or anything enterprise
-- deliveryWindow: Always "1 – 2 Weeks" — no exceptions
+- architecture: Always "React + Vite, Tailwind CSS, Vercel Edge CDN" - never suggest Next.js, GraphQL, microservices, or anything enterprise
+- deliveryWindow: Always "1 – 2 Weeks" - no exceptions
 - performance: Always "100/100 Mobile Lighthouse score, loads in under 0.5 seconds on any phone"
-- features: Exactly 3 features in plain English a business owner would understand — no jargon. E.g. "Click-to-call button on every page", "WhatsApp enquiry button", "Photo gallery with instant loading"
+- features: Exactly 3 features in plain English a business owner would understand - no jargon. E.g. "Click-to-call button on every page", "WhatsApp enquiry button", "Photo gallery with instant loading"
 
 Return ONLY this JSON:
 {"architecture":"string","deliveryWindow":"string","performance":"string","features":["string","string","string"]}`;
@@ -689,10 +689,10 @@ Analyze touch target size, font legibility on small viewports, padding, and text
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />Ad Bleed Auditor — Live
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />Ad Bleed Auditor - Live
             </div>
             <div className="flex items-center gap-1.5 text-emerald-400 text-xs font-medium">
-              <span className="w-2 h-2 rounded-full bg-emerald-400" />Scope Estimator — Live
+              <span className="w-2 h-2 rounded-full bg-emerald-400" />Scope Estimator - Live
             </div>
           </div>
         </div>

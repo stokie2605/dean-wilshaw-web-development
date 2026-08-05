@@ -26,7 +26,7 @@ export const TermsConditions: React.FC<TermsProps> = ({ onBack }) => {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="font-geist font-bold text-3xl sm:text-4xl text-[#191c1e] mb-2">Terms & Conditions</h1>
-        <p className="text-[#76777d] text-sm mb-8">Last updated: July 2025 — These terms apply to all web development work carried out by Dean Wilshaw (sole trader).</p>
+        <p className="text-[#76777d] text-sm mb-8">Last updated: July 2025 - These terms apply to all web development work carried out by Dean Wilshaw (sole trader).</p>
 
         <div className="space-y-8 text-[#45464d] leading-relaxed">
 

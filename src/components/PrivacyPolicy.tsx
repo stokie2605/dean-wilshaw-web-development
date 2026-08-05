@@ -26,7 +26,7 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="font-geist font-bold text-3xl sm:text-4xl text-[#191c1e] mb-2">Privacy Policy</h1>
-        <p className="text-[#76777d] text-sm mb-8">Last updated: July 2025 — This policy explains how Dean Wilshaw (sole trader) collects and uses your personal data.</p>
+        <p className="text-[#76777d] text-sm mb-8">Last updated: July 2025 - This policy explains how Dean Wilshaw (sole trader) collects and uses your personal data.</p>
 
         <div className="space-y-8 text-[#45464d] leading-relaxed">
 
@@ -67,13 +67,13 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
             <h2 className="font-geist font-bold text-lg text-[#191c1e] mb-3">5. Third-Party Services</h2>
             <p className="mb-2">This website uses the following third-party service:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Resend</strong> (resend.com) — used to deliver your quote request to my inbox. Resend processes your submitted data in accordance with their own privacy policy.</li>
+              <li><strong>Resend</strong> (resend.com) - used to deliver your quote request to my inbox. Resend processes your submitted data in accordance with their own privacy policy.</li>
             </ul>
           </section>
 
           <section>
             <h2 className="font-geist font-bold text-lg text-[#191c1e] mb-3">6. How Long I Keep Your Data</h2>
-            <p>I retain your enquiry details for up to 6 months from the date of submission, or until My project is complete — whichever is longer. After this period, your details are deleted from my inbox.</p>
+            <p>I retain your enquiry details for up to 6 months from the date of submission, or until My project is complete - whichever is longer. After this period, your details are deleted from my inbox.</p>
           </section>
 
           <section>

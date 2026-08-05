@@ -73,7 +73,7 @@ export default function EvansElectricalLanding() {
         <div className="flex flex-col gap-8 z-10">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-white">
             Expert Electricians in Northwich
-            <span className="text-[#F59E0B] block mt-2">— Powering Your Home & Business</span>
+            <span className="text-[#F59E0B] block mt-2"> - Powering Your Home & Business</span>
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
             Fast, reliable, and NICEIC certified electrical services for residential and commercial properties across Cheshire.
