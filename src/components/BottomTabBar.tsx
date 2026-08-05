@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { X } from 'lucide-react';
 import { QuoteForm } from './QuoteForm';
 
-interface BottomTabBarProps {}
+interface BottomTabBarProps {
+  onOpenQuote: () => void;
+}
 
-export const BottomTabBar: React.FC<BottomTabBarProps> = () => {
+export const BottomTabBar: React.FC<BottomTabBarProps> = ({ onOpenQuote }) => {
   const [activeTab, setActiveTab] = useState<string>('');
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -47,38 +48,13 @@ export const BottomTabBar: React.FC<BottomTabBarProps> = () => {
         </button>
         
         <button 
-          onClick={() => setIsQuoteModalOpen(true)}
+          onClick={onOpenQuote}
           className="flex-1 h-full bg-[#111111] text-white font-geist font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors hover:bg-[#222222]"
         >
           <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          BOOK CHAT
+          GET QUOTE
         </button>
       </div>
-
-      {/* Quote Form Modal */}
-      {isQuoteModalOpen && (
-        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div 
-            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-            onClick={() => setIsQuoteModalOpen(false)}
-          />
-          
-          {/* Modal Content */}
-          <div className="relative w-full max-w-lg bg-[#191c1e] rounded-2xl shadow-2xl border border-white/10 max-h-[90vh] overflow-y-auto z-10 animate-in fade-in zoom-in-95 duration-200">
-            <button 
-              onClick={() => setIsQuoteModalOpen(false)}
-              className="absolute top-4 right-4 p-2 bg-[#2a2f32] hover:bg-[#3f4549] rounded-full text-slate-300 hover:text-white transition-colors z-10"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            
-            <div className="p-1">
-              <QuoteForm />
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

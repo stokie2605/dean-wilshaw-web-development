@@ -14,25 +14,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
     <footer className="bg-slate-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 w-full border-t border-slate-200 dark:border-zinc-800 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
-        {/* Left Side: Avatar & Copyright */}
+        {/* Left Side: Copyright */}
         <div className="flex flex-col items-center md:items-start gap-2">
-          <div className="flex items-center gap-2.5">
-            <img
-              src={AVATAR_URL}
-              alt="Dean Wilshaw"
-              className="w-6 h-6 rounded-full grayscale opacity-80 border border-[#c6c6cd]"
-              loading="lazy"
-              onError={(e) => {
-                (e.target as HTMLElement).style.display = 'none';
-              }}
-            />
-            <span className="font-geist font-bold text-base text-slate-900 dark:text-zinc-100">
-              Dean Wilshaw
-            </span>
-          </div>
-
           <p className="text-xs text-slate-600 dark:text-zinc-400 text-center md:text-left font-normal">
-            &copy; 2026 Dean Wilshaw. Made in Cheshire. All rights reserved.
+            &copy; {new Date().getFullYear()} Dean Wilshaw. Made in Cheshire. All rights reserved.
           </p>
         </div>
 

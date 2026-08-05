@@ -1,21 +1,42 @@
 import React from 'react';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 
-const packages = [
+const PRICING_TIERS = [
   {
-    name: 'Landing Page',
-    description: 'High-converting single-page engine built for maximum lead generation.',
-    features: ['Mobile-first design', 'Sub-second load speeds', 'Contact & quote form', 'WhatsApp integration', 'Delivered in 1–2 weeks'],
+    id: 'lead-engine',
+    title: 'Single-Page Lead Engine',
+    subtitle: 'High-converting single-page site focused on fast lead generation.',
+    pricingNote: 'Flexible project & monthly options available',
+    bullets: [
+      'Built for fast customer contact with tap-to-call and WhatsApp links',
+      'Mobile-first layout optimized for speed and local search visibility',
+      'Structured layout for service highlights, customer reviews, and FAQs',
+      'Simple online contact form routed directly to your email or phone',
+    ],
   },
   {
-    name: 'Business Site',
-    description: 'Comprehensive 4-6 page web platform for established businesses.',
-    features: ['Service breakdown pages', 'Google-ready local SEO schema', 'Custom trust badges', 'Fresh modern layout', 'Delivered in 1–2 weeks'],
+    id: 'business-site',
+    title: 'Multi-Page Business Site',
+    subtitle: 'Comprehensive 4–6 page web presence built to scale.',
+    pricingNote: 'Tailored to project scope & feature requirements',
+    bullets: [
+      'Dedicated pages for individual service breakdowns and project galleries',
+      'Integrated scheduling tools and custom multi-step inquiry forms',
+      'Expanded site structure optimized for local search engine coverage',
+      'Scalable setup allowing easy future page and content updates',
+    ],
   },
   {
-    name: 'Custom Platform',
-    description: 'Bespoke web applications, AI integrations, or complex multi-page systems.',
-    features: ['Custom interactive tools', 'Client portals / dashboards', 'Trained AI assistants', 'Complex routing & logic', 'Custom delivery timeline'],
+    id: 'custom-platform',
+    title: 'Custom Web Platform',
+    subtitle: 'Bespoke web applications, interactive tools, or client portals.',
+    pricingNote: 'Custom quote based on exact technical requirements',
+    bullets: [
+      'Bespoke interactive features (calculators, quote estimators, visualizers)',
+      'Secure client portals, user accounts, and custom dashboards',
+      'Direct integrations with CRMs, payment tools, and live external data',
+      'Custom web logic built to streamline your daily business operations',
+    ],
   },
 ];
 
@@ -45,20 +66,22 @@ export const Pricing: React.FC<PricingProps> = ({ onOpenQuote }) => {
 
         {/* Package Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-          {packages.map((pkg) => (
+          {PRICING_TIERS.map((pkg) => (
             <div
-              key={pkg.name}
+              key={pkg.id}
               className="bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 flex flex-col hover:border-red-600 dark:hover:border-red-500 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
-              <h3 className="font-geist font-bold text-slate-900 dark:text-zinc-100 text-lg mb-1">{pkg.name}</h3>
-              <p className="text-slate-600 dark:text-zinc-300 text-sm mb-4">{pkg.description}</p>
-
-
+              <h3 className="font-geist font-bold text-slate-900 dark:text-zinc-100 text-lg mb-1">{pkg.title}</h3>
+              <p className="text-slate-600 dark:text-zinc-300 text-sm mb-2">{pkg.subtitle}</p>
+              
+              <div className="bg-slate-100 dark:bg-slate-800/50 rounded-lg p-2.5 mb-4 border border-slate-200 dark:border-zinc-700/50">
+                <p className="text-xs font-semibold text-slate-700 dark:text-zinc-300 text-center">{pkg.pricingNote}</p>
+              </div>
 
               <ul className="space-y-2 mb-6 flex-grow">
-                {pkg.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
-                    <CheckCircle2 className="w-4 h-4 text-red-700 dark:text-red-500 shrink-0 mt-0.5" />
+                {pkg.bullets.map((f, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
                     {f}
                   </li>
                 ))}

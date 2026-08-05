@@ -38,11 +38,11 @@ export const AboutSection: React.FC = () => {
           </h2>
 
           <h3 className="text-xl sm:text-2xl font-semibold text-red-700 dark:text-red-500 leading-snug">
-            A solo React specialist building sub-second websites for ambitious local businesses.
+            A local freelance web developer helping local businesses grow online.
           </h3>
 
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-300 leading-relaxed">
-            I build custom React engines from scratch so your site loads in milliseconds, looks great, and turns visitors into paying clients. As a local solo freelancer, when you hire me, you get me directly—no account managers, no junior devs, and zero tech jargon.
+            I build clean, fast websites from scratch that look great on phones and make it easy for customers to get in touch. Working with me means direct 1-on-1 contact—no middle management, no junior devs, and zero tech jargon.
           </p>
 
           {/* Core Principles */}
@@ -59,7 +59,7 @@ export const AboutSection: React.FC = () => {
 
             <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
               <Lock className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
-              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Fixed Pricing & Zero Hidden Monthly Fees</span>
+              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Clear Pricing & Zero Technical Homework</span>
             </li>
           </ul>
 

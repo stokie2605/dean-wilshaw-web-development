@@ -24,6 +24,26 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
   const [capturedDetails, setCapturedDetails] = useState<string>('');
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
+  const [showBubble, setShowBubble] = useState(false);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem('ai_bubble_dismissed')) {
+      const timer = setTimeout(() => {
+        setShowBubble(true);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  const dismissBubble = () => {
+    setShowBubble(false);
+    sessionStorage.setItem('ai_bubble_dismissed', 'true');
+  };
+
+  const openStitchModal = () => {
+    dismissBubble();
+    setStitchModalOpen(true);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -71,7 +91,7 @@ export default function App() {
       <Header 
         onOpenQuote={handleOpenQuote} 
         onOpenWhatsApp={handleOpenWhatsApp} 
-        onOpenStitch={() => setStitchModalOpen(true)}
+        onOpenStitch={openStitchModal}
       />
 
       {/* Main Page Content */}
@@ -87,7 +107,7 @@ export default function App() {
             <AboutSection />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
-            <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} onOpenStitch={() => setStitchModalOpen(true)} />
+            <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} onOpenStitch={openStitchModal} />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
             <QuoteForm isOpen={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
@@ -130,9 +150,24 @@ export default function App() {
 
       {/* Floating Ask AI Button - Bottom Right */}
       {!stitchModalOpen && (
-        <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-[45] flex flex-col gap-3">
+        <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-[45] flex flex-col items-end gap-3">
+          {showBubble && (
+            <div 
+              className="bg-white border border-slate-200 shadow-xl rounded-xl p-3 text-sm font-medium text-slate-800 animate-bounce relative flex items-center gap-2 pr-8 cursor-pointer" 
+              onClick={openStitchModal}
+            >
+              Not sure where to start? Ask me! 👋
+              <button 
+                onClick={(e) => { e.stopPropagation(); dismissBubble(); }} 
+                className="absolute right-2 text-slate-400 hover:text-slate-600"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+              </button>
+              <div className="absolute -bottom-2 right-5 w-4 h-4 bg-white border-b border-r border-slate-200 transform rotate-45"></div>
+            </div>
+          )}
           <button 
-            onClick={() => setStitchModalOpen(true)}
+            onClick={openStitchModal}
             className="bg-[#191c1e] hover:bg-[#2a2f32] text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-105 border border-white/10 relative"
             aria-label="Ask AI"
           >
@@ -142,7 +177,7 @@ export default function App() {
       )}
 
       {/* Mobile Bottom Tab Bar */}
-      <BottomTabBar />
+      <BottomTabBar onOpenQuote={handleOpenQuote} />
 
       {/* WhatsApp Modal */}
       <Suspense fallback={null}>

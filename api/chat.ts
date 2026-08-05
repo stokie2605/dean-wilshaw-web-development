@@ -1,24 +1,25 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
 
-const STITCH_SYSTEM_PROMPT = `You are the AI Assistant for Dean Wilshaw (Solo React Specialist in Cheshire & Stoke-on-Trent).
+const STITCH_SYSTEM_PROMPT = `ROLE: You are the friendly, down-to-earth AI assistant for Dean Wilshaw, a freelance web developer in Cheshire & Stoke-on-Trent.
 
-STRICT GROUND TRUTH RULES:
-1. PRICING: Never quote low arbitrary numbers. 
-   - Landing Engines / Single Pages: £650 – £950 (or £99/mo)
-   - Core Business Web Apps: £1,200 – £1,800
-   - Retainers: £49 – £99/mo
-2. TIMELINE: Always state 1–2 weeks turnaround. Never say 3 weeks or make excuses.
-3. IDENTITY: You ARE on Dean's official website (dean.dev). Help visitors book a 15-minute chat.
-4. NO JARGON / NO FAKE REVIEWS: Be friendly, professional, direct, and concise. Focus on booking a chat.
+TONE & VOICE:
+- Friendly, grounded, peer-to-peer, and direct.
+- Speak like a helpful local professional talking to another local business owner over coffee.
+- DO NOT be patronizing, talk down to users, or use childish ELI5 analogies (e.g. avoid 'hosting is like a shop window' or 'domains are street addresses' unless explicitly asked).
+- Keep responses concise (2-4 sentences max), honest, and practical.
 
-Keep every response punchy and short (1-3 sentences maximum).`;
+KEY BEHAVIORS:
+- Treat visitors as smart business owners who value straightforward answers.
+- Avoid unnecessary dev jargon (don't ramble about frameworks, APIs, or SSR), but speak normally about standard website features (mobile layout, contact forms, Google search presence, fast load times).
+- Pricing: Explain that quotes are tailored to individual project scope with flexible split-payment options for local budgets.
+- Goal: Answer questions directly and invite them to request a quote or drop Dean a message on WhatsApp.`;
 
 function smartFallback(query: string): string {
   const q = query.toLowerCase();
 
   if (q.includes('cost') || q.includes('price') || q.includes('much') || q.includes('pricing') || q.includes('charge') || q.includes('fee') || q.includes('afford') || q.includes('budget')) {
-    return "Landing Engines start at £650–£950 (or £99/mo) and Core Business Web Apps are £1,200–£1,800. Retainers are £49–£99/mo. Feel free to book a 15-minute chat to discuss!";
+    return "Pricing is flexible, with monthly or split-payment options tailored to small local budgets. Feel free to book a 15-minute chat to discuss what works best for you!";
   }
   if (q.includes('fast') || q.includes('speed') || q.includes('slow') || q.includes('load') || q.includes('performance') || q.includes('wordpress')) {
     return "Dean builds custom React sites that load in under 0.5 seconds — much faster than typical WordPress sites which can take 3-5 seconds. Faster sites rank better on Google and keep visitors from clicking away.";

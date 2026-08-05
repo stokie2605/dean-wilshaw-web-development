@@ -26,7 +26,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6, .font-geist {
@@ -91,3 +91,58 @@ h1, h2, h3, h4, h5, h6, .font-geist {
     opacity: 1;
   }
 }
+@theme {
+  --color-on-primary-container: #6b4c00;
+  --color-on-secondary: #00354a;
+  --color-tertiary-container: #39dbc6;
+  --color-surface-container-highest: #2d3449;
+  --color-on-error-container: #ffdad6;
+  --color-error-container: #93000a;
+  --color-primary-fixed: #ffdea8;
+  --color-on-primary-fixed-variant: #5e4200;
+  --color-on-tertiary-fixed: #00201c;
+  --color-surface-variant: #2d3449;
+  --color-secondary-container: #00a6e0;
+  --color-surface-container-low: #131b2e;
+  --color-tertiary-fixed-dim: #3cddc7;
+  --color-on-tertiary-fixed-variant: #005047;
+  --color-outline: #9e8f78;
+  --color-inverse-surface: #dae2fd;
+  --color-inverse-primary: #7c5800;
+  --color-surface-container-high: #222a3d;
+  --color-primary-container: #ffb800;
+  --color-background: #0b1326;
+  --color-secondary: #7bd0ff;
+  --color-inverse-on-surface: #283044;
+  --color-surface: #0b1326;
+  --color-surface-container: #171f33;
+  --color-on-primary: #412d00;
+  --color-surface-bright: #31394d;
+  --color-surface-tint: #ffba20;
+  --color-on-surface-variant: #d5c4ab;
+  --color-on-secondary-fixed: #001e2c;
+  --color-on-error: #690005;
+  --color-secondary-fixed: #c4e7ff;
+  --color-on-primary-fixed: #271900;
+  --color-on-tertiary-container: #005c52;
+  --color-primary-fixed-dim: #ffba20;
+  --color-error: #ffb4ab;
+  --color-outline-variant: #514532;
+  --color-on-secondary-container: #00374d;
+  --color-primary: #ffdca1;
+  --color-surface-dim: #0b1326;
+  --color-on-surface: #dae2fd;
+  --color-tertiary: #60f8e2;
+  --color-on-secondary-fixed-variant: #004c69;
+  --color-on-tertiary: #003731;
+  --color-surface-container-lowest: #060e20;
+  --color-tertiary-fixed: #62fae3;
+  --color-secondary-fixed-dim: #7bd0ff;
+  --color-on-background: #dae2fd;
+  --spacing-gutter: 24px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 48px;
+  --spacing-mobile-action-bar-height: 72px;
+  --spacing-section-gap: 5rem;
+}
+

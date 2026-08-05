@@ -6,6 +6,7 @@ import { AuthGate } from './components/AuthGate';
 import { AdminDashboard } from './components/AdminDashboard';
 import { DunhamMockup } from './pages/DunhamMockup';
 import { ReportPreview } from './pages/ReportPreview';
+import EvansElectricalLanding from './components/EvansElectricalLanding';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/dunham-wealth" element={<DunhamMockup />} />
+        <Route path="/evans" element={<EvansElectricalLanding />} />
         <Route path="/report/preview/:slug" element={<ReportPreview />} />
         <Route path="/admin" element={
           <AuthGate>

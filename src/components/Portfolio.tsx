@@ -22,7 +22,7 @@ const MagneticCard = ({ children, className = '', onClick }: { children: React.R
   return (
     <article 
       ref={cardRef}
-      className={`portfolio-card group bg-white dark:bg-[#09090B] border border-slate-200 dark:border-white/10 rounded-3xl overflow-hidden relative magnetic-border cursor-pointer flex flex-col h-full transition-colors shadow-sm dark:shadow-none ${className}`}
+      className={`portfolio-card group bg-white dark:bg-zinc-900/40 border border-slate-200 dark:border-zinc-800 rounded-3xl overflow-hidden relative magnetic-border cursor-pointer flex flex-col h-full transition-colors shadow-sm dark:shadow-none ${className}`}
       onMouseMove={handleMouseMove}
       onClick={onClick}
     >
@@ -48,50 +48,47 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
 
   const projects = [
     {
+      id: 'vanguard-plumbing',
+      title: 'Vanguard Plumbing & Heating',
       industryLabel: 'Emergency & Trades',
-      title: 'Roadside Tactical 24/7',
-      subtitle: 'Rapid Emergency Dispatch & Transport Platform',
-      uiFocus: 'Engineered for high-contrast safety UI, sub-second 4G rendering, and 24/7 urgent dispatch call routing.',
-      desktopImage: '/mockups/vanguard-desktop.webp',
-      mobileImage: '/mockups/vanguard-mobile.webp',
-      modalOverview: 'A high-converting emergency response platform built with a bold dark industrial theme. Engineered for maximum speed with sub-second 4G rendering and live fleet tracking capabilities.',
+      sceneImage: '/mockups/vanguard-alive.webp',
+      sceneImageSmall: null,
+      modalOverview: 'High-converting trade booking engine built with 24/7 emergency dispatch forms and local SEO schema.',
       features: [
-        'Sub-second 4G mobile rendering',
-        '24/7 urgent dispatch call routing',
-        'Live fleet data tracking',
+        '24/7 emergency dispatch forms',
+        'Local SEO schema integration',
+        'Mobile-first performance',
         'High-contrast safety UI'
       ],
       badges: ['Mobile-First UI/UX', 'High-Conversion Design', 'Tailwind CSS', 'Emergency Dispatch UI']
     },
     {
-      industryLabel: 'B2B Logistics & Corporate',
-      title: 'Enterprise Logistics Portal',
-      subtitle: 'Secure Client Portal & Enterprise Routing',
-      uiFocus: 'Built for enterprise reliability, featuring optimized & secure B2B client login and data-driven dashboards.',
-      desktopImage: '/mockups/apex-desktop.webp',
-      mobileImage: '/mockups/apex-mobile.webp',
-      modalOverview: 'A professional B2B portal designed for logistics corporations. Features a clean, data-first interface focusing on real-time fleet routing and secure enterprise access.',
+      id: 'apex-scaffolding',
+      title: 'Apex Industrial Scaffolding',
+      industryLabel: 'Commercial & Construction',
+      sceneImage: '/mockups/apex-alive.webp',
+      sceneImageSmall: null,
+      modalOverview: 'Heavy-duty commercial site portal with quote calculators and compliance documentation vaults.',
       features: [
-        'Optimized & secure B2B client login',
-        'Real-time fleet routing overview',
+        'Interactive quote calculators',
+        'Compliance documentation vaults',
         'Data-driven dashboards',
         'Corporate B2B lead capture'
       ],
       badges: ['Client Portal', 'Enterprise UX', 'Secure Routing', 'Responsive Layout']
     },
     {
-      industryLabel: 'Local Retail & Hospitality',
-      title: 'The Kiln & Craft Artisan Market',
-      subtitle: 'Community Event Platform & Producer Showcase',
-      uiFocus: 'Designed with a handcrafted community feel, highlighting featured stallholders and zero-mile branding.',
-      desktopImage: '/mockups/kiln-desktop.webp',
-      mobileImage: '/mockups/kiln-mobile.webp',
-      modalOverview: 'A vibrant community-focused portal designed for local produce markets and artisan retail. Emphasizes a handcrafted aesthetic with deep roots in local zero-mile branding.',
+      id: 'kiln-joinery',
+      title: 'Kiln Architectural Joinery',
+      industryLabel: 'Bespoke Craft & Retail',
+      sceneImage: '/mockups/kiln-joinery-alive.webp',
+      sceneImageSmall: null,
+      modalOverview: 'High-end portfolio showcase for luxury timber craftsman, highlighting bespoke projects and client testimonials.',
       features: [
-        'Handcrafted community feel',
-        'Featured stallholder showcases',
-        'Live event schedules',
-        'Zero-mile branding'
+        'Bespoke project galleries',
+        'Client testimonial integration',
+        'High-end visual aesthetic',
+        'Handcrafted community feel'
       ],
       badges: ['Community Platform', 'Event Scheduling', 'Clean Typography', 'Zero-Mile Branding']
     }
@@ -120,7 +117,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
             
             return (
               <MagneticCard key={idx} onClick={() => setActiveModal(idx)}>
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden flex items-center justify-center p-6 border-b border-slate-100 dark:border-white/5 bg-slate-50 dark:bg-[#09090B]">
+                <div className="relative h-64 sm:h-72 w-full bg-zinc-950 rounded-t-xl overflow-hidden flex items-center justify-center p-6 border-b border-slate-200 dark:border-zinc-800">
                   {/* Ambient Glows */}
                   <div className={`absolute inset-0 blur-[80px] rounded-full w-48 h-48 top-1/2 transform -translate-y-1/2 mix-blend-screen opacity-50 group-hover:opacity-80 transition-opacity duration-700 ${idx === 0 ? 'bg-indigo-500/20 left-1/2 -translate-x-1/2' : idx === 1 ? 'bg-rose-500/20 left-1/2 -translate-x-1/2' : 'bg-amber-500/20 left-1/2 -translate-x-1/2'}`}></div>
                   
@@ -130,73 +127,24 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                     <span className="font-mono text-slate-900 dark:text-zinc-100 text-xs font-medium">{idx === 0 ? '98+' : idx === 1 ? '92+' : '95+'} Score</span>
                   </div>
                   
-                  {/* Device Mockups container */}
-                  <div className="relative w-full max-w-sm h-full flex items-center justify-center z-10 floating perspective-1000">
-                    {/* Main Device (MacBook / iPad) */}
-                    {idx === 1 ? (
-                      // iPad Pro for the 2nd card (Enterprise Logistics)
-                      <div className="absolute w-48 h-64 bg-slate-200 dark:bg-[#1a1a1a] rounded-[24px] border border-slate-300 dark:border-[#444] shadow-2xl p-[4px] -ml-8 transform group-hover:rotate-2 group-hover:scale-105 transition-all duration-500 ease-out z-10 ring-1 ring-black/10 dark:ring-white/5">
-                        <div className="w-full h-full bg-black rounded-[20px] relative overflow-hidden border border-black/50 shadow-[inset_0_0_15px_rgba(0,0,0,0.8)]">
-                          {/* Webcam */}
-                          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#0a0a0a] border border-[#222] rounded-full z-20 flex items-center justify-center">
-                            <div className="w-[1px] h-[1px] bg-blue-900/50 rounded-full"></div>
-                          </div>
-                          <img src={project.desktopImage} srcSet={`${project.desktopImage.replace('.webp', '-small.webp')} 600w, ${project.desktopImage} 1200w`} sizes="(max-width: 640px) 600px, 1200px" alt={`${project.title} iPad`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />
-                          {/* Glass Glare */}
-                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none mix-blend-overlay"></div>
-                        </div>
-                      </div>
-                    ) : (
-                      // MacBook Pro
-                      <div className={`absolute w-56 h-36 sm:w-64 sm:h-40 -ml-12 transform group-hover:-translate-y-2 group-hover:scale-105 group-hover:rotate-y-2 transition-all duration-500 ease-out z-10 flex flex-col items-center ${macbookClass}`}>
-                        {/* Screen Section */}
-                        <div className="w-full flex-grow bg-[#0a0a0a] rounded-t-xl rounded-b-sm border-t-2 border-l-2 border-r-2 border-slate-300 dark:border-[#333] p-[3px] shadow-[0_10px_30px_rgba(0,0,0,0.5)] relative overflow-hidden flex flex-col">
-                          <div className="w-full flex-grow bg-[#111] rounded-t-lg relative overflow-hidden border border-black/60">
-                            {/* Webcam */}
-                            <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-[#0a0a0a] border border-[#222] rounded-full z-20 flex items-center justify-center">
-                              <div className="w-0.5 h-0.5 bg-blue-900/50 rounded-full"></div>
-                            </div>
-                            <img src={project.desktopImage} srcSet={`${project.desktopImage.replace('.webp', '-small.webp')} 600w, ${project.desktopImage} 1200w`} sizes="(max-width: 640px) 600px, 1200px" alt={`${project.title} Desktop`} width={1200} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />
-                            {/* Glass Glare */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none"></div>
-                          </div>
-                          {/* MacBook Chin */}
-                          <div className="w-full h-2.5 sm:h-3 bg-[#0a0a0a] flex items-center justify-center relative">
-                            <span className="text-[4px] text-zinc-500 font-semibold tracking-[0.2em] opacity-40">MacBook Pro</span>
-                          </div>
-                        </div>
-                        {/* Keyboard Deck / Base */}
-                        <div className="w-[110%] h-2.5 sm:h-3 bg-gradient-to-b from-slate-200 to-slate-400 dark:from-[#3a3a3a] dark:to-[#1a1a1a] rounded-t-[1px] rounded-b-xl border border-slate-300 dark:border-[#444] shadow-[0_15px_30px_rgba(0,0,0,0.6)] relative flex justify-center -mt-[1px]">
-                          {/* Thumb Groove */}
-                          <div className="w-12 h-1 bg-slate-300/50 dark:bg-black/30 rounded-b-md"></div>
-                        </div>
-                      </div>
-                    )}
-                    
-                    {/* iPhone Pro */}
-                    <div className={`absolute w-20 h-40 sm:w-24 sm:h-48 ml-24 mt-12 group-hover:translate-x-2 group-hover:-translate-y-1 group-hover:scale-110 group-hover:-rotate-y-6 transition-all duration-500 ease-out z-20 floating-delayed ${iphoneClass}`}>
-                      {/* Stainless Steel Frame */}
-                      <div className="w-full h-full bg-slate-200 dark:bg-[#1a1a1a] rounded-[24px] border border-slate-300 dark:border-[#444] shadow-2xl p-[3px] relative flex flex-col ring-1 ring-black/10 dark:ring-white/5">
-                        {/* Volume & Power Buttons */}
-                        <div className="absolute -left-[2px] top-8 w-[2px] h-3 bg-slate-300 dark:bg-[#333] rounded-l-sm"></div>
-                        <div className="absolute -left-[2px] top-12 w-[2px] h-5 bg-slate-300 dark:bg-[#333] rounded-l-sm"></div>
-                        <div className="absolute -left-[2px] top-19 w-[2px] h-5 bg-slate-300 dark:bg-[#333] rounded-l-sm"></div>
-                        <div className="absolute -right-[2px] top-14 w-[2px] h-7 bg-slate-300 dark:bg-[#333] rounded-r-sm"></div>
-                        
-                        {/* Screen Area */}
-                        <div className="w-full h-full bg-black rounded-[20px] relative overflow-hidden border border-black/50 shadow-[inset_0_0_15px_rgba(0,0,0,0.8)]">
-                          {/* Dynamic Island / Notch */}
-                          <div className="absolute top-1 left-1/2 -translate-x-1/2 w-8 h-2.5 bg-black rounded-full z-20 flex items-center justify-end px-1 border border-white/5 shadow-sm">
-                            <div className="w-1.5 h-1.5 bg-[#0f3b7d] rounded-full opacity-60"></div>
-                          </div>
-                          
-                          <img src={project.mobileImage} srcSet={`${project.mobileImage.replace('.webp', '-small.webp')} 600w, ${project.mobileImage} 1200w`} sizes="(max-width: 640px) 600px, 1200px" alt={`${project.title} Mobile`} width={400} height={800} loading="lazy" decoding="async" className="w-full h-full object-cover object-top" />
-                          
-                          {/* Soft Glass Glare */}
-                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent pointer-events-none mix-blend-overlay"></div>
-                        </div>
-                      </div>
-                    </div>
+                  {/* Pre-Rendered 3D Master Scene */}
+                  <div className="relative aspect-[16/10] w-full bg-transparent overflow-hidden p-4 flex items-center justify-center z-10 floating">
+                    <picture className="w-full h-full flex items-center justify-center transition-transform duration-500 group-hover:scale-[1.03] group-hover:-translate-y-1.5">
+                      {project.sceneImageSmall && (
+                        <source
+                          media="(max-width: 640px)"
+                          srcSet={project.sceneImageSmall}
+                          type="image/webp"
+                        />
+                      )}
+                      <img
+                        src={project.sceneImage}
+                        alt={`${project.title} Master Scene`}
+                        className="w-full h-full object-contain drop-shadow-2xl"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </picture>
                   </div>
                 </div>
                 

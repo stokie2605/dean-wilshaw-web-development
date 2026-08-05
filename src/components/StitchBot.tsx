@@ -156,6 +156,26 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
           </div>
         )}
 
+        {messages.length === 1 && !loading && (
+          <div className="flex flex-col gap-2 mt-2 ml-10">
+            {[
+              { text: "I don't have a site yet — where do we start?", icon: "🟢" },
+              { text: "I have an old site that isn't getting calls", icon: "🟡" },
+              { text: "How much effort is required on my end?", icon: "🔵" },
+              { text: "Can I just send Dean a WhatsApp message?", icon: "💬" }
+            ].map((btn, i) => (
+              <button
+                key={i}
+                onClick={() => handleSendMessage(btn.text)}
+                className="text-left p-2 rounded-lg text-xs transition-colors flex items-center gap-2 shadow-sm w-fit bg-slate-100 hover:bg-slate-200 text-slate-900 dark:bg-zinc-800/80 dark:hover:bg-zinc-800 dark:text-zinc-100 border border-slate-200 dark:border-zinc-700 font-medium"
+              >
+                <span>{btn.icon}</span>
+                <span>{btn.text}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
         <div ref={messagesEndRef} />
       </div>
 
@@ -189,7 +209,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
 
         <div className="flex items-center justify-between mt-2 pt-1 text-[10px] text-[#76777d]">
           <button onClick={onOpenQuote} className="hover:underline text-[#991b1b] font-medium">
-            Book 15-Min Chat
+            Get Quote
           </button>
           <button onClick={onOpenWhatsApp} className="hover:underline text-emerald-700 font-medium">
             WhatsApp Dean
