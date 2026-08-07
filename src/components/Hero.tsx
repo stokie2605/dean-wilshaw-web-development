@@ -91,7 +91,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
         {/* Right Column: Interactive Hero Tool */}
         <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center">
           <div className="w-full relative">
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 bg-red-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-600/30 flex items-center gap-2 border border-red-500">
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20 bg-red-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-600/30 flex items-center gap-2 border border-red-500 whitespace-nowrap">
               <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
               Live Demo: Example Client Tool
             </div>
