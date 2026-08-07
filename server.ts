@@ -34,11 +34,11 @@ function getGeminiAI(): GoogleGenAI | null {
   return aiClient;
 }
 
-const STITCH_SYSTEM_PROMPT = `You are the Client Support Assistant for Dean Wilshaw's independent Web Development studio based in Cheshire & Stoke-on-Trent, UK.
+const STITCH_SYSTEM_PROMPT = `You are the Client Support Assistant for Design Systems Web based in Cheshire & Stoke-on-Trent, UK.
 Your tone is professional, friendly, concise, and focused on business growth and technical excellence.
 
 Key Studio Facts & Services:
-- Engineer: Dean Wilshaw (25 years operational discipline in logistics, now building high-performance web applications).
+- Engineer: Design Systems Web (25 years operational discipline in logistics, now building high-performance web applications).
 - Specialty: Custom React + Vite websites designed for local business lead generation (Cheshire, Stoke-on-Trent, Manchester, & UK-wide).
 - Turnaround Times: ALL standard websites and landing pages are built and delivered strictly within 1 to 2 weeks. Never quote 3 weeks.
 - Comparison vs WordPress: WordPress templates are slow, plugin-heavy, vulnerable, and require constant maintenance. Dean's custom React builds are stateless, lightning fast, highly secure, and tailored 100% to brand goals.
@@ -57,7 +57,7 @@ async function startServer() {
 
   // Health check
   app.get("/api/health", (_req, res) => {
-    res.json({ status: "ok", studio: "Dean Wilshaw Web Development" });
+    res.json({ status: "ok", studio: "Design Systems Web" });
   });
 
   // AI Chat endpoint (Stitch Virtual Assistant)
@@ -140,7 +140,7 @@ async function startServer() {
           html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
               <div style="background: #dc2626; padding: 20px 24px;">
-                <h1 style="color: white; margin: 0; font-size: 18px;">New Quote Request — Dean Wilshaw Web</h1>
+                <h1 style="color: white; margin: 0; font-size: 18px;">New Quote Request — Design Systems Web</h1>
                 <p style="color: #fecaca; margin: 4px 0 0; font-size: 12px;">Reference: ${refNumber}</p>
               </div>
               <div style="padding: 24px; background: #fff;">
@@ -318,7 +318,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Dean Wilshaw Web Studio server running on http://0.0.0.0:${PORT}`);
+    console.log(`Design Systems Web server running on http://localhost:${PORT}`);
   });
 }
 

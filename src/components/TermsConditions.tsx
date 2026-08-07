@@ -19,7 +19,7 @@ export const TermsConditions: React.FC<TermsProps> = ({ onBack }) => {
             Back to site
           </button>
           <div className="h-4 w-px bg-slate-600" />
-          <span className="font-geist font-bold text-sm">Dean Wilshaw Web Development</span>
+          <span className="font-geist font-bold text-sm">Design Systems Web</span>
         </div>
       </div>
 

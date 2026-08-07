@@ -6,6 +6,7 @@ import { BottomTabBar } from './components/BottomTabBar';
 
 // Lazy load below-the-fold components
 const Portfolio = lazy(() => import('./components/Portfolio').then(m => ({ default: m.Portfolio })));
+const TradeToolsDemo = lazy(() => import('./components/TradeToolsDemo').then(m => ({ default: m.TradeToolsDemo })));
 const AboutSection = lazy(() => import('./components/AboutSection').then(m => ({ default: m.AboutSection })));
 const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
 const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
@@ -102,6 +103,9 @@ export default function App() {
         <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
           <div className="bg-slate-50 dark:bg-zinc-950">
             <Portfolio onOpenQuote={handleOpenQuote} />
+          </div>
+          <div className="bg-slate-50 dark:bg-zinc-950">
+            <TradeToolsDemo />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
             <AboutSection />

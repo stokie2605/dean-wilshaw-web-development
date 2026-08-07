@@ -42,10 +42,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
           />
           <div className="flex flex-col justify-center mt-1">
             <span className="font-geist font-bold text-lg text-slate-900 dark:text-zinc-100 tracking-tight group-hover:text-red-700 dark:group-hover:text-red-500 transition-colors leading-none">
-              Dean Wilshaw
+              Design Systems Web
             </span>
             <span className="text-[10px] tracking-widest uppercase font-semibold text-slate-500 dark:text-zinc-400 mt-1 leading-none">
-              Web Development
+              DIGITAL INFRASTRUCTURE
             </span>
           </div>
         </a>

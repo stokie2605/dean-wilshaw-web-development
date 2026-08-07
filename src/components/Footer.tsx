@@ -17,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
         {/* Left Side: Copyright */}
         <div className="flex flex-col items-center md:items-start gap-2">
           <p className="text-xs text-slate-600 dark:text-zinc-400 text-center md:text-left font-normal">
-            &copy; {new Date().getFullYear()} Dean Wilshaw. Made in Cheshire. All rights reserved.
+            &copy; {new Date().getFullYear()} Design Systems Web. Made in Cheshire. All rights reserved.
           </p>
         </div>
 
