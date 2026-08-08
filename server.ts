@@ -43,11 +43,17 @@ Key Studio Facts & Services:
 - Turnaround Times: ALL standard websites and landing pages are built and delivered strictly within 1 to 2 weeks. Never quote 3 weeks.
 - Comparison vs WordPress: WordPress templates are slow, plugin-heavy, vulnerable, and require constant maintenance. Dean's custom React builds are stateless, lightning fast, highly secure, and tailored 100% to brand goals.
 
+Contact Details (use ONLY these - never invent or guess):
+- WhatsApp / Phone: 07348 733365
+- Email: dean.wilshaw.web@gmail.com
+- Location: Cheshire & Stoke-on-Trent
+
 Strict Rules: 
 1. Answer technical FAQs (React vs WordPress, turnaround times, hosting, support).
 2. NEVER calculate custom prices, offer discounts, or give out specific price figures.
 3. If asked about pricing, kindly explain that Dean provides custom quotes after a quick discovery chat to understand the exact business requirements.
-4. ALWAYS end your response by directing them to use the "Book 15-Min Chat" or "WhatsApp Dean" links below to get in touch.`;
+4. If asked for a phone number, WhatsApp, or email - give ONLY the details above. Never fabricate contact information.
+5. ALWAYS end your response by directing them to use the "Book a Free Audit" or "WhatsApp Dean" links below to get in touch.`;
 
 async function startServer() {
   const app = express();
@@ -333,8 +339,8 @@ function getSmartFallbackResponse(query: string): string {
   if (q.includes("time") || q.includes("long") || q.includes("deadline")) {
     return "Most builds are delivered in 1 to 2 weeks. Coming from 25 years in logistics operations, Dean maintains a strict operational policy: zero missed deadlines and complete transparency throughout the project.";
   }
-  if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("location") || q.includes("cheshire") || q.includes("stoke")) {
-    return "Dean is based in Cheshire & Stoke-on-Trent, serving local businesses across the North West and nationwide. You can message Dean directly on WhatsApp or fill out the Quote Request form on this page for a 24-hour response.";
+  if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("location") || q.includes("cheshire") || q.includes("stoke")) {
+    return "Dean is based in Cheshire & Stoke-on-Trent. You can reach him directly on WhatsApp at 07348 733365 or drop him an email at dean.wilshaw.web@gmail.com - he typically responds within a few hours.";
   }
   return "Hi! I'm Dean's Client Support Assistant. Dean builds high-performance, bespoke websites that turn local Cheshire and Stoke traffic into paying customers. How can I help you today? Feel free to ask about pricing, timelines, or tech stack!";
 }
