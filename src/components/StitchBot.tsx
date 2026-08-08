@@ -47,7 +47,22 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
     if (!textToSend) setInput('');
     setLoading(true);
 
-    try {
+    // --- Contact Interception: never let the AI guess Dean's details ---
+    const q = messageText.toLowerCase();
+    const isContactQuery = ['phone', 'number', 'whatsapp', 'email', 'address', 'contact', 'reach', 'get in touch', 'hello@', 'gmail'].some(k => q.includes(k));
+    if (isContactQuery) {
+      await new Promise(r => setTimeout(r, 600));
+      setMessages((prev) => [...prev, {
+        id: (Date.now() + 1).toString(),
+        sender: 'stitch' as const,
+        text: "Here are Dean's direct contact details:\n\n📱 WhatsApp / Phone: 07348 733365\n✉️ Email: dean.wilshaw.web@gmail.com\n\nHe typically replies within a few hours. Tap the \"WhatsApp Dean\" button below to message him directly!",
+        timestamp: new Date(),
+      }]);
+      setLoading(false);
+      return;
+    }
+    // --- End Contact Interception ---
+
       const history = messages.map((m) => ({
         role: m.sender === 'user' ? 'user' : 'assistant',
         content: m.text,
@@ -75,7 +90,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
       const botMsg: ChatMessage = {
         id: (Date.now() + 1).toString(),
         sender: 'stitch',
-        text: "Dean builds fast, mobile-first websites for local businesses in Cheshire & Stoke. Use the 'Request Quote Directly' link below to get in touch!",
+        text: "Dean builds fast, mobile-first digital systems for local businesses in Cheshire & Stoke. Use the 'Book a Free Audit' link below to get in touch!",
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botMsg]);
