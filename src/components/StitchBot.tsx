@@ -63,6 +63,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
     }
     // --- End Contact Interception ---
 
+    try {
       const history = messages.map((m) => ({
         role: m.sender === 'user' ? 'user' : 'assistant',
         content: m.text,
