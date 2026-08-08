@@ -47,21 +47,23 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
     if (!textToSend) setInput('');
     setLoading(true);
 
-    // --- Contact Interception: never let the AI guess Dean's details ---
+    // Contact Interception - bypass AI entirely for contact queries
     const q = messageText.toLowerCase();
-    const isContactQuery = ['phone', 'number', 'whatsapp', 'email', 'address', 'contact', 'reach', 'get in touch', 'hello@', 'gmail'].some(k => q.includes(k));
+    const isContactQuery = ['phone', 'number', 'whatsapp', 'email', 'address', 'contact', 'reach', 'get in touch', 'hello@', 'gmail'].some((k) => q.includes(k));
     if (isContactQuery) {
-      await new Promise(r => setTimeout(r, 600));
-      setMessages((prev) => [...prev, {
-        id: (Date.now() + 1).toString(),
-        sender: 'stitch' as const,
-        text: "Here are Dean's direct contact details:\n\n📱 WhatsApp / Phone: 07348 733365\n✉️ Email: dean.wilshaw.web@gmail.com\n\nHe typically replies within a few hours. Tap the \"WhatsApp Dean\" button below to message him directly!",
-        timestamp: new Date(),
-      }]);
+      await new Promise((r) => setTimeout(r, 600));
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          sender: 'stitch' as const,
+          text: "Here are Dean's direct contact details:\n\n📱 WhatsApp / Phone: 07348 733365\n✉️ Email: dean.wilshaw.web@gmail.com\n\nHe typically replies within a few hours. Tap the \"WhatsApp Dean\" button below to message him directly!",
+          timestamp: new Date(),
+        },
+      ]);
       setLoading(false);
       return;
     }
-    // --- End Contact Interception ---
 
     try {
       const history = messages.map((m) => ({
@@ -99,6 +101,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
       setLoading(false);
     }
   };
+
 
   if (!isOpen) {
     return null;
