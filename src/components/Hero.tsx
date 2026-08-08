@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Rocket, ArrowRight, MessageCircle, ShieldCheck, Zap, Code2, Gauge, CheckCircle2 } from 'lucide-react';
-import { VisualEstimate } from './trade-tools/VisualEstimate';
+import { MissedCallDemo } from './trade-tools/MissedCallDemo';
 
 const MagneticCard = ({ children, className = '', onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -96,7 +96,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
               Live Demo: Example Client Tool
             </div>
             <div className="w-full p-2 rounded-[2rem] bg-slate-100 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800/50 shadow-2xl">
-              <VisualEstimate />
+              <MissedCallDemo />
             </div>
           </div>
         </div>

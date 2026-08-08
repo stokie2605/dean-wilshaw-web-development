@@ -59,7 +59,7 @@ export const TradeToolsDemo = () => {
             </div>
           </div>
 
-          {/* Tool 3: Missed Call Auto Text */}
+          {/* Tool 2: Missed Call Auto Text */}
           <div className="flex flex-col">
             <div className="mb-6">
               <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
@@ -73,6 +73,22 @@ export const TradeToolsDemo = () => {
             </div>
             <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
               <MissedCallDemo />
+            </div>
+          </div>
+
+          {/* Tool 3: Intake Deposit */}
+          <div className="flex flex-col">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                <Zap className="text-red-600 dark:text-red-500" />
+                Qualification &amp; Deposit Portal
+              </h3>
+              <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                Stop wasting hours on time-wasters. This quick form checks how urgent the job is and secures a small upfront deposit before you even confirm a calendar slot.
+              </p>
+            </div>
+            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
+              <IntakeDeposit />
             </div>
           </div>
 
