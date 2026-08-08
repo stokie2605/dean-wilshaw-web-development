@@ -156,7 +156,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
           </div>
         )}
 
-        {messages.length === 1 && !loading && (
+        {messages[messages.length - 1]?.sender === 'stitch' && !loading && (
           <div className="flex flex-col gap-2 mt-2 ml-10">
             {[
               { text: "I don't have a site yet - where do we start?", icon: "🟢" },
