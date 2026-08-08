@@ -42,7 +42,7 @@ export const AboutSection: React.FC = () => {
           </h3>
 
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-300 leading-relaxed">
-            I build high-converting, fast websites and digital tools from scratch. Working with me means direct 1-on-1 contact - no middle management, no junior devs, and zero tech jargon.
+            I build high-converting digital systems and web engines from scratch. Working with me means direct 1-on-1 contact - no middle management, no junior devs, and zero tech jargon.
           </p>
 
           {/* Core Principles */}

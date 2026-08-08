@@ -49,7 +49,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
         <div className="lg:col-span-7 flex flex-col gap-6 items-start text-left z-10">
           {/* Engineered Badge */}
           <div className="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-            <span>Local Web Developer • Cheshire & Stoke-on-Trent</span>
+            <span>Digital Systems Engineer • Cheshire & Stoke-on-Trent</span>
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
           </div>
 
@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
 
           {/* Subtitle */}
           <p className="text-lg sm:text-xl text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Stop losing 90% of your mobile traffic. We engineer high-converting web infrastructure, instant estimate portals, and automated lead-capture tools for local businesses.
+            We engineer high-converting web infrastructure, instant estimate portals, and automated lead-capture tools that turn mobile visitors into direct phone calls for local businesses.
           </p>
 
 

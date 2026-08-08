@@ -59,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
             className="md:hidden bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
             title="Get Quote"
           >
-            Get Quote
+            Book a Free Audit
           </button>
           
           <button
@@ -77,7 +77,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
             onClick={onOpenQuote}
             className="bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
           >
-            Get Quote
+            Book a Free Audit
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
           </div>
