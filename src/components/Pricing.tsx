@@ -6,7 +6,7 @@ const PRICING_TIERS = [
     id: 'lead-engine',
     title: 'Single-Page Lead Engine',
     subtitle: 'High-converting single-page site focused on fast lead generation.',
-    pricingNote: 'From £449',
+    pricingNote: 'From £299',
     bullets: [
       'Built for fast customer contact with tap-to-call and WhatsApp links',
       'Mobile-first layout optimized for speed and local search visibility',
@@ -18,7 +18,7 @@ const PRICING_TIERS = [
     id: 'business-site',
     title: 'Multi-Page Business Site',
     subtitle: 'Comprehensive 4–6 page web presence built to scale.',
-    pricingNote: 'From £749',
+    pricingNote: 'From £499',
     bullets: [
       'Dedicated pages for individual service breakdowns and project galleries',
       'Integrated scheduling tools and custom multi-step inquiry forms',
@@ -30,7 +30,7 @@ const PRICING_TIERS = [
     id: 'custom-platform',
     title: 'Custom Web Platform',
     subtitle: 'Bespoke web applications, interactive tools, or client portals.',
-    pricingNote: 'Custom Quote (Typically £1,200+)',
+    pricingNote: 'Custom Quote (Typically £800+)',
     bullets: [
       'Bespoke interactive features (calculators, quote estimators, visualizers)',
       'Secure client portals, user accounts, and custom dashboards',
