@@ -2,7 +2,7 @@ import React from 'react';
 import { WhatsAppBar } from './trade-tools/WhatsAppBar';
 import { SocialProofBanner } from './trade-tools/SocialProofBanner';
 import { IntakeDeposit } from './trade-tools/IntakeDeposit';
-import { MissedCallDemo } from './trade-tools/MissedCallDemo';
+import { VisualEstimate } from './trade-tools/VisualEstimate';
 import { Target, Zap, Smartphone, MessageSquare } from 'lucide-react';
 
 export const TradeToolsDemo = () => {
@@ -24,7 +24,7 @@ export const TradeToolsDemo = () => {
           </p>
         </div>
 
-        {/* Tools Grid - Tidy 4 Card Layout */}
+        {/* Tools Grid - 4 Card Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           
           {/* Tool 1: Social Proof Trust Banner */}
@@ -48,39 +48,6 @@ export const TradeToolsDemo = () => {
             <div className="mb-6">
               <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
                 <Zap className="text-red-600 dark:text-red-500" />
-                Qualification & Deposit Portal
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                Stop wasting hours on time-wasters. This quick form checks how urgent the job is and secures a small upfront deposit before you even confirm a calendar slot.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-              <IntakeDeposit />
-            </div>
-          </div>
-
-          {/* Tool 2: Missed Call Auto Text */}
-          <div className="flex flex-col">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <Smartphone className="text-red-600 dark:text-red-500" />
-                Missed-Call Auto-Text
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                Over 80% of customers who reach a voicemail instantly tap back to Google and call a competitor. 
-                Our background system detects missed calls and fires an instant text to save the lead.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-              <MissedCallDemo />
-            </div>
-          </div>
-
-          {/* Tool 3: Intake Deposit */}
-          <div className="flex flex-col">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <Zap className="text-red-600 dark:text-red-500" />
                 Qualification &amp; Deposit Portal
               </h3>
               <p className="text-slate-600 dark:text-zinc-400 text-sm">
@@ -89,6 +56,22 @@ export const TradeToolsDemo = () => {
             </div>
             <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
               <IntakeDeposit />
+            </div>
+          </div>
+
+          {/* Tool 3: Instant Guide Price (Visual Estimator) */}
+          <div className="flex flex-col">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                <Smartphone className="text-red-600 dark:text-red-500" />
+                Instant Guide Price
+              </h3>
+              <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                Customers want a ballpark before they commit to a call. This interactive estimator gives them an instant price range for common jobs, capturing their mobile number in the process.
+              </p>
+            </div>
+            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
+              <VisualEstimate />
             </div>
           </div>
 
