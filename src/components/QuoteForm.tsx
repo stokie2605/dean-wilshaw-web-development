@@ -82,7 +82,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, prefilled
             Let's Talk
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mb-3">
-            Get Quote
+            Book Your Free Audit
           </h2>
           <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base max-w-lg">
             Let's discuss your business goals and see if we're a good fit. Fill out the quick form below and I'll WhatsApp you to arrange a time.

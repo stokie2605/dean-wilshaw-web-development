@@ -50,7 +50,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
     {
       id: 'vanguard-plumbing',
       title: 'Vanguard Plumbing & Heating',
-      industryLabel: 'Emergency & Trades',
+      industryLabel: 'Emergency & Trades - Concept Build',
       sceneImage: '/mockups/vanguard-alive.webp',
       sceneImageSmall: null,
       modalOverview: 'High-converting trade booking engine built with 24/7 emergency dispatch forms and local SEO schema.',
@@ -65,7 +65,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
     {
       id: 'apex-scaffolding',
       title: 'Apex Industrial Scaffolding',
-      industryLabel: 'Commercial & Construction',
+      industryLabel: 'Commercial & Construction - Concept Build',
       sceneImage: '/mockups/apex-alive.webp',
       sceneImageSmall: null,
       modalOverview: 'Heavy-duty commercial site portal with quote calculators and compliance documentation vaults.',
@@ -80,7 +80,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
     {
       id: 'kiln-joinery',
       title: 'Kiln Architectural Joinery',
-      industryLabel: 'Bespoke Craft & Retail',
+      industryLabel: 'Bespoke Craft & Retail - Concept Build',
       sceneImage: '/mockups/kiln-joinery-alive.webp',
       sceneImageSmall: null,
       modalOverview: 'High-end portfolio showcase for luxury timber craftsman, highlighting bespoke projects and client testimonials.',
@@ -90,7 +90,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
         'High-end visual aesthetic',
         'Handcrafted community feel'
       ],
-      badges: ['Community Platform', 'Event Scheduling', 'Clean Typography', 'Zero-Mile Branding']
+      badges: ['Premium Portfolio', 'High-End Aesthetic', 'Clean Typography', 'Zero-Mile Branding']
     }
   ];
 

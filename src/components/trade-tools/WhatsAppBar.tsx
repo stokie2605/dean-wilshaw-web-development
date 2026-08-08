@@ -10,7 +10,7 @@ export const WhatsAppBar: React.FC<WhatsAppBarProps> = ({
   phoneNumber = "447348733365", 
   tradeName = "Local Service" 
 }) => {
-  const encodedText = encodeURIComponent(`Hi, I'm looking for some help regarding ${tradeName}. Can we chat?`);
+  const encodedText = encodeURIComponent(`Hi, I'm looking for a quote for some local work. Can we chat?`);
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
 
   return (
