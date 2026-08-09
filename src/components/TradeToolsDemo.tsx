@@ -38,7 +38,7 @@ export const TradeToolsDemo = () => {
                 If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and highly rated.
               </p>
             </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
+            <div className="p-4 sm:p-8 rounded-3xl bg-slate-50 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-inner">
               <SocialProofBanner />
             </div>
           </div>
