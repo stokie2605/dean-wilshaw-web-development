@@ -8,7 +8,7 @@ interface QuoteFormProps {
   prefilledDetails?: string;
 }
 
-export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, prefilledDetails }) => {
+export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWhatsApp, prefilledDetails }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +18,15 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, prefilled
 
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<any | null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
 
   useEffect(() => {
     if (prefilledDetails) {
@@ -71,7 +80,8 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, prefilled
           
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors z-10"
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center"
+            aria-label="Close"
           >
             <X className="w-6 h-6" />
           </button>
@@ -185,7 +195,8 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, prefilled
             <div className="bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 rounded-2xl max-w-md w-full p-6 shadow-2xl relative space-y-5">
               <button
                 onClick={() => setResult(null)}
-                className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 dark:hover:text-white p-2.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center justify-center"
+                aria-label="Close"
               >
                 <X className="w-5 h-5" />
               </button>

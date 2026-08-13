@@ -1,14 +1,14 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
+import { HeroSection } from './components/HeroSection';
 import { BottomTabBar } from './components/BottomTabBar';
 
 // Lazy load below-the-fold components
-const Portfolio = lazy(() => import('./components/Portfolio').then(m => ({ default: m.Portfolio })));
-const TradeToolsDemo = lazy(() => import('./components/TradeToolsDemo').then(m => ({ default: m.TradeToolsDemo })));
-const AboutSection = lazy(() => import('./components/AboutSection').then(m => ({ default: m.AboutSection })));
-const Pricing = lazy(() => import('./components/Pricing').then(m => ({ default: m.Pricing })));
+const PortfolioShowcaseSection = lazy(() => import('./components/PortfolioShowcaseSection').then(m => ({ default: m.PortfolioShowcaseSection })));
+const InteractiveDemosSection = lazy(() => import('./components/InteractiveDemosSection').then(m => ({ default: m.InteractiveDemosSection })));
+const AboutDeanSection = lazy(() => import('./components/AboutDeanSection').then(m => ({ default: m.AboutDeanSection })));
+const PricingSection = lazy(() => import('./components/PricingSection').then(m => ({ default: m.PricingSection })));
 const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 const StitchBot = lazy(() => import('./components/StitchBot').then(m => ({ default: m.StitchBot })));
@@ -87,7 +87,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950 text-[#191c1e] dark:text-white font-sans selection:bg-red-500/30 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950 text-[#191c1e] dark:text-white font-sans selection:bg-red-500/30 transition-colors duration-300 overflow-x-hidden">
       {/* Navigation */}
       <Header 
         onOpenQuote={handleOpenQuote} 
@@ -98,20 +98,20 @@ export default function App() {
       {/* Main Page Content */}
       <main className="flex-grow pb-20 md:pb-0 transition-colors duration-300">
         <div className="bg-slate-50 dark:bg-zinc-950">
-          <Hero onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
+          <HeroSection onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
         <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
           <div className="bg-slate-50 dark:bg-zinc-950">
-            <Portfolio onOpenQuote={handleOpenQuote} />
+            <AboutDeanSection />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
-            <TradeToolsDemo />
+            <InteractiveDemosSection />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
-            <AboutSection />
+            <PortfolioShowcaseSection onOpenQuote={handleOpenQuote} />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
-            <Pricing onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} onOpenStitch={openStitchModal} />
+            <PricingSection onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} onOpenStitch={openStitchModal} />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
             <QuoteForm isOpen={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
@@ -163,7 +163,8 @@ export default function App() {
               Not sure where to start? Ask me! 👋
               <button 
                 onClick={(e) => { e.stopPropagation(); dismissBubble(); }} 
-                className="absolute right-2 text-slate-400 hover:text-slate-600"
+                className="absolute right-1 top-1 text-slate-400 hover:text-slate-600 p-2.5 rounded-full flex items-center justify-center"
+                aria-label="Close"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>

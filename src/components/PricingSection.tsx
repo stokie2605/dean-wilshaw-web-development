@@ -4,38 +4,37 @@ import { CheckCircle2, ArrowRight } from 'lucide-react';
 const PRICING_TIERS = [
   {
     id: 'standalone-tools',
-    title: 'Standalone Digital Tools',
-    subtitle: 'Add a powerful lead-gen engine to your existing website.',
+    title: 'Standalone Lead Tools',
+    subtitle: 'Add a phone-call or lead generator to your current site.',
     pricingNote: 'From £149 per tool',
     bullets: [
-      'AI Support Bots, Missed Call Auto-Text, and WhatsApp Integrations',
-      'Interactive Visual Estimators and Quote Calculators',
-      'Secure Priority Booking and Deposit Portals',
-      'Seamlessly embedded into any existing website platform (WordPress, Wix, etc)',
+      'Missed-call auto-text & WhatsApp contact buttons',
+      'Visual job cost & price estimator widgets',
+      'Simple deposit and booking forms',
+      'Plugs directly into your existing website (Wix, WordPress, or custom)',
     ],
   },
   {
     id: 'website-builds',
-    title: 'Full Website Builds',
-    subtitle: 'High-converting sites focused purely on lead generation.',
+    title: 'Full Website Build',
+    subtitle: 'A complete, fast single-page website designed to get calls.',
     pricingNote: 'From £299',
     bullets: [
-      'Mobile-first layout optimized for speed and local search visibility',
-      'Includes integration of up to 2 standalone digital tools',
-      'Built from scratch in React - lightning fast, no clunky WordPress templates',
-      'Fully structured for service highlights, customer reviews, and SEO',
+      'Mobile-first layout built specifically for local UK trade customers',
+      'Built from scratch for speed — zero clunky templates or page builders',
+      'Clear service breakdown, customer review display, and local contact setup',
     ],
   },
   {
     id: 'custom-dev',
-    title: 'Bespoke Custom Development',
-    subtitle: 'Got a unique problem? I can build a custom digital solution.',
+    title: 'Custom Builds',
+    subtitle: 'For unique requirements or larger trade operations.',
     pricingNote: 'Custom Quote',
     bullets: [
-      'Custom web applications, dashboards, and secure client portals',
-      'Automated business workflows to eliminate manual admin tasks',
-      'Direct API integrations with your CRM, payment tools, and scheduling software',
-      'If it can be coded, I can build it to streamline your operations',
+      'Custom job booking or scheduling workflows',
+      'Connections to your existing payment or booking tools',
+      'Automated email or text updates for incoming jobs',
+      'Built 1-on-1 directly by Dean — no agency middlemen or junior devs',
     ],
   },
 ];
@@ -46,7 +45,7 @@ interface PricingProps {
   onOpenStitch: () => void;
 }
 
-export const Pricing: React.FC<PricingProps> = ({ onOpenQuote }) => {
+export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp, onOpenStitch }) => {
   return (
     <section id="pricing" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-6xl mx-auto">

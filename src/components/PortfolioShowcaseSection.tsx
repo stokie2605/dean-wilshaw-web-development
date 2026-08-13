@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Maximize2 } from 'lucide-react';
+import { X, ArrowRight, Play, Maximize2 } from 'lucide-react';
 
 const MagneticCard = ({ children, className = '', onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -36,7 +36,7 @@ const BrowserFrame = ({ src, alt, accentColor }: { src: string; alt: string; acc
         <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
         <span className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
       </div>
-      <div className="flex-1 bg-white dark:bg-zinc-900 rounded-md px-3 py-1 text-[10px] font-mono text-slate-400 dark:text-zinc-500 truncate border border-slate-200 dark:border-zinc-700">
+      <div className="flex-1 bg-white dark:bg-zinc-900 rounded-md px-3 py-1 text-[10px] font-mono text-slate-500 dark:text-zinc-400 truncate border border-slate-200 dark:border-zinc-700">
         designsystemsweb.co.uk
       </div>
     </div>
@@ -48,7 +48,7 @@ const BrowserFrame = ({ src, alt, accentColor }: { src: string; alt: string; acc
       <img
         src={src}
         alt={alt}
-        className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-auto object-cover object-top transition-transform duration-700 group-hover:scale-105"
         loading="lazy"
         decoding="async"
       />
@@ -63,7 +63,7 @@ interface PortfolioProps {
   onOpenQuote: () => void;
 }
 
-export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
+export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -83,32 +83,32 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
     {
       id: 'engine-01',
       engineLabel: 'Engine 01',
-      title: 'Emergency Response Engine',
-      description: 'High-contrast, urgency-driven layout built for fast conversions. Tap-to-call focus, trust badges, and rapid deployment framing.',
-      tags: ['Plumbers', 'Electricians', 'Gas Engineers', 'Locksmiths', 'Roofers'],
-      accentColor: '#CC1A1A',
-      accentLabel: 'text-red-600 dark:text-red-500',
-      image: '/mockups/engine-01-football.png',
+      title: 'Emergency & Domestic Trades',
+      description: 'High-contrast, urgency-driven layout built for fast conversions. Features sticky tap-to-call bars and automated missed-call text triggers.',
+      tags: ['Tap-To-Call Bar', 'Auto-Text Follow-Up', 'Sub-0.4s Speed'],
+      accentColor: '#2563EB',
+      accentLabel: 'text-blue-600 dark:text-blue-500',
+      image: '/mockups/rapidtrade-emergency.png',
     },
     {
       id: 'engine-02',
       engineLabel: 'Engine 02',
-      title: 'Commercial Authority Engine',
-      description: 'Dark, industrial, heavy B2B weight. Built for winning larger commercial contracts and presenting serious operational scale.',
-      tags: ['Scaffolders', 'Groundworkers', 'Plant Hire', 'Structural Engineers'],
+      title: 'Commercial & Heavy Infrastructure',
+      description: 'Heavyweight grid built for winning commercial infrastructure and B2B tender contracts. Features compliance badges and spec estimators.',
+      tags: ['B2B Spec Portal', 'Instant Estimator', 'Compliance Badges'],
       accentColor: '#F59E0B',
       accentLabel: 'text-amber-500 dark:text-amber-500',
-      image: '/mockups/engine-02-gaming.png',
+      image: '/mockups/infra-engine-commercial.png',
     },
     {
       id: 'engine-03',
       engineLabel: 'Engine 03',
-      title: 'Craft & Heritage Engine',
-      description: 'Warm, portfolio-driven, quality-focused layout. Built to showcase premium craftsmanship, fine details, and material honesty.',
-      tags: ['Joiners', 'Landscapers', 'Plasterers', 'Painters & Decorators'],
-      accentColor: '#B5541B',
+      title: 'Bespoke Craft & Property Upgrades',
+      description: 'Unrestricted, editorial-style bespoke layout built for high-ticket craftsmen. Features high-res project galleries and deposit booking.',
+      tags: ['High-Res Gallery', 'Deposit Booking', 'Consultation Engine'],
+      accentColor: '#C8664D',
       accentLabel: 'text-orange-600 dark:text-orange-500',
-      image: '/mockups/engine-03-editorial.png',
+      image: '/mockups/bespoke-craft.png',
     },
   ];
 
@@ -121,10 +121,10 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
 
         <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
           <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-3 bg-red-500/10 px-4 py-1.5 rounded-full border border-red-500/20">
-            DESIGN SYSTEM ENGINES
+            PORTFOLIO EXAMPLES
           </span>
           <h2 className="font-geist font-bold text-4xl sm:text-5xl text-slate-900 dark:text-zinc-100 mb-6 tracking-tight">
-            Three distinct systems. Zero compromises.
+            Three clear layout styles for local trades.
           </h2>
           <p className="text-slate-600 dark:text-zinc-400 max-w-2xl text-lg leading-relaxed">
             Each engine is a fully unique design system — different layout architecture, colour world, and conversion psychology. Click any card to view the full design.
@@ -144,7 +144,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
                   <span className={`font-mono text-[10px] font-bold uppercase tracking-widest ${engine.accentLabel}`}>
                     {engine.engineLabel}
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400 dark:text-zinc-500 uppercase tracking-wider">
+                  <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-400 uppercase tracking-wider">
                     Concept Template
                   </span>
                 </div>
@@ -169,7 +169,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
           ))}
         </div>
 
-        <p className="text-center text-sm text-slate-400 dark:text-zinc-500 mt-10 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-center text-sm text-slate-500 dark:text-zinc-400 mt-10 max-w-2xl mx-auto leading-relaxed">
           These are concept template examples only. Every project is built completely bespoke to your brand, industry, and requirements —{' '}
           <span className="text-slate-600 dark:text-zinc-400 font-medium">no two sites are ever the same.</span>
         </p>
@@ -178,7 +178,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
 
       {lightboxIndex !== null && (
         <div
-          className="fixed inset-0 z-[100] bg-black/92 backdrop-blur-sm flex flex-col items-center justify-start overflow-y-auto p-4 pt-16 animate-fadeIn"
+          className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-md flex flex-col items-center justify-start overflow-y-auto p-4 pt-16 animate-fadeIn"
           onClick={() => setLightboxIndex(null)}
         >
           <button
@@ -195,24 +195,28 @@ export const Portfolio: React.FC<PortfolioProps> = ({ onOpenQuote }) => {
           </div>
 
           <div
-            className="w-full max-w-5xl rounded-xl overflow-hidden border border-white/10 shadow-2xl"
+            className="w-full max-w-5xl rounded-xl overflow-hidden border border-white/10 shadow-2xl bg-black flex flex-col max-h-[70vh] md:max-h-[80vh]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="bg-zinc-800 px-4 py-2.5 flex items-center gap-3 border-b border-zinc-700">
+            <div className="bg-zinc-800 px-4 py-2.5 flex items-center gap-3 border-b border-zinc-700 shrink-0">
               <div className="flex items-center gap-1.5">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-400/70" />
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-400/70" />
                 <span className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
               </div>
               <div className="flex-1 bg-zinc-900 rounded-md px-3 py-1 text-[10px] font-mono text-zinc-500 truncate border border-zinc-700">
-                designsystemsweb.co.uk — {engines[lightboxIndex].title}
+                Live Prototype — {engines[lightboxIndex].title}
               </div>
             </div>
-            <img
-              src={engines[lightboxIndex].image}
-              alt={`${engines[lightboxIndex].title} full preview`}
-              className="w-full h-auto block"
-            />
+            <div className="w-full overflow-y-auto scrollbar-hide bg-zinc-950">
+              <img
+                src={engines[lightboxIndex].image}
+                alt={`${engines[lightboxIndex].title} full preview`}
+                className="w-full h-auto object-cover object-top block"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
           <div className="mt-8 mb-8 flex flex-col items-center gap-3">

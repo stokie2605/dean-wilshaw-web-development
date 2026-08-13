@@ -5,7 +5,7 @@ import { IntakeDeposit } from './trade-tools/IntakeDeposit';
 import { VisualEstimate } from './trade-tools/VisualEstimate';
 import { Target, Zap, Smartphone, MessageSquare } from 'lucide-react';
 
-export const TradeToolsDemo = () => {
+export const InteractiveDemosSection = () => {
   return (
     <section id="conversion-tools" className="py-24 bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-white border-y border-slate-200 dark:border-zinc-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,7 +20,7 @@ export const TradeToolsDemo = () => {
           </h2>
           <p className="text-lg text-slate-600 dark:text-zinc-400">
             Most local business websites lose 90% of mobile visitors to standard, boring contact forms. 
-            Test our interactive lead-capture tools below to see how we turn casual browsers into warm phone calls and instant deposits.
+            Test my interactive lead-capture tools below to see how I turn casual browsers into warm phone calls and instant deposits.
           </p>
         </div>
 
@@ -84,7 +84,7 @@ export const TradeToolsDemo = () => {
               </h3>
               <p className="text-slate-600 dark:text-zinc-400 text-sm">
                 Typing long emails on a phone keyboard is annoying. 
-                Our sticky WhatsApp bars make it incredibly easy for customers to snap a photo and message you in one tap.
+                My sticky WhatsApp bars make it incredibly easy for customers to snap a photo and message you in one tap.
               </p>
             </div>
             <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">

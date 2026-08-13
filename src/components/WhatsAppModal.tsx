@@ -10,6 +10,15 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
   const [topic, setTopic] = useState('quote');
   const [customMsg, setCustomMsg] = useState('');
 
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const getPresetMessage = () => {
@@ -34,7 +43,8 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
         
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-1 rounded-full hover:bg-slate-100"
+          className="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-2.5 rounded-full hover:bg-slate-100 flex items-center justify-center"
+          aria-label="Close"
         >
           <X className="w-5 h-5" />
         </button>

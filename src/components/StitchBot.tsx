@@ -22,6 +22,15 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  React.useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isOpen]);
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -129,8 +138,8 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
 
         <button
           onClick={onClose}
-          className="text-slate-300 hover:text-white p-1 rounded-md hover:bg-white/10 transition-colors"
-          aria-label="Close chat"
+          className="text-slate-300 hover:text-white p-2.5 rounded-md hover:bg-white/10 transition-colors flex items-center justify-center"
+          aria-label="Close"
         >
           <X className="w-5 h-5" />
         </button>

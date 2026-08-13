@@ -37,7 +37,7 @@ interface HeroProps {
   onOpenWhatsApp: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
+export const HeroSection: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
   const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false);
 
   return (
@@ -47,40 +47,41 @@ export const Hero: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }) => {
         
         {/* Left Column: Hero Copy & Actions */}
         <div className="lg:col-span-7 flex flex-col gap-6 items-start text-left z-10">
-          {/* Engineered Badge */}
-          <div className="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-            <span>Digital Systems Engineer • Cheshire & Stoke-on-Trent</span>
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          {/* Pill Badges */}
+          <div className="flex flex-wrap gap-2 mb-2">
+            <div className="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide inline-flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+              <span>📍 Cheshire & Stoke-on-Trent</span>
+            </div>
+            <div className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide inline-flex items-center gap-2 border border-red-200 dark:border-red-900/30 shadow-sm">
+              <span>⏱ Sub-Second Load Speeds</span>
+            </div>
           </div>
 
-          {/* Main Display Headline */}
-          <h1 className="font-geist font-bold text-3xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-zinc-100 leading-[1.15] tracking-tight transition-colors duration-300">
-            We Build Digital Systems That Make Your{' '}
+          {/* Main Display Headline (7 words max) */}
+          <h1 className="font-geist font-bold text-4xl sm:text-5xl lg:text-6xl text-slate-900 dark:text-zinc-100 leading-[1.15] tracking-tight transition-colors duration-300">
+            High-Converting Web Engines For{' '}
             <span className="text-red-700 dark:text-red-500 bg-gradient-to-r from-red-600 to-red-500 bg-clip-text text-transparent">
-              Phone Ring.
+              UK Trades.
             </span>
           </h1>
 
-          {/* Subtitle */}
+          {/* Subtitle (15 words max) */}
           <p className="text-lg sm:text-xl text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            We engineer high-converting web infrastructure, instant estimate portals, and automated lead-capture tools that turn mobile visitors into direct phone calls for local businesses.
+            I build clean, fast websites for local UK trades that get you direct phone calls.
           </p>
 
 
 
-          {/* Micro Proof Pills */}
+          {/* Visual Interactive Cards / Micro Proof Pills */}
           <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-200 dark:border-zinc-800 w-full max-w-2xl">
-            <div className="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-1.5 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-              <span>📱 Interactive Lead Capture</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5"></span>
+            <div className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-slate-200 dark:border-zinc-800 shadow-sm">
+              <span className="text-emerald-500">✓</span> Instant Price Estimators
             </div>
-            <div className="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-1.5 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-              <span>⚡ Automated Follow-ups</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5"></span>
+            <div className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-slate-200 dark:border-zinc-800 shadow-sm">
+              <span className="text-emerald-500">✓</span> Tap-to-Call Systems
             </div>
-            <div className="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-1.5 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-              <span>🔒 Secure Client Portals</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 ml-0.5"></span>
+            <div className="bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold tracking-wide inline-flex items-center gap-2 border border-slate-200 dark:border-zinc-800 shadow-sm">
+              <span className="text-emerald-500">✓</span> No Hidden Fees
             </div>
           </div>
 

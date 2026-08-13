@@ -66,7 +66,7 @@ export function EngineScopeCalculator() {
               value={pages} onChange={(e) => setPages(Number(e.target.value))}
               className="w-full h-3 bg-slate-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-red-600"
             />
-            <div className="flex justify-between text-xs text-slate-400 dark:text-zinc-500 mt-3 font-bold uppercase">
+            <div className="flex justify-between text-xs text-slate-500 dark:text-zinc-400 mt-3 font-bold uppercase">
               <span>1 (Landing)</span>
               <span>10 (Full Platform)</span>
             </div>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, Zap, Lock, ShieldCheck } from 'lucide-react';
 
-export const AboutSection: React.FC = () => {
+export const AboutDeanSection: React.FC = () => {
   const navigate = useNavigate();
   const [clickTimes, setClickTimes] = useState<number[]>([]);
 

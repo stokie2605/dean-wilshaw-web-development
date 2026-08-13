@@ -29,7 +29,7 @@ export const SocialProofBanner: React.FC<SocialProofProps> = ({
       </div>
       <span className="text-slate-300 dark:text-zinc-700 hidden sm:inline">|</span>
       <div className="flex items-center gap-1 text-slate-500 dark:text-zinc-400">
-        <MapPin className="w-3.5 h-3.5 text-slate-400 dark:text-zinc-500" />
+        <MapPin className="w-3.5 h-3.5 text-slate-500 dark:text-zinc-400" />
         <span>Serving {location}</span>
       </div>
     </div>

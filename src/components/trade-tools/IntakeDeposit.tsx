@@ -57,7 +57,7 @@ export const IntakeDeposit: React.FC = () => {
               <span className="text-slate-700 dark:text-zinc-300 font-bold">Booking Deposit:</span>
               <span className="text-slate-900 dark:text-white font-bold">£25.00</span>
             </div>
-            <div className="text-[10px] text-slate-400 dark:text-zinc-500 text-right mt-1">Deducted from final service cost</div>
+            <div className="text-[10px] text-slate-500 dark:text-zinc-400 text-right mt-1">Deducted from final service cost</div>
           </div>
 
           <button
