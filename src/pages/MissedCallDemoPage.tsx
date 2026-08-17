@@ -52,8 +52,8 @@ export function MissedCallDemoPage() {
         <h1 className="text-2xl font-black text-white tracking-tight">
           Instant Missed-Call Auto-Text{!isGeneric && ` for ${biz}`}
         </h1>
-        <p className="text-xs text-slate-400 mt-2">
-          Try the live demo below, exactly how it appears for your trade business:
+        <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+          Try the interactive demo below. When installed on your site, every tool is fully customized to match your trade services, brand colours, and pricing:
         </p>
       </div>
 
@@ -69,13 +69,13 @@ export function MissedCallDemoPage() {
         </p>
         <div className="space-y-2 text-xs text-slate-300">
           <p>
-            <strong className="text-white">Captures leads instantly:</strong> Homeowners who hit voicemail get a text in 5 seconds before calling another trade.
+            <strong className="text-white">Fully styled to your brand:</strong> Customised with your exact company colours, logos, fonts, and trade services so it blends seamlessly into your website.
           </p>
           <p>
-            <strong className="text-white">Zero apps needed:</strong> Works 100% in the background, directly connected to your UK mobile number.
+            <strong className="text-white">Zero redesign needed:</strong> Plugs directly into Wix, WordPress, Squarespace, or custom HTML sites.
           </p>
           <p>
-            <strong className="text-white">One flat fee with no surprises:</strong> £149 covers complete setup and testing. No monthly subscriptions.
+            <strong className="text-white">One flat fee with no surprises:</strong> £149 covers full design matching, setup, and testing. Zero monthly subscriptions.
           </p>
         </div>
       </div>

@@ -4,7 +4,6 @@ import { ArrowLeft } from 'lucide-react';
 import { useToolParams } from '../hooks/useToolParams';
 import { QuoteEstimator } from '../components/tools/QuoteEstimator';
 import { AreaCalculator } from '../components/tools/AreaCalculator';
-import { MissedCallWidget } from '../components/tools/MissedCallWidget';
 import { MissedCallDemo } from '../components/trade-tools/MissedCallDemo';
 import { BeforeAfterSlider } from '../components/tools/BeforeAfterSlider';
 import { BookingForm } from '../components/tools/BookingForm';
@@ -12,6 +11,7 @@ import { WhatsAppBar } from '../components/trade-tools/WhatsAppBar';
 import { SocialProofBanner } from '../components/trade-tools/SocialProofBanner';
 
 const STRIPE_LINK = 'https://buy.stripe.com/28E28r8zO6r23Bw6wPaAw00';
+const WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20install%20a%20lead%20tool%20on%20my%20website.";
 
 function renderTool(toolId: string | undefined) {
   switch (toolId) {
@@ -38,50 +38,30 @@ const TOOL_LABELS: Record<string, string> = {
 
 type Bullet = { heading: string; body: string };
 
-const TOOL_BULLETS: Record<string, Bullet[]> = {
-  'missed-call': [
-    { heading: 'Captures leads instantly:', body: 'Homeowners who hit voicemail get a text in 5 seconds before calling another trade.' },
-    { heading: 'Zero apps needed:', body: 'Works 100% in the background, directly connected to your UK mobile number.' },
-    { heading: 'One flat fee with no surprises:', body: '£149 covers complete setup and testing. No monthly subscriptions.' },
-  ],
-  'quote-calculator': [
-    { heading: 'Captures leads instantly:', body: 'Homeowners get an instant ballpark price and message you directly on WhatsApp with job details pre-filled.' },
-    { heading: 'Zero redesign needed:', body: 'Plugs straight into Wix, WordPress, Squarespace, or custom sites in 24 hours.' },
-    { heading: 'One flat fee with no surprises:', body: '\u00a3149 covers installation, custom pricing logic, and testing. No monthly fees.' },
-  ],
-  'booking-form': [
-    { heading: 'Filters out time-wasters:', body: 'Requires urgent leads to specify job timeframe and commit to a slot before you travel out.' },
-    { heading: 'Secures upfront commitment:', body: 'Collects job details, preferred dates, and optional deposit payments directly.' },
-    { heading: 'One flat fee with no surprises:', body: '\u00a3149 one-off installation. Connected to your calendar and WhatsApp.' },
-  ],
-  'whatsapp-bar': [
-    { heading: 'Eliminates friction:', body: 'Gives mobile visitors instant 1-tap buttons to call or message photos of their job on WhatsApp.' },
-    { heading: 'Sticks to mobile screens:', body: 'Stays visible as users scroll through your site without blocking content.' },
-    { heading: 'One flat fee with no surprises:', body: '\u00a3149 one-off installation with direct routing to your business number.' },
-  ],
-  'trust-bar': [
-    { heading: 'Builds immediate trust:', body: 'Floats your Google review score, verified status, and local insurance badges right at the top.' },
-    { heading: 'Reduces bounce rates:', body: 'Proves credibility in under 3 seconds before the visitor clicks away.' },
-    { heading: 'One flat fee with no surprises:', body: '\u00a3149 one-off installation styled to match your branding.' },
-  ],
-};
-
-const DEFAULT_BULLETS: Bullet[] = [
-  { heading: 'Captures leads instantly:', body: 'Homeowners get a price in seconds and message you directly on WhatsApp with no voicemail and no lost jobs.' },
-  { heading: 'Zero redesign needed:', body: 'Plugs straight into your existing Wix, WordPress, Squarespace, or custom site in 24 hours.' },
-  { heading: 'One flat fee with no surprises:', body: '\u00a3149 covers full installation, testing, and handover. No monthly fees and no contracts.' },
+const SHARED_BRAND_BULLETS: Bullet[] = [
+  {
+    heading: 'Fully styled to your brand:',
+    body: 'Customised with your exact company colours, logos, fonts, and trade services so it blends seamlessly into your website.',
+  },
+  {
+    heading: 'Zero redesign needed:',
+    body: 'Plugs directly into Wix, WordPress, Squarespace, or custom HTML sites.',
+  },
+  {
+    heading: 'One flat fee with no surprises:',
+    body: '£149 covers full design matching, setup, and testing. Zero monthly subscriptions.',
+  },
 ];
 
 export function ToolDemoPage() {
   const { toolId } = useParams<{ toolId: string }>();
   const navigate = useNavigate();
-  const { biz, trade } = useToolParams();
+  const { biz } = useToolParams();
   const toolLabel = TOOL_LABELS[toolId || ''] || 'Lead Capture Tool';
   const isGeneric = biz === 'Local Trade Specialist';
-  const bullets = TOOL_BULLETS[toolId || ''] ?? DEFAULT_BULLETS;
 
   return (
-    <div className="min-h-screen bg-[#0a0d14] text-slate-100 flex flex-col items-center justify-start p-4 py-10">
+    <div className="min-h-screen bg-[#0a0d14] text-slate-100 flex flex-col items-center justify-start p-4 py-10 selection:bg-red-500/20 selection:text-red-400">
 
       {/* Back link */}
       <div className="w-full max-w-md mb-6">
@@ -102,8 +82,8 @@ export function ToolDemoPage() {
         <h1 className="text-2xl font-black text-white tracking-tight">
           {toolLabel}{!isGeneric && ` for ${biz}`}
         </h1>
-        <p className="text-xs text-slate-400 mt-2">
-          Try the live demo below, exactly how it appears on your website:
+        <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+          Try the interactive demo below. When installed on your site, every tool is fully customized to match your trade services, brand colours, and pricing:
         </p>
       </div>
 
@@ -118,7 +98,7 @@ export function ToolDemoPage() {
           Why add this to your website?
         </p>
         <div className="space-y-2 text-xs text-slate-300">
-          {bullets.map(({ heading, body }) => (
+          {SHARED_BRAND_BULLETS.map(({ heading, body }) => (
             <p key={heading}>
               <strong className="text-white">{heading}</strong> {body}
             </p>
@@ -137,11 +117,18 @@ export function ToolDemoPage() {
           Install on your website for &pound;149
         </a>
         <p className="text-[11px] text-slate-500 mt-2">
-          Secure Stripe Checkout | Instant receipt | Installed within 24h
+          Secure Setup | Installed within 24h | Powered by <span className="text-slate-400 font-semibold">Design Systems Web</span>
         </p>
-        <p className="text-[11px] text-slate-600 mt-1">
-          Powered by <span className="text-slate-400 font-semibold">Design Systems Web</span>
-        </p>
+        <div className="mt-3">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs text-slate-400 hover:text-emerald-400 transition-colors inline-flex items-center gap-1"
+          >
+            Prefer to chat first? <span className="underline font-semibold text-slate-300">Claim Setup on WhatsApp (07348 733365) →</span>
+          </a>
+        </div>
       </div>
 
     </div>
