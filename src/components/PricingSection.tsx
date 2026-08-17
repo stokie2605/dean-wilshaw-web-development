@@ -5,13 +5,13 @@ const PRICING_TIERS = [
   {
     id: 'standalone-tools',
     title: 'Standalone Lead Tools',
-    subtitle: 'Add a phone-call or lead generator to your current site.',
+    subtitle: 'Add a phone call or lead generator to your current site.',
     pricingNote: 'From £149 per tool',
     bullets: [
-      'Missed-call auto-text & WhatsApp contact buttons',
-      'Visual job cost & price estimator widgets',
-      'Simple deposit and booking forms',
-      'Plugs directly into your existing website (Wix, WordPress, or custom)',
+      { full: 'Missed-call auto-text & WhatsApp contact buttons', short: 'Missed-call & WhatsApp buttons' },
+      { full: 'Visual job cost & price estimator widgets', short: 'Interactive price estimators' },
+      { full: 'Simple deposit and booking forms', short: 'Simple booking & deposit forms' },
+      { full: 'Plugs directly into your existing website (Wix, WordPress, or custom)', short: 'Plugs into Wix, WordPress & custom' },
     ],
   },
   {
@@ -20,9 +20,9 @@ const PRICING_TIERS = [
     subtitle: 'A complete, fast single-page website designed to get calls.',
     pricingNote: 'From £299',
     bullets: [
-      'Mobile-first layout built specifically for local UK trade customers',
-      'Built from scratch for speed — zero clunky templates or page builders',
-      'Clear service breakdown, customer review display, and local contact setup',
+      { full: 'Mobile-first layout built specifically for local UK trade customers', short: 'Mobile-first trade layout' },
+      { full: 'Built from scratch for speed with zero clunky templates or page builders', short: 'Built from scratch for speed' },
+      { full: 'Clear service breakdown, customer review display, and local contact setup', short: 'Services, reviews & contact setup' },
     ],
   },
   {
@@ -31,10 +31,10 @@ const PRICING_TIERS = [
     subtitle: 'For unique requirements or larger trade operations.',
     pricingNote: 'Custom Quote',
     bullets: [
-      'Custom job booking or scheduling workflows',
-      'Connections to your existing payment or booking tools',
-      'Automated email or text updates for incoming jobs',
-      'Built 1-on-1 directly by Dean — no agency middlemen or junior devs',
+      { full: 'Custom job booking or scheduling workflows', short: 'Custom booking & workflows' },
+      { full: 'Connections to your existing payment or booking tools', short: 'Payment & software integration' },
+      { full: 'Automated email or text updates for incoming jobs', short: 'Automated email & text alerts' },
+      { full: 'Built 1-on-1 directly by Dean with no agency middlemen or junior devs', short: '1-on-1 direct with Dean' },
     ],
   },
 ];
@@ -81,7 +81,8 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
                 {pkg.bullets.map((f, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                    {f}
+                    <span className="md:hidden">{f.short}</span>
+                    <span className="hidden md:inline">{f.full}</span>
                   </li>
                 ))}
               </ul>
@@ -89,6 +90,34 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
 
             </div>
           ))}
+        </div>
+
+        {/* Optional Care Banner */}
+        <div className="bg-slate-100 dark:bg-zinc-900/40 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 mt-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
+          <div className="flex-1">
+            <h3 className="font-geist font-bold text-slate-900 dark:text-zinc-100 text-lg sm:text-xl mb-1">Optional Monthly Site Care <span className="text-slate-500 dark:text-zinc-400 font-normal text-sm sm:text-base">(Zero Contract, Cancel Anytime)</span></h3>
+            <p className="text-emerald-600 dark:text-emerald-500 font-semibold mb-4">£49 / month</p>
+            <ul className="space-y-2">
+              <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                <span className="md:hidden">Direct WhatsApp support for quick updates</span>
+                <span className="hidden md:inline">Direct WhatsApp support for quick photo, text, or phone number changes</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                <span className="md:hidden">Fast hosting, security &amp; daily backups</span>
+                <span className="hidden md:inline">High-speed hosting, security monitoring and daily backups</span>
+              </li>
+              <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
+                <span className="md:hidden">Google Business Profile updates</span>
+                <span className="hidden md:inline">Google Business Profile updates to keep local callouts coming</span>
+              </li>
+            </ul>
+            <p className="text-xs text-slate-500 dark:text-zinc-500 mt-4 font-medium">
+              (Optional - You still own your site 100% outright)
+            </p>
+          </div>
         </div>
 
       </div>

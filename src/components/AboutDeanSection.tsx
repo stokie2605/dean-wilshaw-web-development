@@ -41,8 +41,8 @@ export const AboutDeanSection: React.FC = () => {
             A local digital systems engineer helping businesses capture more leads.
           </h3>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-300 leading-relaxed">
-            I build high-converting digital systems and web engines from scratch. Working with me means direct 1-on-1 contact - no middle management, no junior devs, and zero tech jargon.
+          <p className="hidden md:block text-base sm:text-lg text-slate-600 dark:text-zinc-300 leading-relaxed">
+            I build high-converting digital systems and web engines from scratch. Working with me means direct 1-on-1 contact with no middle management, no junior devs, and zero tech jargon.
           </p>
 
           {/* Core Principles */}

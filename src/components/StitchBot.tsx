@@ -66,7 +66,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
         {
           id: (Date.now() + 1).toString(),
           sender: 'stitch' as const,
-          text: "Here are Dean's direct contact details:\n\n📱 WhatsApp / Phone: 07348 733365\n✉️ Email: dean.wilshaw.web@gmail.com\n\nHe typically replies within a few hours. Tap the \"WhatsApp Dean\" button below to message him directly!",
+          text: "Here are Dean's direct contact details:\n\nWhatsApp / Phone: 07348 733365\nEmail: dean.wilshaw.web@gmail.com\n\nHe typically replies within a few hours. Tap the \"WhatsApp Dean\" button below to message him directly!",
           timestamp: new Date(),
         },
       ]);
@@ -75,138 +75,133 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
     }
 
     try {
-      const history = messages.map((m) => ({
-        role: m.sender === 'user' ? 'user' : 'assistant',
-        content: m.text,
-      }));
-
-      const res = await fetch('/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: messageText, history }),
+        body: JSON.stringify({ message: text }),
       });
 
-      if (res.ok) {
-        const data = await res.json();
-        const botMsg: ChatMessage = {
-          id: (Date.now() + 1).toString(),
-          sender: 'stitch',
-          text: data.response || "I'd be glad to help! Feel free to ask about pricing, timelines, or what Dean can build for you.",
-          timestamp: new Date(),
-        };
-        setMessages((prev) => [...prev, botMsg]);
-      } else {
-        throw new Error('API error');
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
       }
-    } catch (err) {
-      const botMsg: ChatMessage = {
-        id: (Date.now() + 1).toString(),
-        sender: 'stitch',
-        text: "Dean builds fast, mobile-first digital systems for local businesses in Cheshire & Stoke. Use the 'Book a Free Audit' link below to get in touch!",
-        timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, botMsg]);
+
+      const data = await response.json();
+      
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          sender: 'stitch' as const,
+          text: data.reply || "Sorry, I had trouble processing that. You can reach Dean directly on WhatsApp via the button below.",
+          timestamp: new Date(),
+        },
+      ]);
+    } catch (err: any) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          sender: 'stitch' as const,
+          text: "I couldn't reach the AI service right now, but Dean is available on WhatsApp or phone at 07348 733365. Feel free to message him directly!",
+          timestamp: new Date(),
+        },
+      ]);
     } finally {
       setLoading(false);
     }
   };
 
-
-  if (!isOpen) {
-    return null;
-  }
+  if (!isOpen) return null;
 
   return (
-    <aside
-      id="chatbot-container"
-      className="fixed right-3 sm:right-6 bottom-[4.5rem] sm:bottom-6 z-50 w-[calc(100vw-24px)] sm:w-80 md:w-96 rounded-xl overflow-hidden border border-[#c6c6cd] shadow-2xl bg-white flex flex-col h-[480px] sm:h-[520px] transition-all animate-fadeIn"
-    >
-      {/* Chat Header */}
-      <div className="bg-[#111111] p-3.5 sm:p-4 flex items-center justify-between border-b border-[#c6c6cd]/30 shrink-0 text-white">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center border border-white/20 shrink-0">
-            <Bot className="w-5 h-5 text-[#dc2626]" />
+    <div className="fixed inset-0 sm:inset-auto sm:bottom-24 sm:right-6 z-50 flex items-center justify-center sm:block">
+      <div 
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm sm:hidden"
+        onClick={onClose}
+      />
+      
+      <div className="relative w-full h-full sm:h-[600px] sm:w-[400px] bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-none sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+        
+        {/* Header */}
+        <div className="p-4 bg-slate-900 text-white flex items-center justify-between border-b border-zinc-800">
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <Bot className="w-8 h-8 text-red-500" />
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-slate-900 rounded-full" />
+            </div>
+            <div>
+              <h3 className="font-bold text-sm">Dean Wilshaw AI</h3>
+              <p className="text-[10px] text-zinc-400">Available 24/7 &bull; Instant Answers</p>
+            </div>
           </div>
-          <div>
-            <h3 className="font-geist font-bold text-sm text-white leading-tight flex items-center gap-1.5">
-              Client Support
-              <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-            </h3>
-            <p className="text-[11px] text-slate-300 font-mono">Ask me anything about Dean's builds</p>
-          </div>
+          <button 
+            onClick={onClose}
+            className="p-1 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800 transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        <button
-          onClick={onClose}
-          className="text-slate-300 hover:text-white p-2.5 rounded-md hover:bg-white/10 transition-colors flex items-center justify-center"
-          aria-label="Close"
-        >
-          <X className="w-5 h-5" />
-        </button>
-      </div>
-
-      {/* Chat Content Messages Area */}
-      <div className="flex-grow bg-[#f8fafc] p-4 overflow-y-auto flex flex-col gap-3 text-xs sm:text-sm">
-        {messages.map((msg) => (
-          <div
-            key={msg.id}
-            className={`flex gap-2 max-w-[90%] ${
-              msg.sender === 'user' ? 'ml-auto flex-row-reverse' : 'mr-auto'
-            }`}
-          >
-            {msg.sender === 'stitch' && (
-              <div className="w-6 h-6 bg-[#eceef0] border border-[#c6c6cd] rounded-full flex items-center justify-center shrink-0 mt-1">
-                <Bot className="w-3.5 h-3.5 text-[#991b1b]" />
-              </div>
-            )}
-
+        {/* Messages */}
+        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          {messages.map((m) => (
             <div
-              className={`p-3 rounded-2xl ${
-                msg.sender === 'user'
-                  ? 'bg-[#dc2626] text-white rounded-tr-xs shadow-2xs font-medium'
-                  : 'bg-white border border-[#c6c6cd] text-[#191c1e] rounded-tl-xs shadow-2xs'
-              }`}
+              key={m.id}
+              className={`flex gap-3 ${m.sender === 'user' ? 'justify-end' : 'justify-start'}`}
             >
-              {msg.text}
+              {m.sender === 'stitch' && (
+                <div className="w-7 h-7 rounded-full bg-red-600/10 text-red-600 dark:text-red-500 border border-red-500/20 flex items-center justify-center shrink-0">
+                  <Bot className="w-4 h-4" />
+                </div>
+              )}
+              <div
+                className={`max-w-[80%] rounded-2xl p-3 text-xs leading-relaxed ${
+                  m.sender === 'user'
+                    ? 'bg-red-600 text-white rounded-br-none'
+                    : 'bg-slate-100 dark:bg-zinc-800 text-slate-800 dark:text-zinc-200 rounded-bl-none border border-slate-200 dark:border-zinc-700'
+                }`}
+              >
+                <p className="whitespace-pre-wrap">{m.text}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
 
-        {loading && (
-          <div className="flex gap-2 max-w-[80%] mr-auto items-center">
-            <div className="w-6 h-6 bg-[#eceef0] rounded-full flex items-center justify-center">
-              <Bot className="w-3.5 h-3.5 text-[#991b1b]" />
+          {loading && (
+            <div className="flex gap-3 justify-start items-center">
+              <div className="w-7 h-7 rounded-full bg-red-600/10 text-red-600 dark:text-red-500 border border-red-500/20 flex items-center justify-center shrink-0">
+                <Bot className="w-4 h-4" />
+              </div>
+              <div className="bg-slate-100 dark:bg-zinc-800 rounded-2xl rounded-bl-none p-3 border border-slate-200 dark:border-zinc-700">
+                <div className="flex gap-1.5 items-center">
+                  <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                  <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                  <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                </div>
+              </div>
             </div>
-            <div className="bg-white border border-[#c6c6cd] p-3 rounded-2xl text-xs text-slate-500 font-mono flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#dc2626] animate-ping"></span>
-              Assistant is thinking...
-            </div>
-          </div>
-        )}
+          )}
 
         {messages[messages.length - 1]?.sender === 'stitch' && !loading && (
           <div className="flex flex-col gap-2 mt-2 ml-10">
             {[
-              { text: "I don't have a site yet - where do we start?", icon: "🟢" },
-              { text: "I have an old site that isn't getting calls", icon: "🟡" },
-              { text: "How much effort is required on my end?", icon: "🔵" },
-              { text: "Can I just send Dean a WhatsApp message?", icon: "💬" }
-            ].map((btn, i) => (
+              "I don't have a site yet - where do we start?",
+              "I have an old site that isn't getting calls",
+              "How much effort is required on my end?",
+              "Can I just send Dean a WhatsApp message?"
+            ].map((btnText, i) => (
               <button
                 key={i}
-                onClick={() => handleSendMessage(btn.text)}
+                onClick={() => handleSendMessage(btnText)}
                 className="text-left p-2 rounded-lg text-xs transition-colors flex items-center gap-2 shadow-sm w-fit bg-slate-100 hover:bg-slate-200 text-slate-900 dark:bg-zinc-800/80 dark:hover:bg-zinc-800 dark:text-zinc-100 border border-slate-200 dark:border-zinc-700 font-medium"
               >
-                <span>{btn.icon}</span>
-                <span>{btn.text}</span>
+                <span>{btnText}</span>
               </button>
             ))}
           </div>
         )}
-
+        
         <div ref={messagesEndRef} />
       </div>
-
 
 
       {/* Chat Input Area */}
@@ -235,16 +230,17 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
           </button>
         </form>
 
-        <div className="flex items-center justify-between mt-2 pt-1 text-[10px] text-[#76777d]">
-          <button onClick={onOpenQuote} className="hover:underline text-[#991b1b] font-medium">
+        <div className="flex items-center justify-between mt-2 pt-1 text-[10px] text-slate-500 dark:text-zinc-400">
+          <button onClick={onOpenQuote} className="hover:underline text-red-600 dark:text-red-500 font-medium">
             Get Quote
           </button>
-          <button onClick={onOpenWhatsApp} className="hover:underline text-emerald-700 font-medium">
+          <button onClick={onOpenWhatsApp} className="hover:underline text-emerald-600 dark:text-emerald-400 font-medium">
             WhatsApp Dean
           </button>
         </div>
       </div>
-    </aside>
+    </div>
+  </div>
   );
 };
 

@@ -577,7 +577,7 @@ Return ONLY this JSON:
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
                 <span className="p-1.5 bg-emerald-500/10 text-emerald-400 rounded">⏱️</span>Delivery Window
               </div>
-              <p className="text-3xl font-black text-emerald-400 tracking-tight">{parsedScope.deliveryWindow || '3 – 5 Business Days'}</p>
+              <p className="text-3xl font-black text-emerald-400 tracking-tight">{parsedScope.deliveryWindow || '3 - 5 Business Days'}</p>
             </div>
             <p className="text-xs text-slate-400 mt-4 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />Guaranteed completion timeline.
@@ -766,11 +766,11 @@ Analyze touch target size, font legibility on small viewports, padding, and text
         <div className="bg-gradient-to-r from-red-950/40 via-slate-950 to-slate-950 border border-red-500/30 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <h4 className="text-white font-bold text-base">Want me to re-engineer this layout into a 100/100 sub-second React UI?</h4>
-            <p className="text-slate-400 text-xs mt-1">Get a custom bespoke prototype delivered in 3–5 business days.</p>
+            <p className="text-slate-400 text-xs mt-1">Get a custom bespoke prototype delivered in 3-5 business days.</p>
           </div>
           <button onClick={onOpenQuote}
             className="bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-xl transition duration-200 text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 flex-shrink-0">
-            Request Bespoke React Build →
+            Request Bespoke React Build
           </button>
         </div>
       )}

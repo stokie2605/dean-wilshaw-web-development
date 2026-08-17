@@ -29,8 +29,8 @@ export const MissedCallDemo: React.FC = () => {
           <PhoneMissed className="w-5 h-5" />
         </div>
         <div>
-          <h3 className="font-bold text-lg text-slate-900 dark:text-white">Auto-Text Serverless Demo</h3>
-          <p className="text-xs text-slate-500 dark:text-zinc-400">Save leads who hit voicemail</p>
+          <h3 className="font-bold text-lg text-slate-900 dark:text-white">Instant Missed-Call Auto-Text</h3>
+          <p className="text-xs text-slate-500 dark:text-zinc-400">Automatically text back customers who hit your voicemail so they don't hire someone else.</p>
         </div>
       </div>
       

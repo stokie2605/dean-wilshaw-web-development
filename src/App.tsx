@@ -57,6 +57,25 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [navigate]);
 
+  useEffect(() => {
+    const scrollToHash = () => {
+      if (window.location.hash) {
+        const id = window.location.hash.replace('#', '');
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 88;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      }
+    };
+    const timer = setTimeout(scrollToHash, 150);
+    window.addEventListener('hashchange', scrollToHash);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('hashchange', scrollToHash);
+    };
+  }, []);
+
   const handleOpenPage = (page: Page) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -142,7 +161,7 @@ export default function App() {
       </Suspense>
 
       {/* Floating WhatsApp Button - Bottom Left */}
-      <div className="fixed bottom-20 sm:bottom-6 left-4 sm:left-6 z-[45] flex flex-col gap-3">
+      <div className="fixed bottom-20 md:bottom-6 left-4 sm:left-6 z-[45] flex flex-col gap-3">
         <button 
           onClick={() => setWhatsappModalOpen(true)}
           className="bg-[#25D366] hover:bg-[#20bd5a] text-white w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] flex items-center justify-center transition-transform hover:scale-105 border border-white/40"
@@ -154,13 +173,13 @@ export default function App() {
 
       {/* Floating Ask AI Button - Bottom Right */}
       {!stitchModalOpen && (
-        <div className="fixed bottom-20 sm:bottom-6 right-4 sm:right-6 z-[45] flex flex-col items-end gap-3">
+        <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-[45] flex flex-col items-end gap-3">
           {showBubble && (
             <div 
-              className="bg-white border border-slate-200 shadow-xl rounded-xl p-3 text-sm font-medium text-slate-800 animate-bounce relative flex items-center gap-2 pr-8 cursor-pointer" 
+              className="hidden md:flex bg-white border border-slate-200 shadow-xl rounded-xl p-3 text-sm font-medium text-slate-800 animate-bounce relative items-center gap-2 pr-8 cursor-pointer" 
               onClick={openStitchModal}
             >
-              Not sure where to start? Ask me! 👋
+              Not sure where to start? Ask me.
               <button 
                 onClick={(e) => { e.stopPropagation(); dismissBubble(); }} 
                 className="absolute right-1 top-1 text-slate-400 hover:text-slate-600 p-2.5 rounded-full flex items-center justify-center"

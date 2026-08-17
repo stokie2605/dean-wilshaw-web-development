@@ -74,7 +74,7 @@ const SERVICES: ServiceDetail[] = [
     features: [
       'Zero proprietary template lock-ins',
       'Direct, 1-on-1 developer support',
-      'Optional £40/mo maintenance & care'
+      'Optional £49/month maintenance & care'
     ],
     techStack: '',
     roiImpact: ''

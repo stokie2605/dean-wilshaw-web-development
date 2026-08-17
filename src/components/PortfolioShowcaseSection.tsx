@@ -127,7 +127,7 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
             Three clear layout styles for local trades.
           </h2>
           <p className="text-slate-600 dark:text-zinc-400 max-w-2xl text-lg leading-relaxed">
-            Each engine is a fully unique design system — different layout architecture, colour world, and conversion psychology. Click any card to view the full design.
+            Each engine is a fully unique design system featuring custom layout architecture, distinct color schemes, and proven conversion psychology. Click any card to view the full design.
           </p>
         </div>
 
@@ -170,8 +170,8 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
         </div>
 
         <p className="text-center text-sm text-slate-500 dark:text-zinc-400 mt-10 max-w-2xl mx-auto leading-relaxed">
-          These are concept template examples only. Every project is built completely bespoke to your brand, industry, and requirements —{' '}
-          <span className="text-slate-600 dark:text-zinc-400 font-medium">no two sites are ever the same.</span>
+          These are concept template examples only. Every project is built completely bespoke to your brand, industry, and requirements.{' '}
+          <span className="text-slate-600 dark:text-zinc-400 font-medium">No two sites are ever the same.</span>
         </p>
 
       </div>
@@ -190,7 +190,7 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
 
           <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[110] text-center">
             <span className="font-mono text-xs text-white/60 uppercase tracking-widest whitespace-nowrap">
-              {engines[lightboxIndex].engineLabel} — {engines[lightboxIndex].title}
+              {engines[lightboxIndex].engineLabel} - {engines[lightboxIndex].title}
             </span>
           </div>
 
@@ -205,7 +205,7 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
                 <span className="w-2.5 h-2.5 rounded-full bg-green-400/70" />
               </div>
               <div className="flex-1 bg-zinc-900 rounded-md px-3 py-1 text-[10px] font-mono text-zinc-500 truncate border border-zinc-700">
-                Live Prototype — {engines[lightboxIndex].title}
+                Live Prototype - {engines[lightboxIndex].title}
               </div>
             </div>
             <div className="w-full overflow-y-auto scrollbar-hide bg-zinc-950">

@@ -75,7 +75,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
                 topic === 'quote' ? 'border-emerald-600 bg-emerald-50 text-emerald-950 font-semibold' : 'border-slate-200 hover:bg-slate-50'
               }`}
             >
-              <span>💼 Request a Website Quote</span>
+              <span>Request a Website Quote</span>
               {topic === 'quote' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
             </button>
 
@@ -86,7 +86,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
                 topic === 'speed' ? 'border-emerald-600 bg-emerald-50 text-emerald-950 font-semibold' : 'border-slate-200 hover:bg-slate-50'
               }`}
             >
-              <span>⚡ Replace Slow WordPress Site</span>
+              <span>Replace Slow WordPress Site</span>
               {topic === 'speed' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
             </button>
 
@@ -97,7 +97,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
                 topic === 'seo' ? 'border-emerald-600 bg-emerald-50 text-emerald-950 font-semibold' : 'border-slate-200 hover:bg-slate-50'
               }`}
             >
-              <span>🔍 Local SEO &amp; Google Rankings</span>
+              <span>Local SEO &amp; Google Rankings</span>
               {topic === 'seo' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
             </button>
           </div>

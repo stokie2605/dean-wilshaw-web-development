@@ -92,7 +92,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
             Let's Talk
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mb-3">
-            Book Your Free Audit
+            Get a Quote
           </h2>
           <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base max-w-lg">
             Let's discuss your business goals and see if we're a good fit. Fill out the quick form below and I'll WhatsApp you to arrange a time.
@@ -182,7 +182,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
             </button>
             <div className="text-center pt-2 space-y-1.5">
               <p className="text-[11px] text-slate-500 dark:text-slate-500">
-                🔒 Your details go directly to Dean's inbox. No databases, no marketing lists, no spam.
+                Your details go directly to Dean's inbox. No databases, no marketing lists, no spam.
               </p>
             </div>
           </form>

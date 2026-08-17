@@ -37,7 +37,7 @@ export function EngineScopeCalculator() {
         {/* Banner */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl transition-colors">
-            <span className="text-amber-500 animate-pulse">⚡</span>
+            <Zap className="w-3.5 h-3.5 text-amber-500" />
             <span className="text-xs font-bold text-slate-700 dark:text-zinc-300 uppercase tracking-widest">Demo: Custom Interactive React Tool</span>
           </div>
         </div>

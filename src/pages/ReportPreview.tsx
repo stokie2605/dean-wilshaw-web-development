@@ -20,8 +20,8 @@ export function ReportPreview() {
   
   const calculateEnquiryLoss = (auditScore: number) => {
     if (auditScore >= 90) return { status: 'Optimized', range: null };
-    if (auditScore >= 50) return { status: 'At Risk', range: '4–7' };
-    return { status: 'Critical', range: '8–12' };
+    if (auditScore >= 50) return { status: 'At Risk', range: '4-7' };
+    return { status: 'Critical', range: '8-12' };
   };
   const { range } = calculateEnquiryLoss(score);
 

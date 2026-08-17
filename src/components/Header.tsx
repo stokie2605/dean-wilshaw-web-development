@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, MessageSquare, Phone, Bot, Sun, Moon } from 'lucide-react';
+import { ArrowRight, Sun, Moon, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   onOpenQuote: () => void;
@@ -7,10 +7,17 @@ interface HeaderProps {
   onOpenStitch: () => void;
 }
 
-const AVATAR_URL = "https://lh3.googleusercontent.com/aida-public/AB6AXuA8e_CVpDqlJmvVgwq8mfsfv1MN4Xh0R1At79k3YteVYCQD7jQasQqs7QuztqDYFk_FHxuFPxS1tPjfap95ATBzdxT9JWbXfcpAEcK4BEb1jdYnHB-ljlsDzdm7QW0mY6cCAarD6uzfOgFUWCsOvkJmtlFTFj9TickLiAZuczAGbXe4hL1hwoulVe6eJ0D-hqciw0CIPXvZnTTUytNQX2u2nynEleEJWs7d31mlWssjVI7reTt7yOWkMxmw5RDiDea0U9jVUAl0Y9E";
+// Matches the 4 tool cards on the landing page exactly
+const NAV_LINKS = [
+  { label: 'Estimator',    href: '/demo/quote-calculator' },
+  { label: 'Bookings',     href: '/demo/booking-form' },
+  { label: 'WhatsApp Bar', href: '/demo/whatsapp-bar' },
+  { label: 'Trust Bar',    href: '/demo/trust-bar' },
+];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onOpenStitch }) => {
   const [isDark, setIsDark] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     if (document.documentElement.classList.contains('dark')) {
@@ -33,8 +40,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md border-b border-slate-200 dark:border-zinc-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex justify-between items-center">
+
         {/* Brand Logo & Name */}
-        <a href="#" className="flex items-center gap-3 group">
+        <a href="/" className="flex items-center gap-3 group shrink-0">
           <img
             src="/logo.jpg"
             alt="DSW Atom Logo"
@@ -52,18 +60,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
           </div>
         </a>
 
+        {/* Desktop Nav Links */}
+        <nav className="hidden md:flex items-center gap-1">
+          {NAV_LINKS.map(({ label, href }) => (
+            <a
+              key={href}
+              href={href}
+              className="px-3 py-1.5 rounded-lg text-sm font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150"
+            >
+              {label}
+            </a>
+          ))}
+        </nav>
 
+        {/* Right-side Actions */}
+        <div className="flex items-center gap-2">
 
-        {/* Action Buttons Container */}
-        <div className="flex items-center gap-3">
-          <button
-            onClick={onOpenQuote}
-            className="md:hidden bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
-            title="Get Quote"
-          >
-            Book a Free Audit
-          </button>
-          
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
             className="p-2 border border-slate-300 dark:border-zinc-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg min-w-[40px] min-h-[40px] flex items-center justify-center transition-colors"
@@ -71,22 +84,50 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
-          
-          {/* Desktop CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3">
-          
+
+          {/* Desktop CTA */}
           <button
             onClick={onOpenQuote}
-            className="bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all flex items-center gap-1.5"
+            className="hidden md:flex bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-4 py-2 rounded-lg text-xs font-semibold tracking-wide transition-all items-center gap-1.5"
           >
-            Book a Free Audit
+            Get a Quote
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
-          </div>
-        </div>
 
+          {/* Mobile CTA */}
+          <button
+            onClick={onOpenQuote}
+            className="md:hidden bg-red-600 hover:bg-red-500 text-white shadow-lg shadow-red-600/30 px-3 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all"
+          >
+            Get a Quote
+          </button>
+
+          {/* Mobile Hamburger */}
+          <button
+            onClick={() => setMenuOpen(v => !v)}
+            className="md:hidden p-2 rounded-lg border border-slate-300 dark:border-zinc-800 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-zinc-800 transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center"
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Dropdown Nav */}
+      {menuOpen && (
+        <div className="md:hidden border-t border-slate-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md px-4 py-3 flex flex-col gap-1">
+          {NAV_LINKS.map(({ label, href }) => (
+            <a
+              key={href}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      )}
     </header>
   );
 };
-
