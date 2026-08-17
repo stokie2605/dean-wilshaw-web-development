@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, ShieldCheck, MessageSquare, ArrowRight, Gauge, Zap } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, MessageSquare, ArrowRight, Gauge, FileText } from 'lucide-react';
 
 const AUDIT_WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20a%20%C2%A349%20website%20speed%20audit";
 
@@ -54,7 +54,7 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
 
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 inline-block">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-semibold mb-2 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30 inline-block">
             Transparent Pricing
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mt-3 mb-3">
@@ -66,27 +66,26 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
         </div>
 
         {/* Featured Step 1 Entry Audit Card (Full Width) */}
-        <div className="mb-12 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950 border-2 border-red-500/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-orange-500 to-amber-500" />
+        <div className="mb-12 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-[#131B2A] border border-emerald-500/30 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
           
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold uppercase tracking-wider border border-red-200 dark:border-red-500/30">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
                 <Gauge className="w-3.5 h-3.5" />
                 STEP 1: ENTRY AUDIT
               </div>
 
               <h3 className="font-geist font-bold text-xl sm:text-2xl text-slate-900 dark:text-white">
-                Mobile Speed &amp; Lead Health Check — <span className="text-red-600 dark:text-red-400">£49 Flat Fee</span>
+                Mobile Speed &amp; Lead Health Check: <span className="text-emerald-600 dark:text-emerald-400">£49 Flat Fee</span>
               </h3>
 
               <p className="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed">
-                I test your real mobile load speeds, break-test your forms and buttons, and show you exactly where you are losing customer calls.
+                A complete diagnostic of your trade website. I test real mobile loading speeds, break-test buttons and quote forms, and pinpoint exactly where you are losing customer enquiries.
               </p>
 
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-lg">
-                <ShieldCheck className="w-4 h-4 shrink-0" />
-                <span><strong>100% Risk-Free:</strong> The full £49 is credited straight off the final bill if you hire me to fix or rebuild your website.</span>
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-lg">
+                <FileText className="w-4 h-4 shrink-0 text-emerald-500" />
+                <span>Delivered as a clear 1-page breakdown with zero tech jargon.</span>
               </div>
             </div>
 
@@ -110,7 +109,7 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
           {PRICING_TIERS.map((pkg) => (
             <div
               key={pkg.id}
-              className="bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 flex flex-col hover:border-red-600 dark:hover:border-red-500 shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 flex flex-col hover:border-emerald-600 dark:hover:border-emerald-500 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
               <h3 className="font-geist font-bold text-slate-900 dark:text-zinc-100 text-lg mb-1">{pkg.title}</h3>
               <p className="text-slate-600 dark:text-zinc-300 text-sm mb-2">{pkg.subtitle}</p>

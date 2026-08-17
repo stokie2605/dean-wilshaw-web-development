@@ -15,7 +15,7 @@ export const InteractiveDemosSection = () => {
 
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-500/30 text-red-700 dark:text-red-400 text-sm font-bold tracking-wide uppercase">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-sm font-bold tracking-wide uppercase">
             Stop Losing Mobile Leads
           </div>
           <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight text-slate-900 dark:text-white">

@@ -96,8 +96,8 @@ export function ToolDemoPage() {
 
       {/* Header */}
       <div className="text-center max-w-md mb-6">
-        <span className="inline-block px-3 py-1 bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-bold rounded-full mb-3 uppercase tracking-widest">
-          {isGeneric ? 'Live Demo' : '24-Hour Preview'}
+        <span className="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold rounded-full mb-3 uppercase tracking-widest">
+          {isGeneric ? 'LIVE DEMO' : '24-Hour Preview'}
         </span>
         <h1 className="text-2xl font-black text-white tracking-tight">
           {toolLabel}{!isGeneric && ` for ${biz}`}

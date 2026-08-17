@@ -54,7 +54,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }
             <div className="bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide inline-flex items-center gap-2 border border-zinc-200 dark:border-zinc-800 shadow-sm">
               <span>Cheshire &amp; Stoke-on-Trent</span>
             </div>
-            <div className="bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide inline-flex items-center gap-2 border border-red-200 dark:border-red-900/30 shadow-sm">
+            <div className="bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide inline-flex items-center gap-2 border border-emerald-200 dark:border-emerald-900/30 shadow-sm">
               <span>Built for Speed on Mobile</span>
             </div>
           </div>
@@ -89,7 +89,7 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }
         {/* Right Column: Interactive Hero Tool */}
         <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center">
           <div className="w-full relative">
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20 bg-red-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-red-600/30 flex items-center gap-2 border border-red-500 whitespace-nowrap">
+            <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20 bg-emerald-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full shadow-lg shadow-emerald-600/30 flex items-center gap-2 border border-emerald-500 whitespace-nowrap">
               <span className="w-2 h-2 rounded-full bg-white animate-pulse"></span>
               Live Demo: Example Client Tool
             </div>

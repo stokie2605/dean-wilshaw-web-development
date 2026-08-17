@@ -481,7 +481,7 @@ The user will describe a project. Output ONLY a JSON object - no extra text, no 
 
 Rules:
 - architecture: Always "React + Vite, Tailwind CSS, Vercel Edge CDN" - never suggest Next.js, GraphQL, microservices, or anything enterprise
-- deliveryWindow: Always "1 – 2 Weeks" - no exceptions
+- deliveryWindow: Always "1 - 2 Weeks" - no exceptions
 - performance: Always "100/100 Mobile Lighthouse score, loads in under 0.5 seconds on any phone"
 - features: Exactly 3 features in plain English a business owner would understand - no jargon. E.g. "Click-to-call button on every page", "WhatsApp enquiry button", "Photo gallery with instant loading"
 
