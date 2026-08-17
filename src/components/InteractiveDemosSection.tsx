@@ -4,8 +4,7 @@ import { WhatsAppBar } from './trade-tools/WhatsAppBar';
 import { SocialProofBanner } from './trade-tools/SocialProofBanner';
 import { IntakeDeposit } from './trade-tools/IntakeDeposit';
 import { QuoteEstimator } from './tools/QuoteEstimator';
-import { MissedCallDemo } from './trade-tools/MissedCallDemo';
-import { Target, Zap, Smartphone, MessageSquare, PhoneMissed, ArrowRight } from 'lucide-react';
+import { Target, Zap, Smartphone, MessageSquare, ArrowRight } from 'lucide-react';
 
 export const InteractiveDemosSection = () => {
   const navigate = useNavigate();
@@ -28,7 +27,7 @@ export const InteractiveDemosSection = () => {
           </p>
         </div>
 
-        {/* Tools Grid */}
+        {/* Tools Grid (2x2) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
 
           {/* Tool 1: Social Proof Trust Banner */}
@@ -120,30 +119,6 @@ export const InteractiveDemosSection = () => {
             <button
               onClick={() => navigate('/demo/whatsapp-bar')}
               className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
-            >
-              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* Tool 5: Missed-Call Auto-Text */}
-          <div className="flex flex-col lg:col-span-2 max-w-2xl mx-auto w-full">
-            <div className="mb-6 text-center">
-              <h3 className="text-2xl font-bold flex items-center justify-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <PhoneMissed className="text-red-600 dark:text-red-500" />
-                Instant Missed-Call Auto-Text
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm max-w-xl mx-auto">
-                Automatically texts back customers who hit your voicemail in under 5 seconds so they don't hire someone else.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-              <div className="w-full max-w-md">
-                <MissedCallDemo />
-              </div>
-            </div>
-            <button
-              onClick={() => navigate('/demo/missed-call')}
-              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-center"
             >
               Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
             </button>

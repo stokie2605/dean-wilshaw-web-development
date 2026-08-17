@@ -1,5 +1,7 @@
 import React from 'react';
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ShieldCheck, MessageSquare, ArrowRight, Gauge, Zap } from 'lucide-react';
+
+const AUDIT_WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20a%20%C2%A349%20website%20speed%20audit";
 
 const PRICING_TIERS = [
   {
@@ -51,7 +53,7 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-12">
           <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 inline-block">
             Transparent Pricing
           </span>
@@ -63,8 +65,48 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
           </p>
         </div>
 
-        {/* Package Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+        {/* Featured Step 1 Entry Audit Card (Full Width) */}
+        <div className="mb-12 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-950 border-2 border-red-500/40 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-600 via-orange-500 to-amber-500" />
+          
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold uppercase tracking-wider border border-red-200 dark:border-red-500/30">
+                <Gauge className="w-3.5 h-3.5" />
+                STEP 1: ENTRY AUDIT
+              </div>
+
+              <h3 className="font-geist font-bold text-xl sm:text-2xl text-slate-900 dark:text-white">
+                Mobile Speed &amp; Lead Health Check — <span className="text-red-600 dark:text-red-400">£49 Flat Fee</span>
+              </h3>
+
+              <p className="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed">
+                I test your real mobile load speeds, break-test your forms and buttons, and show you exactly where you are losing customer calls.
+              </p>
+
+              <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-lg">
+                <ShieldCheck className="w-4 h-4 shrink-0" />
+                <span><strong>100% Risk-Free:</strong> The full £49 is credited straight off the final bill if you hire me to fix or rebuild your website.</span>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-auto shrink-0">
+              <a
+                href={AUDIT_WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all shadow-lg shadow-emerald-600/20 hover:scale-[1.02]"
+              >
+                <MessageSquare className="w-4 h-4 fill-white" />
+                Claim £49 Audit on WhatsApp
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* 3-Tier Package Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {PRICING_TIERS.map((pkg) => (
             <div
               key={pkg.id}
@@ -86,38 +128,8 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
                   </li>
                 ))}
               </ul>
-
-
             </div>
           ))}
-        </div>
-
-        {/* Optional Care Banner */}
-        <div className="bg-slate-100 dark:bg-zinc-900/40 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 sm:p-8 mt-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
-          <div className="flex-1">
-            <h3 className="font-geist font-bold text-slate-900 dark:text-zinc-100 text-lg sm:text-xl mb-1">Optional Monthly Site Care <span className="text-slate-500 dark:text-zinc-400 font-normal text-sm sm:text-base">(Zero Contract, Cancel Anytime)</span></h3>
-            <p className="text-emerald-600 dark:text-emerald-500 font-semibold mb-4">£49 / month</p>
-            <ul className="space-y-2">
-              <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                <span className="md:hidden">Direct WhatsApp support for quick updates</span>
-                <span className="hidden md:inline">Direct WhatsApp support for quick photo, text, or phone number changes</span>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                <span className="md:hidden">Fast hosting, security &amp; daily backups</span>
-                <span className="hidden md:inline">High-speed hosting, security monitoring and daily backups</span>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
-                <span className="md:hidden">Google Business Profile updates</span>
-                <span className="hidden md:inline">Google Business Profile updates to keep local callouts coming</span>
-              </li>
-            </ul>
-            <p className="text-xs text-slate-500 dark:text-zinc-500 mt-4 font-medium">
-              (Optional - You still own your site 100% outright)
-            </p>
-          </div>
         </div>
 
       </div>

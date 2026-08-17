@@ -1,10 +1,11 @@
-﻿import React from 'react';
+import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useToolParams } from '../hooks/useToolParams';
 import { QuoteEstimator } from '../components/tools/QuoteEstimator';
 import { AreaCalculator } from '../components/tools/AreaCalculator';
 import { MissedCallWidget } from '../components/tools/MissedCallWidget';
+import { MissedCallDemo } from '../components/trade-tools/MissedCallDemo';
 import { BeforeAfterSlider } from '../components/tools/BeforeAfterSlider';
 import { BookingForm } from '../components/tools/BookingForm';
 import { WhatsAppBar } from '../components/trade-tools/WhatsAppBar';
@@ -18,9 +19,8 @@ function renderTool(toolId: string | undefined) {
     case 'booking-form':     return <BookingForm />;
     case 'whatsapp-bar':     return <WhatsAppBar />;
     case 'trust-bar':        return <SocialProofBanner />;
-    // Legacy routes - kept for backward compatibility
+    case 'missed-call':      return <MissedCallDemo />;
     case 'area-calculator':  return <AreaCalculator />;
-    case 'missed-call':      return <MissedCallWidget />;
     case 'before-after':     return <BeforeAfterSlider />;
     default:                 return <QuoteEstimator />;
   }
@@ -31,14 +31,19 @@ const TOOL_LABELS: Record<string, string> = {
   'booking-form':     'Qualification & Deposit Portal',
   'whatsapp-bar':     'Mobile WhatsApp Bar',
   'trust-bar':        'Live Trust Indicators',
+  'missed-call':      'Instant Missed-Call Auto-Text',
   'area-calculator':  'Area and Material Calculator',
-  'missed-call':      'Missed Call WhatsApp Widget',
   'before-after':     'Before and After Showcase',
 };
 
 type Bullet = { heading: string; body: string };
 
 const TOOL_BULLETS: Record<string, Bullet[]> = {
+  'missed-call': [
+    { heading: 'Captures leads instantly:', body: 'Homeowners who hit voicemail get a text in 5 seconds before calling another trade.' },
+    { heading: 'Zero apps needed:', body: 'Works 100% in the background, directly connected to your UK mobile number.' },
+    { heading: 'One flat fee with no surprises:', body: '£149 covers complete setup and testing. No monthly subscriptions.' },
+  ],
   'quote-calculator': [
     { heading: 'Captures leads instantly:', body: 'Homeowners get an instant ballpark price and message you directly on WhatsApp with job details pre-filled.' },
     { heading: 'Zero redesign needed:', body: 'Plugs straight into Wix, WordPress, Squarespace, or custom sites in 24 hours.' },

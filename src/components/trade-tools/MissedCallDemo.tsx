@@ -55,21 +55,23 @@ export const MissedCallDemo: React.FC = () => {
           {status === 'texting' && (
             <div className="text-amber-400 flex items-center gap-2">
               <Loader2 className="w-3 h-3 animate-spin" />
-              Dispatching automatic SMS...
+              [SMS Dispatch in 4s -&gt; Customer Mobile]...
             </div>
           )}
           
           {status === 'done' && (
-            <div className="text-emerald-400">» SMS DELIVERED SUCCESSFULLY</div>
+            <div className="text-emerald-400 font-semibold">
+              » [SMS Delivered]: &ldquo;Hi, sorry I missed your call, I&apos;m currently on a job. How can I help?&rdquo;
+            </div>
           )}
         </div>
       </div>
 
       <div className={`transition-all duration-500 ease-in-out overflow-hidden ${status === 'done' ? 'max-h-32 opacity-100 mb-6' : 'max-h-0 opacity-0 mb-0'}`}>
-        <div className="p-3 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-xl rounded-tl-none ml-2 max-w-[85%] relative">
-          <MessageSquare className="w-3 h-3 absolute -top-2 -left-2 text-emerald-500 fill-white dark:fill-zinc-900" />
+        <div className="p-3.5 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800/50 rounded-xl rounded-tl-none ml-2 max-w-[90%] relative shadow-sm">
+          <MessageSquare className="w-3.5 h-3.5 absolute -top-2 -left-2 text-emerald-500 fill-white dark:fill-zinc-900" />
           <p className="text-xs text-emerald-800 dark:text-emerald-300 leading-relaxed font-medium">
-            "Hey! Thanks for calling. I'm currently with a client and couldn't answer. Reply to this text with a quick message about what you need and I'll get right back to you!"
+            &ldquo;Hi, sorry I missed your call, I&apos;m currently on a job. How can I help?&rdquo;
           </p>
         </div>
       </div>
