@@ -21,13 +21,13 @@ export function BeforeAfterSlider() {
   };
 
   return (
-    <div className="bg-[#0f1218] border border-slate-800 rounded-xl p-5 text-white max-w-md w-full shadow-xl space-y-4">
+    <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-5 text-slate-900 dark:text-white max-w-md w-full shadow-md space-y-4 transition-colors">
       <div className="flex justify-between items-center">
-        <h3 className="font-bold text-sm text-white">{biz} Transformation</h3>
-        <span className="text-[11px] text-slate-400">Drag to compare</span>
+        <h3 className="font-bold text-base text-slate-900 dark:text-white">{biz} Transformation</h3>
+        <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Drag slider to compare</span>
       </div>
 
-      <div className="relative w-full h-64 rounded-lg overflow-hidden select-none">
+      <div className="relative w-full h-64 rounded-xl overflow-hidden select-none border border-slate-200 dark:border-zinc-800 shadow-inner">
         <img src={afterImg} alt="After work" className="absolute inset-0 w-full h-full object-cover" />
         <div
           className="absolute inset-y-0 left-0 overflow-hidden"
@@ -41,7 +41,7 @@ export function BeforeAfterSlider() {
           />
         </div>
         <div
-          className="absolute inset-y-0 w-0.5 bg-white shadow-lg pointer-events-none"
+          className="absolute inset-y-0 w-1 bg-white shadow-lg pointer-events-none"
           style={{ left: `${sliderPos}%` }}
         />
         <input
@@ -49,13 +49,13 @@ export function BeforeAfterSlider() {
           onChange={(e) => setSliderPos(Number(e.target.value))}
           className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize"
         />
-        <span className="absolute top-2 left-2 bg-slate-950/80 px-2 py-0.5 rounded text-[10px] font-bold text-slate-300 pointer-events-none">BEFORE</span>
-        <span className="absolute top-2 right-2 bg-red-950/80 border border-red-500/50 px-2 py-0.5 rounded text-[10px] font-bold text-red-300 pointer-events-none">AFTER</span>
+        <span className="absolute top-2 left-2 bg-slate-900/80 text-white px-2.5 py-1 rounded-md text-[10px] font-bold pointer-events-none">BEFORE</span>
+        <span className="absolute top-2 right-2 bg-emerald-700/80 text-white px-2.5 py-1 rounded-md text-[10px] font-bold pointer-events-none">AFTER</span>
       </div>
 
       {!hasCustomPhone && (
         <div>
-          <label className="block text-xs font-semibold text-slate-400 mb-1">
+          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
             Enter your mobile to test on your phone:
           </label>
           <input
@@ -63,16 +63,16 @@ export function BeforeAfterSlider() {
             placeholder="e.g. 07123 456789"
             value={userPhone}
             onChange={(e) => setUserPhone(e.target.value)}
-            className="w-full bg-[#0a0d14] border border-slate-700 rounded-lg p-2.5 text-sm text-white placeholder:text-slate-600 focus:outline-none focus:border-red-500"
+            className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-xl p-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
           />
         </div>
       )}
 
       <button
         onClick={handleSend}
-        className="w-full bg-red-600 hover:bg-red-500 text-white font-bold py-2.5 px-4 rounded-lg text-xs transition shadow-lg shadow-red-600/20"
+        className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg shadow-emerald-600/20"
       >
-        Enquire on WhatsApp
+        <span>Request Quote for This Quality</span>
       </button>
     </div>
   );
