@@ -9,7 +9,7 @@ export const IntakeDeposit: React.FC = () => {
     <div className="w-full max-w-md mx-auto p-6 rounded-2xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-md">
       <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-4 mb-5">
         <h3 className="font-bold text-base text-slate-900 dark:text-white">Secure Priority Booking</h3>
-        <span className="text-xs px-2.5 py-1 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-500/30 font-mono">
+        <span className="text-xs px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 font-mono">
           Step {step} of 2
         </span>
       </div>
@@ -23,10 +23,10 @@ export const IntakeDeposit: React.FC = () => {
                 key={option}
                 type="button"
                 onClick={() => setUrgency(option)}
-                className={`p-3 rounded-xl text-xs border text-left transition-all ${
+                className={`p-3 rounded-xl text-xs text-left transition-all ${
                   urgency === option
-                    ? 'bg-red-600 text-white border-red-600 font-bold shadow-sm shadow-red-600/20'
-                    : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-700/60 font-medium'
+                    ? 'bg-[#D90429] text-white font-medium shadow-sm'
+                    : 'bg-slate-100 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60 hover:text-slate-900 dark:hover:text-slate-200 font-medium'
                 }`}
               >
                 {option}
@@ -37,7 +37,7 @@ export const IntakeDeposit: React.FC = () => {
           <button
             type="button"
             onClick={() => setStep(2)}
-            className="w-full mt-4 py-3 px-4 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-all shadow-sm shadow-red-600/20"
+            className="w-full mt-4 py-3 px-4 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-sm transition-all shadow-sm shadow-red-600/20"
           >
             Continue to Secure Slot
           </button>

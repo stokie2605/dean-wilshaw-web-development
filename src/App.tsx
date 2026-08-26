@@ -110,7 +110,7 @@ export default function App() {
             <div className="max-w-6xl mx-auto">
               <div className="bg-white dark:bg-black border border-slate-200 dark:border-zinc-800 rounded-3xl p-8 sm:p-12 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
                 <div className="space-y-4 max-w-2xl text-center lg:text-left">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide">
                     <Bot className="w-3.5 h-3.5" />
                     Interactive Sandbox
                   </div>
@@ -146,7 +146,7 @@ export default function App() {
           {/* 5. Pricing & Audits Teaser Banner */}
           <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 text-center">
             <div className="max-w-4xl mx-auto space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 text-xs font-bold uppercase tracking-wider">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide">
                 <Gauge className="w-3.5 h-3.5" />
                 Transparent Pricing
               </div>

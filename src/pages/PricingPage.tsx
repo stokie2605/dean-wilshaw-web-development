@@ -96,7 +96,7 @@ export const PricingPage: React.FC = () => {
 
           {/* Section Header */}
           <div className="max-w-3xl mx-auto text-center mb-14">
-            <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase">
+            <div className="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide">
               Transparent Pricing
             </div>
             <h1 className="text-3xl sm:text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">
@@ -115,8 +115,8 @@ export const PricingPage: React.FC = () => {
               
               {/* Left Column: Offer Details */}
               <div className="space-y-4 max-w-2xl text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/40 border border-emerald-300 dark:border-emerald-600/40 text-emerald-700 dark:text-emerald-300 text-xs font-bold uppercase tracking-wider">
-                  <Gauge className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide">
+                  <Gauge className="w-3.5 h-3.5 text-emerald-400" />
                   Low-Risk Entry Offer
                 </div>
 
@@ -143,27 +143,33 @@ export const PricingPage: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Credited towards build if you hire me</span>
+                    <span>£49 credited back if you build with me</span>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: CTA */}
-              <div className="flex flex-col items-center lg:items-end justify-center shrink-0 w-full lg:w-auto space-y-3">
-                <div className="text-center lg:text-right">
-                  <div className="text-xs text-slate-500 dark:text-zinc-400 uppercase font-bold tracking-wider">One-Off Price</div>
-                  <div className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">£49</div>
-                  <div className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">24-Hour Turnaround</div>
+              {/* Right Column: Pricing & Action */}
+              <div className="bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-emerald-500/30 rounded-2xl p-6 sm:p-8 text-center flex flex-col items-center justify-between min-w-[280px] sm:min-w-[320px] shadow-lg shrink-0">
+                <div className="space-y-1 mb-4">
+                  <div className="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400">
+                    24h Turnaround
+                  </div>
+                  <div className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">
+                    £49
+                  </div>
+                  <div className="text-xs text-slate-500 dark:text-zinc-400">
+                    One-off payment • Zero obligation
+                  </div>
                 </div>
 
                 <a
                   href={AUDIT_WHATSAPP_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
+                  className="w-full py-3.5 px-6 rounded-xl bg-[#25D366] text-black font-semibold hover:bg-[#20ba5a] text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
-                  Book £49 Audit on WhatsApp
+                  <span>Book Audit via WhatsApp</span>
                 </a>
               </div>
 
@@ -244,7 +250,7 @@ export const PricingPage: React.FC = () => {
                       href="https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20discuss%20a%20custom%20trade%20portal."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
+                      className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] text-black font-semibold hover:bg-[#20ba5a] text-xs sm:text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
                     >
                       <MessageSquare className="w-3.5 h-3.5 fill-current" />
                       <span>{tier.ctaText}</span>
@@ -268,7 +274,7 @@ export const PricingPage: React.FC = () => {
                 href="https://wa.me/447348733365?text=Hi%20Dean,%20I%20have%20a%20question%20about%20your%20web%20packages."
                 target="_blank"
                 rel="noreferrer"
-                className="px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm transition-all shadow-md flex items-center gap-2"
+                className="px-6 py-3 rounded-xl bg-[#25D366] text-black font-semibold hover:bg-[#20ba5a] text-sm transition-all shadow-md flex items-center gap-2"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 Message 07348 733365

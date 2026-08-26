@@ -87,7 +87,7 @@ export const ToolsPage: React.FC = () => {
 
           {/* Showroom Header */}
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase">
+            <div className="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide">
               Interactive Sandbox
             </div>
             <h1 className="text-3xl sm:text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">
@@ -105,7 +105,7 @@ export const ToolsPage: React.FC = () => {
               {/* Header & Sub-copy */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-zinc-800 pb-6">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 text-xs font-bold uppercase tracking-wider mb-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide mb-2">
                     <Bot className="w-3.5 h-3.5" />
                     24/7 Emergency Triage &amp; Dispatch
                   </div>
@@ -124,10 +124,10 @@ export const ToolsPage: React.FC = () => {
                       key={key}
                       type="button"
                       onClick={() => setSelectedScenario(key)}
-                      className={`px-3.5 py-2 rounded-xl text-xs rounded-xl border transition-all ${
+                      className={`px-3.5 py-1.5 rounded-full text-xs transition-all ${
                         selectedScenario === key
-                          ? 'bg-red-600 text-white border-red-600 font-bold shadow-sm shadow-red-600/20'
-                          : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-700/60 font-medium'
+                          ? 'bg-[#D90429] text-white font-medium shadow-sm'
+                          : 'bg-slate-100 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60 hover:text-slate-900 dark:hover:text-slate-200 font-medium'
                       }`}
                     >
                       {scenarios[key].label}
@@ -305,7 +305,7 @@ export const ToolsPage: React.FC = () => {
 
           {/* 3. BOTTOM CALL TO ACTION BANNER */}
           <div className="bg-gradient-to-r from-red-950/40 via-zinc-900 to-black border border-zinc-800 rounded-3xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide mb-4">
               <Wrench className="w-3.5 h-3.5" />
               Standalone Add-on Plugins
             </div>
@@ -321,7 +321,7 @@ export const ToolsPage: React.FC = () => {
                 href="https://wa.me/447348733365?text=Hi%20Dean,%20I'm%20interested%20in%20installing%20one%20of%20your%20interactive%20lead%20tools"
                 target="_blank"
                 rel="noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center gap-2"
+                className="px-6 py-3.5 rounded-xl bg-[#25D366] text-black font-semibold hover:bg-[#20ba5a] text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center gap-2"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 WhatsApp Dean to Install
