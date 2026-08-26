@@ -32,7 +32,7 @@ const PORTFOLIO_ENGINES = [
     description: 'High-contrast, urgency-driven layout built for fast conversions. Features sticky tap-to-call bars and automated missed-call text triggers.',
     tags: ['Tap-To-Call Bar', 'Auto-Text Follow-Up', 'Sub-0.4s Speed'],
     accentColor: '#2563EB',
-    image: '/engine-01.png',
+    image: '/mockups/rapidtrade-emergency.png',
   },
   {
     id: 'engine-02',
@@ -41,7 +41,7 @@ const PORTFOLIO_ENGINES = [
     description: 'Structured, credibility-heavy framework designed for high-ticket contracts. Emphasizes accreditations, case studies, and corporate compliance.',
     tags: ['Accreditation Badges', 'Case Study Grids', 'PDF Spec Sheets'],
     accentColor: '#EA580C',
-    image: '/engine-02.png',
+    image: '/mockups/infra-engine-commercial.png',
   },
   {
     id: 'engine-03',
@@ -50,7 +50,7 @@ const PORTFOLIO_ENGINES = [
     description: 'Minimalist, visual-first presentation focused on premium craftsmanship. Full-bleed gallery layouts with subtle motion to command higher margins.',
     tags: ['Full-Bleed Galleries', 'Before / After Sliders', 'Editorial Layout'],
     accentColor: '#10B981',
-    image: '/engine-03.png',
+    image: '/mockups/bespoke-craft.png',
   }
 ];
 
