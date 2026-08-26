@@ -124,7 +124,7 @@ export default function App() {
             <AboutDeanSection />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
-            <InteractiveDemosSection />
+            <InteractiveDemosSection onOpenStitch={openStitchModal} />
           </div>
           <div className="bg-slate-50 dark:bg-zinc-950">
             <PortfolioShowcaseSection onOpenQuote={handleOpenQuote} />

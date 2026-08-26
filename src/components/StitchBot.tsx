@@ -131,7 +131,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
             </div>
             <div>
               <h3 className="font-bold text-sm">Dean Wilshaw AI</h3>
-              <p className="text-[10px] text-zinc-400">Available 24/7 &bull; Instant Answers</p>
+              <p className="text-[10px] text-zinc-400">Available 24/7 | Instant Answers</p>
             </div>
           </div>
           <button 

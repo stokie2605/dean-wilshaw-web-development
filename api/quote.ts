@@ -49,11 +49,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['dean.wilshaw.web@gmail.com'],
-      subject: `New Quote Request [${refNumber}] — ${packageLabel} from ${name}`,
+      subject: `New Quote Request [${refNumber}] - ${packageLabel} from ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
           <div style="background: #dc2626; padding: 20px 24px;">
-            <h1 style="color: white; margin: 0; font-size: 18px;">New Quote Request — Dean Wilshaw Web</h1>
+            <h1 style="color: white; margin: 0; font-size: 18px;">New Quote Request - Dean Wilshaw Web</h1>
             <p style="color: #fecaca; margin: 4px 0 0; font-size: 12px;">Reference: ${refNumber}</p>
           </div>
           <div style="padding: 24px; background: #fff;">
@@ -72,7 +72,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </div>
           </div>
           <div style="background: #f9fafb; padding: 14px 24px; font-size: 11px; color: #9ca3af; border-top: 1px solid #e5e7eb;">
-            Sent from dw-web-freelance.vercel.app — ${new Date().toLocaleString('en-GB')}
+            Sent from dw-web-freelance.vercel.app - ${new Date().toLocaleString('en-GB')}
           </div>
         </div>
       `,

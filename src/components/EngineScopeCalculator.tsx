@@ -6,18 +6,23 @@ export function EngineScopeCalculator() {
   const [leadInput, setLeadInput] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  // Derive scope tier from page count
-  let tierLabel = 'Standard Business Site';
-  let price: number | string = 2500;
+  // Derive scope tier from page count matching Trade Auditor & GSE packages
+  let tierLabel = 'Full Trade System & Lead Engine';
+  let price: number | string = 599;
   let delivery = '1-2 Week Delivery';
 
   if (pages === 1) {
-    tierLabel = 'Landing Engine';
-    price = 1250;
+    tierLabel = 'Single-Page Trade Site';
+    price = 299;
+    delivery = '3-5 Day Delivery';
+  } else if (pages >= 2 && pages <= 3) {
+    tierLabel = 'Multi-Page Trade Authority';
+    price = 449;
+    delivery = '1-2 Week Delivery';
   } else if (pages >= 6) {
-    tierLabel = 'Custom Web Platform';
-    price = 'Custom';
-    delivery = 'Custom Timeline';
+    tierLabel = 'Custom Web Platform & Portal';
+    price = 'Custom Quote';
+    delivery = 'Bespoke Timeline';
   }
 
   const handleSubmit = (e: React.FormEvent) => {
