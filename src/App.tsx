@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
+import { BottomTabBar } from './components/BottomTabBar';
 import { HeroSection } from './components/HeroSection';
 import { ArrowRight, Bot, MessageSquare, Smartphone, Zap, Target, Gauge } from 'lucide-react';
 
@@ -230,6 +231,9 @@ export default function App() {
           </button>
         </div>
       )}
+
+      {/* Mobile Bottom Navigation Bar */}
+      <BottomTabBar />
 
       {/* WhatsApp Modal */}
       <Suspense fallback={null}>

@@ -1,60 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
-import { QuoteForm } from './QuoteForm';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Home, Wrench, CreditCard } from 'lucide-react';
 
-interface BottomTabBarProps {
-  onOpenQuote: () => void;
-}
+export const BottomTabBar: React.FC = () => {
+  const location = useLocation();
 
-export const BottomTabBar: React.FC<BottomTabBarProps> = ({ onOpenQuote }) => {
-  const [activeTab, setActiveTab] = useState<string>('');
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveTab(entry.target.id);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    const sections = ['portfolio', 'services', 'pricing'];
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-    setActiveTab(id);
-  };
+  const tabs = [
+    { label: 'Home',   path: '/',        icon: Home },
+    { label: 'Tools',  path: '/tools',   icon: Wrench },
+    { label: 'Prices', path: '/pricing', icon: CreditCard },
+  ];
 
   return (
-    <>
-      <div className="fixed bottom-0 inset-x-0 z-[60] bg-[#111111] border-t border-black h-16 flex items-center md:hidden pb-safe w-full">
-        <button 
-          onClick={() => window.location.href = 'tel:07348733365'}
-          className="flex-1 h-full bg-[#ff4d4d] text-white font-geist font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors hover:bg-[#ff3333]"
-        >
-          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 1.01-.63 1.01-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-          CALL DEAN
-        </button>
-        
-        <button 
-          onClick={onOpenQuote}
-          className="flex-1 h-full bg-[#111111] text-white font-geist font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2 transition-colors hover:bg-[#222222]"
-        >
-          <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          GET QUOTE
-        </button>
-      </div>
-    </>
+    <nav 
+      aria-label="Mobile Navigation"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-1.5 px-4 flex justify-around items-center md:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-colors duration-300"
+    >
+      {tabs.map(({ label, path, icon: Icon }) => {
+        const isActive = location.pathname === path;
+        return (
+          <Link
+            key={path}
+            to={path}
+            className={`flex flex-col items-center justify-center flex-1 py-1 px-2 rounded-xl transition-all duration-150 ${
+              isActive
+                ? 'text-[#D90429] dark:text-[#D90429] font-bold'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium'
+            }`}
+          >
+            <Icon 
+              className={`w-5 h-5 transition-transform ${
+                isActive ? 'scale-110 stroke-[2.5]' : 'stroke-[1.75]'
+              }`} 
+            />
+            <span className="text-[11px] tracking-tight mt-0.5 leading-none">
+              {label}
+            </span>
+          </Link>
+        );
+      })}
+    </nav>
   );
 };

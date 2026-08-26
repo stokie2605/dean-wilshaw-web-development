@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
+import { BottomTabBar } from '../components/BottomTabBar';
 import { Footer } from '../components/Footer';
 import { QuoteForm } from '../components/QuoteForm';
 import { WhatsAppModal } from '../components/WhatsAppModal';
@@ -84,13 +85,13 @@ export const PricingPage: React.FC = () => {
   const [stitchModalOpen, setStitchModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-white selection:bg-red-500/30 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-zinc-950 text-slate-900 dark:text-white selection:bg-red-500/30 transition-colors duration-300 overflow-x-hidden">
       
       {/* Navigation */}
       <Header onOpenQuote={() => setQuoteModalOpen(true)} />
 
       {/* Main Content */}
-      <main className="flex-grow pt-24 sm:pt-28 pb-20">
+      <main className="flex-grow pt-24 sm:pt-28 pb-24 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Section Header */}
@@ -312,6 +313,9 @@ export const PricingPage: React.FC = () => {
           </button>
         </div>
       )}
+
+      {/* Mobile Bottom Navigation Bar */}
+      <BottomTabBar />
 
     </div>
   );
