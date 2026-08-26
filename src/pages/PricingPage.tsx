@@ -234,7 +234,7 @@ export const PricingPage: React.FC = () => {
                 </h2>
 
                 <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
-                  Wondering why your current site isn't generating calls? I will audit your live mobile speeds, analyze friction points, and deliver a personalized 3-minute video breakdown with 3 actionable fixes within 24 hours.
+                  Wondering why your current site isn't generating calls? I will audit your live mobile speeds, analyse friction points, and deliver a personalised 3-minute video breakdown with 3 actionable fixes within 24 hours.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs font-medium text-slate-700 dark:text-zinc-300">
@@ -244,7 +244,7 @@ export const PricingPage: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Personalized video walk-through</span>
+                    <span>Personalised video walkthrough</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />

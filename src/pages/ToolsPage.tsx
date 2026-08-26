@@ -292,21 +292,21 @@ export const ToolsPage: React.FC = () => {
                 </div>
 
                 {/* Live WhatsApp Alert Payload Output */}
-                <div className="lg:col-span-5 p-6 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between shadow-sm">
+                <div className="lg:col-span-5 p-6 rounded-2xl bg-emerald-50/80 border border-emerald-200 dark:bg-emerald-950/20 dark:border-emerald-800/60 flex flex-col justify-between shadow-sm">
                   <div className="space-y-4">
-                    <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider font-mono">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-xs uppercase tracking-wider font-mono">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                       WhatsApp Dispatch Generated
                     </div>
 
-                    <div className="p-4 bg-black/80 rounded-xl border border-emerald-500/20 text-emerald-300 font-mono text-xs whitespace-pre-line leading-relaxed">
+                    <div className="p-4 bg-zinc-950 rounded-xl border border-emerald-500/20 text-emerald-400 font-mono text-xs whitespace-pre-line leading-relaxed shadow-inner">
                       {current.whatsappSummary}
                     </div>
                   </div>
 
-                  <div className="mt-6 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs text-emerald-400 font-semibold font-mono">
+                  <div className="mt-6 pt-3 border-t border-emerald-200 dark:border-emerald-500/20 flex items-center justify-between text-xs text-emerald-800 dark:text-emerald-400 font-semibold font-mono">
                     <span>Ready for 1-Tap Reply</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Instant Alert</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-bold">Instant Alert</span>
                   </div>
                 </div>
 
@@ -335,7 +335,7 @@ export const ToolsPage: React.FC = () => {
                       className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold font-mono tracking-tight shrink-0 transition-all duration-200 ${
                         activeToolIndex === idx
                           ? 'bg-[#D90429] text-white shadow-md shadow-red-600/30'
-                          : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-white/[0.04] dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white'
+                          : 'bg-zinc-100 text-zinc-700 border border-zinc-200 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-white/[0.04] dark:text-zinc-400 dark:border-white/[0.08] dark:hover:text-white'
                       }`}
                     >
                       <span className="md:hidden">{tool.shortTabLabel}</span>

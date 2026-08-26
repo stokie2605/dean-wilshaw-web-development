@@ -133,7 +133,7 @@ export default function App() {
                       Lead Tools Showroom
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
-                      Test our 24/7 AI trade triage dispatcher, instant quote calculators, deposit booking portals, and WhatsApp fast bars in a dedicated interactive sandbox.
+                      Test the 24/7 AI trade triage dispatcher, instant quote calculators, deposit booking portals, and WhatsApp fast bars in a dedicated interactive sandbox.
                     </p>
 
                     {/* Tool Highlights */}
@@ -171,7 +171,7 @@ export default function App() {
                       Web Design &amp; Prices
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
-                      View our 3 layout archetypes, low-risk £49 mobile speed audits, standalone plug-in tools from £149, and complete single-page trade websites from £299.
+                      View 3 layout archetypes, low-risk £49 mobile speed audits, standalone plug-in tools from £149, and complete single-page trade websites from £299.
                     </p>
 
                     {/* Pricing Highlights */}
