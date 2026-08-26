@@ -14,7 +14,7 @@ export const BottomTabBar: React.FC = () => {
   return (
     <nav 
       aria-label="Mobile Navigation"
-      className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 py-1.5 px-4 flex justify-around items-center md:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.08)] transition-colors duration-300"
+      className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0A0D14]/95 backdrop-blur-md border-t border-slate-200 dark:border-white/[0.08] py-1.5 px-4 flex justify-around items-center md:hidden shadow-[0_-4px_20px_rgba(0,0,0,0.4)] transition-colors duration-300"
     >
       {tabs.map(({ label, path, icon: Icon }) => {
         const isActive = location.pathname === path;
@@ -25,7 +25,7 @@ export const BottomTabBar: React.FC = () => {
             className={`flex flex-col items-center justify-center flex-1 py-1 px-2 rounded-xl transition-all duration-150 ${
               isActive
                 ? 'text-[#D90429] dark:text-[#D90429] font-bold'
-                : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium'
+                : 'text-slate-500 dark:text-zinc-400 hover:text-slate-900 dark:hover:text-white font-medium'
             }`}
           >
             <Icon 
