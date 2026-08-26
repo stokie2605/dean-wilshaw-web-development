@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { Header } from '../components/Header';
 import { BottomTabBar } from '../components/BottomTabBar';
 import { Footer } from '../components/Footer';
@@ -86,7 +86,8 @@ export const ToolsPage: React.FC = () => {
   const STAGE_TOOLS = [
     {
       id: 'quote-calc',
-      tabLabel: '01 Quote Calculator',
+      fullTabLabel: '01 Quote Calculator',
+      shortTabLabel: '01 Quote',
       title: 'Instant Quote Calculator',
       subtitle: 'Customers want a quick price guide before they commit to a call. This interactive estimator calculates an instant estimate for common jobs and captures their phone number in the process.',
       demoRoute: '/demo/quote-calculator',
@@ -95,7 +96,8 @@ export const ToolsPage: React.FC = () => {
     },
     {
       id: 'deposit-portal',
-      tabLabel: '02 Deposit Portal',
+      fullTabLabel: '02 Deposit Portal',
+      shortTabLabel: '02 Deposit',
       title: 'Deposit & Booking Portal',
       subtitle: 'Stop wasting hours on tyre-kickers. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.',
       demoRoute: '/demo/booking-form',
@@ -104,7 +106,8 @@ export const ToolsPage: React.FC = () => {
     },
     {
       id: 'whatsapp-bar',
-      tabLabel: '03 WhatsApp Bar',
+      fullTabLabel: '03 WhatsApp Bar',
+      shortTabLabel: '03 WhatsApp',
       title: 'Mobile WhatsApp Fast Bar',
       subtitle: 'Typing long emails on a phone keyboard is annoying. Sticky WhatsApp bars let customers snap a job photo and message you in one tap.',
       demoRoute: '/demo/whatsapp-bar',
@@ -117,7 +120,8 @@ export const ToolsPage: React.FC = () => {
     },
     {
       id: 'trust-badges',
-      tabLabel: '04 Trust Badges',
+      fullTabLabel: '04 Trust Badges',
+      shortTabLabel: '04 Trust',
       title: 'Live Trust Indicators',
       subtitle: "If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and 5-star rated.",
       demoRoute: '/demo/trust-bar',
@@ -139,6 +143,18 @@ export const ToolsPage: React.FC = () => {
   const selectTool = (index: number) => {
     setDirection(index > activeToolIndex ? 1 : -1);
     setActiveToolIndex(index);
+  };
+
+  // Touch Swipe Handler (prevents vertical scroll conflict via touch-pan-y)
+  const handleDragEnd = (_e: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const swipeThreshold = 40;
+    const velocityThreshold = 300;
+
+    if (info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold) {
+      goToNext();
+    } else if (info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold) {
+      goToPrev();
+    }
   };
 
   // Keyboard navigation for slider
@@ -297,41 +313,42 @@ export const ToolsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* 2. HIGH-TECH INTERACTIVE SLIDER STAGE */}
+          {/* 2. HIGH-TECH INTERACTIVE SLIDER STAGE (TOUCH-OPTIMIZED) */}
           <div className="mb-16">
             
             {/* Stage Container */}
-            <div className="relative max-w-4xl mx-auto bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-6 md:p-10 shadow-2xl overflow-hidden min-h-[560px] flex flex-col justify-between group">
+            <div className="relative w-full max-w-4xl mx-auto bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-4 sm:p-6 md:p-10 shadow-2xl overflow-hidden min-h-[500px] md:min-h-[540px] flex flex-col justify-between group">
               
               {/* Subtle Border Beam Around Showcase Stage */}
               <BorderBeam size={320} duration={12} colorFrom="#D90429" colorTo="#25D366" />
 
-              {/* Top Controls: 4 Pill Tabs */}
-              <div className="relative z-10 mb-8">
-                <div className="flex flex-wrap items-center justify-center gap-2">
+              {/* Top Controls: 4 Pill Tabs (Scrollable single row on mobile) */}
+              <div className="relative z-10 mb-6 md:mb-8">
+                <div className="flex overflow-x-auto whitespace-nowrap gap-2 hide-scrollbar py-1 px-1 justify-start md:justify-center w-full">
                   {STAGE_TOOLS.map((tool, idx) => (
                     <button
                       key={tool.id}
                       type="button"
                       onClick={() => selectTool(idx)}
-                      className={`px-4 py-2 rounded-full text-xs font-semibold font-mono tracking-tight transition-all duration-200 ${
+                      className={`px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs font-semibold font-mono tracking-tight shrink-0 transition-all duration-200 ${
                         activeToolIndex === idx
                           ? 'bg-[#D90429] text-white shadow-md shadow-red-600/30'
                           : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-white/[0.04] dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white'
                       }`}
                     >
-                      {tool.tabLabel}
+                      <span className="md:hidden">{tool.shortTabLabel}</span>
+                      <span className="hidden md:inline">{tool.fullTabLabel}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* Floating Side Arrow Chevrons */}
+              {/* Desktop Floating Side Arrow Chevrons (>= 768px only) */}
               <button
                 type="button"
                 onClick={goToPrev}
                 aria-label="Previous Tool (Left Arrow)"
-                className="absolute left-3 md:left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 flex items-center justify-center shadow-lg transition-all"
+                className="hidden md:flex absolute left-3 md:left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 items-center justify-center shadow-lg transition-all"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -340,17 +357,21 @@ export const ToolsPage: React.FC = () => {
                 type="button"
                 onClick={goToNext}
                 aria-label="Next Tool (Right Arrow)"
-                className="absolute right-3 md:right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 flex items-center justify-center shadow-lg transition-all"
+                className="hidden md:flex absolute right-3 md:right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 items-center justify-center shadow-lg transition-all"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
 
-              {/* Cinematic Animated Slide Body */}
-              <div className="relative z-10 my-auto px-4 md:px-12 py-4">
+              {/* Cinematic Animated Slide Body with Touch Drag/Swipe */}
+              <div className="relative z-10 my-auto px-1 sm:px-4 md:px-12 py-2 sm:py-4 touch-pan-y">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={activeToolIndex}
                     custom={direction}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={handleDragEnd}
                     initial={{ opacity: 0, x: direction > 0 ? 40 : -40, filter: 'blur(4px)' }}
                     animate={{ 
                       opacity: 1, 
@@ -364,43 +385,84 @@ export const ToolsPage: React.FC = () => {
                       filter: 'blur(4px)', 
                       transition: { duration: 0.25 } 
                     }}
-                    className="w-full flex flex-col justify-between space-y-6"
+                    className="w-full flex flex-col justify-between space-y-5 sm:space-y-6 cursor-grab active:cursor-grabbing"
                   >
                     {/* Tool Title & Description Header */}
                     <div className="text-center max-w-2xl mx-auto space-y-2">
-                      <h3 className="text-2xl sm:text-3xl font-black flex items-center justify-center gap-2 text-slate-900 dark:text-white tracking-tight">
-                        <ActiveIcon className="w-6 h-6 text-[#D90429]" />
+                      <h3 className="text-xl sm:text-2xl md:text-3xl font-black flex items-center justify-center gap-2 text-slate-900 dark:text-white tracking-tight">
+                        <ActiveIcon className="w-5 h-5 sm:w-6 sm:h-6 text-[#D90429]" />
                         <span>{activeTool.title}</span>
                       </h3>
-                      <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed">
+                      <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm leading-relaxed px-2">
                         {activeTool.subtitle}
                       </p>
                     </div>
 
                     {/* Interactive Component Stage Box */}
-                    <div className="p-4 sm:p-6 rounded-2xl bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-white/[0.08] flex items-center justify-center shadow-inner max-w-xl mx-auto w-full">
+                    <div className="p-3 sm:p-5 md:p-6 rounded-2xl bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-white/[0.08] flex items-center justify-center shadow-inner max-w-xl mx-auto w-full">
                       {activeTool.component}
                     </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              {/* Docked Bottom Action Bar */}
-              <div className="relative z-10 pt-6 mt-6 border-t border-slate-200 dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-zinc-400">
-                  <span className="w-2 h-2 rounded-full bg-[#D90429] animate-pulse"></span>
-                  <span>Active Tool: Step {activeToolIndex + 1} of {STAGE_TOOLS.length}</span>
-                  <span className="hidden sm:inline text-slate-400 dark:text-zinc-600">• Use [←] [→] arrow keys</span>
+              {/* Docked Bottom Controls & Action Bar */}
+              <div className="relative z-10 pt-4 md:pt-6 mt-4 md:mt-6 border-t border-slate-200 dark:border-white/[0.08] flex flex-col gap-4">
+                
+                {/* Mobile Navigation Row (< 768px) */}
+                <div className="flex md:hidden items-center justify-between w-full">
+                  <button
+                    type="button"
+                    onClick={goToPrev}
+                    className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.06] text-xs font-semibold text-slate-700 dark:text-zinc-300 flex items-center gap-1 border border-zinc-200 dark:border-white/[0.08]"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" /> Prev
+                  </button>
+
+                  {/* Dot Indicators */}
+                  <div className="flex items-center gap-1.5">
+                    {STAGE_TOOLS.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => selectTool(idx)}
+                        aria-label={`Go to slide ${idx + 1}`}
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          activeToolIndex === idx
+                            ? 'w-6 bg-[#D90429]'
+                            : 'w-2 bg-zinc-300 dark:bg-zinc-700 hover:bg-zinc-400'
+                        }`}
+                      />
+                    ))}
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={goToNext}
+                    className="px-3 py-1.5 rounded-lg bg-zinc-100 dark:bg-white/[0.06] text-xs font-semibold text-slate-700 dark:text-zinc-300 flex items-center gap-1 border border-zinc-200 dark:border-white/[0.08]"
+                  >
+                    Next <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => navigate(activeTool.demoRoute)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-white/[0.06] hover:bg-[#D90429] hover:text-white dark:hover:bg-[#D90429] text-slate-900 dark:text-white text-xs font-bold font-mono transition-all border border-slate-200 dark:border-white/[0.08] shadow-sm group/btn"
-                >
-                  <span>Launch Standalone Demo</span>
-                  <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
-                </button>
+                {/* Bottom Row: Step Counter + Standalone Launch CTA */}
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 w-full">
+                  <div className="hidden md:flex items-center gap-2 text-xs font-mono text-slate-500 dark:text-zinc-400">
+                    <span className="w-2 h-2 rounded-full bg-[#D90429] animate-pulse"></span>
+                    <span>Active Tool: Step {activeToolIndex + 1} of {STAGE_TOOLS.length}</span>
+                    <span className="text-slate-400 dark:text-zinc-600">• Use [←] [→] arrow keys or swipe</span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => navigate(activeTool.demoRoute)}
+                    className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-white/[0.06] hover:bg-[#D90429] hover:text-white dark:hover:bg-[#D90429] text-slate-900 dark:text-white text-xs font-bold font-mono transition-all border border-slate-200 dark:border-white/[0.08] shadow-sm group/btn"
+                  >
+                    <span>Launch Standalone Demo</span>
+                    <ExternalLink className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
+                  </button>
+                </div>
+
               </div>
 
             </div>
