@@ -192,14 +192,14 @@ export const IntakeDeposit: React.FC = () => {
             className="space-y-3"
           >
             {isSuccess ? (
-              <div className="p-6 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 text-center space-y-2">
-                <div className="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto">
+              <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 dark:bg-emerald-950/60 dark:border-emerald-800 dark:text-emerald-300 rounded-2xl p-6 flex flex-col items-center justify-center text-center shadow-lg">
+                <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 dark:bg-emerald-900/60 dark:text-emerald-400 flex items-center justify-center mb-3">
                   <CheckCircle2 className="w-6 h-6" />
                 </div>
-                <div className="font-bold text-sm text-emerald-400 font-mono">
+                <div className="font-bold text-base text-emerald-900 dark:text-emerald-200 font-mono">
                   Slot Reserved &amp; Engineer Notified!
                 </div>
-                <div className="text-[11px] text-emerald-300/80">
+                <div className="text-xs text-emerald-700 dark:text-emerald-400/80 mt-1 font-mono">
                   Interactive demo simulator resetting...
                 </div>
               </div>

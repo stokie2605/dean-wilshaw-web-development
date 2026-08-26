@@ -60,6 +60,7 @@ const PRICING_TIERS = [
     title: 'Standalone Lead Tools',
     subtitle: 'Add an interactive phone or quote generator to your existing site.',
     pricingNote: 'From £149 per tool',
+    pricingSubtext: '100% Client Code Ownership',
     badge: 'Fast Plug & Play',
     badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50',
     bullets: [
@@ -78,6 +79,7 @@ const PRICING_TIERS = [
     title: 'Full Website Build',
     subtitle: 'A complete, blazing-fast single-page web engine engineered for calls.',
     pricingNote: 'From £299',
+    pricingSubtext: '100% Client Code Ownership',
     popular: true,
     badge: 'Most Popular for Trades',
     badgeColor: 'bg-red-50 text-[#D90429] border-red-200/80 dark:bg-red-500/10 dark:text-[#D90429] dark:border-red-500/30',
@@ -96,7 +98,8 @@ const PRICING_TIERS = [
     id: 'custom-dev',
     title: 'Custom Trade Portals',
     subtitle: 'For multi-van outfits, bespoke booking systems, and commercial contractors.',
-    pricingNote: 'From £449 to £599 / Custom Quote',
+    pricingNote: 'From £449',
+    pricingSubtext: 'Custom quote for multi-van & commercial portals',
     badge: 'Bespoke Architecture',
     badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50',
     bullets: [
@@ -332,7 +335,7 @@ export const PricingPage: React.FC = () => {
                         {tier.pricingNote}
                       </div>
                       <div className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5 font-mono">
-                        100% Client Code Ownership
+                        {tier.pricingSubtext || '100% Client Code Ownership'}
                       </div>
                     </div>
 
