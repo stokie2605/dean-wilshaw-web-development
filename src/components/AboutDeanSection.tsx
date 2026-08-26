@@ -47,19 +47,19 @@ export const AboutDeanSection: React.FC = () => {
 
           {/* Core Principles */}
           <ul className="space-y-4 pt-4">
-            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
+            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
               <MapPin className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
-              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Based in Cheshire & Stoke-on-Trent (Local & Accountable)</span>
+              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Based in Cheshire & Stoke-on-Trent (Local & Accountable)</span>
             </li>
 
-            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
+            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
               <Zap className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
-              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Direct 1-on-1 Access (No Middlemen)</span>
+              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Direct 1-on-1 Access (No Middlemen)</span>
             </li>
 
-            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
+            <li className="flex items-center gap-3 bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800 p-4 rounded-xl shadow-sm">
               <Lock className="w-5 h-5 text-red-600 dark:text-red-500 shrink-0" />
-              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-zinc-100">Clear Pricing & Zero Technical Homework</span>
+              <span className="font-geist font-semibold text-sm sm:text-base text-slate-900 dark:text-white">Clear Pricing & Zero Technical Homework</span>
             </li>
           </ul>
 

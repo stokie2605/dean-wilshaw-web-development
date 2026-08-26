@@ -197,7 +197,7 @@ export const InteractiveDemosSection: React.FC = () => {
                 Instant Quote Calculator
               </h3>
               <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                Customers want a ballpark before they commit to a call. This interactive estimator gives them an instant price range for common jobs, capturing their mobile number in the process.
+                Customers want a quick price guide before they commit to a call. This interactive estimator calculates an instant estimate for common jobs and captures their phone number in the process.
               </p>
             </div>
             <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">

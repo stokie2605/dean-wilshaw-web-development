@@ -9,7 +9,7 @@ interface HeaderProps {
 
 // Direct demo links matching the exact vertical order of tools on page
 const NAV_LINKS = [
-  { label: '24/7 AI Lead Assistant',   href: '/#ai-bot' },
+  { label: '24/7 AI Dispatcher',       href: '/#ai-bot' },
   { label: 'Instant Quote Calculator', href: '/demo/quote-calculator' },
   { label: 'Deposit & Booking Portal', href: '/demo/booking-form' },
   { label: 'WhatsApp Fast Bar',        href: '/demo/whatsapp-bar' },
