@@ -13,7 +13,7 @@ const NAV_LINKS = [
   { label: 'WhatsApp Fast Bar',        href: '/demo/whatsapp-bar' },
   { label: 'Live Trust Indicators',    href: '/demo/trust-bar' },
   { label: 'Instant Quote Calculator', href: '/demo/quote-calculator' },
-  { label: '24/7 AI Lead Assistant',   href: '#ai-bot', isAi: true },
+  { label: '24/7 AI Lead Assistant',   href: '/#ai-bot' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onOpenStitch }) => {
@@ -38,18 +38,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
     }
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isAi?: boolean) => {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     setMenuOpen(false);
 
-    if (isAi) {
+    if (href.includes('#ai-bot')) {
       const el = document.getElementById('ai-bot');
       if (el) {
         e.preventDefault();
         const top = el.getBoundingClientRect().top + window.scrollY - 88;
         window.scrollTo({ top, behavior: 'smooth' });
-      } else {
-        e.preventDefault();
-        onOpenStitch();
       }
     }
   };
@@ -79,11 +76,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
 
         {/* Desktop Nav Links (Direct Demo Page Links) */}
         <nav className="hidden lg:flex items-center gap-1">
-          {NAV_LINKS.map(({ label, href, isAi }) => (
+          {NAV_LINKS.map(({ label, href }) => (
             <a
               key={href}
               href={href}
-              onClick={(e) => handleNavClick(e, href, isAi)}
+              onClick={(e) => handleNavClick(e, href)}
               className="px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 whitespace-nowrap"
             >
               {label}
@@ -134,19 +131,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
       {/* Mobile/Tablet Dropdown Nav */}
       {menuOpen && (
         <div className="lg:hidden border-t border-slate-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md px-4 py-3 flex flex-col gap-1 shadow-xl animate-in fade-in slide-in-from-top-2">
-          {NAV_LINKS.map(({ label, href, isAi }) => (
+          {NAV_LINKS.map(({ label, href }) => (
             <a
               key={href}
               href={href}
-              onClick={(e) => handleNavClick(e, href, isAi)}
+              onClick={(e) => handleNavClick(e, href)}
               className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 flex items-center justify-between"
             >
               <span>{label}</span>
-              {isAi && (
-                <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-red-500/10 text-red-500 rounded-full border border-red-500/20">
-                  24/7 AI
-                </span>
-              )}
             </a>
           ))}
         </div>
