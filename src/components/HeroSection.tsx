@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MissedCallDemo } from './trade-tools/MissedCallDemo';
+import { Spotlight } from './ui/Spotlight';
 import { ArrowRight, CheckCircle2, Phone, MessageSquare } from 'lucide-react';
 
 interface InteractiveCardProps {
@@ -39,7 +40,13 @@ export const HeroSection: React.FC<HeroProps> = ({ onOpenQuote, onOpenWhatsApp }
   const navigate = useNavigate();
 
   return (
-    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 overflow-hidden border-b border-slate-200 dark:border-zinc-800 transition-colors duration-300">
+    <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] overflow-hidden border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
+
+      {/* Ambient Radial Spotlight Effect */}
+      <Spotlight
+        className="-top-40 left-0 md:left-60 md:-top-20"
+        fill="#D90429"
+      />
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
         

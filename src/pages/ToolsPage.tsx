@@ -10,6 +10,7 @@ import { QuoteEstimator } from '../components/tools/QuoteEstimator';
 import { QuoteForm } from '../components/QuoteForm';
 import { WhatsAppModal } from '../components/WhatsAppModal';
 import { StitchBot } from '../components/StitchBot';
+import { BorderBeam } from '../components/ui/BorderBeam';
 import { 
   Target, 
   Zap, 
@@ -100,10 +101,13 @@ export const ToolsPage: React.FC = () => {
 
           {/* 1. TOP FULL-WIDTH SHOWCASE: 24/7 AI Trade Dispatcher */}
           <div className="mb-16">
-            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6">
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6 relative overflow-hidden group">
               
+              {/* Animated Border Beam */}
+              <BorderBeam size={350} duration={14} colorFrom="#D90429" colorTo="#25D366" />
+
               {/* Header & Sub-copy */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-white/[0.08] pb-6">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-white/[0.08] pb-6 relative z-10">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono mb-2">
                     <Bot className="w-3.5 h-3.5" />
@@ -137,7 +141,7 @@ export const ToolsPage: React.FC = () => {
               </div>
 
               {/* 1-Click Interactive Triage Simulator */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch relative z-10">
                 
                 {/* Simulator Chat Window */}
                 <div className="lg:col-span-7 bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-white/[0.08] rounded-2xl p-5 flex flex-col justify-between shadow-inner">
@@ -210,8 +214,9 @@ export const ToolsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-16">
 
             {/* Card 1: Instant Quote Calculator */}
-            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-              <div>
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group">
+              <BorderBeam size={220} duration={12} colorFrom="#D90429" colorTo="#25D366" />
+              <div className="relative z-10">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
                     <Smartphone className="text-[#D90429]" />
@@ -227,15 +232,16 @@ export const ToolsPage: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/demo/quote-calculator')}
-                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end"
+                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end relative z-10"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
             {/* Card 2: Qualification & Deposit Portal */}
-            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-              <div>
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group">
+              <BorderBeam size={220} duration={12} colorFrom="#D90429" colorTo="#25D366" />
+              <div className="relative z-10">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
                     <Zap className="text-[#D90429]" />
@@ -251,15 +257,16 @@ export const ToolsPage: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/demo/booking-form')}
-                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end"
+                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end relative z-10"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
             {/* Card 3: Mobile WhatsApp Fast Bar */}
-            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-              <div>
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group">
+              <BorderBeam size={220} duration={12} colorFrom="#D90429" colorTo="#25D366" />
+              <div className="relative z-10">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
                     <MessageSquare className="text-[#D90429]" />
@@ -277,15 +284,16 @@ export const ToolsPage: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/demo/whatsapp-bar')}
-                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end"
+                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end relative z-10"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
             {/* Card 4: Live Trust & Credibility Bar */}
-            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between">
-              <div>
+            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col justify-between relative overflow-hidden group">
+              <BorderBeam size={220} duration={12} colorFrom="#D90429" colorTo="#25D366" />
+              <div className="relative z-10">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
                     <Target className="text-[#D90429]" />
@@ -301,7 +309,7 @@ export const ToolsPage: React.FC = () => {
               </div>
               <button
                 onClick={() => navigate('/demo/trust-bar')}
-                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end"
+                className="mt-6 flex items-center gap-1.5 text-xs font-semibold text-[#D90429] hover:text-red-400 transition-colors self-end relative z-10"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
