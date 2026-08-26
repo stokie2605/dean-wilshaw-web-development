@@ -1,92 +1,62 @@
-import React, { useState, useEffect, Suspense, lazy } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
-import { BottomTabBar } from './components/BottomTabBar';
+import { ArrowRight, Bot, MessageSquare, Smartphone, Zap, Target, Gauge } from 'lucide-react';
 
-// Lazy load below-the-fold components
-const PortfolioShowcaseSection = lazy(() => import('./components/PortfolioShowcaseSection').then(m => ({ default: m.PortfolioShowcaseSection })));
-const InteractiveDemosSection = lazy(() => import('./components/InteractiveDemosSection').then(m => ({ default: m.InteractiveDemosSection })));
 const AboutDeanSection = lazy(() => import('./components/AboutDeanSection').then(m => ({ default: m.AboutDeanSection })));
-const PricingSection = lazy(() => import('./components/PricingSection').then(m => ({ default: m.PricingSection })));
-const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
+const PortfolioShowcaseSection = lazy(() => import('./components/PortfolioShowcaseSection').then(m => ({ default: m.PortfolioShowcaseSection })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
-const StitchBot = lazy(() => import('./components/StitchBot').then(m => ({ default: m.StitchBot })));
 const WhatsAppModal = lazy(() => import('./components/WhatsAppModal').then(m => ({ default: m.WhatsAppModal })));
+const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
+const StitchBot = lazy(() => import('./components/StitchBot').then(m => ({ default: m.StitchBot })));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const TermsConditions = lazy(() => import('./components/TermsConditions').then(m => ({ default: m.TermsConditions })));
 
-type Page = 'home' | 'privacy' | 'terms';
-
 export default function App() {
   const navigate = useNavigate();
-  const [whatsappModalOpen, setWhatsappModalOpen] = useState(false);
-  const [stitchModalOpen, setStitchModalOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [capturedDetails, setCapturedDetails] = useState<string>('');
-  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
-  const [showBubble, setShowBubble] = useState(false);
+  const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms'>('home');
+  const [quoteModalOpen, setQuoteModalOpen] = useState<boolean>(false);
+  const [whatsappModalOpen, setWhatsappModalOpen] = useState<boolean>(false);
+  const [stitchModalOpen, setStitchModalOpen] = useState<boolean>(false);
+  const [capturedDetails, setCapturedDetails] = useState<any>(null);
+  const [showBubble, setShowBubble] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!sessionStorage.getItem('ai_bubble_dismissed')) {
-      const timer = setTimeout(() => {
-        setShowBubble(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === '/privacy') setCurrentPage('privacy');
+      else if (path === '/terms') setCurrentPage('terms');
+      else setCurrentPage('home');
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const dismissBubble = () => {
-    setShowBubble(false);
-    sessionStorage.setItem('ai_bubble_dismissed', 'true');
-  };
-
-  const openStitchModal = () => {
-    dismissBubble();
-    setStitchModalOpen(true);
-  };
-
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key.toLowerCase() === 'o') {
-        e.preventDefault();
-        navigate('/admin');
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [navigate]);
-
-  useEffect(() => {
-    const scrollToHash = () => {
-      if (window.location.hash) {
-        const id = window.location.hash.replace('#', '');
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 88;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      }
-    };
-    const timer = setTimeout(scrollToHash, 150);
-    window.addEventListener('hashchange', scrollToHash);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('hashchange', scrollToHash);
-    };
-  }, []);
-
-  const handleOpenPage = (page: Page) => {
+  const handleOpenPage = (page: 'home' | 'privacy' | 'terms') => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (page === 'home') window.history.pushState({}, '', '/');
+    else window.history.pushState({}, '', `/${page}`);
   };
 
-  const handleOpenQuote = () => {
+  const handleOpenQuote = (details?: any) => {
+    if (details) setCapturedDetails(details);
     setQuoteModalOpen(true);
   };
 
   const handleOpenWhatsApp = () => {
     setWhatsappModalOpen(true);
+  };
+
+  const openStitchModal = () => {
+    setShowBubble(false);
+    setStitchModalOpen(true);
+  };
+
+  const dismissBubble = () => {
+    setShowBubble(false);
   };
 
   if (currentPage === 'privacy') {
@@ -116,25 +86,87 @@ export default function App() {
 
       {/* Main Page Content */}
       <main className="flex-grow pb-20 md:pb-0 transition-colors duration-300">
+        
+        {/* 1. Hero Section */}
         <div className="bg-slate-50 dark:bg-zinc-950">
           <HeroSection onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} />
         </div>
+
         <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div></div>}>
+          
+          {/* 2. Who You Are */}
           <div className="bg-slate-50 dark:bg-zinc-950">
             <AboutDeanSection />
           </div>
-          <div className="bg-slate-50 dark:bg-zinc-950">
-            <InteractiveDemosSection onOpenStitch={openStitchModal} />
-          </div>
+
+          {/* 3. The 3 Layout Archetypes */}
           <div className="bg-slate-50 dark:bg-zinc-950">
             <PortfolioShowcaseSection onOpenQuote={handleOpenQuote} />
           </div>
-          <div className="bg-slate-50 dark:bg-zinc-950">
-            <PricingSection onOpenQuote={handleOpenQuote} onOpenWhatsApp={handleOpenWhatsApp} onOpenStitch={openStitchModal} />
-          </div>
-          <div className="bg-slate-50 dark:bg-zinc-950">
-            <QuoteForm isOpen={quoteModalOpen} onClose={() => setQuoteModalOpen(false)} onOpenWhatsApp={handleOpenWhatsApp} prefilledDetails={capturedDetails} />
-          </div>
+
+          {/* 4. Lead Tools Showroom Teaser Banner */}
+          <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-100 dark:bg-zinc-900 border-y border-slate-200 dark:border-zinc-800 transition-colors">
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-white dark:bg-black border border-slate-200 dark:border-zinc-800 rounded-3xl p-8 sm:p-12 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div className="space-y-4 max-w-2xl text-center lg:text-left">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-300 dark:border-emerald-700 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider">
+                    <Bot className="w-3.5 h-3.5" />
+                    Interactive Sandbox
+                  </div>
+                  <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+                    Want to test our lead-capture tools live?
+                  </h2>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
+                    Explore our 24/7 AI trade triage bot, instant quote calculators, deposit portals, and WhatsApp fast bars in our dedicated interactive showroom.
+                  </p>
+                  
+                  {/* Tool Highlights */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs font-bold text-slate-700 dark:text-zinc-300">
+                    <div className="flex items-center gap-1.5"><Bot className="w-4 h-4 text-red-500" /> 24/7 AI Triage</div>
+                    <div className="flex items-center gap-1.5"><Smartphone className="w-4 h-4 text-amber-500" /> Instant Calculator</div>
+                    <div className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-sky-500" /> Booking Portal</div>
+                    <div className="flex items-center gap-1.5"><Target className="w-4 h-4 text-emerald-500" /> Trust Indicators</div>
+                  </div>
+                </div>
+
+                <div className="shrink-0">
+                  <Link
+                    to="/tools"
+                    className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm sm:text-base shadow-xl shadow-red-600/30 transition-all hover:scale-105"
+                  >
+                    <span>Enter Lead Tools Showroom</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 5. Pricing & Audits Teaser Banner */}
+          <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 text-center">
+            <div className="max-w-4xl mx-auto space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 text-xs font-bold uppercase tracking-wider">
+                <Gauge className="w-3.5 h-3.5" />
+                Transparent Pricing
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                Simple Pricing. 100% Code Ownership.
+              </h2>
+              <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base max-w-xl mx-auto">
+                Standalone lead tools from £149, full mobile websites from £299, or low-risk £49 site speed audits.
+              </p>
+              <div className="pt-2">
+                <Link
+                  to="/pricing"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 dark:bg-zinc-800 hover:bg-black dark:hover:bg-zinc-700 text-white font-bold text-sm transition-all shadow-md"
+                >
+                  <span>View Full Pricing &amp; Audits</span>
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </section>
+
         </Suspense>
       </main>
 
@@ -147,14 +179,14 @@ export default function App() {
           onOpenTerms={() => handleOpenPage('terms')}
         />
         <StitchBot 
-          isOpen={stitchModalOpen}
-          onClose={() => setStitchModalOpen(false)}
+          isOpen={stitchModalOpen} 
+          onClose={() => setStitchModalOpen(false)} 
           onOpenQuote={handleOpenQuote} 
           onOpenWhatsApp={handleOpenWhatsApp} 
         />
         <QuoteForm 
-          isOpen={quoteModalOpen}
-          onClose={() => setQuoteModalOpen(false)}
+          isOpen={quoteModalOpen} 
+          onClose={() => setQuoteModalOpen(false)} 
           onOpenWhatsApp={handleOpenWhatsApp} 
           prefilledDetails={capturedDetails} 
         />
@@ -199,9 +231,6 @@ export default function App() {
         </div>
       )}
 
-      {/* Mobile Bottom Tab Bar */}
-      <BottomTabBar onOpenQuote={handleOpenQuote} />
-
       {/* WhatsApp Modal */}
       <Suspense fallback={null}>
         <WhatsAppModal isOpen={whatsappModalOpen} onClose={() => setWhatsappModalOpen(false)} />
@@ -210,5 +239,3 @@ export default function App() {
     </div>
   );
 }
-
-
