@@ -88,7 +88,7 @@ export const ToolsPage: React.FC = () => {
 
           {/* Showroom Header */}
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <div className="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono">
+            <div className="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
               Interactive Sandbox
             </div>
             <h1 className="text-3xl sm:text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">
@@ -109,7 +109,7 @@ export const ToolsPage: React.FC = () => {
               {/* Header & Sub-copy */}
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-white/[0.08] pb-6 relative z-10">
                 <div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono mb-2">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-2">
                     <Bot className="w-3.5 h-3.5" />
                     24/7 Emergency Triage &amp; Dispatch
                   </div>
@@ -131,7 +131,7 @@ export const ToolsPage: React.FC = () => {
                       className={`px-3.5 py-1.5 rounded-full text-xs transition-all ${
                         selectedScenario === key
                           ? 'bg-[#D90429] text-white font-medium shadow-sm'
-                          : 'bg-slate-100 dark:bg-white/[0.04] text-slate-600 dark:text-zinc-400 border border-slate-200 dark:border-white/[0.08] hover:text-slate-900 dark:hover:text-white font-medium'
+                          : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-900/80 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 font-medium'
                       }`}
                     >
                       {scenarios[key].label}
@@ -319,7 +319,7 @@ export const ToolsPage: React.FC = () => {
 
           {/* 3. BOTTOM CALL TO ACTION BANNER */}
           <div className="bg-[#0A0D14] border border-white/[0.08] rounded-2xl p-8 sm:p-12 text-center shadow-2xl relative overflow-hidden">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-4">
               <Wrench className="w-3.5 h-3.5" />
               Standalone Add-on Plugins
             </div>

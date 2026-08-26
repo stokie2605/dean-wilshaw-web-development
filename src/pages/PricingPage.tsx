@@ -61,7 +61,7 @@ const PRICING_TIERS = [
     subtitle: 'Add an interactive phone or quote generator to your existing site.',
     pricingNote: 'From £149 per tool',
     badge: 'Fast Plug & Play',
-    badgeColor: 'bg-emerald-950/50 text-emerald-400 border-emerald-800/50',
+    badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50',
     bullets: [
       { full: 'Instant Missed-Call Auto-Text & SMS dispatchers', short: 'Missed-Call Auto-Text' },
       { full: 'Interactive Quote Calculators & price guide widgets', short: 'Instant Quote Calculator' },
@@ -80,7 +80,7 @@ const PRICING_TIERS = [
     pricingNote: 'From £299',
     popular: true,
     badge: 'Most Popular for Trades',
-    badgeColor: 'bg-red-500/10 text-[#D90429] border-red-500/30',
+    badgeColor: 'bg-red-50 text-[#D90429] border-red-200/80 dark:bg-red-500/10 dark:text-[#D90429] dark:border-red-500/30',
     bullets: [
       { full: 'Mobile-first layout engineered specifically for UK trade enquiries', short: 'Mobile-first trade layout' },
       { full: 'Sub-1.5s load speeds (hand-coded React + Vite, zero clunky WordPress bloat)', short: 'Sub-1.5s load speeds' },
@@ -98,7 +98,7 @@ const PRICING_TIERS = [
     subtitle: 'For multi-van outfits, bespoke booking systems, and commercial contractors.',
     pricingNote: 'From £449 to £599 / Custom Quote',
     badge: 'Bespoke Architecture',
-    badgeColor: 'bg-emerald-950/50 text-emerald-400 border-emerald-800/50',
+    badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50',
     bullets: [
       { full: 'Multi-page custom systems with bespoke customer triage flows', short: 'Multi-page trade portals' },
       { full: 'Direct payment & CRM integrations (Stripe, ServiceM8, Tradify, Zapier)', short: 'Stripe & CRM integration' },
@@ -143,7 +143,7 @@ export const PricingPage: React.FC = () => {
           {/* 1. SECTION: 3 PORTFOLIO CONCEPTS */}
           <div>
             <div className="text-center mb-12 max-w-3xl mx-auto">
-              <div className="inline-flex items-center justify-center px-3 py-1 mb-3 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono">
+              <div className="inline-flex items-center justify-center px-3 py-1 mb-3 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
                 Portfolio Examples
               </div>
               <h1 className="text-3xl sm:text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">
@@ -221,8 +221,8 @@ export const PricingPage: React.FC = () => {
               
               {/* Left Column: Offer Details */}
               <div className="space-y-4 max-w-2xl text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono">
-                  <Gauge className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
+                  <Gauge className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                   Low-Risk Entry Offer
                 </div>
 
@@ -285,7 +285,7 @@ export const PricingPage: React.FC = () => {
           {/* 3. SECTION: 3 PRICING TIERS */}
           <div>
             <div className="max-w-3xl mx-auto text-center mb-12">
-              <div className="inline-flex items-center justify-center px-3 py-1 mb-3 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono">
+              <div className="inline-flex items-center justify-center px-3 py-1 mb-3 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
                 Transparent Pricing
               </div>
               <h2 className="text-3xl sm:text-4xl font-black mb-3 tracking-tight text-slate-900 dark:text-white">

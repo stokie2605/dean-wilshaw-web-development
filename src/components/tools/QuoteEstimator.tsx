@@ -55,7 +55,7 @@ export function QuoteEstimator() {
                 className={`py-2 text-xs rounded-full transition-all ${
                   size === s
                     ? 'bg-[#D90429] text-white font-medium shadow-sm'
-                    : 'bg-slate-100 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700/60 hover:text-slate-900 dark:hover:text-slate-200 font-medium'
+                    : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-900/80 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 font-medium'
                 }`}
               >
                 {s}

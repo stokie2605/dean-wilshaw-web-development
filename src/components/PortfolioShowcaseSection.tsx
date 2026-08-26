@@ -120,7 +120,7 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
       <div className="max-w-7xl mx-auto">
 
         <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
-          <span className="bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold tracking-wide uppercase px-3 py-1 rounded-full mb-3 inline-flex items-center">
+          <span className="bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full mb-3 inline-flex items-center">
             PORTFOLIO EXAMPLES
           </span>
           <h2 className="font-geist font-bold text-4xl sm:text-5xl text-slate-900 dark:text-zinc-100 mb-6 tracking-tight">

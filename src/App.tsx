@@ -104,7 +104,7 @@ export default function App() {
             <div className="max-w-7xl mx-auto">
               
               <div className="text-center mb-12 max-w-2xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide font-mono mb-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-3">
                   Sovereign Trade Infrastructure
                 </div>
                 <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">

@@ -41,7 +41,7 @@ export const AboutDeanSection: React.FC = () => {
         {/* Right Column: Copy & Accountability Principles */}
         <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-6">
           
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-950/50 text-emerald-400 border border-emerald-800/50 text-xs font-semibold uppercase tracking-wide w-fit font-mono">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase w-fit">
             Solo Local Engineer
           </div>
 
