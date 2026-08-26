@@ -11,19 +11,12 @@ import {
   MessageSquare, 
   ArrowRight, 
   Bot, 
-  Clock, 
   CheckCircle2, 
   Flame, 
-  AlertTriangle, 
-  Send,
-  Sparkles
+  AlertTriangle
 } from 'lucide-react';
 
-interface InteractiveDemosSectionProps {
-  onOpenStitch?: () => void;
-}
-
-export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = ({ onOpenStitch }) => {
+export const InteractiveDemosSection: React.FC = () => {
   const navigate = useNavigate();
 
   // AI Dispatcher Interactive Simulator State
@@ -31,46 +24,43 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
 
   const scenarios = {
     boiler: {
-      title: 'Boiler Breakdown (10:45 PM Sunday)',
-      trade: 'Heating & Gas Engineer',
+      label: '🔥 Emergency Boiler F28',
+      trade: 'Heating & Gas Specialist',
       urgency: 'CRITICAL EMERGENCY',
-      urgencyColor: 'bg-red-500/10 text-red-500 border-red-500/30',
+      urgencyBadge: 'bg-red-500/10 text-red-500 border-red-500/30',
       chat: [
-        { sender: 'customer', text: 'Hi, our boiler just started banging and error code F28 is flashing. No heating or hot water!' },
-        { sender: 'bot', text: 'Hi there! I can help triage this for Dean. Is there any visible water leaking from the boiler or pipes right now?' },
-        { sender: 'customer', text: 'No water leaking, just cold radiators and no hot water for the kids in the morning.' },
-        { sender: 'bot', text: 'Got it. Error F28 is an ignition lockout. What is your postcode and best contact number? I will dispatch a priority emergency notification to Dean now.' },
-        { sender: 'customer', text: 'ST4 5AA, phone 07890 123456.' }
+        { sender: 'customer', text: 'Our boiler just locked out with error code F28. No heating or hot water!' },
+        { sender: 'bot', text: 'Error F28 is an ignition lockout. Is there any active water leak from the unit?' },
+        { sender: 'customer', text: 'No leaks, just completely cold radiators.' },
+        { sender: 'bot', text: 'Understood. Dispatching an emergency triage alert to the on-call engineer now.' }
       ],
-      whatsappSummary: `EMERGENCY HEATING DISPATCH\n- Customer: 07890 123456\n- Postcode: ST4 5AA\n- Issue: Boiler F28 ignition lockout (no leak)\n- Urgency: Priority Morning Callout\n- Status: Ready for 1-tap quote reply`
+      whatsappSummary: `EMERGENCY HEATING DISPATCH\n- Issue: Boiler F28 ignition lockout (no leak)\n- Urgency: Priority Morning Callout\n- Location: Postcode ST4 (Stoke-on-Trent)\n- Status: Ready for 1-tap quote reply`
     },
     roof: {
-      title: 'Ceiling Water Leak (Storm Gale)',
-      trade: 'Roofing & Storm Specialist',
+      label: '🌧️ Active Ceiling Leak',
+      trade: 'Roofing & Storm Contractor',
       urgency: 'HIGH URGENCY',
-      urgencyColor: 'bg-amber-500/10 text-amber-500 border-amber-500/30',
+      urgencyBadge: 'bg-amber-500/10 text-amber-500 border-amber-500/30',
       chat: [
-        { sender: 'customer', text: 'Water is dripping through our upstairs ceiling after the heavy rain and wind.' },
-        { sender: 'bot', text: 'Sorry to hear that! Please place a bucket underneath immediately. Is the water coming through a light fitting or near electricals?' },
-        { sender: 'customer', text: 'No, it is in the corner of the bedroom ceiling.' },
-        { sender: 'bot', text: 'Understood. Please upload a quick photo if possible and provide your address. Dean will review the damage on WhatsApp for an immediate priority slot.' },
-        { sender: 'customer', text: 'Address: CW1 3XY, mobile: 07700 900123.' }
+        { sender: 'customer', text: 'Water is dripping through our bedroom ceiling after the storm.' },
+        { sender: 'bot', text: 'Please place a bucket underneath. Is water near any lights or electricals?' },
+        { sender: 'customer', text: 'No, just in the corner of the ceiling.' },
+        { sender: 'bot', text: 'Got it. Requesting immediate roof triage. Engineer dispatching priority slot.' }
       ],
-      whatsappSummary: `STORM ROOF LEAK DISPATCH\n- Customer: 07700 900123\n- Location: CW1 3XY (Crewe)\n- Issue: Bedroom ceiling leak from roof tile slip\n- Urgency: High (Weather Active)\n- Status: Ready for 1-tap quote reply`
+      whatsappSummary: `STORM DAMAGE LEAK DISPATCH\n- Issue: Bedroom ceiling leak (tile slip)\n- Urgency: High (Active Rain)\n- Location: Postcode CW1 (Crewe)\n- Status: Ready for 1-tap quote reply`
     },
     electrical: {
-      title: 'Commercial Consumer Unit Upgrade',
-      trade: 'Approved Electrician',
+      label: '⚡ Tripped Fuse Board',
+      trade: 'Approved Electrical Specialist',
       urgency: 'HIGH-TICKET QUALIFIED',
-      urgencyColor: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
+      urgencyBadge: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
       chat: [
-        { sender: 'customer', text: 'Hi, we need an old fuse box replaced with a modern RCBO consumer unit for insurance compliance.' },
-        { sender: 'bot', text: 'Hello! Dean specializes in 18th Edition metal board upgrades. How many circuits or fuse ways are in your existing board?' },
-        { sender: 'customer', text: 'It is an 8-way wooden-backed fuse box.' },
-        { sender: 'bot', text: 'Perfect. Standard 8-10 way metal RCBO upgrades include full EICR certification. What is your property location and preferred installation week?' },
-        { sender: 'customer', text: 'Newcastle-under-Lyme (ST5), 07321 654987. Next Tuesday suits.' }
+        { sender: 'customer', text: 'Our main RCD tripped and the sockets on ground floor have no power.' },
+        { sender: 'bot', text: 'Have you unplugged major appliances? How old is your current fuse board?' },
+        { sender: 'customer', text: 'Unplugged kettle, still tripping. It is an old 1990s fuse board.' },
+        { sender: 'bot', text: 'Tripping fault diagnosed. Logging consumer unit test & dispatching electrician.' }
       ],
-      whatsappSummary: `QUALIFIED ELECTRICAL LEAD\n- Customer: 07321 654987\n- Area: ST5 (Newcastle-under-Lyme)\n- Scope: 8-Way Metal Board Upgrade + EICR\n- Value Tier: £450 - £650\n- Status: Ready to confirm date`
+      whatsappSummary: `QUALIFIED ELECTRICAL DISPATCH\n- Issue: Ground floor RCD fault (Old board)\n- Urgency: Same-Day Fault Finding\n- Scope: Diagnostic + Board Upgrade Quote\n- Status: Ready to confirm slot`
     }
   };
 
@@ -82,10 +72,10 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
 
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs sm:text-sm font-bold tracking-wide uppercase">
+          <div className="inline-flex items-center justify-center px-4 py-1.5 mb-6 rounded-full bg-emerald-100 dark:bg-emerald-900/30 border border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold tracking-widest uppercase">
             Stop Losing Mobile Leads
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-6 tracking-tight text-slate-900 dark:text-white">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black mb-4 tracking-tight text-slate-900 dark:text-white">
             Turn Mobile Traffic Into Direct Jobs
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400">
@@ -94,78 +84,112 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
           </p>
         </div>
 
-        {/* 4 Tools Grid (2x2) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12">
+        {/* 1. TOP FULL-WIDTH SHOWCASE: 24/7 AI Trade Dispatcher (#ai-bot) */}
+        <div id="ai-bot" className="scroll-mt-28 mb-16">
+          <div className="bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6">
+            
+            {/* Header & Sub-copy (No literal quotes) */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-zinc-800 pb-6">
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 text-xs font-bold uppercase tracking-wider mb-2">
+                  <Bot className="w-3.5 h-3.5" />
+                  24/7 Emergency Triage &amp; Dispatch
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
+                  24/7 AI Trade Dispatcher
+                </h3>
+                <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1 font-medium">
+                  Your website working as a full-time receptionist 24/7 - qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.
+                </p>
+              </div>
 
-          {/* 1. Deposit & Booking Portal */}
-          <div id="deposit-portal" className="scroll-mt-28 flex flex-col">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <Zap className="text-red-600 dark:text-red-500" />
-                Deposit &amp; Booking Portal
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                Stop wasting hours on tyre-kickers. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-              <IntakeDeposit />
-            </div>
-            <button
-              onClick={() => navigate('/demo/booking-form')}
-              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
-            >
-              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* 2. WhatsApp Fast Bar */}
-          <div id="whatsapp-bar" className="scroll-mt-28 flex flex-col">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <MessageSquare className="text-red-600 dark:text-red-500" />
-                WhatsApp Fast Bar
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                Typing long emails on a phone keyboard is annoying. Sticky WhatsApp bars let customers snap a job photo and message you in one tap.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-              <div className="w-full">
-                <WhatsAppBar />
+              {/* 3 Preset Scenario Triggers */}
+              <div className="flex flex-wrap items-center gap-2">
+                {(['boiler', 'roof', 'electrical'] as const).map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => setSelectedScenario(key)}
+                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
+                      selectedScenario === key
+                        ? 'bg-red-600 text-white shadow-red-600/20'
+                        : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300'
+                    }`}
+                  >
+                    {scenarios[key].label}
+                  </button>
+                ))}
               </div>
             </div>
-            <button
-              onClick={() => navigate('/demo/whatsapp-bar')}
-              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
-            >
-              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
 
-          {/* 3. Live Trust Indicators */}
-          <div id="trust-bar" className="scroll-mt-28 flex flex-col">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <Target className="text-red-600 dark:text-red-500" />
-                Live Trust Indicators
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and 5-star rated.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-slate-50 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-inner">
-              <SocialProofBanner />
-            </div>
-            <button
-              onClick={() => navigate('/demo/trust-bar')}
-              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
-            >
-              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
+            {/* 1-Click Interactive Triage Simulator */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+              
+              {/* Terminal Auto-Triage Exchange */}
+              <div className="lg:col-span-7 bg-slate-900 dark:bg-black rounded-2xl p-5 border border-slate-800 dark:border-zinc-800 flex flex-col justify-between shadow-inner">
+                <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 text-xs">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                    <span className="font-bold text-white font-mono">Live Triage Engine ({current.trade})</span>
+                  </div>
+                  <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase border ${current.urgencyBadge}`}>
+                    {current.urgency}
+                  </span>
+                </div>
 
-          {/* 4. Instant Quote Calculator */}
+                <div className="space-y-3 py-4 font-sans text-xs">
+                  {current.chat.map((msg, i) => (
+                    <div
+                      key={i}
+                      className={`flex flex-col ${msg.sender === 'customer' ? 'items-end' : 'items-start'}`}
+                    >
+                      <div
+                        className={`max-w-[90%] p-3 rounded-2xl leading-relaxed ${
+                          msg.sender === 'customer'
+                            ? 'bg-red-600 text-white rounded-br-none'
+                            : 'bg-zinc-800 text-zinc-200 border border-zinc-700/60 rounded-bl-none'
+                        }`}
+                      >
+                        {msg.text}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="text-[10px] text-zinc-500 font-mono pt-2 border-t border-zinc-800 flex items-center justify-between">
+                  <span>Triage complete in 4.2 seconds</span>
+                  <span>100% Automated</span>
+                </div>
+              </div>
+
+              {/* Instant WhatsApp Dispatch Generated Card */}
+              <div className="lg:col-span-5 bg-emerald-950/30 dark:bg-emerald-950/20 border-2 border-emerald-500/40 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+                <div className="space-y-3">
+                  <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    WhatsApp Dispatch Generated
+                  </div>
+
+                  <div className="p-3.5 bg-black/60 rounded-xl border border-emerald-500/30 text-emerald-300 font-mono text-xs whitespace-pre-line leading-relaxed">
+                    {current.whatsappSummary}
+                  </div>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs text-emerald-400 font-semibold">
+                  <span>Ready for 1-Tap Reply</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Instant Alert</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        {/* 2. BOTTOM BALANCED 4-CARD GRID (2x2) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+
+          {/* Card 1: Instant Quote Calculator (#quote-calculator) */}
           <div id="quote-calculator" className="scroll-mt-28 flex flex-col">
             <div className="mb-6">
               <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
@@ -187,162 +211,72 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
             </button>
           </div>
 
-        </div>
-
-        {/* 5. 24/7 AI Lead Assistant & Emergency Dispatcher (#ai-bot) */}
-        <div id="ai-bot" className="scroll-mt-28 flex flex-col">
-          <div className="mb-6 max-w-3xl">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-red-500/10 text-red-500 border border-red-500/30">
-                24/7 Emergency Triage &amp; Dispatch
-              </span>
+          {/* Card 2: Qualification & Deposit Portal (#deposit-portal) */}
+          <div id="deposit-portal" className="scroll-mt-28 flex flex-col">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                <Zap className="text-red-600 dark:text-red-500" />
+                Deposit &amp; Booking Portal
+              </h3>
+              <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                Stop wasting hours on tyre-kickers. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.
+              </p>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-              <Bot className="text-red-600 dark:text-red-500 w-7 h-7" />
-              24/7 AI Trade Dispatcher
-            </h3>
-            <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base font-medium">
-              &ldquo;Your website working as a full-time receptionist 24/7 - qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.&rdquo;
-            </p>
+            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
+              <IntakeDeposit />
+            </div>
+            <button
+              onClick={() => navigate('/demo/booking-form')}
+              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
+            >
+              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
-          {/* AI Dispatcher Feature Pillars + Interactive Simulator */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 shadow-xl">
-            
-            {/* Left Column: 3 Core Pillars */}
-            <div className="lg:col-span-5 space-y-4 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
-                  <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
-                    <Clock className="w-4 h-4 text-amber-500" />
-                    1. Answers FAQs Instantly
-                  </div>
-                  <p className="text-xs text-slate-600 dark:text-zinc-400">
-                    Explains service areas, callout charges, and typical lead times at 11 PM on a Sunday without you touching your phone.
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
-                  <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
-                    <Sparkles className="w-4 h-4 text-sky-500" />
-                    2. Diagnoses the Issue
-                  </div>
-                  <p className="text-xs text-slate-600 dark:text-zinc-400">
-                    Asks 3 smart questions (e.g., &ldquo;Is water currently leaking through the ceiling?&rdquo; or &ldquo;What boiler model do you have?&rdquo;).
-                  </p>
-                </div>
-
-                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
-                  <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
-                    <Send className="w-4 h-4 text-emerald-500" />
-                    3. Routes the Lead
-                  </div>
-                  <p className="text-xs text-slate-600 dark:text-zinc-400">
-                    Pushes the chat summary, customer phone number, and urgency tier directly to your WhatsApp with a 1-tap quote reply.
-                  </p>
-                </div>
-              </div>
-
-              {onOpenStitch && (
-                <button
-                  onClick={onOpenStitch}
-                  className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-lg shadow-red-600/30 flex items-center justify-center gap-2"
-                >
-                  <Bot className="w-4 h-4" />
-                  Test Live AI Assistant Now
-                </button>
-              )}
+          {/* Card 3: Mobile WhatsApp Fast Bar (#whatsapp-bar) */}
+          <div id="whatsapp-bar" className="scroll-mt-28 flex flex-col">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                <MessageSquare className="text-red-600 dark:text-red-500" />
+                Mobile WhatsApp Fast Bar
+              </h3>
+              <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                Typing long emails on a phone keyboard is annoying. Sticky WhatsApp bars let customers snap a job photo and message you in one tap.
+              </p>
             </div>
-
-            {/* Right Column: Live Interactive Triage Simulator */}
-            <div className="lg:col-span-7 flex flex-col space-y-4">
-              
-              {/* Scenario Selector Tabs */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar">
-                <button
-                  onClick={() => setSelectedScenario('boiler')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
-                    selectedScenario === 'boiler' 
-                      ? 'bg-red-600 text-white shadow-md' 
-                      : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
-                  }`}
-                >
-                  <Flame className="w-3.5 h-3.5" />
-                  Boiler Panic (10:45 PM)
-                </button>
-
-                <button
-                  onClick={() => setSelectedScenario('roof')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
-                    selectedScenario === 'roof' 
-                      ? 'bg-amber-600 text-white shadow-md' 
-                      : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
-                  }`}
-                >
-                  <AlertTriangle className="w-3.5 h-3.5" />
-                  Storm Leak
-                </button>
-
-                <button
-                  onClick={() => setSelectedScenario('electrical')}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
-                    selectedScenario === 'electrical' 
-                      ? 'bg-emerald-600 text-white shadow-md' 
-                      : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
-                  }`}
-                >
-                  <Zap className="w-3.5 h-3.5" />
-                  Fuse Board Upgrade
-                </button>
+            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
+              <div className="w-full">
+                <WhatsAppBar />
               </div>
-
-              {/* Simulated Chat Interface */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 dark:bg-black border border-slate-800 dark:border-zinc-800 flex flex-col space-y-3 font-sans shadow-inner">
-                
-                {/* Chat Top Bar */}
-                <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 text-xs">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                    <span className="font-bold text-white">24/7 Triage Engine ({current.trade})</span>
-                  </div>
-                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase border ${current.urgencyColor}`}>
-                    {current.urgency}
-                  </span>
-                </div>
-
-                {/* Chat Stream Messages */}
-                <div className="space-y-2.5 max-h-56 overflow-y-auto pr-1">
-                  {current.chat.map((msg, i) => (
-                    <div
-                      key={i}
-                      className={`flex flex-col ${msg.sender === 'customer' ? 'items-end' : 'items-start'}`}
-                    >
-                      <div
-                        className={`max-w-[85%] p-3 rounded-2xl text-xs leading-relaxed ${
-                          msg.sender === 'customer'
-                            ? 'bg-red-600 text-white rounded-br-none'
-                            : 'bg-zinc-800 text-zinc-200 border border-zinc-700/60 rounded-bl-none'
-                        }`}
-                      >
-                        {msg.text}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* WhatsApp Hand-off Alert Preview */}
-                <div className="mt-2 p-3 bg-emerald-950/40 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs font-mono whitespace-pre-line leading-snug">
-                  <div className="flex items-center gap-1.5 font-sans font-bold text-emerald-400 mb-1 text-[11px]">
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                    Automatic WhatsApp Hand-off Dispatched:
-                  </div>
-                  {current.whatsappSummary}
-                </div>
-
-              </div>
-
             </div>
+            <button
+              onClick={() => navigate('/demo/whatsapp-bar')}
+              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
+            >
+              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
 
+          {/* Card 4: Live Trust & Credibility Bar (#trust-bar) */}
+          <div id="trust-bar" className="scroll-mt-28 flex flex-col">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                <Target className="text-red-600 dark:text-red-500" />
+                Live Trust Indicators
+              </h3>
+              <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and 5-star rated.
+              </p>
+            </div>
+            <div className="p-4 sm:p-8 rounded-3xl bg-slate-50 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-inner">
+              <SocialProofBanner />
+            </div>
+            <button
+              onClick={() => navigate('/demo/trust-bar')}
+              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
+            >
+              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
+            </button>
           </div>
 
         </div>

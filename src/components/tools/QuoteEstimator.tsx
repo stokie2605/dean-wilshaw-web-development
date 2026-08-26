@@ -65,7 +65,7 @@ export function QuoteEstimator() {
         </div>
 
         <div className="bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl p-4 text-center shadow-inner">
-          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Estimated Ballpark Range</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Guide Price Range</p>
           <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400 mt-1">
             &pound;{estimatedPrice} - &pound;{Math.round(estimatedPrice * 1.25)}
           </p>

@@ -173,29 +173,28 @@ export default function App() {
 
       {/* Floating Ask AI Button - Bottom Right */}
       {!stitchModalOpen && (
-        <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-[45] flex flex-col items-end gap-3">
+        <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end gap-2 pointer-events-none">
           {showBubble && (
             <div 
-              className="hidden md:flex bg-white border border-slate-200 shadow-xl rounded-xl p-3 text-sm font-medium text-slate-800 animate-bounce relative items-center gap-2 pr-8 cursor-pointer" 
+              className="hidden md:flex bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 shadow-xl rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800 dark:text-zinc-200 relative items-center gap-2 pr-7 cursor-pointer pointer-events-auto transition-all" 
               onClick={openStitchModal}
             >
               Not sure where to start? Ask me.
               <button 
                 onClick={(e) => { e.stopPropagation(); dismissBubble(); }} 
-                className="absolute right-1 top-1 text-slate-400 hover:text-slate-600 p-2.5 rounded-full flex items-center justify-center"
+                className="absolute right-1 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-white p-1 rounded-full flex items-center justify-center" 
                 aria-label="Close"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
               </button>
-              <div className="absolute -bottom-2 right-5 w-4 h-4 bg-white border-b border-r border-slate-200 transform rotate-45"></div>
             </div>
           )}
           <button 
             onClick={openStitchModal}
-            className="bg-[#191c1e] hover:bg-[#2a2f32] text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-105 border border-white/10 relative"
+            className="bg-[#191c1e] hover:bg-[#2a2f32] text-white w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-105 border border-white/10 relative pointer-events-auto"
             aria-label="Ask AI"
           >
-            <svg className="w-6 h-6 text-[#dc2626]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+            <svg className="w-5 h-5 text-[#dc2626]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
           </button>
         </div>
       )}
