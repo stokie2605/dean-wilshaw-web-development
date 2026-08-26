@@ -118,7 +118,10 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 {/* Navigation Card 1: Lead Tools Showroom */}
-                <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between hover:border-[#D90429] dark:hover:border-[#D90429] transition-all group">
+                <div 
+                  onClick={() => navigate('/tools')}
+                  className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between hover:border-[#D90429] dark:hover:border-[#D90429] transition-all group cursor-pointer"
+                >
                   <div className="space-y-4">
                     <div className="w-12 h-12 rounded-xl bg-red-500/10 dark:bg-red-500/10 border border-red-500/20 text-[#D90429] flex items-center justify-center">
                       <Layers className="w-6 h-6" />
@@ -126,7 +129,7 @@ export default function App() {
                     <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">
                       Interactive Sandbox
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-[#D90429] transition-colors">
                       Lead Tools Showroom
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
@@ -143,18 +146,20 @@ export default function App() {
                   </div>
 
                   <div className="pt-8">
-                    <Link
-                      to="/tools"
+                    <div
                       className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-sm shadow-lg shadow-red-600/20 transition-all group-hover:scale-[1.02]"
                     >
                       <span>Enter Tools Showroom</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
 
                 {/* Navigation Card 2: Web Design & Pricing */}
-                <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between hover:border-[#D90429] dark:hover:border-[#D90429] transition-all group">
+                <div 
+                  onClick={() => navigate('/pricing')}
+                  className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between hover:border-[#D90429] dark:hover:border-[#D90429] transition-all group cursor-pointer"
+                >
                   <div className="space-y-4">
                     <div className="w-12 h-12 rounded-xl bg-red-500/10 dark:bg-red-500/10 border border-red-500/20 text-[#D90429] flex items-center justify-center">
                       <CreditCard className="w-6 h-6" />
@@ -162,7 +167,7 @@ export default function App() {
                     <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">
                       Transparent Pricing
                     </div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
+                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-[#D90429] transition-colors">
                       Web Design &amp; Prices
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
@@ -179,13 +184,12 @@ export default function App() {
                   </div>
 
                   <div className="pt-8">
-                    <Link
-                      to="/pricing"
+                    <div
                       className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-slate-900 dark:bg-white/[0.06] hover:bg-black dark:hover:bg-white/[0.1] text-white font-bold text-sm border border-slate-700 dark:border-white/[0.1] transition-all group-hover:scale-[1.02]"
                     >
                       <span>View Design &amp; Prices</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
 

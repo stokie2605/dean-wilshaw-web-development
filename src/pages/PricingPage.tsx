@@ -300,89 +300,95 @@ export const PricingPage: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-              {PRICING_TIERS.map((tier) => (
-                <div
-                  key={tier.id}
-                  className={`rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 ${
-                    tier.popular
-                      ? 'bg-white dark:bg-[#0A0D14] border-2 border-[#D90429] shadow-2xl relative shadow-red-600/10'
-                      : 'bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] shadow-xl'
-                  }`}
-                >
-                  <div>
-                    {/* Badge */}
-                    <div className="flex items-center justify-between mb-4">
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase font-mono border ${tier.badgeColor}`}>
-                        {tier.badge}
-                      </span>
-                      {tier.popular && (
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#D90429] font-mono">
-                          ★ Recommended
+              {PRICING_TIERS.map((tier) => {
+                const handleCardClick = () => {
+                  if (tier.stripeLink) {
+                    window.open(tier.stripeLink, '_blank', 'noopener,noreferrer');
+                  } else if (tier.isQuoteTrigger) {
+                    setQuoteModalOpen(true);
+                  } else {
+                    window.open("https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20discuss%20a%20custom%20trade%20portal.", '_blank', 'noopener,noreferrer');
+                  }
+                };
+
+                return (
+                  <div
+                    key={tier.id}
+                    onClick={handleCardClick}
+                    className={`rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all duration-300 cursor-pointer group ${
+                      tier.popular
+                        ? 'bg-white dark:bg-[#0A0D14] border-2 border-[#D90429] shadow-2xl relative shadow-red-600/10 hover:scale-[1.01]'
+                        : 'bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] shadow-xl hover:border-[#D90429] dark:hover:border-[#D90429] hover:scale-[1.01]'
+                    }`}
+                  >
+                    <div>
+                      {/* Badge */}
+                      <div className="flex items-center justify-between mb-4">
+                        <span className={`px-3 py-1 rounded-full text-xs font-semibold uppercase font-mono border ${tier.badgeColor}`}>
+                          {tier.badge}
                         </span>
+                        {tier.popular && (
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-[#D90429] font-mono">
+                            ★ Recommended
+                          </span>
+                        )}
+                      </div>
+
+                      <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2 group-hover:text-[#D90429] transition-colors">
+                        {tier.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm mb-6 min-h-[40px]">
+                        {tier.subtitle}
+                      </p>
+
+                      {/* Price Tag */}
+                      <div className="mb-6 p-4 rounded-xl bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-white/[0.08]">
+                        <div className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
+                          {tier.pricingNote}
+                        </div>
+                        <div className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5 font-mono">
+                          {tier.pricingSubtext || '100% Client Code Ownership'}
+                        </div>
+                      </div>
+
+                      {/* Features List */}
+                      <ul className="space-y-3 mb-8">
+                        {tier.bullets.map((bullet, i) => (
+                          <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
+                            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                            <span>{bullet.full}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div>
+                      {tier.stripeLink ? (
+                        <div
+                          className="w-full py-3.5 px-4 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
+                        >
+                          <span>{tier.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      ) : tier.isQuoteTrigger ? (
+                        <div
+                          className="w-full py-3.5 px-4 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
+                        >
+                          <span>{tier.ctaText}</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      ) : (
+                        <div
+                          className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] text-black font-semibold hover:bg-[#20ba5a] text-xs sm:text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
+                        >
+                          <MessageSquare className="w-3.5 h-3.5 fill-current" />
+                          <span>{tier.ctaText}</span>
+                        </div>
                       )}
                     </div>
-
-                    <h3 className="text-2xl font-black text-slate-900 dark:text-white mb-2">
-                      {tier.title}
-                    </h3>
-                    <p className="text-slate-600 dark:text-zinc-400 text-xs sm:text-sm mb-6 min-h-[40px]">
-                      {tier.subtitle}
-                    </p>
-
-                    {/* Price Tag */}
-                    <div className="mb-6 p-4 rounded-xl bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-white/[0.08]">
-                      <div className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white">
-                        {tier.pricingNote}
-                      </div>
-                      <div className="text-[11px] text-slate-500 dark:text-zinc-400 mt-0.5 font-mono">
-                        {tier.pricingSubtext || '100% Client Code Ownership'}
-                      </div>
-                    </div>
-
-                    {/* Features List */}
-                    <ul className="space-y-3 mb-8">
-                      {tier.bullets.map((bullet, i) => (
-                        <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
-                          <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                          <span>{bullet.full}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-
-                  <div>
-                    {tier.stripeLink ? (
-                      <a
-                        href={tier.stripeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-3.5 px-4 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
-                      >
-                        <span>{tier.ctaText}</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
-                    ) : tier.isQuoteTrigger ? (
-                      <button
-                        onClick={() => setQuoteModalOpen(true)}
-                        className="w-full py-3.5 px-4 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
-                      >
-                        <span>{tier.ctaText}</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                    ) : (
-                      <a
-                        href="https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20discuss%20a%20custom%20trade%20portal."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] text-black font-semibold hover:bg-[#20ba5a] text-xs sm:text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                        <span>{tier.ctaText}</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
