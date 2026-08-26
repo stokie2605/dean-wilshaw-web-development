@@ -23,7 +23,9 @@ import {
   Wrench,
   ChevronLeft,
   ChevronRight,
-  ExternalLink
+  ExternalLink,
+  Layers,
+  Sparkles
 } from 'lucide-react';
 
 export const ToolsPage: React.FC = () => {
@@ -89,7 +91,7 @@ export const ToolsPage: React.FC = () => {
       fullTabLabel: '01 Quote Calculator',
       shortTabLabel: '01 Quote',
       title: 'Instant Quote Calculator',
-      subtitle: 'Customers want a quick price guide before they commit to a call. This interactive estimator calculates an instant estimate for common jobs and captures their phone number in the process.',
+      subtitle: 'Tactile range slider and project scale estimator with real-time illuminated price guidance.',
       demoRoute: '/demo/quote-calculator',
       icon: Smartphone,
       component: <QuoteEstimator />,
@@ -99,7 +101,7 @@ export const ToolsPage: React.FC = () => {
       fullTabLabel: '02 Deposit Portal',
       shortTabLabel: '02 Deposit',
       title: 'Deposit & Booking Portal',
-      subtitle: 'Stop wasting hours on tyre-kickers. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.',
+      subtitle: 'Connected 3-step pipeline qualifying urgency, locking arrival windows, and holding priority deposits.',
       demoRoute: '/demo/booking-form',
       icon: Zap,
       component: <IntakeDeposit />,
@@ -109,7 +111,7 @@ export const ToolsPage: React.FC = () => {
       fullTabLabel: '03 WhatsApp Bar',
       shortTabLabel: '03 WhatsApp',
       title: 'Mobile WhatsApp Fast Bar',
-      subtitle: 'Typing long emails on a phone keyboard is annoying. Sticky WhatsApp bars let customers snap a job photo and message you in one tap.',
+      subtitle: 'Floating Dynamic Island widget with 1-tap job photo snap and instant chat handoff.',
       demoRoute: '/demo/whatsapp-bar',
       icon: MessageSquare,
       component: (
@@ -123,7 +125,7 @@ export const ToolsPage: React.FC = () => {
       fullTabLabel: '04 Trust Badges',
       shortTabLabel: '04 Trust',
       title: 'Live Trust Indicators',
-      subtitle: "If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and 5-star rated.",
+      subtitle: 'Real-time verified metric strip with pulsing status badges and multi-trade perspective switching.',
       demoRoute: '/demo/trust-bar',
       icon: Target,
       component: <SocialProofBanner />,
@@ -190,7 +192,7 @@ export const ToolsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
           {/* Showroom Header */}
-          <div className="max-w-3xl mx-auto text-center mb-16">
+          <div className="max-w-3xl mx-auto text-center mb-14">
             <div className="inline-flex items-center justify-center px-3 py-1 mb-4 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
               Interactive Sandbox
             </div>
@@ -202,15 +204,12 @@ export const ToolsPage: React.FC = () => {
             </p>
           </div>
 
-          {/* 1. TOP FULL-WIDTH SHOWCASE: 24/7 AI Trade Dispatcher */}
-          <div className="mb-16">
-            <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6 relative overflow-hidden group">
+          {/* 1. TOP SHOWCASE: 24/7 AI Trade Dispatcher (Open Engineering Canvas) */}
+          <div className="mb-16 border-t border-b border-slate-200 dark:border-white/[0.08] py-8 sm:py-12 relative">
+            <div className="space-y-8">
               
-              {/* Animated Border Beam */}
-              <BorderBeam size={350} duration={14} colorFrom="#D90429" colorTo="#25D366" />
-
               {/* Header & Sub-copy */}
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 dark:border-white/[0.08] pb-6 relative z-10">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200 dark:border-white/[0.08]">
                 <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-2">
                     <Bot className="w-3.5 h-3.5" />
@@ -219,7 +218,7 @@ export const ToolsPage: React.FC = () => {
                   <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
                     24/7 AI Trade Dispatcher
                   </h2>
-                  <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1 font-medium">
+                  <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1 font-medium max-w-2xl">
                     Your website working as a full-time receptionist 24/7: qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.
                   </p>
                 </div>
@@ -231,10 +230,10 @@ export const ToolsPage: React.FC = () => {
                       key={key}
                       type="button"
                       onClick={() => setSelectedScenario(key)}
-                      className={`px-3.5 py-1.5 rounded-full text-xs transition-all ${
+                      className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all ${
                         selectedScenario === key
-                          ? 'bg-[#D90429] text-white font-medium shadow-sm'
-                          : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-900/80 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 font-medium'
+                          ? 'bg-[#D90429] text-white font-bold shadow-sm'
+                          : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-white/[0.04] dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white font-medium'
                       }`}
                     >
                       {scenarios[key].label}
@@ -243,11 +242,11 @@ export const ToolsPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* 1-Click Interactive Triage Simulator */}
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch relative z-10">
+              {/* 1-Click Interactive Triage Simulator (Architectural Divider Grid) */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
                 
                 {/* Simulator Chat Window */}
-                <div className="lg:col-span-7 bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-white/[0.08] rounded-2xl p-5 flex flex-col justify-between shadow-inner">
+                <div className="lg:col-span-7 flex flex-col justify-between space-y-4">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-white/[0.08] text-xs">
                       <div className="flex items-center gap-2 font-mono text-slate-600 dark:text-zinc-300">
@@ -260,28 +259,31 @@ export const ToolsPage: React.FC = () => {
                     </div>
 
                     {/* Chat Messages */}
-                    <div className="space-y-2.5 pt-2">
+                    <div className="space-y-3 pt-2">
                       {current.chat.map((msg, i) => (
-                        <div
-                          key={i}
+                        <motion.div
+                          key={`${selectedScenario}-${i}`}
+                          initial={{ opacity: 0, y: 6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.2, delay: i * 0.05 }}
                           className={`flex ${msg.sender === 'customer' ? 'justify-end' : 'justify-start'}`}
                         >
                           <div
-                            className={`max-w-[85%] px-3.5 py-2 rounded-xl text-xs leading-relaxed ${
+                            className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${
                               msg.sender === 'customer'
                                 ? 'bg-[#D90429] text-white rounded-br-none shadow-sm'
-                                : 'bg-white dark:bg-zinc-900 text-slate-900 dark:text-zinc-200 border border-slate-200 dark:border-white/[0.08] rounded-bl-none shadow-sm'
+                                : 'bg-white dark:bg-[#0A0D14] text-slate-900 dark:text-zinc-200 border border-slate-200 dark:border-white/[0.08] rounded-bl-none shadow-sm'
                             }`}
                           >
                             {msg.text}
                           </div>
-                        </div>
+                        </motion.div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
-                    <span className="flex items-center gap-1.5">
+                  <div className="pt-3 border-t border-slate-200 dark:border-white/[0.08] flex items-center justify-between text-xs text-slate-500 dark:text-zinc-400">
+                    <span className="flex items-center gap-1.5 font-mono">
                       <Bot className="w-3.5 h-3.5 text-[#D90429]" />
                       Mock Simulation Sandbox (Local State)
                     </span>
@@ -290,19 +292,19 @@ export const ToolsPage: React.FC = () => {
                 </div>
 
                 {/* Live WhatsApp Alert Payload Output */}
-                <div className="lg:col-span-5 bg-emerald-950/30 dark:bg-emerald-950/20 border-2 border-emerald-500/40 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
-                  <div className="space-y-3">
+                <div className="lg:col-span-5 p-6 rounded-2xl bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between shadow-sm">
+                  <div className="space-y-4">
                     <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider font-mono">
                       <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                       WhatsApp Dispatch Generated
                     </div>
 
-                    <div className="p-3.5 bg-black/60 rounded-xl border border-emerald-500/30 text-emerald-300 font-mono text-xs whitespace-pre-line leading-relaxed">
+                    <div className="p-4 bg-black/80 rounded-xl border border-emerald-500/20 text-emerald-300 font-mono text-xs whitespace-pre-line leading-relaxed">
                       {current.whatsappSummary}
                     </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs text-emerald-400 font-semibold font-mono">
+                  <div className="mt-6 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs text-emerald-400 font-semibold font-mono">
                     <span>Ready for 1-Tap Reply</span>
                     <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Instant Alert</span>
                   </div>
@@ -313,14 +315,14 @@ export const ToolsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* 2. HIGH-TECH INTERACTIVE SLIDER STAGE (TOUCH-OPTIMIZED) */}
-          <div className="mb-16">
+          {/* 2. OPEN ARCHITECTURAL SHOWCASE STAGE (4-TOOL INTERACTIVE SUITE) */}
+          <div className="mb-20">
             
-            {/* Stage Container */}
-            <div className="relative w-full max-w-4xl mx-auto bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-4 sm:p-6 md:p-10 shadow-2xl overflow-hidden min-h-[500px] md:min-h-[540px] flex flex-col justify-between group">
+            {/* Stage Container with Open Hairline Grid */}
+            <div className="relative w-full max-w-4xl mx-auto bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl overflow-hidden min-h-[520px] md:min-h-[560px] flex flex-col justify-between group">
               
-              {/* Subtle Border Beam Around Showcase Stage */}
-              <BorderBeam size={320} duration={12} colorFrom="#D90429" colorTo="#25D366" />
+              {/* Subtle Border Beam Accent */}
+              <BorderBeam size={340} duration={12} colorFrom="#D90429" colorTo="#25D366" />
 
               {/* Top Controls: 4 Pill Tabs (Scrollable single row on mobile) */}
               <div className="relative z-10 mb-6 md:mb-8">
@@ -348,7 +350,7 @@ export const ToolsPage: React.FC = () => {
                 type="button"
                 onClick={goToPrev}
                 aria-label="Previous Tool (Left Arrow)"
-                className="hidden md:flex absolute left-3 md:left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 items-center justify-center shadow-lg transition-all"
+                className="hidden md:flex absolute left-3 md:left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 items-center justify-center shadow-lg transition-all"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -357,13 +359,13 @@ export const ToolsPage: React.FC = () => {
                 type="button"
                 onClick={goToNext}
                 aria-label="Next Tool (Right Arrow)"
-                className="hidden md:flex absolute right-3 md:right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/80 dark:bg-black/60 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 items-center justify-center shadow-lg transition-all"
+                className="hidden md:flex absolute right-3 md:right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/90 dark:bg-black/70 backdrop-blur-md border border-slate-200 dark:border-white/[0.1] text-slate-700 dark:text-zinc-200 hover:text-[#D90429] dark:hover:text-[#D90429] hover:scale-110 items-center justify-center shadow-lg transition-all"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
 
               {/* Cinematic Animated Slide Body with Touch Drag/Swipe */}
-              <div className="relative z-10 my-auto px-1 sm:px-4 md:px-12 py-2 sm:py-4 touch-pan-y">
+              <div className="relative z-10 my-auto px-1 sm:px-4 md:px-10 py-2 sm:py-4 touch-pan-y">
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={activeToolIndex}
@@ -385,7 +387,7 @@ export const ToolsPage: React.FC = () => {
                       filter: 'blur(4px)', 
                       transition: { duration: 0.25 } 
                     }}
-                    className="w-full flex flex-col justify-between space-y-5 sm:space-y-6 cursor-grab active:cursor-grabbing"
+                    className="w-full flex flex-col justify-between space-y-6 cursor-grab active:cursor-grabbing"
                   >
                     {/* Tool Title & Description Header */}
                     <div className="text-center max-w-2xl mx-auto space-y-2">
@@ -398,8 +400,8 @@ export const ToolsPage: React.FC = () => {
                       </p>
                     </div>
 
-                    {/* Interactive Component Stage Box */}
-                    <div className="p-3 sm:p-5 md:p-6 rounded-2xl bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-white/[0.08] flex items-center justify-center shadow-inner max-w-xl mx-auto w-full">
+                    {/* Interactive Component Stage (Open architectural display) */}
+                    <div className="w-full max-w-xl mx-auto pt-2">
                       {activeTool.component}
                     </div>
                   </motion.div>

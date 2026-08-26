@@ -1,102 +1,160 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useToolParams, getWhatsAppUrl } from '../../hooks/useToolParams';
+import { Sparkles, MessageSquare, Sliders } from 'lucide-react';
+
+const COMPLEXITY_LEVELS = [
+  { level: 1, label: 'Minor Repair', factor: 1.0, desc: 'Quick fix, single component' },
+  { level: 2, label: 'Standard Fix', factor: 1.8, desc: 'Standard diagnostic & parts replacement' },
+  { level: 3, label: 'Major Overhaul', factor: 3.2, desc: 'Extensive system overhaul' },
+  { level: 4, label: 'Full Installation', factor: 5.5, desc: 'Complete high-spec system upgrade' },
+];
+
+const SIZE_TIERS = [
+  { id: 'Small', label: '1-2 Bed / Small', base: 140 },
+  { id: 'Medium', label: '3-4 Bed / Standard', base: 220 },
+  { id: 'Large', label: '5+ Bed / Heavy', base: 340 },
+];
 
 export function QuoteEstimator() {
   const { phone, hasCustomPhone, biz, trade } = useToolParams();
-  const [serviceType, setServiceType] = useState('Standard Repair');
-  const [size, setSize] = useState('Medium');
+  const [complexityIndex, setComplexityIndex] = useState(1); // 0 to 3
+  const [size, setSize] = useState<'Small' | 'Medium' | 'Large'>('Medium');
   const [userPhone, setUserPhone] = useState('');
 
-  const pricingMap: Record<string, Record<string, number>> = {
-    'Small Job / Minor Repair': { Small: 120, Medium: 180, Large: 250 },
-    'Standard Repair': { Small: 250, Medium: 450, Large: 750 },
-    'Full Installation / Replacement': { Small: 850, Medium: 1500, Large: 2800 },
-  };
+  const currentComplexity = COMPLEXITY_LEVELS[complexityIndex];
+  const currentSize = SIZE_TIERS.find((s) => s.id === size) || SIZE_TIERS[1];
 
-  const estimatedPrice = pricingMap[serviceType]?.[size] || 350;
+  const basePrice = Math.round(currentSize.base * currentComplexity.factor);
+  const maxPrice = Math.round(basePrice * 1.25);
 
   const handleSendWhatsApp = () => {
     const targetPhone = hasCustomPhone ? phone : userPhone;
-    const message = `Hi ${biz}, I got an online estimate for ${trade} (${serviceType} - ${size} size) for approx £${estimatedPrice}. Can you provide a formal quote?`;
+    const message = `Hi ${biz}, I configured an online estimate for ${trade} (${currentComplexity.label}, ${size} property): £${basePrice} - £${maxPrice}. Can you provide a formal booking quote?`;
     window.open(getWhatsAppUrl(targetPhone, message), '_blank');
   };
 
   return (
-    <div className="bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-2xl p-5 text-slate-900 dark:text-white max-w-md w-full shadow-md transition-colors">
-      <div className="flex items-center justify-between border-b border-slate-200 dark:border-zinc-800 pb-3 mb-4">
-        <div>
-          <h3 className="font-bold text-lg text-slate-900 dark:text-white">{biz}</h3>
-          <p className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Instant {trade} Estimate</p>
+    <div className="w-full max-w-md mx-auto space-y-5 text-slate-900 dark:text-white">
+      
+      {/* Top Header */}
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/[0.08] pb-3">
+        <div className="flex items-center gap-2">
+          <div className="w-2 h-2 rounded-full bg-[#D90429] animate-pulse"></div>
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+            {trade} Cost Gauge
+          </span>
+        </div>
+        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 uppercase">
+          Live Dynamic Rate
+        </span>
+      </div>
+
+      {/* 1. Job Complexity Tactile Slider Track */}
+      <div className="space-y-2">
+        <div className="flex justify-between items-center text-xs">
+          <span className="font-semibold text-slate-700 dark:text-zinc-300 flex items-center gap-1.5">
+            <Sliders className="w-3.5 h-3.5 text-[#D90429]" />
+            Job Scope &amp; Complexity
+          </span>
+          <span className="font-mono font-bold text-[#D90429]">
+            {currentComplexity.label}
+          </span>
+        </div>
+
+        {/* Custom Range Slider Track */}
+        <div className="relative py-1">
+          <input
+            type="range"
+            min={0}
+            max={3}
+            step={1}
+            value={complexityIndex}
+            onChange={(e) => setComplexityIndex(Number(e.target.value))}
+            className="w-full h-2 bg-slate-200 dark:bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-[#D90429] focus:outline-none"
+          />
+          <div className="flex justify-between text-[10px] font-mono text-slate-400 dark:text-zinc-500 mt-1 px-1">
+            <span>Minor</span>
+            <span>Standard</span>
+            <span>Major</span>
+            <span>Full Install</span>
+          </div>
         </div>
       </div>
 
-      <div className="space-y-4">
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Job Type</label>
-          <select
-            value={serviceType}
-            onChange={(e) => setServiceType(e.target.value)}
-            className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-xl p-2.5 text-sm text-slate-900 dark:text-white focus:outline-none focus:border-red-500"
-          >
-            <option>Small Job / Minor Repair</option>
-            <option>Standard Repair</option>
-            <option>Full Installation / Replacement</option>
-          </select>
+      {/* 2. Property Size Segmented Selector */}
+      <div className="space-y-2">
+        <label className="block text-xs font-semibold text-slate-700 dark:text-zinc-300">
+          Property / Project Scale
+        </label>
+        <div className="grid grid-cols-3 gap-2">
+          {SIZE_TIERS.map((s) => (
+            <motion.button
+              key={s.id}
+              type="button"
+              whileTap={{ scale: 0.96 }}
+              onClick={() => setSize(s.id as any)}
+              className={`py-2 px-2 text-xs rounded-xl font-medium transition-all ${
+                size === s.id
+                  ? 'bg-[#D90429] text-white shadow-md shadow-red-600/20 font-bold'
+                  : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-white/[0.04] dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white'
+              }`}
+            >
+              {s.id}
+            </motion.button>
+          ))}
         </div>
-
-        <div>
-          <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Property / Project Size</label>
-          <div className="grid grid-cols-3 gap-2">
-            {['Small', 'Medium', 'Large'].map((s) => (
-              <button
-                key={s}
-                type="button"
-                onClick={() => setSize(s)}
-                className={`py-2 text-xs rounded-full transition-all ${
-                  size === s
-                    ? 'bg-[#D90429] text-white font-medium shadow-sm'
-                    : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-900/80 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 font-medium'
-                }`}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div className="bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 rounded-xl p-4 text-center shadow-inner">
-          <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Guide Price Range</p>
-          <p className="text-2xl font-black text-emerald-600 dark:text-emerald-400 mt-1">
-            &pound;{estimatedPrice} - &pound;{Math.round(estimatedPrice * 1.25)}
-          </p>
-          <p className="text-[10px] text-slate-500 dark:text-zinc-500 mt-1">Guideline only | Final price confirmed on inspection</p>
-        </div>
-
-        {!hasCustomPhone && (
-          <div>
-            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-              Enter your mobile to test on your phone:
-            </label>
-            <input
-              type="tel"
-              placeholder="e.g. 07123 456789"
-              value={userPhone}
-              onChange={(e) => setUserPhone(e.target.value)}
-              className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-xl p-2.5 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
-            />
-          </div>
-        )}
-
-        <button
-          onClick={handleSendWhatsApp}
-          className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg shadow-emerald-600/20"
-        >
-          <span>Send Estimate on WhatsApp</span>
-          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/>
-          </svg>
-        </button>
       </div>
+
+      {/* 3. Illuminated Readout Display */}
+      <div className="relative p-5 rounded-2xl bg-slate-900 dark:bg-black/80 border border-slate-800 dark:border-white/[0.1] text-center overflow-hidden shadow-xl">
+        {/* Subtle Ambient Glow */}
+        <div className="absolute inset-0 bg-radial from-[#D90429]/15 via-transparent to-transparent pointer-events-none" />
+
+        <div className="relative z-10 space-y-1">
+          <div className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">
+            Estimated Cost Range
+          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`${basePrice}-${maxPrice}`}
+              initial={{ opacity: 0, y: 6, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -6, scale: 0.98 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="font-mono text-3xl sm:text-4xl font-black tracking-tight text-white drop-shadow-[0_0_20px_rgba(217,4,41,0.35)]"
+            >
+              £{basePrice} <span className="text-zinc-500 font-light text-2xl">–</span> £{maxPrice}
+            </motion.div>
+          </AnimatePresence>
+          <div className="text-[10px] text-zinc-400 font-mono pt-1">
+            Includes standard parts &amp; certified trade labour
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Phone Input & WhatsApp Send Action */}
+      {!hasCustomPhone && (
+        <div className="space-y-1">
+          <input
+            type="tel"
+            placeholder="Enter your phone number (e.g. 07123 456789)"
+            value={userPhone}
+            onChange={(e) => setUserPhone(e.target.value)}
+            className="w-full bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] rounded-xl p-2.5 text-xs font-mono text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-500 focus:outline-none focus:border-[#D90429]"
+          />
+        </div>
+      )}
+
+      <motion.button
+        whileTap={{ scale: 0.98 }}
+        onClick={handleSendWhatsApp}
+        className="w-full bg-[#25D366] hover:bg-[#20ba5a] text-black font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 text-xs sm:text-sm transition shadow-lg shadow-[#25D366]/20 font-mono"
+      >
+        <MessageSquare className="w-4 h-4 fill-current" />
+        <span>Send Instant Estimate via WhatsApp</span>
+      </motion.button>
+
     </div>
   );
 }

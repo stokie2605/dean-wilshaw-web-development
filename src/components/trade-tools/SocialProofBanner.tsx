@@ -1,38 +1,36 @@
 import React, { useState } from 'react';
-import { Star, ShieldCheck, MapPin, Award, CheckCircle, Flame, Zap, Home } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Star, ShieldCheck, MapPin, Award, CheckCircle2, Flame, Zap, Home } from 'lucide-react';
 
 export const SocialProofBanner: React.FC = () => {
   const [selectedTrade, setSelectedTrade] = useState<'gas' | 'electrician' | 'roofer'>('gas');
 
   const tradeData = {
     gas: {
-      title: 'Gas & Heating Specialists',
+      tradeName: 'Gas & Heating Specialist',
       accreditation: 'Gas Safe Registered (#629144)',
-      accredColor: 'text-amber-500 bg-amber-500/10 border-amber-500/30',
-      location: 'Cheshire & Stoke',
+      location: 'Cheshire & Stoke-on-Trent (ST7)',
       reviews: 142,
-      insurance: '£2m Public Liability Insured',
-      guarantee: '10-Year Boiler Warranty',
+      insurance: '£2M Public Liability Insured',
+      guarantee: '10-Year Boiler Parts & Labour Warranty',
       icon: Flame
     },
     electrician: {
-      title: 'Approved Electrical Contractors',
-      accreditation: 'NICEIC Approved Contractor',
-      accredColor: 'text-sky-500 bg-sky-500/10 border-sky-500/30',
+      tradeName: 'Approved Electrical Contractor',
+      accreditation: 'NICEIC Approved Contractor (#04821)',
       location: 'South Cheshire & ST Postcodes',
       reviews: 186,
-      insurance: '£5m Public Liability Insured',
-      guarantee: '6-Year Platinum Promise',
+      insurance: '£5M Public Liability Insured',
+      guarantee: '6-Year Platinum Workmanship Promise',
       icon: Zap
     },
     roofer: {
-      title: 'Roofing & Storm Specialists',
-      accreditation: 'Checkatrade Verified & Confederation of Roofing',
-      accredColor: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/30',
-      location: 'Staffordshire & Cheshire',
+      tradeName: 'Roofing & Storm Specialist',
+      accreditation: 'Checkatrade Verified & CORC Registered',
+      location: 'Staffordshire & South Cheshire',
       reviews: 215,
       insurance: 'Fully Insured Workmanship',
-      guarantee: '25-Year Roof Guarantee',
+      guarantee: '25-Year Roof Integrity Guarantee',
       icon: Home
     }
   };
@@ -41,72 +39,81 @@ export const SocialProofBanner: React.FC = () => {
   const IconComponent = current.icon;
 
   return (
-    <div className="w-full max-w-md mx-auto space-y-4">
+    <div className="w-full max-w-md mx-auto space-y-5 text-slate-900 dark:text-white">
       
-      {/* Mobile Browser Frame Preview */}
-      <div className="rounded-2xl bg-white dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-4 shadow-sm space-y-3 overflow-hidden">
-        
-        {/* Browser Top Chrome Header */}
-        <div className="flex items-center justify-between pb-2 border-b border-slate-100 dark:border-zinc-800/80 text-[10px] text-slate-400 font-mono">
-          <div className="flex gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-red-400"></span>
-            <span className="w-2 h-2 rounded-full bg-amber-400"></span>
-            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-          </div>
-          <span>mobile-preview.co.uk</span>
+      {/* Top Header */}
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-white/[0.08] pb-3">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400">
+            Real-Time Trust Verification Strip
+          </span>
         </div>
-
-        {/* 1. Dynamic Sticky Top Trust Bar */}
-        <div className="flex flex-wrap items-center justify-center gap-2 py-1.5 px-3 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 text-xs shadow-inner">
-          
-          {/* Rating Pill */}
-          <div className="flex items-center gap-1 text-amber-500 font-bold">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3 h-3 fill-current" />
-              ))}
-            </div>
-            <span className="text-slate-900 dark:text-white text-[11px]">5.0</span>
-            <span className="text-slate-400 text-[10px]">({current.reviews} reviews)</span>
-          </div>
-
-          <span className="text-slate-300 dark:text-zinc-700">|</span>
-
-          {/* Location Tag */}
-          <div className="flex items-center gap-1 text-slate-600 dark:text-zinc-400 text-[11px]">
-            <MapPin className="w-3 h-3 text-red-500" />
-            <span>{current.location}</span>
-          </div>
-        </div>
-
-        {/* 2. Trade Accreditation & Trust Badges Strip */}
-        <div className="grid grid-cols-2 gap-2 pt-1">
-          <div className={`p-2.5 rounded-xl border text-[11px] font-bold flex items-center gap-2 ${current.accredColor}`}>
-            <Award className="w-4 h-4 shrink-0" />
-            <span className="truncate">{current.accreditation}</span>
-          </div>
-
-          <div className="p-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 text-[11px] font-bold flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 shrink-0 text-emerald-500" />
-            <span className="truncate">{current.insurance}</span>
-          </div>
-        </div>
-
-        {/* 3. Workmanship Guarantee Banner */}
-        <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2">
-            <CheckCircle className="w-4 h-4 text-emerald-500" />
-            <span className="font-bold text-slate-800 dark:text-zinc-200">{current.guarantee}</span>
-          </div>
-          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Verified</span>
-        </div>
-
+        <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 uppercase">
+          Live Status
+        </span>
       </div>
+
+      {/* High-Contrast Open Metric Strip */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={selectedTrade}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.2 }}
+          className="space-y-3"
+        >
+          {/* Main 5-Star Reputation Bar */}
+          <div className="p-4 rounded-2xl bg-slate-100 dark:bg-black/70 border border-slate-200 dark:border-white/[0.08] flex items-center justify-between shadow-inner">
+            <div className="flex items-center gap-2.5">
+              <div className="flex text-amber-500">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-current" />
+                ))}
+              </div>
+              <span className="font-mono font-bold text-sm text-slate-900 dark:text-white">
+                5.0 Rating
+              </span>
+            </div>
+            <span className="font-mono text-xs text-slate-500 dark:text-zinc-400">
+              ({current.reviews} Verified Reviews)
+            </span>
+          </div>
+
+          {/* 3 Metric Verification Cards */}
+          <div className="space-y-2">
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="font-semibold text-slate-800 dark:text-zinc-200">{current.accreditation}</span>
+              </div>
+              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase">Official Badge</span>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="font-semibold text-slate-800 dark:text-zinc-200">{current.insurance}</span>
+              </div>
+              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase">Active Policy</span>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.06] flex items-center justify-between text-xs font-mono">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="font-semibold text-slate-800 dark:text-zinc-200">{current.guarantee}</span>
+              </div>
+              <span className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold uppercase">Written Cover</span>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
 
       {/* Interactive Switcher */}
       <div className="space-y-1.5 pt-1">
-        <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400 text-center">
-          Test Live Trade Switcher:
+        <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-zinc-400 text-center">
+          Switch Trade Perspective:
         </label>
         <div className="grid grid-cols-3 gap-2">
           {[
@@ -114,18 +121,19 @@ export const SocialProofBanner: React.FC = () => {
             { key: 'electrician', label: 'Electrician' },
             { key: 'roofer', label: 'Roofer' }
           ].map(({ key, label }) => (
-            <button
+            <motion.button
               key={key}
+              whileTap={{ scale: 0.96 }}
               type="button"
               onClick={() => setSelectedTrade(key as any)}
-              className={`py-1.5 px-2 text-xs rounded-full transition-all ${
+              className={`py-1.5 px-2 text-xs font-mono rounded-full transition-all ${
                 selectedTrade === key
-                  ? 'bg-[#D90429] text-white font-medium shadow-sm'
-                  : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-zinc-900/80 dark:border-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-200 font-medium'
+                  ? 'bg-[#D90429] text-white font-bold shadow-sm'
+                  : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-white/[0.04] dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white font-medium'
               }`}
             >
               {label}
-            </button>
+            </motion.button>
           ))}
         </div>
       </div>
