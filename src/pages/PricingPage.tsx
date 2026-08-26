@@ -64,7 +64,7 @@ const PRICING_TIERS = [
     id: 'custom-dev',
     title: 'Custom Trade Portals',
     subtitle: 'For multi-van outfits, bespoke booking systems, and commercial contractors.',
-    pricingNote: 'From £449 – £599 / Custom Quote',
+    pricingNote: 'From £449 to £599 / Custom Quote',
     badge: 'Bespoke Architecture',
     badgeColor: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/30',
     bullets: [

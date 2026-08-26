@@ -115,10 +115,10 @@ export default function App() {
                     Interactive Sandbox
                   </div>
                   <h2 className="text-2xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
-                    Want to test our lead-capture tools live?
+                    Want to test these lead-capture tools live?
                   </h2>
                   <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
-                    Explore our 24/7 AI trade triage bot, instant quote calculators, deposit portals, and WhatsApp fast bars in our dedicated interactive showroom.
+                    Explore the 24/7 AI trade triage bot, instant quote calculators, deposit portals, and WhatsApp fast bars in our dedicated interactive showroom.
                   </p>
                   
                   {/* Tool Highlights */}

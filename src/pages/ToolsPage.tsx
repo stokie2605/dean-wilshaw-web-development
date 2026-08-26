@@ -94,7 +94,7 @@ export const ToolsPage: React.FC = () => {
               Interactive Lead Tools Built for UK Trades
             </h1>
             <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400">
-              Test the live simulators below to see how our standalone widgets capture high-value jobs from casual mobile traffic.
+              Test the live simulators below to see how my standalone widgets capture high-value jobs from casual mobile traffic.
             </p>
           </div>
 
@@ -113,7 +113,7 @@ export const ToolsPage: React.FC = () => {
                     24/7 AI Trade Dispatcher
                   </h2>
                   <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1 font-medium">
-                    Your website working as a full-time receptionist 24/7 - qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.
+                    Your website working as a full-time receptionist 24/7: qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.
                   </p>
                 </div>
 
@@ -204,90 +204,98 @@ export const ToolsPage: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-16">
 
             {/* Card 1: Instant Quote Calculator */}
-            <div className="flex flex-col">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                  <Smartphone className="text-red-600 dark:text-red-500" />
-                  Instant Quote Calculator
-                </h3>
-                <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                  Customers want a quick price guide before they commit to a call. This interactive estimator calculates an instant estimate for common jobs and captures their phone number in the process.
-                </p>
-              </div>
-              <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-                <QuoteEstimator />
+            <div className="h-full flex flex-col justify-between">
+              <div>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                    <Smartphone className="text-red-600 dark:text-red-500" />
+                    Instant Quote Calculator
+                  </h3>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                    Customers want a quick price guide before they commit to a call. This interactive estimator calculates an instant estimate for common jobs and captures their phone number in the process.
+                  </p>
+                </div>
+                <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex items-center justify-center shadow-sm">
+                  <QuoteEstimator />
+                </div>
               </div>
               <button
                 onClick={() => navigate('/demo/quote-calculator')}
-                className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
+                className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
             {/* Card 2: Qualification & Deposit Portal */}
-            <div className="flex flex-col">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                  <Zap className="text-red-600 dark:text-red-500" />
-                  Deposit &amp; Booking Portal
-                </h3>
-                <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                  Stop wasting hours on tyre-kickers. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.
-                </p>
-              </div>
-              <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-                <IntakeDeposit />
+            <div className="h-full flex flex-col justify-between">
+              <div>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                    <Zap className="text-red-600 dark:text-red-500" />
+                    Deposit &amp; Booking Portal
+                  </h3>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                    Stop wasting hours on tyre-kickers. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.
+                  </p>
+                </div>
+                <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex items-center justify-center shadow-sm">
+                  <IntakeDeposit />
+                </div>
               </div>
               <button
                 onClick={() => navigate('/demo/booking-form')}
-                className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
+                className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
             {/* Card 3: Mobile WhatsApp Fast Bar */}
-            <div className="flex flex-col">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                  <MessageSquare className="text-red-600 dark:text-red-500" />
-                  Mobile WhatsApp Fast Bar
-                </h3>
-                <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                  Typing long emails on a phone keyboard is annoying. Sticky WhatsApp bars let customers snap a job photo and message you in one tap.
-                </p>
-              </div>
-              <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-                <div className="w-full">
-                  <WhatsAppBar />
+            <div className="h-full flex flex-col justify-between">
+              <div>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                    <MessageSquare className="text-red-600 dark:text-red-500" />
+                    Mobile WhatsApp Fast Bar
+                  </h3>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                    Typing long emails on a phone keyboard is annoying. Sticky WhatsApp bars let customers snap a job photo and message you in one tap.
+                  </p>
+                </div>
+                <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex items-center justify-center shadow-sm">
+                  <div className="w-full">
+                    <WhatsAppBar />
+                  </div>
                 </div>
               </div>
               <button
                 onClick={() => navigate('/demo/whatsapp-bar')}
-                className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
+                className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
 
             {/* Card 4: Live Trust & Credibility Bar */}
-            <div className="flex flex-col">
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                  <Target className="text-red-600 dark:text-red-500" />
-                  Live Trust Indicators
-                </h3>
-                <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                  If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and 5-star rated.
-                </p>
-              </div>
-              <div className="p-4 sm:p-8 rounded-3xl bg-slate-50 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-inner">
-                <SocialProofBanner />
+            <div className="h-full flex flex-col justify-between">
+              <div>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+                    <Target className="text-red-600 dark:text-red-500" />
+                    Live Trust Indicators
+                  </h3>
+                  <p className="text-slate-600 dark:text-zinc-400 text-sm">
+                    If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and 5-star rated.
+                  </p>
+                </div>
+                <div className="p-4 sm:p-8 rounded-3xl bg-slate-50 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex items-center justify-center shadow-inner">
+                  <SocialProofBanner />
+                </div>
               </div>
               <button
                 onClick={() => navigate('/demo/trust-bar')}
-                className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
+                className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
               >
                 Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -321,9 +329,9 @@ export const ToolsPage: React.FC = () => {
 
               <Link
                 to="/pricing"
-                className="px-6 py-3.5 rounded-xl bg-white hover:bg-zinc-100 text-slate-900 font-bold text-sm transition-all shadow-md flex items-center gap-2"
+                className="px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white hover:bg-slate-800 font-bold text-sm transition-all shadow-md flex items-center gap-2"
               >
-                <span>View Full Pricing &amp; Packages</span>
+                <span>View Pricing &amp; Audits</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
