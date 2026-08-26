@@ -23,10 +23,10 @@ export const IntakeDeposit: React.FC = () => {
                 key={option}
                 type="button"
                 onClick={() => setUrgency(option)}
-                className={`p-3 rounded-xl text-xs font-semibold border text-left transition-all ${
+                className={`p-3 rounded-xl text-xs border text-left transition-all ${
                   urgency === option
-                    ? 'bg-red-50 dark:bg-red-900/20 border-red-500 text-red-700 dark:text-red-400 shadow-sm'
-                    : 'bg-white dark:bg-zinc-950 border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400 hover:border-slate-300 dark:hover:border-zinc-700'
+                    ? 'bg-red-600 text-white border-red-600 font-bold shadow-sm shadow-red-600/20'
+                    : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-700/60 font-medium'
                 }`}
               >
                 {option}

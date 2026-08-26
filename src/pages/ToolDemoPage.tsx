@@ -6,7 +6,7 @@ import { QuoteEstimator } from '../components/tools/QuoteEstimator';
 import { AreaCalculator } from '../components/tools/AreaCalculator';
 import { MissedCallDemo } from '../components/trade-tools/MissedCallDemo';
 import { BeforeAfterSlider } from '../components/tools/BeforeAfterSlider';
-import { BookingForm } from '../components/tools/BookingForm';
+import { IntakeDeposit } from '../components/trade-tools/IntakeDeposit';
 import { WhatsAppBar } from '../components/trade-tools/WhatsAppBar';
 import { SocialProofBanner } from '../components/trade-tools/SocialProofBanner';
 
@@ -16,7 +16,8 @@ const WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20
 function renderTool(toolId: string | undefined) {
   switch (toolId) {
     case 'quote-calculator': return <QuoteEstimator />;
-    case 'booking-form':     return <BookingForm />;
+    case 'booking-form':     
+    case 'deposit-portal':   return <IntakeDeposit />;
     case 'whatsapp-bar':     return <WhatsAppBar />;
     case 'trust-bar':        return <SocialProofBanner />;
     case 'missed-call':      return <MissedCallDemo />;
@@ -27,9 +28,10 @@ function renderTool(toolId: string | undefined) {
 }
 
 const TOOL_LABELS: Record<string, string> = {
-  'quote-calculator': 'Instant Guide Price',
-  'booking-form':     'Qualification & Deposit Portal',
-  'whatsapp-bar':     'Mobile WhatsApp Bar',
+  'quote-calculator': 'Instant Quote Calculator',
+  'booking-form':     'Deposit & Booking Portal',
+  'deposit-portal':   'Deposit & Booking Portal',
+  'whatsapp-bar':     'Mobile WhatsApp Fast Bar',
   'trust-bar':        'Live Trust Indicators',
   'missed-call':      'Instant Missed-Call Auto-Text',
   'area-calculator':  'Area and Material Calculator',

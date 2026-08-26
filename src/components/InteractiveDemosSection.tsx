@@ -110,10 +110,10 @@ export const InteractiveDemosSection: React.FC = () => {
                     key={key}
                     type="button"
                     onClick={() => setSelectedScenario(key)}
-                    className={`px-3.5 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
+                    className={`px-3.5 py-2 rounded-xl text-xs rounded-xl border transition-all ${
                       selectedScenario === key
-                        ? 'bg-red-600 text-white shadow-red-600/20'
-                        : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300'
+                        ? 'bg-red-600 text-white border-red-600 font-bold shadow-sm shadow-red-600/20'
+                        : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-700/60 font-medium'
                     }`}
                   >
                     {scenarios[key].label}

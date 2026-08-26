@@ -52,10 +52,10 @@ export function QuoteEstimator() {
                 key={s}
                 type="button"
                 onClick={() => setSize(s)}
-                className={`py-2 text-xs font-semibold rounded-xl border transition ${
+                className={`py-2 text-xs rounded-xl border transition-all ${
                   size === s
-                    ? 'bg-red-50 dark:bg-red-950/30 border-red-500 text-red-600 dark:text-red-400 font-bold'
-                    : 'bg-slate-50 dark:bg-zinc-950 border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-slate-400 hover:border-slate-400'
+                    ? 'bg-red-600 text-white border-red-600 font-bold shadow-sm shadow-red-600/20'
+                    : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-700/60 font-medium'
                 }`}
               >
                 {s}

@@ -109,41 +109,24 @@ export const SocialProofBanner: React.FC = () => {
           Test Live Trade Switcher:
         </label>
         <div className="grid grid-cols-3 gap-2">
-          <button
-            type="button"
-            onClick={() => setSelectedTrade('gas')}
-            className={`py-1.5 px-2 text-xs font-bold rounded-xl border transition ${
-              selectedTrade === 'gas'
-                ? 'bg-amber-500 text-black border-amber-400 shadow-sm'
-                : 'bg-white dark:bg-zinc-900 border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400'
-            }`}
-          >
-            Gas Engineer
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setSelectedTrade('electrician')}
-            className={`py-1.5 px-2 text-xs font-bold rounded-xl border transition ${
-              selectedTrade === 'electrician'
-                ? 'bg-sky-500 text-white border-sky-400 shadow-sm'
-                : 'bg-white dark:bg-zinc-900 border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400'
-            }`}
-          >
-            Electrician
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setSelectedTrade('roofer')}
-            className={`py-1.5 px-2 text-xs font-bold rounded-xl border transition ${
-              selectedTrade === 'roofer'
-                ? 'bg-emerald-600 text-white border-emerald-500 shadow-sm'
-                : 'bg-white dark:bg-zinc-900 border-slate-200 dark:border-zinc-800 text-slate-600 dark:text-zinc-400'
-            }`}
-          >
-            Roofer
-          </button>
+          {[
+            { key: 'gas', label: 'Gas Engineer' },
+            { key: 'electrician', label: 'Electrician' },
+            { key: 'roofer', label: 'Roofer' }
+          ].map(({ key, label }) => (
+            <button
+              key={key}
+              type="button"
+              onClick={() => setSelectedTrade(key as any)}
+              className={`py-1.5 px-2 text-xs rounded-xl border transition-all ${
+                selectedTrade === key
+                  ? 'bg-red-600 text-white border-red-600 font-bold shadow-sm shadow-red-600/20'
+                  : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-700/60 font-medium'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
         </div>
       </div>
 
