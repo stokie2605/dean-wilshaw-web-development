@@ -38,8 +38,8 @@ const PRICING_TIERS = [
       { full: '100% Client Source Code Ownership with zero recurring tool subscriptions', short: 'Zero monthly subscriptions' },
       { full: 'Plugs seamlessly into Wix, WordPress, Squarespace, or custom HTML', short: 'Plugs into any website' },
     ],
-    ctaText: 'Explore Lead Tools',
-    ctaLink: '/tools',
+    ctaText: 'Instant Purchase (£149)',
+    stripeLink: 'https://buy.stripe.com/28E28r8zO6r23Bw6wPaAw00',
   },
   {
     id: 'website-builds',
@@ -213,7 +213,17 @@ export const PricingPage: React.FC = () => {
                 </div>
 
                 <div>
-                  {tier.ctaLink ? (
+                  {tier.stripeLink ? (
+                    <a
+                      href={tier.stripeLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-3.5 px-4 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
+                    >
+                      <span>{tier.ctaText}</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  ) : tier.ctaLink ? (
                     <Link
                       to={tier.ctaLink}
                       className="w-full py-3.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-slate-900 dark:text-white font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2"
@@ -224,7 +234,7 @@ export const PricingPage: React.FC = () => {
                   ) : tier.isQuoteTrigger ? (
                     <button
                       onClick={() => setQuoteModalOpen(true)}
-                      className="w-full py-3.5 px-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
+                      className="w-full py-3.5 px-4 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
                     >
                       <span>{tier.ctaText}</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -233,7 +243,7 @@ export const PricingPage: React.FC = () => {
                     <a
                       href="https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20discuss%20a%20custom%20trade%20portal."
                       target="_blank"
-                      rel="noreferrer"
+                      rel="noopener noreferrer"
                       className="w-full py-3.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-xs sm:text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
                     >
                       <MessageSquare className="w-3.5 h-3.5 fill-current" />

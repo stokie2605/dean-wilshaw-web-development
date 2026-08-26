@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.tsx';
 import { ToolsPage } from './pages/ToolsPage';
 import { PricingPage } from './pages/PricingPage';
+import { ScrollToTop } from './components/ScrollToTop';
 import { AuthGate } from './components/AuthGate';
 import { AdminDashboard } from './components/AdminDashboard';
 import { DunhamMockup } from './pages/DunhamMockup';
@@ -17,6 +18,9 @@ import './index.css';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
+      {/* Global Scroll Restoration: Always scroll to top on page navigation */}
+      <ScrollToTop />
+
       <Routes>
         {/* Core 3-Page Architecture */}
         <Route path="/" element={<App />} />
