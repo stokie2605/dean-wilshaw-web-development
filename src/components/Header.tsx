@@ -7,14 +7,13 @@ interface HeaderProps {
   onOpenStitch: () => void;
 }
 
-// Unified navigation links matching the 6 interactive trade widgets
+// Direct demo links matching the standalone interactive trade tools
 const NAV_LINKS = [
-  { label: 'Missed-Call Auto-Text',     href: '#missed-call' },
-  { label: 'Deposit & Booking Portal', href: '#deposit-portal' },
-  { label: 'WhatsApp Fast Bar',        href: '#whatsapp-bar' },
-  { label: 'Live Trust Indicators',    href: '#trust-bar' },
-  { label: 'Instant Quote Calculator', href: '#quote-calculator' },
-  { label: '24/7 AI Lead Assistant',   href: '#ai-bot' },
+  { label: 'Deposit & Booking Portal', href: '/demo/booking-form' },
+  { label: 'WhatsApp Fast Bar',        href: '/demo/whatsapp-bar' },
+  { label: 'Live Trust Indicators',    href: '/demo/trust-bar' },
+  { label: 'Instant Quote Calculator', href: '/demo/quote-calculator' },
+  { label: '24/7 AI Lead Assistant',   href: '#ai-bot', isAi: true },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onOpenStitch }) => {
@@ -39,29 +38,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
     }
   };
 
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string, isAi?: boolean) => {
     setMenuOpen(false);
 
-    if (href === '#ai-bot') {
+    if (isAi) {
       const el = document.getElementById('ai-bot');
       if (el) {
+        e.preventDefault();
         const top = el.getBoundingClientRect().top + window.scrollY - 88;
         window.scrollTo({ top, behavior: 'smooth' });
       } else {
+        e.preventDefault();
         onOpenStitch();
-      }
-      return;
-    }
-
-    if (href.startsWith('#')) {
-      const id = href.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        const top = el.getBoundingClientRect().top + window.scrollY - 88;
-        window.scrollTo({ top, behavior: 'smooth' });
-      } else {
-        window.location.href = `/${href}`;
       }
     }
   };
@@ -89,14 +77,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
           </div>
         </a>
 
-        {/* Desktop Nav Links */}
+        {/* Desktop Nav Links (Direct Demo Page Links) */}
         <nav className="hidden lg:flex items-center gap-1">
-          {NAV_LINKS.map(({ label, href }) => (
+          {NAV_LINKS.map(({ label, href, isAi }) => (
             <a
               key={href}
               href={href}
-              onClick={(e) => handleNavClick(e, href)}
-              className="px-2.5 py-1.5 rounded-lg text-xs xl:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 whitespace-nowrap"
+              onClick={(e) => handleNavClick(e, href, isAi)}
+              className="px-3 py-1.5 rounded-lg text-xs xl:text-sm font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 whitespace-nowrap"
             >
               {label}
             </a>
@@ -146,15 +134,15 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote, onOpenWhatsApp, onO
       {/* Mobile/Tablet Dropdown Nav */}
       {menuOpen && (
         <div className="lg:hidden border-t border-slate-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-md px-4 py-3 flex flex-col gap-1 shadow-xl animate-in fade-in slide-in-from-top-2">
-          {NAV_LINKS.map(({ label, href }) => (
+          {NAV_LINKS.map(({ label, href, isAi }) => (
             <a
               key={href}
               href={href}
-              onClick={(e) => handleNavClick(e, href)}
+              onClick={(e) => handleNavClick(e, href, isAi)}
               className="px-3 py-2.5 rounded-lg text-sm font-medium text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all duration-150 flex items-center justify-between"
             >
               <span>{label}</span>
-              {href === '#ai-bot' && (
+              {isAi && (
                 <span className="text-[10px] uppercase font-bold px-2 py-0.5 bg-red-500/10 text-red-500 rounded-full border border-red-500/20">
                   24/7 AI
                 </span>

@@ -4,14 +4,12 @@ import { WhatsAppBar } from './trade-tools/WhatsAppBar';
 import { SocialProofBanner } from './trade-tools/SocialProofBanner';
 import { IntakeDeposit } from './trade-tools/IntakeDeposit';
 import { QuoteEstimator } from './tools/QuoteEstimator';
-import { MissedCallDemo } from './trade-tools/MissedCallDemo';
 import { 
   Target, 
   Zap, 
   Smartphone, 
   MessageSquare, 
   ArrowRight, 
-  PhoneMissed, 
   Bot, 
   Clock, 
   CheckCircle2, 
@@ -30,7 +28,6 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
 
   // AI Dispatcher Interactive Simulator State
   const [selectedScenario, setSelectedScenario] = useState<'boiler' | 'roof' | 'electrical'>('boiler');
-  const [simStep, setSimStep] = useState<number>(3); // fully resolved preview
 
   const scenarios = {
     boiler: {
@@ -93,36 +90,14 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400">
             Most local business websites lose 90% of mobile visitors to standard, boring contact forms.
-            Test my 6 interactive lead-capture tools below to see how I turn casual browsers into warm phone calls and instant deposits.
+            Test my interactive lead-capture tools below to see how I turn casual browsers into warm phone calls and instant deposits.
           </p>
         </div>
 
-        {/* 6 Tools Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+        {/* 4 Tools Grid (2x2) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-12">
 
-          {/* 1. Missed-Call Auto-Text (#missed-call) */}
-          <div id="missed-call" className="scroll-mt-28 flex flex-col">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <PhoneMissed className="text-red-600 dark:text-red-500" />
-                Missed-Call Auto-Text
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                Automatically texts back customers who hit your voicemail in under 5 seconds so they don't call your competitor while you are on a job.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">
-              <MissedCallDemo />
-            </div>
-            <button
-              onClick={() => navigate('/demo/missed-call')}
-              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
-            >
-              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* 2. Deposit & Booking Portal (#deposit-portal) */}
+          {/* 1. Deposit & Booking Portal */}
           <div id="deposit-portal" className="scroll-mt-28 flex flex-col">
             <div className="mb-6">
               <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
@@ -144,7 +119,7 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
             </button>
           </div>
 
-          {/* 3. WhatsApp Fast Bar (#whatsapp-bar) */}
+          {/* 2. WhatsApp Fast Bar */}
           <div id="whatsapp-bar" className="scroll-mt-28 flex flex-col">
             <div className="mb-6">
               <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
@@ -168,7 +143,7 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
             </button>
           </div>
 
-          {/* 4. Live Trust Indicators (#trust-bar) */}
+          {/* 3. Live Trust Indicators */}
           <div id="trust-bar" className="scroll-mt-28 flex flex-col">
             <div className="mb-6">
               <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
@@ -190,7 +165,7 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
             </button>
           </div>
 
-          {/* 5. Instant Quote Calculator (#quote-calculator) */}
+          {/* 4. Instant Quote Calculator */}
           <div id="quote-calculator" className="scroll-mt-28 flex flex-col">
             <div className="mb-6">
               <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
@@ -212,156 +187,156 @@ export const InteractiveDemosSection: React.FC<InteractiveDemosSectionProps> = (
             </button>
           </div>
 
-          {/* 6. 24/7 AI Lead Assistant & Emergency Dispatcher (#ai-bot) */}
-          <div id="ai-bot" className="scroll-mt-28 flex flex-col lg:col-span-2">
-            <div className="mb-6 max-w-3xl">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-red-500/10 text-red-500 border border-red-500/30">
-                  24/7 Emergency Triage &amp; Dispatch
-                </span>
+        </div>
+
+        {/* 5. 24/7 AI Lead Assistant & Emergency Dispatcher (#ai-bot) */}
+        <div id="ai-bot" className="scroll-mt-28 flex flex-col">
+          <div className="mb-6 max-w-3xl">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-black uppercase tracking-wider bg-red-500/10 text-red-500 border border-red-500/30">
+                24/7 Emergency Triage &amp; Dispatch
+              </span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
+              <Bot className="text-red-600 dark:text-red-500 w-7 h-7" />
+              24/7 AI Trade Dispatcher
+            </h3>
+            <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base font-medium">
+              &ldquo;Your website working as a full-time receptionist 24/7 - qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.&rdquo;
+            </p>
+          </div>
+
+          {/* AI Dispatcher Feature Pillars + Interactive Simulator */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 shadow-xl">
+            
+            {/* Left Column: 3 Core Pillars */}
+            <div className="lg:col-span-5 space-y-4 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
+                  <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
+                    <Clock className="w-4 h-4 text-amber-500" />
+                    1. Answers FAQs Instantly
+                  </div>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400">
+                    Explains service areas, callout charges, and typical lead times at 11 PM on a Sunday without you touching your phone.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
+                  <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
+                    <Sparkles className="w-4 h-4 text-sky-500" />
+                    2. Diagnoses the Issue
+                  </div>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400">
+                    Asks 3 smart questions (e.g., &ldquo;Is water currently leaking through the ceiling?&rdquo; or &ldquo;What boiler model do you have?&rdquo;).
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
+                  <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
+                    <Send className="w-4 h-4 text-emerald-500" />
+                    3. Routes the Lead
+                  </div>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400">
+                    Pushes the chat summary, customer phone number, and urgency tier directly to your WhatsApp with a 1-tap quote reply.
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-black flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <Bot className="text-red-600 dark:text-red-500 w-7 h-7" />
-                24/7 AI Trade Dispatcher
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base font-medium">
-                &ldquo;Your website working as a full-time receptionist 24/7 - qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.&rdquo;
-              </p>
+
+              {onOpenStitch && (
+                <button
+                  onClick={onOpenStitch}
+                  className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-lg shadow-red-600/30 flex items-center justify-center gap-2"
+                >
+                  <Bot className="w-4 h-4" />
+                  Test Live AI Assistant Now
+                </button>
+              )}
             </div>
 
-            {/* AI Dispatcher Feature Pillars + Interactive Simulator */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 p-6 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/70 border border-slate-200 dark:border-zinc-800 shadow-xl">
+            {/* Right Column: Live Interactive Triage Simulator */}
+            <div className="lg:col-span-7 flex flex-col space-y-4">
               
-              {/* Left Column: 3 Core Pillars */}
-              <div className="lg:col-span-5 space-y-4 flex flex-col justify-between">
-                <div className="space-y-4">
-                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
-                    <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
-                      <Clock className="w-4 h-4 text-amber-500" />
-                      1. Answers FAQs Instantly
-                    </div>
-                    <p className="text-xs text-slate-600 dark:text-zinc-400">
-                      Explains service areas, callout charges, and typical lead times at 11 PM on a Sunday without you touching your phone.
-                    </p>
-                  </div>
+              {/* Scenario Selector Tabs */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar">
+                <button
+                  onClick={() => setSelectedScenario('boiler')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
+                    selectedScenario === 'boiler' 
+                      ? 'bg-red-600 text-white shadow-md' 
+                      : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
+                  }`}
+                >
+                  <Flame className="w-3.5 h-3.5" />
+                  Boiler Panic (10:45 PM)
+                </button>
 
-                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
-                    <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
-                      <Sparkles className="w-4 h-4 text-sky-500" />
-                      2. Diagnoses the Issue
-                    </div>
-                    <p className="text-xs text-slate-600 dark:text-zinc-400">
-                      Asks 3 smart questions (e.g., &ldquo;Is water currently leaking through the ceiling?&rdquo; or &ldquo;What boiler model do you have?&rdquo;).
-                    </p>
-                  </div>
+                <button
+                  onClick={() => setSelectedScenario('roof')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
+                    selectedScenario === 'roof' 
+                      ? 'bg-amber-600 text-white shadow-md' 
+                      : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
+                  }`}
+                >
+                  <AlertTriangle className="w-3.5 h-3.5" />
+                  Storm Leak
+                </button>
 
-                  <div className="p-4 rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800">
-                    <div className="flex items-center gap-2.5 mb-1.5 font-bold text-slate-900 dark:text-white text-sm">
-                      <Send className="w-4 h-4 text-emerald-500" />
-                      3. Routes the Lead
-                    </div>
-                    <p className="text-xs text-slate-600 dark:text-zinc-400">
-                      Pushes the chat summary, customer phone number, and urgency tier directly to your WhatsApp with a 1-tap quote reply.
-                    </p>
-                  </div>
-                </div>
-
-                {onOpenStitch && (
-                  <button
-                    onClick={onOpenStitch}
-                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs sm:text-sm tracking-wide transition-all shadow-lg shadow-red-600/30 flex items-center justify-center gap-2"
-                  >
-                    <Bot className="w-4 h-4" />
-                    Test Live AI Assistant Now
-                  </button>
-                )}
+                <button
+                  onClick={() => setSelectedScenario('electrical')}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
+                    selectedScenario === 'electrical' 
+                      ? 'bg-emerald-600 text-white shadow-md' 
+                      : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
+                  }`}
+                >
+                  <Zap className="w-3.5 h-3.5" />
+                  Fuse Board Upgrade
+                </button>
               </div>
 
-              {/* Right Column: Live Interactive Triage Simulator */}
-              <div className="lg:col-span-7 flex flex-col space-y-4">
+              {/* Simulated Chat Interface */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 dark:bg-black border border-slate-800 dark:border-zinc-800 flex flex-col space-y-3 font-sans shadow-inner">
                 
-                {/* Scenario Selector Tabs */}
-                <div className="flex items-center gap-2 overflow-x-auto pb-1 hide-scrollbar">
-                  <button
-                    onClick={() => setSelectedScenario('boiler')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
-                      selectedScenario === 'boiler' 
-                        ? 'bg-red-600 text-white shadow-md' 
-                        : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
-                    }`}
-                  >
-                    <Flame className="w-3.5 h-3.5" />
-                    Boiler Panic (10:45 PM)
-                  </button>
-
-                  <button
-                    onClick={() => setSelectedScenario('roof')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
-                      selectedScenario === 'roof' 
-                        ? 'bg-amber-600 text-white shadow-md' 
-                        : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
-                    }`}
-                  >
-                    <AlertTriangle className="w-3.5 h-3.5" />
-                    Storm Leak
-                  </button>
-
-                  <button
-                    onClick={() => setSelectedScenario('electrical')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition whitespace-nowrap flex items-center gap-1.5 ${
-                      selectedScenario === 'electrical' 
-                        ? 'bg-emerald-600 text-white shadow-md' 
-                        : 'bg-slate-100 dark:bg-zinc-800 text-slate-700 dark:text-zinc-300'
-                    }`}
-                  >
-                    <Zap className="w-3.5 h-3.5" />
-                    Fuse Board Upgrade
-                  </button>
+                {/* Chat Top Bar */}
+                <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 text-xs">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
+                    <span className="font-bold text-white">24/7 Triage Engine ({current.trade})</span>
+                  </div>
+                  <span className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase border ${current.urgencyColor}`}>
+                    {current.urgency}
+                  </span>
                 </div>
 
-                {/* Simulated Chat Interface */}
-                <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 dark:bg-black border border-slate-800 dark:border-zinc-800 flex flex-col space-y-3 font-sans shadow-inner">
-                  
-                  {/* Chat Top Bar */}
-                  <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 text-xs">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                      <span className="font-bold text-white">24/7 Triage Engine ({current.trade})</span>
-                    </div>
-                    <span className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase border ${current.urgencyColor}`}>
-                      {current.urgency}
-                    </span>
-                  </div>
-
-                  {/* Chat Stream Messages */}
-                  <div className="space-y-2.5 max-h-56 overflow-y-auto pr-1">
-                    {current.chat.map((msg, i) => (
+                {/* Chat Stream Messages */}
+                <div className="space-y-2.5 max-h-56 overflow-y-auto pr-1">
+                  {current.chat.map((msg, i) => (
+                    <div
+                      key={i}
+                      className={`flex flex-col ${msg.sender === 'customer' ? 'items-end' : 'items-start'}`}
+                    >
                       <div
-                        key={i}
-                        className={`flex flex-col ${msg.sender === 'customer' ? 'items-end' : 'items-start'}`}
+                        className={`max-w-[85%] p-3 rounded-2xl text-xs leading-relaxed ${
+                          msg.sender === 'customer'
+                            ? 'bg-red-600 text-white rounded-br-none'
+                            : 'bg-zinc-800 text-zinc-200 border border-zinc-700/60 rounded-bl-none'
+                        }`}
                       >
-                        <div
-                          className={`max-w-[85%] p-3 rounded-2xl text-xs leading-relaxed ${
-                            msg.sender === 'customer'
-                              ? 'bg-red-600 text-white rounded-br-none'
-                              : 'bg-zinc-800 text-zinc-200 border border-zinc-700/60 rounded-bl-none'
-                          }`}
-                        >
-                          {msg.text}
-                        </div>
+                        {msg.text}
                       </div>
-                    ))}
-                  </div>
-
-                  {/* WhatsApp Hand-off Alert Preview */}
-                  <div className="mt-2 p-3 bg-emerald-950/40 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs font-mono whitespace-pre-line leading-snug">
-                    <div className="flex items-center gap-1.5 font-sans font-bold text-emerald-400 mb-1 text-[11px]">
-                      <CheckCircle2 className="w-3.5 h-3.5" />
-                      Automatic WhatsApp Hand-off Dispatched:
                     </div>
-                    {current.whatsappSummary}
-                  </div>
+                  ))}
+                </div>
 
+                {/* WhatsApp Hand-off Alert Preview */}
+                <div className="mt-2 p-3 bg-emerald-950/40 border border-emerald-500/40 rounded-xl text-emerald-300 text-xs font-mono whitespace-pre-line leading-snug">
+                  <div className="flex items-center gap-1.5 font-sans font-bold text-emerald-400 mb-1 text-[11px]">
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    Automatic WhatsApp Hand-off Dispatched:
+                  </div>
+                  {current.whatsappSummary}
                 </div>
 
               </div>
