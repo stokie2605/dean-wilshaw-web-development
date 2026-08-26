@@ -78,7 +78,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: messageText }),
       });
 
       if (!response.ok) {
@@ -92,7 +92,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
         {
           id: (Date.now() + 1).toString(),
           sender: 'stitch' as const,
-          text: data.reply || "Sorry, I had trouble processing that. You can reach Dean directly on WhatsApp via the button below.",
+          text: data.response || data.reply || "Sorry, I had trouble processing that. You can reach Dean directly on WhatsApp via the button below.",
           timestamp: new Date(),
         },
       ]);
