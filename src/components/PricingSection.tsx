@@ -1,42 +1,46 @@
 import React from 'react';
-import { CheckCircle2, ShieldCheck, MessageSquare, ArrowRight, Gauge, FileText } from 'lucide-react';
+import { CheckCircle2, MessageSquare, ArrowRight, Gauge, FileText } from 'lucide-react';
 
 const AUDIT_WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20a%20%C2%A349%20website%20speed%20audit";
 
 const PRICING_TIERS = [
   {
     id: 'standalone-tools',
-    title: 'Standalone Lead Tools',
-    subtitle: 'Add a phone call or lead generator to your current site.',
-    pricingNote: 'From £149 per tool',
+    title: 'Standalone Trade Tools',
+    subtitle: 'Plug & Play Interactive Widgets',
+    pricingNote: 'From £149',
     bullets: [
-      { full: 'Missed-call auto-text & WhatsApp contact buttons', short: 'Missed-call & WhatsApp buttons' },
-      { full: 'Visual job cost & price estimator widgets', short: 'Interactive price estimators' },
-      { full: 'Simple deposit and booking forms', short: 'Simple booking & deposit forms' },
-      { full: 'Plugs directly into your existing website (Wix, WordPress, or custom)', short: 'Plugs into Wix, WordPress & custom' },
+      { full: 'Interactive Quote Calculators & Dynamic Sliders', short: 'Quote Calculators & Sliders' },
+      { full: '24/7 Web Triage & Emergency Intake Forms', short: '24/7 Triage Forms' },
+      { full: '24/7 AI Voice to Quote & Missed Call Engine', short: 'AI Voice to Quote Engine' },
+      { full: 'Plugs into existing Wix, WordPress, Squarespace, or mobile SIM', short: 'Plugs into existing sites' },
+      { full: 'Zero ongoing subscriptions on web widgets', short: 'Zero subscriptions' },
     ],
   },
   {
-    id: 'website-builds',
-    title: 'Full Website Build',
-    subtitle: 'A complete, fast single-page website designed to get calls.',
+    id: 'landing-page',
+    title: 'Build My Landing Page',
+    subtitle: '★ Most Popular for Trades',
     pricingNote: 'From £299',
+    popular: true,
     bullets: [
-      { full: 'Mobile-first layout built specifically for local UK trade customers', short: 'Mobile-first trade layout' },
-      { full: 'Built from scratch for speed with zero clunky templates or page builders', short: 'Built from scratch for speed' },
-      { full: 'Clear service breakdown, customer review display, and local contact setup', short: 'Services, reviews & contact setup' },
+      { full: 'Hand coded lightweight React + Vite single page build', short: 'Hand coded React & Vite' },
+      { full: 'Includes 1 integrated trade tool of your choice', short: 'Includes 1 trade tool' },
+      { full: 'Complete service breakdown, customer reviews & local SEO schema', short: 'Services, reviews & SEO schema' },
+      { full: 'Tap to call mobile bar & trust badges', short: 'Tap to call & trust badges' },
+      { full: 'Optional £49/mo managed site care retainer (hosting, SSL, maintenance)', short: 'Optional £49/mo site care' },
     ],
   },
   {
-    id: 'custom-dev',
-    title: 'Custom Builds',
-    subtitle: 'For unique requirements or larger trade operations.',
-    pricingNote: 'Custom Quote',
+    id: 'custom-mixed',
+    title: 'Custom & Mixed Infrastructure',
+    subtitle: 'Multi-Van & Commercial',
+    pricingNote: 'From £449',
     bullets: [
-      { full: 'Custom job booking or scheduling workflows', short: 'Custom booking & workflows' },
-      { full: 'Connections to your existing payment or booking tools', short: 'Payment & software integration' },
-      { full: 'Automated email or text updates for incoming jobs', short: 'Automated email & text alerts' },
-      { full: 'Built 1-on-1 directly by Dean with no agency middlemen or junior devs', short: '1-on-1 direct with Dean' },
+      { full: 'Turnkey Bundles (Full Landing Page + 24/7 Voice to Quote Engine)', short: 'Turnkey Bundles' },
+      { full: 'Multi-tool integrations (Calculators + Triage + Telephony)', short: 'Multi-tool integrations' },
+      { full: 'Bespoke multi-page commercial portals & tender showcases', short: 'Bespoke commercial portals' },
+      { full: 'Live booking systems, payment flows, and CRM integrations on request', short: 'CRM & Payment flows' },
     ],
   },
 ];
@@ -47,54 +51,52 @@ interface PricingProps {
   onOpenStitch: () => void;
 }
 
-export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhatsApp, onOpenStitch }) => {
+export const PricingSection: React.FC<PricingProps> = () => {
   return (
-    <section id="pricing" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 scroll-mt-20 transition-colors duration-300">
-      <div className="max-w-6xl mx-auto">
+    <section id="pricing" className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 scroll-mt-20 transition-colors duration-300">
+      <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-semibold mb-2 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30 inline-block">
+        <div className="mb-10 md:mb-14">
+          <span className="text-xs font-mono uppercase tracking-widest text-emerald-700 dark:text-emerald-400 font-semibold mb-3 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/30 inline-block">
             Transparent Pricing
           </span>
-          <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mt-3 mb-3">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-zinc-100 mt-3 mb-2 tracking-tight">
             Simple, Honest Prices
           </h2>
-          <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base max-w-lg mx-auto">
+          <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base max-w-lg">
             No hidden fees, no surprises. You own your site outright.
           </p>
         </div>
 
-        {/* Featured Step 1 Entry Audit Card (Full Width) */}
-        <div className="mb-12 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-[#131B2A] border border-emerald-500/30 dark:border-emerald-500/30 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
-          
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-                <Gauge className="w-3.5 h-3.5" />
-                STEP 1: ENTRY AUDIT
-              </div>
+        {/* Entry Audit — open strip with left accent */}
+        <div className="mb-12 pl-5 border-l-2 border-emerald-500">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30 mb-3">
+            <Gauge className="w-3.5 h-3.5" />
+            Step 1: Entry Audit
+          </div>
 
-              <h3 className="font-geist font-bold text-xl sm:text-2xl text-slate-900 dark:text-white">
-                Mobile Speed &amp; Lead Health Check: <span className="text-emerald-600 dark:text-emerald-400">£49 Flat Fee</span>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div className="space-y-2 max-w-2xl">
+              <h3 className="font-bold text-lg sm:text-xl text-slate-900 dark:text-white">
+                Mobile Speed & Lead Health Check:{' '}
+                <span className="text-emerald-600 dark:text-emerald-400">£49 Flat Fee</span>
               </h3>
-
               <p className="text-sm text-slate-600 dark:text-zinc-300 leading-relaxed">
                 A complete diagnostic of your trade website. I test real mobile loading speeds, break-test buttons and quote forms, and pinpoint exactly where you are losing customer enquiries.
               </p>
-
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 px-3.5 py-1.5 rounded-lg">
-                <FileText className="w-4 h-4 shrink-0 text-emerald-500" />
+              <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
+                <FileText className="w-3.5 h-3.5 shrink-0 text-emerald-500" />
                 <span>Delivered as a clear 1-page breakdown with zero tech jargon.</span>
               </div>
             </div>
 
-            <div className="w-full lg:w-auto shrink-0">
+            <div className="shrink-0">
               <a
                 href={AUDIT_WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full lg:w-auto inline-flex items-center justify-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all shadow-lg shadow-emerald-600/20 hover:scale-[1.02]"
+                className="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-5 rounded-xl text-sm transition-all"
               >
                 <MessageSquare className="w-4 h-4 fill-white" />
                 Claim £49 Audit on WhatsApp
@@ -104,21 +106,23 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
           </div>
         </div>
 
-        {/* 3-Tier Package Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* 3-Tier Open Column Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-zinc-800">
           {PRICING_TIERS.map((pkg) => (
             <div
               key={pkg.id}
-              className="bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 rounded-2xl p-6 flex flex-col hover:border-emerald-600 dark:hover:border-emerald-500 shadow-xl hover:shadow-2xl transition-all duration-300"
+              className="flex flex-col py-8 md:py-0 first:pt-0 last:pb-0 md:first:pr-8 md:last:pl-8 md:[&:not(:first-child):not(:last-child)]:px-8"
             >
-              <h3 className="font-geist font-bold text-slate-900 dark:text-zinc-100 text-lg mb-1">{pkg.title}</h3>
-              <p className="text-slate-600 dark:text-zinc-300 text-sm mb-2">{pkg.subtitle}</p>
-              
-              <div className="bg-slate-100 dark:bg-slate-800/50 rounded-lg p-2.5 mb-4 border border-slate-200 dark:border-zinc-700/50">
-                <p className="text-xs font-semibold text-slate-700 dark:text-zinc-300 text-center">{pkg.pricingNote}</p>
+              <p className="text-xs font-mono uppercase tracking-wider text-slate-400 dark:text-zinc-500 mb-1">{pkg.subtitle}</p>
+              <h3 className="font-extrabold text-slate-900 dark:text-zinc-100 text-lg mb-1 tracking-tight">{pkg.title}</h3>
+
+              <div className="mb-5 mt-3">
+                <span className={`text-2xl font-black tracking-tight ${(pkg as any).popular ? 'text-[#D90429]' : 'text-slate-900 dark:text-white'}`}>
+                  {pkg.pricingNote}
+                </span>
               </div>
 
-              <ul className="space-y-2 mb-6 flex-grow">
+              <ul className="space-y-2.5 flex-grow">
                 {pkg.bullets.map((f, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-slate-600 dark:text-zinc-300">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
@@ -135,3 +139,4 @@ export const PricingSection: React.FC<PricingProps> = ({ onOpenQuote, onOpenWhat
     </section>
   );
 };
+

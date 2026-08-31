@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { BottomTabBar } from './components/BottomTabBar';
 import { HeroSection } from './components/HeroSection';
-import { ArrowRight, Bot, Smartphone, Zap, Target, Gauge, Layers, CreditCard } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const AboutDeanSection = lazy(() => import('./components/AboutDeanSection').then(m => ({ default: m.AboutDeanSection })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
@@ -99,98 +99,63 @@ export default function App() {
             <AboutDeanSection />
           </div>
 
-          {/* 3. Two Clean Navigation Cards to /tools and /pricing */}
-          <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-100 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
-            <div className="max-w-7xl mx-auto">
-              
-              <div className="text-center mb-12 max-w-2xl mx-auto">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-3">
-                  Sovereign Trade Infrastructure
-                </div>
-                <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white tracking-tight">
+          {/* 3. Open Editorial Navigation Row to /tools and /pricing */}
+          <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
+            <div className="max-w-5xl mx-auto">
+
+              <div className="mb-10 md:mb-14">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-4">
                   Explore The Platform
+                </div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+                  Two ways to get started.
                 </h2>
-                <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base mt-2">
-                  Test interactive conversion tools in our live sandbox or explore transparent web design packages.
-                </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                {/* Navigation Card 1: Lead Tools Showroom */}
-                <div 
-                  onClick={() => navigate('/tools')}
-                  className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between hover:border-[#D90429] dark:hover:border-[#D90429] transition-all group cursor-pointer"
-                >
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 rounded-xl bg-red-500/10 dark:bg-red-500/10 border border-red-500/20 text-[#D90429] flex items-center justify-center">
-                      <Layers className="w-6 h-6" />
-                    </div>
-                    <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">
+              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-white/[0.08]">
+
+                {/* Column 1: Lead Tools Showroom */}
+                <div className="pb-10 md:pb-0 md:pr-12 flex flex-col gap-5">
+                  <div>
+                    <p className="text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider mb-2">
                       Interactive Sandbox
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-[#D90429] transition-colors">
+                    </p>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
                       Lead Tools Showroom
                     </h3>
-                    <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
-                      Test the 24/7 AI trade triage dispatcher, instant quote calculators, deposit booking portals, and WhatsApp fast bars in a dedicated interactive sandbox.
+                    <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                      Test the 24/7 AI voice quoting engine, interactive cost estimators, emergency triage portals, and WhatsApp fast bars live in the browser.
                     </p>
-
-                    {/* Tool Highlights */}
-                    <div className="grid grid-cols-2 gap-2.5 pt-2 text-xs font-medium text-slate-700 dark:text-zinc-300">
-                      <div className="flex items-center gap-1.5"><Bot className="w-4 h-4 text-[#D90429]" /> 24/7 AI Triage</div>
-                      <div className="flex items-center gap-1.5"><Smartphone className="w-4 h-4 text-[#D90429]" /> Quote Calculator</div>
-                      <div className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#D90429]" /> Deposit Portal</div>
-                      <div className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#D90429]" /> Trust Indicators</div>
-                    </div>
                   </div>
-
-                  <div className="pt-8">
-                    <div
-                      className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-[#D90429] hover:bg-[#b80322] text-white font-bold text-sm shadow-lg shadow-red-600/20 transition-all group-hover:scale-[1.02]"
-                    >
-                      <span>Enter Tools Showroom</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
+                  <button
+                    onClick={() => navigate('/tools')}
+                    className="self-start inline-flex items-center gap-2 text-sm font-bold text-[#D90429] hover:text-[#b80322] transition-colors group"
+                  >
+                    Enter Tools Showroom
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
 
-                {/* Navigation Card 2: Web Design & Pricing */}
-                <div 
-                  onClick={() => navigate('/pricing')}
-                  className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col justify-between hover:border-[#D90429] dark:hover:border-[#D90429] transition-all group cursor-pointer"
-                >
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 rounded-xl bg-red-500/10 dark:bg-red-500/10 border border-red-500/20 text-[#D90429] flex items-center justify-center">
-                      <CreditCard className="w-6 h-6" />
-                    </div>
-                    <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">
+                {/* Column 2: Web Design & Pricing */}
+                <div className="pt-10 md:pt-0 md:pl-12 flex flex-col gap-5">
+                  <div>
+                    <p className="text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider mb-2">
                       Transparent Pricing
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight group-hover:text-[#D90429] transition-colors">
+                    </p>
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
                       Web Design &amp; Prices
                     </h3>
-                    <p className="text-slate-600 dark:text-zinc-400 text-sm sm:text-base leading-relaxed">
-                      View 3 layout archetypes, low-risk £49 mobile speed audits, standalone plug-in tools from £149, and complete single-page trade websites from £299.
+                    <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                      Three layout archetypes, a low-risk £49 mobile audit, standalone add on tools from £149, and complete single page trade websites from £299.
                     </p>
-
-                    {/* Pricing Highlights */}
-                    <div className="grid grid-cols-2 gap-2.5 pt-2 text-xs font-medium text-slate-700 dark:text-zinc-300">
-                      <div className="flex items-center gap-1.5"><Gauge className="w-4 h-4 text-[#D90429]" /> £49 Speed Audit</div>
-                      <div className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-[#D90429]" /> £149 Lead Tools</div>
-                      <div className="flex items-center gap-1.5"><Smartphone className="w-4 h-4 text-[#D90429]" /> £299 Web Engine</div>
-                      <div className="flex items-center gap-1.5"><Target className="w-4 h-4 text-[#D90429]" /> 100% Code Ownership</div>
-                    </div>
                   </div>
-
-                  <div className="pt-8">
-                    <div
-                      className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl bg-slate-900 dark:bg-white/[0.06] hover:bg-black dark:hover:bg-white/[0.1] text-white font-bold text-sm border border-slate-700 dark:border-white/[0.1] transition-all group-hover:scale-[1.02]"
-                    >
-                      <span>View Design &amp; Prices</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </div>
-                  </div>
+                  <button
+                    onClick={() => navigate('/pricing')}
+                    className="self-start inline-flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white hover:text-[#D90429] dark:hover:text-[#D90429] transition-colors group"
+                  >
+                    View Design &amp; Prices
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
                 </div>
 
               </div>

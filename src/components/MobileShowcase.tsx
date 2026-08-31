@@ -31,14 +31,14 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
       name: 'RapidRepair 24/7',
       component: <PlumberMockup />,
       altImage: '/mockups/plumber-mobile-dark.webp',
-      modalOverview: 'A high-converting mobile interface designed specifically for emergency plumbing services. Features sub-second loading and instant tap-to-call routing to capture desperate leads instantly.',
+      modalOverview: 'A high-converting mobile interface designed specifically for emergency plumbing services. Features pure mobile performance and instant tap to call routing to capture desperate leads instantly.',
       features: [
-        'Prominent click-to-call buttons',
+        'Prominent click to call buttons',
         'Fixed app-style bottom navigation',
         'Clear emergency response indicators',
-        'Fast-loading service grid'
+        'Fast loading service grid'
       ],
-      badges: ['Mobile-First UI', 'Tap-To-Call', 'High Conversion', 'Tailwind CSS']
+      badges: ['Mobile First UI', 'Tap to Call', 'High Conversion', 'Tailwind CSS']
     },
     {
       title: 'Armor Roofing Premium Showcase',
@@ -71,17 +71,17 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
   ];
 
   return (
-    <section className="py-20 sm:py-32 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 transition-colors duration-300">
+    <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16 flex flex-col items-center">
+        <div className="text-center mb-12 md:mb-16 flex flex-col items-center">
           <span className="text-xs font-mono uppercase tracking-widest text-red-700 dark:text-red-500 font-semibold mb-2 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20 inline-flex items-center gap-1.5">
-            <Zap className="w-3.5 h-3.5 text-red-700 dark:text-red-500" /> Mobile-First Engineering
+            <Zap className="w-3.5 h-3.5 text-red-700 dark:text-red-500" /> Mobile First Engineering
           </span>
-          <h2 className="font-geist font-extrabold text-3xl sm:text-4xl lg:text-5xl text-slate-900 dark:text-zinc-100 mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-zinc-100 mb-3 tracking-tight">
             Built for the 4G World.
           </h2>
           <p className="text-slate-600 dark:text-zinc-300 max-w-2xl text-base sm:text-lg">
-            I build sub-second loading mobile experiences that convert instantly.
+            I build hand coded mobile experiences that convert instantly.
           </p>
         </div>
 

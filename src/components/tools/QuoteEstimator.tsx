@@ -29,6 +29,7 @@ export function QuoteEstimator() {
   const maxPrice = Math.round(basePrice * 1.25);
 
   const handleSendWhatsApp = () => {
+    if (!hasCustomPhone && !userPhone.trim()) return;
     const targetPhone = hasCustomPhone ? phone : userPhone;
     const message = `Hi ${biz}, I configured an online estimate for ${trade} (${currentComplexity.label}, ${size} property): £${basePrice} - £${maxPrice}. Can you provide a formal booking quote?`;
     window.open(getWhatsAppUrl(targetPhone, message), '_blank');
@@ -94,7 +95,7 @@ export function QuoteEstimator() {
               type="button"
               whileTap={{ scale: 0.96 }}
               onClick={() => setSize(s.id as any)}
-              className={`py-2 px-2 text-xs rounded-xl font-medium transition-all ${
+              className={`py-2.5 px-3 text-xs rounded-xl font-medium transition-all ${
                 size === s.id
                   ? 'bg-[#D90429] text-white shadow-md shadow-red-600/20 font-bold'
                   : 'bg-zinc-100 border border-zinc-200 text-zinc-600 hover:text-zinc-900 hover:bg-zinc-200 dark:bg-white/[0.04] dark:border-white/[0.08] dark:text-zinc-400 dark:hover:text-white'
@@ -107,12 +108,12 @@ export function QuoteEstimator() {
       </div>
 
       {/* 3. Illuminated Readout Display */}
-      <div className="relative p-5 rounded-2xl bg-slate-900 dark:bg-black/80 border border-slate-800 dark:border-white/[0.1] text-center overflow-hidden shadow-xl">
-        {/* Subtle Ambient Glow */}
-        <div className="absolute inset-0 bg-radial from-[#D90429]/15 via-transparent to-transparent pointer-events-none" />
+      <div className="relative p-5 rounded-2xl bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-center overflow-hidden shadow-xl transition-colors duration-300">
+        {/* Subtle Ambient Glow in dark mode */}
+        <div className="hidden dark:block absolute inset-0 bg-radial from-[#D90429]/15 via-transparent to-transparent pointer-events-none" />
 
         <div className="relative z-10 space-y-1">
-          <div className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">
+          <div className="text-[11px] font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold">
             Estimated Cost Range
           </div>
           <AnimatePresence mode="wait">
@@ -122,12 +123,12 @@ export function QuoteEstimator() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -6, scale: 0.98 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="font-mono text-3xl sm:text-4xl font-black tracking-tight text-white drop-shadow-[0_0_20px_rgba(217,4,41,0.35)]"
+              className="font-mono text-3xl sm:text-4xl font-black tracking-tight text-zinc-900 dark:text-white drop-shadow-sm dark:drop-shadow-[0_0_20px_rgba(217,4,41,0.35)]"
             >
-              £{basePrice} <span className="text-zinc-500 font-light text-2xl">–</span> £{maxPrice}
+              £{basePrice} <span className="text-zinc-400 dark:text-zinc-500 font-light text-2xl">-</span> £{maxPrice}
             </motion.div>
           </AnimatePresence>
-          <div className="text-[10px] text-zinc-400 font-mono pt-1">
+          <div className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono pt-1">
             Includes standard parts &amp; certified trade labour
           </div>
         </div>

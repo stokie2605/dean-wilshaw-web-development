@@ -84,8 +84,8 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
       id: 'engine-01',
       engineLabel: 'Engine 01',
       title: 'Emergency & Domestic Trades',
-      description: 'High-contrast, urgency-driven layout built for fast conversions. Features sticky tap-to-call bars and automated missed-call text triggers.',
-      tags: ['Tap-To-Call Bar', 'Auto-Text Follow-Up', 'Sub-0.4s Speed'],
+      description: 'High-contrast, urgency-driven layout built for fast conversions. Features sticky tap to call bars and automated missed-call text triggers.',
+      tags: ['Tap to Call Bar', 'Auto Text Follow Up', 'Mobile Optimised'],
       accentColor: '#2563EB',
       accentLabel: 'text-blue-600 dark:text-blue-500',
       image: '/mockups/rapidtrade-emergency.png',
@@ -115,18 +115,18 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
   return (
     <section
       id="portfolio"
-      className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 scroll-mt-20 transition-colors duration-300"
+      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-zinc-950 border-b border-slate-200 dark:border-zinc-800 scroll-mt-20 transition-colors duration-300"
     >
       <div className="max-w-7xl mx-auto">
 
-        <div className="text-center mb-16 md:mb-24 flex flex-col items-center max-w-3xl mx-auto">
+        <div className="text-center mb-12 md:mb-16 flex flex-col items-center max-w-3xl mx-auto">
           <span className="bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full mb-3 inline-flex items-center">
             PORTFOLIO EXAMPLES
           </span>
-          <h2 className="font-geist font-bold text-4xl sm:text-5xl text-slate-900 dark:text-zinc-100 mb-6 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-zinc-100 mb-4 tracking-tight">
             Three clear layout styles for local trades.
           </h2>
-          <p className="text-slate-600 dark:text-zinc-400 max-w-2xl text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-zinc-400 max-w-2xl text-base sm:text-lg leading-relaxed">
             Each engine is a fully unique design system featuring custom layout architecture, distinct color schemes, and proven conversion psychology. Click any card to view the full design.
           </p>
         </div>

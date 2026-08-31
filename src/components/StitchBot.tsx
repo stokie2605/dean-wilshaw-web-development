@@ -205,7 +205,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
 
 
       {/* Chat Input Area */}
-      <div className="p-3 bg-white border-t border-[#c6c6cd] shrink-0">
+      <div className="p-3 bg-white dark:bg-zinc-900 border-t border-slate-200 dark:border-zinc-800 shrink-0">
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -218,7 +218,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
             placeholder="Type your question..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            className="flex-grow bg-[#f8fafc] border border-[#c6c6cd] rounded-lg px-3 py-2 text-xs sm:text-sm text-[#191c1e] focus:outline-none focus:border-[#dc2626]"
+            className="flex-grow bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-700 rounded-lg px-3 py-2 text-xs sm:text-sm text-slate-900 dark:text-zinc-100 focus:outline-none focus:border-red-600 dark:focus:border-red-500"
           />
 
           <button

@@ -99,7 +99,7 @@ export const InteractiveDemosSection: React.FC = () => {
                   24/7 AI Trade Dispatcher
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1 font-medium">
-                  Your website working as a full-time receptionist 24/7 - qualifying emergencies, filtering out tyre-kickers, and capturing bookings while you sleep.
+                  Your website working as a full-time receptionist 24/7: qualifying emergencies, filtering out time wasters, and capturing bookings while you sleep.
                 </p>
               </div>
 
@@ -110,7 +110,7 @@ export const InteractiveDemosSection: React.FC = () => {
                     key={key}
                     type="button"
                     onClick={() => setSelectedScenario(key)}
-                    className={`px-3.5 py-2 rounded-xl text-xs rounded-xl border transition-all ${
+                    className={`px-3.5 py-2 text-xs rounded-xl border transition-all ${
                       selectedScenario === key
                         ? 'bg-red-600 text-white border-red-600 font-bold shadow-sm shadow-red-600/20'
                         : 'bg-slate-100 dark:bg-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-700 text-slate-700 dark:text-zinc-300 border-slate-200 dark:border-zinc-700/60 font-medium'
@@ -126,11 +126,11 @@ export const InteractiveDemosSection: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
               
               {/* Terminal Auto-Triage Exchange */}
-              <div className="lg:col-span-7 bg-slate-900 dark:bg-black rounded-2xl p-5 border border-slate-800 dark:border-zinc-800 flex flex-col justify-between shadow-inner">
-                <div className="flex items-center justify-between border-b border-zinc-800 pb-2.5 text-xs">
+              <div className="lg:col-span-7 bg-zinc-100 dark:bg-zinc-950 rounded-2xl p-5 border border-zinc-300 dark:border-zinc-800 flex flex-col justify-between shadow-inner">
+                <div className="flex items-center justify-between border-b border-zinc-300 dark:border-zinc-800 pb-2.5 text-xs">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div>
-                    <span className="font-bold text-white font-mono">Live Triage Engine ({current.trade})</span>
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse"></div>
+                    <span className="font-bold text-zinc-900 dark:text-white font-mono">Live Triage Engine ({current.trade})</span>
                   </div>
                   <span className={`px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase border ${current.urgencyBadge}`}>
                     {current.urgency}
@@ -147,7 +147,7 @@ export const InteractiveDemosSection: React.FC = () => {
                         className={`max-w-[90%] p-3 rounded-2xl leading-relaxed ${
                           msg.sender === 'customer'
                             ? 'bg-red-600 text-white rounded-br-none'
-                            : 'bg-zinc-800 text-zinc-200 border border-zinc-700/60 rounded-bl-none'
+                            : 'bg-white text-zinc-800 border border-zinc-200 dark:bg-zinc-800 dark:text-zinc-200 dark:border-zinc-700/60 rounded-bl-none shadow-sm'
                         }`}
                       >
                         {msg.text}
@@ -156,28 +156,28 @@ export const InteractiveDemosSection: React.FC = () => {
                   ))}
                 </div>
 
-                <div className="text-[10px] text-zinc-500 font-mono pt-2 border-t border-zinc-800 flex items-center justify-between">
-                  <span>Triage complete in 4.2 seconds</span>
+                <div className="text-[10px] text-zinc-500 font-mono pt-2 border-t border-zinc-300 dark:border-zinc-800 flex items-center justify-between">
+                  <span>Fully automated triage. No manual input needed.</span>
                   <span>100% Automated</span>
                 </div>
               </div>
 
               {/* Instant WhatsApp Dispatch Generated Card */}
-              <div className="lg:col-span-5 bg-emerald-950/30 dark:bg-emerald-950/20 border-2 border-emerald-500/40 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
+              <div className="lg:col-span-5 bg-emerald-50 dark:bg-emerald-950/20 border-2 border-emerald-500/40 rounded-2xl p-5 flex flex-col justify-between shadow-sm">
                 <div className="space-y-3">
-                  <div className="flex items-center gap-2 text-emerald-400 font-bold text-xs uppercase tracking-wider">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  <div className="flex items-center gap-2 text-emerald-800 dark:text-emerald-400 font-bold text-xs uppercase tracking-wider">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                     WhatsApp Dispatch Generated
                   </div>
 
-                  <div className="p-3.5 bg-black/60 rounded-xl border border-emerald-500/30 text-emerald-300 font-mono text-xs whitespace-pre-line leading-relaxed">
+                  <div className="p-3.5 bg-zinc-800 dark:bg-black/60 rounded-xl border border-emerald-500/30 text-emerald-200 dark:text-emerald-300 font-mono text-xs whitespace-pre-line leading-relaxed">
                     {current.whatsappSummary}
                   </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs text-emerald-400 font-semibold">
+                <div className="mt-4 pt-3 border-t border-emerald-500/20 flex items-center justify-between text-xs text-emerald-700 dark:text-emerald-400 font-semibold">
                   <span>Ready for 1-Tap Reply</span>
-                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Instant Alert</span>
+                  <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300">Instant Alert</span>
                 </div>
               </div>
 
@@ -219,7 +219,7 @@ export const InteractiveDemosSection: React.FC = () => {
                 Deposit &amp; Booking Portal
               </h3>
               <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                Stop wasting hours on tyre-kickers. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.
+                Stop spending hours on unqualified enquiries. Checks job urgency and secures an upfront commitment before you confirm a calendar slot.
               </p>
             </div>
             <div className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-sm">

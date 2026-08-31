@@ -50,7 +50,7 @@ export function MissedCallDemoPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 flex flex-col items-center justify-start p-4 py-10 transition-colors duration-300 selection:bg-red-500/20 selection:text-red-600 dark:selection:text-red-400">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 flex flex-col items-center justify-start p-4 py-10 transition-colors duration-300 overflow-x-hidden selection:bg-red-500/20 selection:text-red-600 dark:selection:text-red-400">
 
       {/* Top Bar with Back Link & Theme Toggle */}
       <div className="w-full max-w-md mb-6 flex items-center justify-between">
@@ -114,7 +114,7 @@ export function MissedCallDemoPage() {
           href={STRIPE_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full bg-red-600 hover:bg-red-500 active:bg-red-700 text-white font-black py-4 px-6 rounded-xl text-sm transition shadow-lg shadow-red-600/20 uppercase tracking-wide"
+          className="block w-full bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white font-black py-4 px-6 rounded-xl text-sm transition shadow-lg shadow-red-600/20 uppercase tracking-wide"
         >
           INSTALL ON YOUR WEBSITE FOR &pound;149
         </a>

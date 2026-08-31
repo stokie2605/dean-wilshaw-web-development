@@ -9,6 +9,7 @@ import { BeforeAfterSlider } from '../components/tools/BeforeAfterSlider';
 import { IntakeDeposit } from '../components/trade-tools/IntakeDeposit';
 import { WhatsAppBar } from '../components/trade-tools/WhatsAppBar';
 import { SocialProofBanner } from '../components/trade-tools/SocialProofBanner';
+import { VoiceToQuoteDemo } from '../components/tools/VoiceToQuoteDemo';
 
 const STRIPE_LINK = 'https://buy.stripe.com/28E28r8zO6r23Bw6wPaAw00';
 const WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20install%20a%20lead%20tool%20on%20my%20website.";
@@ -23,19 +24,21 @@ function renderTool(toolId: string | undefined) {
     case 'missed-call':      return <MissedCallDemo />;
     case 'area-calculator':  return <AreaCalculator />;
     case 'before-after':     return <BeforeAfterSlider />;
+    case 'voice-to-quote':   return <VoiceToQuoteDemo />;
     default:                 return <QuoteEstimator />;
   }
 }
 
 const TOOL_LABELS: Record<string, string> = {
-  'quote-calculator': 'Instant Quote Calculator',
-  'booking-form':     'Deposit & Booking Portal',
-  'deposit-portal':   'Deposit & Booking Portal',
-  'whatsapp-bar':     'Mobile WhatsApp Fast Bar',
+  'quote-calculator': 'Interactive Cost Estimator',
+  'booking-form':     '24/7 Emergency Web Triage',
+  'deposit-portal':   '24/7 Emergency Web Triage',
+  'whatsapp-bar':     'Direct Trade WhatsApp Bar',
   'trust-bar':        'Live Trust Indicators',
-  'missed-call':      'Instant Missed-Call Auto-Text',
+  'missed-call':      'Instant Missed Call Auto Text',
   'area-calculator':  'Area and Material Calculator',
   'before-after':     'Before and After Showcase',
+  'voice-to-quote':   '24/7 AI Phone to Quote Engine',
 };
 
 type Bullet = { heading: string; body: string };
@@ -55,6 +58,21 @@ const SHARED_BRAND_BULLETS: Bullet[] = [
   },
 ];
 
+const VOICE_TO_QUOTE_BULLETS: Bullet[] = [
+  {
+    heading: 'Fully calibrated to your rates:',
+    body: 'Set your custom callout fee, hourly rate, and parts markup.',
+  },
+  {
+    heading: 'Direct mobile integration:',
+    body: 'Connects to your existing mobile SIM via carrier forwarding in 2 minutes.',
+  },
+  {
+    heading: 'Zero missed revenue:',
+    body: 'Catches every caller before they ring another trade on Google.',
+  },
+];
+
 export function ToolDemoPage() {
   const { toolId } = useParams<{ toolId: string }>();
   const navigate = useNavigate();
@@ -62,6 +80,7 @@ export function ToolDemoPage() {
   const toolLabel = TOOL_LABELS[toolId || ''] || 'Lead Capture Tool';
   const isGeneric = biz === 'Local Trade Specialist';
   const [isDark, setIsDark] = useState(false);
+  const isVoiceTool = toolId === 'voice-to-quote';
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
@@ -84,8 +103,10 @@ export function ToolDemoPage() {
     }
   };
 
+  const currentBullets = isVoiceTool ? VOICE_TO_QUOTE_BULLETS : SHARED_BRAND_BULLETS;
+
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 flex flex-col items-center justify-start p-4 py-10 transition-colors duration-300 selection:bg-red-500/20 selection:text-red-600 dark:selection:text-red-400">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F17] text-slate-900 dark:text-slate-100 flex flex-col items-center justify-start p-4 py-10 transition-colors duration-300 overflow-x-hidden selection:bg-red-500/20 selection:text-red-600 dark:selection:text-red-400">
 
       {/* Top Bar with Back link & Theme Toggle */}
       <div className="w-full max-w-md mb-6 flex items-center justify-between">
@@ -110,13 +131,15 @@ export function ToolDemoPage() {
       {/* Header */}
       <div className="text-center max-w-md mb-6">
         <span className="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-500/10 border border-emerald-300 dark:border-emerald-500/30 text-emerald-800 dark:text-emerald-400 text-xs font-bold rounded-full mb-3 uppercase tracking-widest">
-          {isGeneric ? 'LIVE DEMO' : '24-Hour Preview'}
+          LIVE DEMO
         </span>
         <h1 className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
-          {toolLabel}{!isGeneric && ` for ${biz}`}
+          {toolLabel}
         </h1>
         <p className="text-xs text-slate-600 dark:text-slate-400 mt-2 leading-relaxed">
-          Try the interactive demo below. When installed on your site, every tool is fully customized to match your trade services, brand colours, and pricing:
+          {isVoiceTool 
+            ? "Try the interactive demo below. See how it intercepts missed calls and dispatches instant SMS quotes to your customers."
+            : "Try the interactive demo below. When installed on your site, every tool is fully customized to match your trade services, brand colours, and pricing."}
         </p>
       </div>
 
@@ -128,10 +151,10 @@ export function ToolDemoPage() {
       {/* Value Points */}
       <div className="bg-white dark:bg-[#131B2A] border border-slate-200 dark:border-slate-800 rounded-2xl p-5 max-w-md w-full mb-6 space-y-3 shadow-md transition-colors">
         <p className="font-bold text-sm text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">
-          Why add this to your website?
+          {isVoiceTool ? 'Why use the Voice to Quote Engine?' : 'Why add this to your website?'}
         </p>
         <div className="space-y-2 text-xs text-slate-600 dark:text-slate-300">
-          {SHARED_BRAND_BULLETS.map(({ heading, body }) => (
+          {currentBullets.map(({ heading, body }) => (
             <p key={heading}>
               <strong className="text-slate-900 dark:text-white font-bold">{heading}</strong> {body}
             </p>
@@ -142,12 +165,12 @@ export function ToolDemoPage() {
       {/* Stripe CTA */}
       <div className="w-full max-w-md text-center">
         <a
-          href={STRIPE_LINK}
+          href={isVoiceTool ? "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20install%20the%20Voice%20to%20Quote%20engine%20on%20my%20phone%20line." : STRIPE_LINK}
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full bg-red-600 hover:bg-red-500 active:bg-red-700 text-white font-black py-4 px-6 rounded-xl text-sm transition shadow-lg shadow-red-600/20 uppercase tracking-wide"
+          className="block w-full bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white font-black py-4 px-6 rounded-xl text-sm transition shadow-lg shadow-red-600/20 uppercase tracking-wide"
         >
-          Install on your website for &pound;149
+          {isVoiceTool ? 'INSTALL ON YOUR PHONE LINE (£149)' : 'Install on your website for £149'}
         </a>
         <p className="text-[11px] text-slate-500 dark:text-slate-500 mt-2">
           Secure Setup | Installed within 24h | Powered by <span className="text-slate-700 dark:text-slate-400 font-semibold">Design Systems Web</span>
@@ -159,7 +182,7 @@ export function ToolDemoPage() {
             rel="noopener noreferrer"
             className="text-xs text-slate-600 dark:text-slate-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors inline-flex items-center gap-1 font-medium"
           >
-            Prefer to chat first? <span className="underline font-semibold text-slate-900 dark:text-slate-300">Claim Setup on WhatsApp (07348 733365) →</span>
+            Prefer to chat first? <span className="underline font-semibold text-slate-900 dark:text-slate-300">Claim Setup on WhatsApp (07348 733365)</span>
           </a>
         </div>
       </div>

@@ -1,7 +1,5 @@
 import React from 'react';
 
-const AVATAR_URL = "https://lh3.googleusercontent.com/aida-public/AB6AXuA8e_CVpDqlJmvVgwq8mfsfv1MN4Xh0R1At79k3YteVYCQD7jQasQqs7QuztqDYFk_FHxuFPxS1tPjfap95ATBzdxT9JWbXfcpAEcK4BEb1jdYnHB-ljlsDzdm7QW0mY6cCAarD6uzfOgFUWCsOvkJmtlFTFj9TickLiAZuczAGbXe4hL1hwoulVe6eJ0D-hqciw0CIPXvZnTTUytNQX2u2nynEleEJWs7d31mlWssjVI7reTt7yOWkMxmw5RDiDea0U9jVUAl0Y9E";
-
 interface FooterProps {
   onOpenWhatsApp: () => void;
   onOpenQuote: () => void;
@@ -11,7 +9,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onOpenPrivacy, onOpenTerms }) => {
   return (
-    <footer className="bg-slate-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 w-full border-t border-slate-200 dark:border-zinc-800 py-10 px-4 sm:px-6 lg:px-8 mt-auto">
+    <footer className="bg-slate-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-100 w-full border-t border-slate-200 dark:border-zinc-800 pt-10 pb-28 md:pb-10 px-4 sm:px-6 lg:px-8 mt-auto transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
         {/* Left Side: Contact Info & Copyright */}
@@ -19,7 +17,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
           <div className="flex flex-col items-center md:items-start gap-1.5 text-sm text-slate-800 dark:text-zinc-300 font-medium">
             <span className="flex items-center gap-2">Phone: 07348 733365</span>
             <span className="flex items-center gap-2">Email: dean.wilshaw.web@gmail.com</span>
-            <span className="flex items-center gap-2">Based in Cheshire &amp; Stoke-on-Trent</span>
+            <span className="flex items-center gap-2">Based in Cheshire & Stoke-on-Trent</span>
           </div>
           <div className="text-xs text-slate-600 dark:text-zinc-400 text-center md:text-left font-normal mt-2">
             <p className="mb-1">Design Systems Web is a trading name of Dean Wilshaw, operating as a sole trader in Cheshire, UK.</p>
@@ -27,32 +25,21 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
           </div>
         </div>
 
-        {/* Right Side: Social & Contact Links */}
+        {/* Right Side: Direct Contact & Legal Links */}
         <div className="flex flex-wrap justify-center gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-zinc-400">
           <button
             onClick={onOpenWhatsApp}
-            className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
+            className="hover:text-red-700 dark:hover:text-red-500 font-semibold underline transition-colors text-emerald-600 dark:text-emerald-400"
           >
-            WhatsApp
+            WhatsApp Dean (07348 733365)
           </button>
 
-          <a
-            href="https://www.linkedin.com/in/dean-wilshaw-239b4b379"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={onOpenQuote}
             className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
           >
-            LinkedIn
-          </a>
-
-          <a
-            href="https://github.com/stokie2605"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
-          >
-            GitHub
-          </a>
+            Get a Quote
+          </button>
 
           <button
             onClick={onOpenPrivacy}
@@ -73,4 +60,3 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
     </footer>
   );
 };
-

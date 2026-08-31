@@ -8,11 +8,12 @@ interface HeaderProps {
   onOpenStitch?: () => void;
 }
 
-// Clean 3-Page Navigation Structure (Desktop)
+// Clean 4-Page Navigation Structure (Desktop)
 const NAV_LINKS = [
-  { label: 'Home',                 href: '/' },
-  { label: 'Lead Tools',           href: '/tools' },
-  { label: 'Web Design & Prices',  href: '/pricing' },
+  { label: 'Home',    href: '/' },
+  { label: 'Tools',   href: '/tools' },
+  { label: 'Pricing', href: '/pricing' },
+  { label: 'Demos',   href: '/demos' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
@@ -85,6 +86,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
 
           {/* Theme Toggle */}
           <button
+            type="button"
             onClick={toggleTheme}
             className="p-2 border border-slate-300 dark:border-white/[0.08] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.04] rounded-lg min-w-[36px] min-h-[36px] flex items-center justify-center transition-colors"
             title="Toggle Dark/Light Mode"

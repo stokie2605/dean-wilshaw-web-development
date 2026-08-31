@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.tsx';
 import { ToolsPage } from './pages/ToolsPage';
 import { PricingPage } from './pages/PricingPage';
+import { DemosPage } from './pages/DemosPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { AuthGate } from './components/AuthGate';
 import { AdminDashboard } from './components/AdminDashboard';
@@ -25,7 +26,9 @@ createRoot(document.getElementById('root')!).render(
         {/* Core 3-Page Architecture */}
         <Route path="/" element={<App />} />
         <Route path="/tools" element={<ToolsPage />} />
+        <Route path="/lead-tools" element={<ToolsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/demos" element={<DemosPage />} />
 
         {/* Client Mockups & Special Routes */}
         <Route path="/dunham-wealth" element={<DunhamMockup />} />

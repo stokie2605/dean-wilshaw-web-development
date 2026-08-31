@@ -592,7 +592,7 @@ Return ONLY this JSON:
               <p className="text-xl font-bold text-white">{parsedScope.performance || '100/100 Mobile Score, <0.3s LCP'}</p>
             </div>
             <div className="mt-4 flex items-center gap-2 text-xs text-amber-400 font-mono">
-              <span className="px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 rounded">Sub-second TTFB</span>
+              <span className="px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 rounded">Zero WordPress bloat</span>
               <span className="px-2 py-0.5 bg-amber-500/10 border border-amber-500/20 rounded">Zero CLS</span>
             </div>
           </div>
@@ -765,7 +765,7 @@ Analyze touch target size, font legibility on small viewports, padding, and text
       {completion && (
         <div className="bg-gradient-to-r from-red-950/40 via-slate-950 to-slate-950 border border-red-500/30 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h4 className="text-white font-bold text-base">Want me to re-engineer this layout into a 100/100 sub-second React UI?</h4>
+            <h4 className="text-white font-bold text-base">Want me to re-engineer this layout into a hand coded React &amp; Vite architecture?</h4>
             <p className="text-slate-400 text-xs mt-1">Get a custom bespoke prototype delivered in 3-5 business days.</p>
           </div>
           <button onClick={onOpenQuote}

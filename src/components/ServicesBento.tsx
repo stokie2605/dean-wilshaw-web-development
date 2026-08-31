@@ -18,13 +18,13 @@ const SERVICES: ServiceDetail[] = [
   {
     id: 'mobile-first',
     title: 'Looks Great on Mobile',
-    badge: 'Mobile Optimized',
+    badge: 'Mobile Optimised',
     icon: <Gauge className="w-6 h-6 text-slate-900 dark:text-zinc-100" />,
     bgIconName: 'smartphone',
     description: '',
     tags: ['MOBILE', 'FAST', 'EASY TO USE'],
     features: [
-      'Sub-second mobile loading speeds',
+      'Clean, lightweight mobile builds',
       'Hand-crafted React responsive layout',
       'Flawless display across iOS & Android'
     ],
@@ -40,7 +40,7 @@ const SERVICES: ServiceDetail[] = [
     description: '',
     tags: ['CALLS', 'WHATSAPP', 'QUOTES'],
     features: [
-      'Sticky tap-to-call action buttons',
+      'Sticky tap to call action buttons',
       'Instant WhatsApp lead routing',
       'Frictionless mobile quote forms'
     ],
@@ -72,8 +72,8 @@ const SERVICES: ServiceDetail[] = [
     description: '',
     tags: ['HONEST', 'LOCAL', 'NO TRAPS'],
     features: [
-      'Zero proprietary template lock-ins',
-      'Direct, 1-on-1 developer support',
+      'Zero proprietary template lock in contracts',
+      'Direct one to one developer support',
       'Optional £49/month maintenance & care'
     ],
     techStack: '',
@@ -94,7 +94,7 @@ export const ServicesBento: React.FC = () => {
             A Genuine Investment
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mb-3">
-            Honest, High-Performance Web Design.
+            Honest, High-Performance Web Design
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
           <p className="mt-4 text-slate-600 dark:text-zinc-300 max-w-2xl text-sm sm:text-base">
@@ -107,7 +107,7 @@ export const ServicesBento: React.FC = () => {
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className="bg-white dark:bg-zinc-900/60/90 border border-slate-200 dark:border-zinc-800 hover:border-red-600 dark:hover:border-red-500 rounded-2xl p-6 shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden"
+              className="bg-white dark:bg-zinc-900/80 border border-slate-200 dark:border-zinc-800 hover:border-red-600 dark:hover:border-red-500 rounded-2xl p-6 shadow-xl transition-all duration-300 group flex flex-col justify-between relative overflow-hidden"
             >
               {/* Background Icon Watermark */}
               <div className="absolute top-2 right-2 p-2 pointer-events-none">

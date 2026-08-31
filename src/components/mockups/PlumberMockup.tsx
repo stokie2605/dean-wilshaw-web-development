@@ -22,7 +22,7 @@ export const PlumberMockup = () => (
         </div>
         <h2 className="text-xl font-bold mb-1">Need a Fix Fast?</h2>
         <p className="text-[10px] text-blue-100 mb-4 max-w-[90%]">
-          Sub-second emergency call routing. I're in your area right now.
+          Engineered for pure mobile performance. We're in your area right now.
         </p>
         <button className="w-full bg-red-600 text-white font-bold py-2.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-xs hover:bg-red-500 transition-colors">
           <Phone className="w-3.5 h-3.5 animate-pulse" />

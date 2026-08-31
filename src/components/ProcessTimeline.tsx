@@ -14,7 +14,7 @@ const STEPS = [
     title: 'Bespoke UX & Conversion Path',
     icon: <Compass className="w-5 h-5 text-[#991b1b]" />,
     duration: '3 - 5 Days',
-    description: 'Crafting high-converting visual page layouts with frictionless quote forms, phone tap-to-call CTAs, and trust badges.'
+    description: 'Crafting high-converting visual page layouts with frictionless quote forms, phone tap to call CTAs, and trust badges.'
   },
   {
     step: '03',
@@ -47,7 +47,7 @@ export const ProcessTimeline: React.FC = () => {
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
           <p className="mt-4 text-[#45464d] max-w-xl text-sm sm:text-base">
-            From initial strategy call to live deployment in 1-2 weeks. No endless revisions, no missed launch dates.
+            From initial strategy call to live deployment in 1 to 2 weeks. No endless revisions, no missed launch dates.
           </p>
         </div>
 

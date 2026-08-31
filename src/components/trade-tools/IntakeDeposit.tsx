@@ -22,8 +22,8 @@ export const IntakeDeposit: React.FC = () => {
   ];
 
   const slotOptions = [
-    { id: 'Morning (08:00 - 12:00)', label: 'Morning Slot', time: '08:00 – 12:00' },
-    { id: 'Afternoon (12:00 - 16:00)', label: 'Afternoon Slot', time: '12:00 – 16:00' },
+    { id: 'Morning (08:00 - 12:00)', label: 'Morning Slot', time: '08:00 - 12:00' },
+    { id: 'Afternoon (12:00 - 16:00)', label: 'Afternoon Slot', time: '12:00 - 16:00' },
     { id: 'Flexible Next-Day', label: 'Anytime / First Available', time: 'Fastest dispatch' },
   ];
 

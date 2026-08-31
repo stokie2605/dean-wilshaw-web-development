@@ -12,13 +12,13 @@ export function EngineScopeCalculator() {
   let delivery = '1-2 Week Delivery';
 
   if (pages === 1) {
-    tierLabel = 'Single-Page Trade Site';
+    tierLabel = 'Single Page Trade Site';
     price = 299;
-    delivery = '3-5 Day Delivery';
+    delivery = '3 to 5 Day Delivery';
   } else if (pages >= 2 && pages <= 3) {
-    tierLabel = 'Multi-Page Trade Authority';
+    tierLabel = 'Multi Page Trade Authority';
     price = 449;
-    delivery = '1-2 Week Delivery';
+    delivery = '1 to 2 Week Delivery';
   } else if (pages >= 6) {
     tierLabel = 'Custom Web Platform & Portal';
     price = 'Custom Quote';
@@ -104,7 +104,7 @@ export function EngineScopeCalculator() {
                 <Zap className="w-6 h-6 text-amber-500 flex-shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-slate-500 dark:text-zinc-500 uppercase tracking-wider">Target Performance</p>
-                  <p className="font-bold text-slate-900 dark:text-zinc-100 text-lg transition-colors">Sub-Second Mobile Speeds</p>
+                  <p className="font-bold text-slate-900 dark:text-zinc-100 text-lg transition-colors">Engineered Mobile Performance</p>
                 </div>
               </div>
             </div>
