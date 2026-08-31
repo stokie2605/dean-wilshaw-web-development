@@ -49,15 +49,15 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-8 transition-opacity duration-300 animate-fadeIn"
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/80 p-3 sm:p-6 flex justify-center items-start lg:items-center transition-opacity duration-300 animate-fadeIn"
       onClick={onClose}
     >
-      {/* 12-Column Split Modal Chassis */}
+      {/* Modal Card Shell: h-auto on mobile, max-h-[90vh] with split grid on desktop (lg+) */}
       <div 
-        className="w-full max-w-7xl max-h-[92vh] h-auto lg:h-[90vh] bg-zinc-950 border border-zinc-800 rounded-2xl shadow-2xl flex flex-col overflow-hidden relative my-auto"
+        className="relative w-full max-w-6xl bg-zinc-950 border border-zinc-800 rounded-2xl my-auto lg:my-0 flex flex-col h-auto lg:max-h-[90vh] shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close Button Top Right (Absolute) */}
+        {/* Close Button Top Right */}
         <button
           type="button"
           onClick={onClose}
@@ -67,8 +67,8 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
           <X className="w-5 h-5" />
         </button>
 
-        {/* Modal Content - Scrollable on mobile/tablet, Grid split on desktop (lg) */}
-        <div className="flex-1 overflow-y-auto lg:overflow-hidden grid grid-cols-1 lg:grid-cols-12 bg-zinc-950 relative scrollbar-none">
+        {/* Modal Body Container */}
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 bg-zinc-950 overflow-y-visible lg:overflow-hidden">
           
           {/* Left Column (5 Cols on desktop) - Specs & Architecture */}
           <div className="lg:col-span-5 p-5 sm:p-6 md:p-8 border-b lg:border-b-0 lg:border-r border-zinc-800 flex flex-col justify-between lg:overflow-y-auto scrollbar-none bg-zinc-950/80">
@@ -145,7 +145,7 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
           </div>
 
           {/* Right Column (7 Cols on desktop) - Hardware Viewport & Mobile Preview */}
-          <div className="lg:col-span-7 flex flex-col relative bg-zinc-900/30 overflow-hidden p-4 sm:p-6 lg:p-4">
+          <div className="lg:col-span-7 flex flex-col relative bg-zinc-900/30 p-4 sm:p-6 lg:p-6 lg:overflow-hidden">
             
             {/* Viewport Toggles (Floating Pill - only on tablet/desktop) */}
             <div className="hidden md:inline-flex absolute top-6 left-1/2 -translate-x-1/2 z-20 items-center gap-1 bg-zinc-950/80 backdrop-blur-md p-1 rounded-full border border-white/10 shadow-xl">
@@ -175,25 +175,23 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
               </button>
             </div>
 
-            {/* Viewport Canvas Container */}
-            <div className="flex-1 w-full flex items-center justify-center md:pt-20 md:pb-6 overflow-hidden">
-              {/* On mobile screens (<md), always render the mobile frame */}
-              <div className="w-full flex items-center justify-center">
-                {activeViewport === 'mobile' || typeof window !== 'undefined' ? (
-                  /* Mobile 375px Frame */
-                  <div className={`w-[360px] sm:w-[375px] max-w-full h-[55vh] sm:h-[65vh] lg:h-[75vh] rounded-[32px] sm:rounded-[36px] border-[4px] sm:border-[5px] border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex flex-col relative antialiased transform-gpu [backface-visibility:hidden] [perspective:1000px] ${activeViewport === 'desktop' ? 'hidden md:flex' : 'flex'}`}>
-                    <img
-                      src={mobileImageSrc}
-                      alt={activeEngine.title}
-                      className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges] antialiased transform-gpu [backface-visibility:hidden]"
-                      style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
-                    />
-                  </div>
-                ) : null}
+            {/* Viewport Canvas Container: natural height on mobile, flex-1 centered on desktop */}
+            <div className="w-full flex items-center justify-center md:pt-16 md:pb-4">
+              {/* Mobile View: Natural full height mockup inside clean frame */}
+              <div className="w-full flex justify-center py-2 sm:py-4">
+                {/* On mobile (<md), always render clean phone frame. On md+, render only when activeViewport === 'mobile' */}
+                <div className={`w-full max-w-[320px] sm:max-w-[360px] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-black ${activeViewport === 'desktop' ? 'hidden md:block' : 'block'}`}>
+                  <img
+                    src={mobileImageSrc}
+                    alt={activeEngine.title}
+                    className="w-full h-auto object-top block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges]"
+                    style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
+                  />
+                </div>
 
-                {/* Desktop Spec Frame (strictly hidden on mobile, visible on md+ when selected) */}
+                {/* Desktop Spec Frame (visible on md+ when activeViewport === 'desktop') */}
                 {activeViewport === 'desktop' && (
-                  <div className="hidden md:flex w-full max-w-4xl h-[65vh] lg:h-[75vh] rounded-xl border-2 border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex-col antialiased transform-gpu [backface-visibility:hidden] [perspective:1000px]">
+                  <div className="hidden md:flex w-full max-w-4xl h-[65vh] lg:h-[72vh] rounded-xl border-2 border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex-col antialiased transform-gpu [backface-visibility:hidden] [perspective:1000px]">
                     <img
                       src={desktopImageSrc}
                       alt={activeEngine.title}
@@ -205,15 +203,15 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
               </div>
             </div>
 
-            {/* Mobile Action Button (Visible at the bottom of the modal on mobile) */}
-            <div className="block lg:hidden pt-4 pb-2">
+            {/* Mobile Action Button (Placed cleanly beneath mockup with clear spacing on mobile) */}
+            <div className="block lg:hidden pt-4 pb-2 mt-2">
               <button
                 type="button"
                 onClick={() => {
                   onClose();
                   onOpenQuote();
                 }}
-                className="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm transition-all shadow-lg shadow-red-900/20 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm transition-all shadow-lg shadow-red-900/20 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>Commission This Layout</span>
                 <ArrowRight className="w-4 h-4" />
