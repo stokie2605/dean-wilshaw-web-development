@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, ShieldCheck, X } from 'lucide-react';
 
 interface QuoteFormProps {
@@ -236,3 +236,4 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
     </div>
   );
 };
+

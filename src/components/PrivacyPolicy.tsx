@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 
 interface PrivacyProps {
@@ -113,3 +113,4 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
     </div>
   );
 };
+

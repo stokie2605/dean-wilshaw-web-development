@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Zap, CheckCircle2 } from 'lucide-react';
 import { PlumberMockup } from './mockups/PlumberMockup';
 import { RooferMockup } from './mockups/RooferMockup';
@@ -239,3 +239,4 @@ export const MobileShowcase: React.FC<MobileShowcaseProps> = ({ onOpenQuote }) =
     </section>
   );
 };
+

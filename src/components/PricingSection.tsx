@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { CheckCircle2, MessageSquare, ArrowRight, Gauge, FileText } from 'lucide-react';
 
 const AUDIT_WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20a%20%C2%A349%20website%20speed%20audit";
@@ -69,7 +69,7 @@ export const PricingSection: React.FC<PricingProps> = () => {
           </p>
         </div>
 
-        {/* Entry Audit — open strip with left accent */}
+        {/* Entry Audit  /  open strip with left accent */}
         <div className="mb-12 pl-5 border-l-2 border-emerald-500">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30 mb-3">
             <Gauge className="w-3.5 h-3.5" />
@@ -139,4 +139,5 @@ export const PricingSection: React.FC<PricingProps> = () => {
     </section>
   );
 };
+
 

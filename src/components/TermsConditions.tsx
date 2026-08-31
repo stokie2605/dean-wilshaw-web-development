@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 
 interface TermsProps {
@@ -109,3 +109,4 @@ export const TermsConditions: React.FC<TermsProps> = ({ onBack }) => {
     </div>
   );
 };
+

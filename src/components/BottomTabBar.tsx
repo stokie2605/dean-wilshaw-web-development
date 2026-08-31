@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Wrench, CreditCard, Layers } from 'lucide-react';
 
@@ -43,3 +43,4 @@ export const BottomTabBar: React.FC = () => {
     </nav>
   );
 };
+

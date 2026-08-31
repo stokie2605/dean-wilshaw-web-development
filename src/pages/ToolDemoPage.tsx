@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Sun, Moon } from 'lucide-react';
 import { useToolParams } from '../hooks/useToolParams';
@@ -190,3 +190,4 @@ export function ToolDemoPage() {
     </div>
   );
 }
+

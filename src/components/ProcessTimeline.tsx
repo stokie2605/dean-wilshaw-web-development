@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Search, Compass, Code, Flag, ArrowRight } from 'lucide-react';
 
 const STEPS = [
@@ -94,4 +94,5 @@ export const ProcessTimeline: React.FC = () => {
     </section>
   );
 };
+
 

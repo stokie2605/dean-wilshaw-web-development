@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+﻿import React, { useState, useCallback, useRef } from 'react';
 
 /* -------------------------------------------------------------------------- */
 /* useGroqStream - plain fetch() + ReadableStream, zero SDK dependency        */
@@ -605,7 +605,7 @@ Return ONLY this JSON:
               <ul className="space-y-2 text-sm text-slate-300">
                 {(parsedScope.features || ['Custom optimised gallery preloading','Zero-bundle bloat architecture','Instant mobile CTA & WhatsApp routing']).map((feat, idx) => (
                   <li key={idx} className="flex items-start gap-2">
-                    <span className="text-red-500 font-bold">•</span><span>{feat}</span>
+                    <span className="text-red-500 font-bold"> / </span><span>{feat}</span>
                   </li>
                 ))}
               </ul>
@@ -777,3 +777,4 @@ Analyze touch target size, font legibility on small viewports, padding, and text
     </div>
   );
 };
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useToolParams, getWhatsAppUrl } from '../../hooks/useToolParams';
 
@@ -77,3 +77,4 @@ export function BeforeAfterSlider() {
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Calculator, ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const VisualEstimate: React.FC = () => {
@@ -89,3 +89,4 @@ export const VisualEstimate: React.FC = () => {
     </div>
   );
 };
+

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+﻿import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { BottomTabBar } from './components/BottomTabBar';
@@ -238,3 +238,4 @@ export default function App() {
     </div>
   );
 }
+

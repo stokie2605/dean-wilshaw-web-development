@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ShieldCheck, MapPin, Award, CheckCircle2, Flame, Zap, Home } from 'lucide-react';
 
@@ -141,3 +141,4 @@ export const SocialProofBanner: React.FC = () => {
     </div>
   );
 };
+

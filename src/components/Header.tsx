@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Sun, Moon } from 'lucide-react';
 
@@ -115,3 +115,4 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
     </header>
   );
 };
+

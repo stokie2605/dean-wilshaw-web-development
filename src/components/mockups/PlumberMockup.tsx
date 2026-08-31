@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Phone, Droplet, Clock, Home, Wrench, Calendar, User } from 'lucide-react';
 
 export const PlumberMockup = () => (
@@ -66,3 +66,4 @@ export const PlumberMockup = () => (
     </div>
   </div>
 );
+

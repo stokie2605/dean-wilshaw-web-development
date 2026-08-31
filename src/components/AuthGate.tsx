@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
 export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -50,7 +50,7 @@ export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) 
             value={pin}
             onChange={(e) => setPin(e.target.value)}
             className={`w-full bg-[#191c1e] border ${error ? 'border-red-500' : 'border-white/10'} rounded-xl px-4 py-3 text-center text-2xl tracking-[0.5em] focus:outline-none focus:border-emerald-400 transition-colors`}
-            placeholder="••••••"
+            placeholder=" /  /  /  /  /  / "
             autoFocus
           />
           {error && <span className="text-red-400 text-xs font-semibold">Incorrect Passcode. Try again.</span>}
@@ -73,3 +73,4 @@ export const AuthGate: React.FC<{ children: React.ReactNode }> = ({ children }) 
     </div>
   );
 };
+

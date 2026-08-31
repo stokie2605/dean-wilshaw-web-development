@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Leaf, Map, Grid, Scissors, Calendar, Menu, Search, User } from 'lucide-react';
 
 export const LandscaperMockup = () => (
@@ -65,3 +65,4 @@ export const LandscaperMockup = () => (
     </div>
   </div>
 );
+

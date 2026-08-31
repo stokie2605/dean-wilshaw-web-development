@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Phone, Shield, MapPin } from 'lucide-react';
 
 export const VanguardMockup = () => (
@@ -46,3 +46,4 @@ export const VanguardMockup = () => (
     </div>
   </div>
 );
+

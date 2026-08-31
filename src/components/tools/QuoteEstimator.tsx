@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToolParams, getWhatsAppUrl } from '../../hooks/useToolParams';
 import { Sparkles, MessageSquare, Sliders } from 'lucide-react';
@@ -159,3 +159,4 @@ export function QuoteEstimator() {
     </div>
   );
 }
+

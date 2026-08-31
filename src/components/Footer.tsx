@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface FooterProps {
   onOpenWhatsApp: () => void;
@@ -60,3 +60,4 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
     </footer>
   );
 };
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Gauge, TrendingUp, Search, Layers, ArrowUpRight, Check, X } from 'lucide-react';
 
 interface ServiceDetail {
@@ -159,4 +159,5 @@ export const ServicesBento: React.FC = () => {
     </section>
   );
 };
+
 

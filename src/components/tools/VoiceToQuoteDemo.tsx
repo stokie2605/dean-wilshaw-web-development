@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { PhoneIncoming, Sparkles, Send, Zap, RotateCcw, Activity, MessageSquare } from 'lucide-react';
 
 export const VoiceToQuoteDemo: React.FC = () => {
@@ -180,7 +180,7 @@ export const VoiceToQuoteDemo: React.FC = () => {
                         Voicemail Transcribed
                       </span>
                       <span className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/50 px-1.5 py-0.5 rounded text-[10px]">
-                        Audio: 1.8s • 99% Acc
+                        Audio: 1.8s  /  99% Acc
                       </span>
                     </div>
                     <p className="text-zinc-800 dark:text-zinc-200 text-[11px] font-mono italic">
@@ -223,7 +223,7 @@ export const VoiceToQuoteDemo: React.FC = () => {
                     </div>
                     <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 rounded-lg p-2">
                       <div className="text-[10px] font-mono text-emerald-800 dark:text-emerald-400 uppercase font-semibold">Calculated Bracket</div>
-                      <div className="text-xs font-black text-emerald-700 dark:text-emerald-400">£95.00 – £145.00 <span className="text-[10px] font-normal text-emerald-700 dark:text-emerald-500">+ VAT</span></div>
+                      <div className="text-xs font-black text-emerald-700 dark:text-emerald-400">£95.00  /  £145.00 <span className="text-[10px] font-normal text-emerald-700 dark:text-emerald-500">+ VAT</span></div>
                     </div>
                   </div>
                 </div>
@@ -283,3 +283,4 @@ export const VoiceToQuoteDemo: React.FC = () => {
     </div>
   );
 };
+

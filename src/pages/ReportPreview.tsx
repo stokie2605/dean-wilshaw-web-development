@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Clock, Zap, Smartphone, ArrowRight } from 'lucide-react';
 
@@ -127,3 +127,4 @@ export function ReportPreview() {
     </div>
   );
 }
+

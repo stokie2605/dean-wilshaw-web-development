@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+﻿import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, Sparkles, MessageSquare, Minimize2, ChevronUp } from 'lucide-react';
 import { ChatMessage } from '../types';
 
@@ -243,4 +243,5 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
   </div>
   );
 };
+
 

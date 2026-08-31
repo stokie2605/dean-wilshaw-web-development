@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { WhatsAppBar } from './trade-tools/WhatsAppBar';
 import { SocialProofBanner } from './trade-tools/SocialProofBanner';
@@ -285,3 +285,4 @@ export const InteractiveDemosSection: React.FC = () => {
     </section>
   );
 };
+

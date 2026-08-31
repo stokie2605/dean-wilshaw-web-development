@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { ArrowRight, Shield, Landmark, LineChart, Briefcase, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -174,3 +174,4 @@ export const DunhamMockup: React.FC = () => {
     </div>
   );
 };
+

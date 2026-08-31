@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { ChevronRight, Building2, Shield, Users, BarChart3 } from 'lucide-react';
 
@@ -113,3 +113,4 @@ export const CommercialPreview = () => {
     </div>
   );
 };
+

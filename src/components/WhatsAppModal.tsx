@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { X, Send, MessageSquare, Phone, CheckCircle2 } from 'lucide-react';
 
 interface WhatsAppModalProps {
@@ -125,4 +125,5 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
     </div>
   );
 };
+
 

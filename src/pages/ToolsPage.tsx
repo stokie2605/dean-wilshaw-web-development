@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+﻿import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { Header } from '../components/Header';
@@ -157,7 +157,7 @@ export const ToolsPage: React.FC = () => {
           {/* OPEN ARCHITECTURAL SHOWCASE STAGE (4-TOOL INTERACTIVE SUITE) */}
           <div className="mb-20">
 
-            {/* Open stage — no card border or shadow */}
+            {/* Open stage  /  no card border or shadow */}
             <div className="relative w-full max-w-4xl mx-auto flex flex-col gap-6">
 
               {/* Subtle Border Beam accent line (keep for visual interest) */}
@@ -264,7 +264,7 @@ export const ToolsPage: React.FC = () => {
                     ))}
                   </div>
                   <span className="font-semibold text-slate-700 dark:text-zinc-300">Tool {activeToolIndex + 1} of {STAGE_TOOLS.length}</span>
-                  <span className="hidden md:inline text-slate-400 dark:text-zinc-600">• Use [←] [→] arrow keys or swipe</span>
+                  <span className="hidden md:inline text-slate-400 dark:text-zinc-600"> /  Use [←] [→] arrow keys or swipe</span>
                 </div>
 
                 <button
@@ -364,3 +364,4 @@ export const ToolsPage: React.FC = () => {
     </div>
   );
 };
+

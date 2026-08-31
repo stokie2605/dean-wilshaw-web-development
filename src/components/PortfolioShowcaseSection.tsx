@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+﻿import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, Play, Maximize2 } from 'lucide-react';
 
 const MagneticCard = ({ children, className = '', onClick }: { children: React.ReactNode, className?: string, onClick?: () => void }) => {
@@ -237,3 +237,4 @@ export const PortfolioShowcaseSection: React.FC<PortfolioProps> = ({ onOpenQuote
     </section>
   );
 };
+

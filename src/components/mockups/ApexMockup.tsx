@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Box, Lock, Activity, Users } from 'lucide-react';
 
 export const ApexMockup = () => (
@@ -58,3 +58,4 @@ export const ApexMockup = () => (
     </div>
   </div>
 );
+

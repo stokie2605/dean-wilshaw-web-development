@@ -1,4 +1,4 @@
-export interface ChatMessage {
+﻿export interface ChatMessage {
   id: string;
   sender: 'user' | 'stitch';
   text: string;
@@ -41,4 +41,5 @@ export interface BenchmarkData {
   };
   estimatedConversionGain: string;
 }
+
 

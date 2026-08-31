@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+﻿import React, { useEffect } from 'react';
 import { X, Smartphone, Monitor, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 
 export type EngineArchetype = {
@@ -203,3 +203,4 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
     </div>
   );
 };
+

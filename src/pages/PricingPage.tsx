@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { BottomTabBar } from '../components/BottomTabBar';
@@ -172,7 +172,7 @@ export const PricingPage: React.FC = () => {
                     £49
                   </div>
                   <div className="text-xs text-slate-500 dark:text-zinc-400 font-mono">
-                    One-off payment • Zero obligation
+                    One-off payment  /  Zero obligation
                   </div>
                 </div>
 
@@ -347,3 +347,4 @@ export const PricingPage: React.FC = () => {
     </div>
   );
 };
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { VoiceToQuoteDemo } from './tools/VoiceToQuoteDemo';
 import { Spotlight } from './ui/Spotlight';
@@ -83,3 +83,4 @@ export const HeroSection: React.FC = () => {
     </section>
   );
 };
+

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { MessageSquare, Phone, Camera, Send, Sparkles } from 'lucide-react';
 
@@ -50,7 +50,7 @@ export const WhatsAppBar: React.FC<WhatsAppBarProps> = ({
             </div>
             <div className="text-left">
               <div className="text-xs font-bold font-mono tracking-tight leading-tight">
-                Dean • Direct Line
+                Dean  /  Direct Line
               </div>
               <div className="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
@@ -111,3 +111,4 @@ export const WhatsAppBar: React.FC<WhatsAppBarProps> = ({
     </div>
   );
 };
+

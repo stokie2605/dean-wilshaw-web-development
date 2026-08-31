@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Zap, Clock, CheckCircle2, ArrowRight } from 'lucide-react';
 
 export function EngineScopeCalculator() {
@@ -144,3 +144,4 @@ export function EngineScopeCalculator() {
     </section>
   );
 }
+

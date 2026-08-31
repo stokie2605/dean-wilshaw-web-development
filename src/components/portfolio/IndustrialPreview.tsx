@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Settings, ShieldCheck, Factory } from 'lucide-react';
 
@@ -113,3 +113,4 @@ export const IndustrialPreview = () => {
     </div>
   );
 };
+

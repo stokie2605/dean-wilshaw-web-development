@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+﻿import { useSearchParams } from 'react-router-dom';
 
 export interface ToolParams {
   phone: string;
@@ -40,3 +40,4 @@ export function useToolParams(): ToolParams {
     accentColor: params.get('color') || '#10b981',
   };
 }
+

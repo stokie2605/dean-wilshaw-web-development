@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Calendar, Map, Leaf } from 'lucide-react';
 
 export const KilnMockup = () => (
@@ -54,3 +54,4 @@ export const KilnMockup = () => (
     </div>
   </div>
 );
+

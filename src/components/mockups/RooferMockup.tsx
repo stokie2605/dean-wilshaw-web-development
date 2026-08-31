@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Hammer, Image as ImageIcon, Shield, Home, Camera, CheckSquare, Phone } from 'lucide-react';
 
 export const RooferMockup = () => (
@@ -67,3 +67,4 @@ export const RooferMockup = () => (
     </div>
   </div>
 );
+

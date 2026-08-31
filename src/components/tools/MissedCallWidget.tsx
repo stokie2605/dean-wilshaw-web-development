@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useToolParams, getWhatsAppUrl } from '../../hooks/useToolParams';
 
 const QUICK_OPTIONS = ['Emergency Repair / Callout', 'Ballpark Quote Request', 'Book an Inspection'];
@@ -55,3 +55,4 @@ export function MissedCallWidget() {
     </div>
   );
 }
+

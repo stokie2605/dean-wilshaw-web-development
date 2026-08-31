@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useToolParams, getWhatsAppUrl } from '../../hooks/useToolParams';
 
 export function AreaCalculator() {
@@ -94,3 +94,4 @@ export function AreaCalculator() {
     </div>
   );
 }
+

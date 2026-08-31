@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CreditCard, CheckCircle2, Clock, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 
@@ -250,3 +250,4 @@ export const IntakeDeposit: React.FC = () => {
     </div>
   );
 };
+
