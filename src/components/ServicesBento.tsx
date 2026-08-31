@@ -94,7 +94,7 @@ export const ServicesBento: React.FC = () => {
             A Genuine Investment
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mb-3">
-            Honest, High-Performance Web Design
+            Honest, Hand Coded Build Web Design
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
           <p className="mt-4 text-slate-600 dark:text-zinc-300 max-w-2xl text-sm sm:text-base">

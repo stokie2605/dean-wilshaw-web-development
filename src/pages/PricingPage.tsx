@@ -44,11 +44,11 @@ const PRICING_TIERS: PricingTier[] = [
     badge: 'Fast Integration',
     badgeColor: 'bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800',
     bullets: [
-      { full: 'Interactive Quote Calculators & Dynamic Sliders', short: '' },
+      { full: 'Interactive Quote Calculators & visual pricing sliders', short: '' },
       { full: '24 hour Web Triage & Emergency Intake Forms', short: '' },
       { full: '24 hour AI Voice to Quote & Missed Call Engine', short: '' },
       { full: 'Plugs into existing Wix, WordPress, Squarespace, or mobile SIM', short: '' },
-      { full: 'Zero ongoing subscriptions on web widgets', short: '' },
+      { full: 'Zero ongoing subscriptions on tools', short: '' },
     ],
     ctaText: 'Select a Tool (From £149)',
     isQuoteTrigger: true,
@@ -67,7 +67,7 @@ const PRICING_TIERS: PricingTier[] = [
       { full: 'Includes 1 integrated trade tool of your choice', short: '' },
       { full: 'Complete service breakdown, customer reviews & local SEO setup', short: '' },
       { full: 'Tap to call mobile bar & trust badges', short: '' },
-      { full: 'Optional £49/mo managed site care retainer (hosting, SSL, maintenance)', short: '' },
+      { full: 'Optional £49 per month managed site care retainer (hosting, SSL, maintenance)', short: '' },
     ],
     ctaText: 'Build My Landing Page (£299)',
     isQuoteTrigger: true,
@@ -77,15 +77,15 @@ const PRICING_TIERS: PricingTier[] = [
     title: 'Custom & Mixed Infrastructure',
     subtitle: 'Bespoke portals and turnkey multi tool infrastructure.',
     pricingNote: 'From £449',
-    pricingSubtext: 'Bespoke Architecture',
+    pricingSubtext: 'Built to your specification',
     badge: 'Custom Solutions',
     badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50',
     isHighTech: true,
     bullets: [
-      { full: 'Turnkey Bundles (Full Landing Page + 24 hour Voice to Quote Engine)', short: '' },
-      { full: 'Multi-tool integrations (Calculators + Triage + Telephony)', short: '' },
-      { full: 'Bespoke multi page commercial portals & tender showcases', short: '' },
-      { full: 'Live booking systems, payment flows, and CRM integrations on request', short: '' },
+      { full: 'Complete packages (Full Landing Page + 24 hour Voice to Quote Engine)', short: '' },
+      { full: 'Multi tool integrations (Calculators + Triage + Telephony)', short: '' },
+      { full: 'Bespoke custom commercial portals & tender showcases', short: '' },
+      { full: 'Live booking systems and payment setups on request', short: '' },
     ],
     ctaText: 'Discuss a Custom Mix',
     isQuoteTrigger: false,
@@ -119,7 +119,7 @@ export const PricingPage: React.FC = () => {
               className="w-full sm:w-auto shrink-0 bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-slate-800 dark:hover:bg-slate-200 font-bold py-3 px-6 rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
             >
               <Zap className="w-4 h-4 text-[#D90429]" />
-              View Our Performance Prototypes &rarr;
+              View Our Layout Showcases &rarr;
             </Link>
           </div>
 
@@ -131,7 +131,7 @@ export const PricingPage: React.FC = () => {
               <div className="space-y-4 max-w-2xl text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
                   <Gauge className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
-                  Low-Risk Entry Offer
+                  Low Risk Entry Offer
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
@@ -139,13 +139,13 @@ export const PricingPage: React.FC = () => {
                 </h2>
 
                 <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
-                  Wondering why your current site isn't generating calls? I will audit your live mobile speeds, analyse friction points, and deliver a personalised 3-minute video breakdown with 3 actionable fixes within 24 hours.
+                  Wondering why your current site isn't generating calls? I will audit your live mobile speeds, find the problems stopping customers from calling, and deliver a personalised short video walkthrough with 3 actionable fixes within 24 hours.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs font-medium text-slate-700 dark:text-zinc-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Real mobile speed benchmarks</span>
+                    <span>Honest mobile speed review</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
@@ -166,13 +166,13 @@ export const PricingPage: React.FC = () => {
               <div className="bg-slate-50 dark:bg-black/60 border border-slate-200 dark:border-emerald-500/30 rounded-xl p-6 sm:p-8 text-center flex flex-col items-center justify-between min-w-[280px] sm:min-w-[320px] shadow-lg shrink-0">
                 <div className="space-y-1 mb-4">
                   <div className="text-xs font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-mono">
-                    24h Turnaround
+                    24 Hour Turnaround
                   </div>
                   <div className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">
                     £49
                   </div>
                   <div className="text-xs text-slate-500 dark:text-zinc-400 font-mono">
-                    One-off payment  /  Zero obligation
+                    One off payment  /  Zero obligation
                   </div>
                 </div>
 
@@ -200,7 +200,7 @@ export const PricingPage: React.FC = () => {
                 Simple, Honest Trade Pricing
               </h2>
               <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400">
-                No hidden fees, no agency markups, and zero vendor lock-in contracts. You own 100% of your source code outright.
+                No hidden fees, no agency markups, and zero platform contracts contracts. You own 100% of your source code outright.
               </p>
             </div>
 

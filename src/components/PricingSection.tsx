@@ -10,11 +10,11 @@ const PRICING_TIERS = [
     subtitle: 'Ready to install Interactive Widgets',
     pricingNote: 'From £149',
     bullets: [
-      { full: 'Interactive Quote Calculators & Dynamic Sliders', short: 'Quote Calculators & Sliders' },
+      { full: 'Interactive Quote Calculators & visual pricing sliders', short: 'Quote Calculators & Sliders' },
       { full: '24 hour Web Triage & Emergency Intake Forms', short: '24 hour Triage Forms' },
       { full: '24 hour AI Voice to Quote & Missed Call Engine', short: 'AI Voice to Quote Engine' },
       { full: 'Plugs into existing Wix, WordPress, Squarespace, or mobile SIM', short: 'Plugs into existing sites' },
-      { full: 'Zero ongoing subscriptions on web widgets', short: 'Zero subscriptions' },
+      { full: 'Zero ongoing subscriptions on tools', short: 'Zero subscriptions' },
     ],
   },
   {
@@ -28,7 +28,7 @@ const PRICING_TIERS = [
       { full: 'Includes 1 integrated trade tool of your choice', short: 'Includes 1 trade tool' },
       { full: 'Complete service breakdown, customer reviews & local SEO setup', short: 'Services, reviews & SEO schema' },
       { full: 'Tap to call mobile bar & trust badges', short: 'Tap to call & trust badges' },
-      { full: 'Optional £49/mo managed site care retainer (hosting, SSL, maintenance)', short: 'Optional £49/mo site care' },
+      { full: 'Optional £49 per month managed site care retainer (hosting, SSL, maintenance)', short: 'Optional £49/mo site care' },
     ],
   },
   {
@@ -37,10 +37,10 @@ const PRICING_TIERS = [
     subtitle: 'Multi-Van & Commercial',
     pricingNote: 'From £449',
     bullets: [
-      { full: 'Turnkey Bundles (Full Landing Page + 24 hour Voice to Quote Engine)', short: 'Turnkey Bundles' },
-      { full: 'Multi-tool integrations (Calculators + Triage + Telephony)', short: 'Multi-tool integrations' },
-      { full: 'Bespoke multi page commercial portals & tender showcases', short: 'Bespoke commercial portals' },
-      { full: 'Live booking systems, payment flows, and CRM integrations on request', short: 'CRM & Payment flows' },
+      { full: 'Complete packages (Full Landing Page + 24 hour Voice to Quote Engine)', short: 'Complete packages' },
+      { full: 'Multi tool integrations (Calculators + Triage + Telephony)', short: 'Multi tool integrations' },
+      { full: 'Bespoke custom commercial portals & tender showcases', short: 'Bespoke commercial portals' },
+      { full: 'Live booking systems and payment setups on request', short: 'CRM & Payment flows' },
     ],
   },
 ];

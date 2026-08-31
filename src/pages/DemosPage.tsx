@@ -166,13 +166,13 @@ export const DemosPage: React.FC = () => {
           {/* Header Section */}
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center justify-center px-3 py-1 mb-3 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
-              Live Architecture Showcase
+              Live Layout Showcase
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight text-slate-900 dark:text-white">
-              Six Proven Trade Layout Archetypes
+              Six Proven Trade Website Layouts
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
-              Hand coded website architectures built for high conversion, instant loading speeds, and no template bloat across UK trades and contractors.
+              Hand coded websites built for high conversion, instant loading speeds, and no template bloat across UK trades and contractors.
             </p>
           </div>
 
@@ -197,7 +197,7 @@ export const DemosPage: React.FC = () => {
                           <span className="w-2 h-2 rounded-full bg-emerald-400/80" />
                         </div>
                         <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-400 truncate">
-                          {'engine 0' + engine.id}.trade
+                          {`engine-${engine.id}`}.trade
                         </span>
                       </div>
                       <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 font-semibold">
@@ -283,7 +283,7 @@ export const DemosPage: React.FC = () => {
               Want a custom combination of these engines?
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-              Every system is modular. We can combine tap to call bars, instant quote estimators, and 24 7 missed call text interceptors into your existing website.
+              Every system is modular. We can combine call buttons, instant quote estimators, and 24 hour missed call text alerts into your existing website.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
@@ -291,7 +291,7 @@ export const DemosPage: React.FC = () => {
                 onClick={() => setQuoteModalOpen(true)}
                 className="w-full sm:w-auto px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs sm:text-sm transition-all shadow-md active:scale-95 cursor-pointer"
               >
-                Request Custom Architecture &rarr;
+                Request a Custom Layout &rarr;
               </button>
               <button
                 type="button"

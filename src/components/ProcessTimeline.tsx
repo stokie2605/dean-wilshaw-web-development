@@ -4,30 +4,30 @@ import { Search, Compass, Code, Flag, ArrowRight } from 'lucide-react';
 const STEPS = [
   {
     step: '01',
-    title: 'Discovery & Local Strategy',
+    title: 'Initial Consultation',
     icon: <Search className="w-5 h-5 text-[#991b1b]" />,
-    duration: '1 - 2 Days',
+    duration: '1 to 2 Days',
     description: 'I review your target market across Cheshire, Stoke on Trent, or nationwide. I map out your key services, ideal lead profiles, and competitor gaps.'
   },
   {
     step: '02',
-    title: 'Bespoke UX & Conversion Path',
+    title: 'Custom Design & Page Layout',
     icon: <Compass className="w-5 h-5 text-[#991b1b]" />,
-    duration: '3 - 5 Days',
-    description: 'Crafting high-converting visual page layouts with frictionless quote forms, phone tap to call CTAs, and trust badges.'
+    duration: '3 to 5 Days',
+    description: 'Building clear page layouts with simple quote forms, phone call buttons, and trust badges.'
   },
   {
     step: '03',
     title: 'Hand Coded Build',
     icon: <Code className="w-5 h-5 text-[#991b1b]" />,
-    duration: '7 - 10 Days',
+    duration: '7 to 10 Days',
     description: 'Writing clean, ultralight custom code with instant loading, no heavy plugins, and fully optimised for Google searches.'
   },
   {
     step: '04',
-    title: 'SEO Audit & Live Handoff',
+    title: 'SEO Setup & Go Live',
     icon: <Flag className="w-5 h-5 text-[#991b1b]" />,
-    duration: '1 - 2 Days',
+    duration: '1 to 2 Days',
     description: 'Final speed tests, Google Search Console indexing, domain configuration, and testing lead notifications.'
   }
 ];
@@ -40,10 +40,10 @@ export const ProcessTimeline: React.FC = () => {
         {/* Header */}
         <div className="text-center mb-12 flex flex-col items-center">
           <span className="text-xs font-mono uppercase tracking-widest text-[#991b1b] font-semibold mb-2 bg-red-50 px-3 py-1 rounded-full border border-red-100">
-            Predictable Execution
+            Clear Process
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-[#191c1e] mb-3">
-            The 4 Step Engineering Roadmap
+            The 4 Step Build Process
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
           <p className="mt-4 text-[#45464d] max-w-xl text-sm sm:text-base">
