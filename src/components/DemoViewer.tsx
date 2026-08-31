@@ -42,8 +42,23 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
 
   if (!activeEngine) return null;
 
-  const mobileImageSrc = `/mockups/engine-${activeEngine.id}-mobile.png`;
-  const desktopImageSrc = `/mockups/engine-${activeEngine.id}-preview.png`;
+  const normalizedId = activeEngine.id.padStart(2, '0');
+  const mobileImageSrc = `/mockups/engine-${normalizedId}-mobile.png`;
+  const desktopImageSrc = `/mockups/engine-${normalizedId}-preview.png`;
+
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, type: 'mobile' | 'preview') => {
+    const target = e.currentTarget;
+    const currentSrc = target.src;
+    console.warn(`[DemoViewer] Image failed to load: ${currentSrc}`);
+    
+    // Primary fallback: try /images/ folder instead of /mockups/
+    if (currentSrc.includes('/mockups/')) {
+      target.src = `/images/engine-${normalizedId}-${type}.png`;
+    } else if (currentSrc.includes('/images/')) {
+      // Secondary fallback: unpadded ID or preview fallback
+      target.src = `/mockups/${normalizedId}-${type}.png`;
+    }
+  };
 
   return (
     <div
@@ -184,6 +199,7 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                   <img
                     src={mobileImageSrc}
                     alt={activeEngine.title}
+                    onError={(e) => handleImageError(e, 'mobile')}
                     className="w-full h-auto object-top block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges]"
                     style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                   />
@@ -195,6 +211,7 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                     <img
                       src={desktopImageSrc}
                       alt={activeEngine.title}
+                      onError={(e) => handleImageError(e, 'preview')}
                       className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges] antialiased transform-gpu [backface-visibility:hidden]"
                       style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                     />
