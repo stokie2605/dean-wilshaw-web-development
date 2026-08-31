@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { BottomTabBar } from '../components/BottomTabBar';
@@ -169,7 +169,7 @@ export const DemosPage: React.FC = () => {
               Live Layout Showcase
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-3 tracking-tight text-slate-900 dark:text-white">
-              Six Proven Trade Website Layouts
+              Six Trade Concepts
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
               Hand coded websites built for high conversion, instant loading speeds, and no template bloat across UK trades and contractors.
