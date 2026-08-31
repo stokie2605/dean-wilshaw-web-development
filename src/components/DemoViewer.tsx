@@ -25,6 +25,21 @@ interface DemoViewerProps {
   onOpenQuote: () => void;
 }
 
+const MOCKUP_IMAGES: Record<string, { mobile: string; desktop: string }> = {
+  "1": { mobile: "/mockups/engine-01-mobile.png", desktop: "/mockups/engine-01-preview.png" },
+  "01": { mobile: "/mockups/engine-01-mobile.png", desktop: "/mockups/engine-01-preview.png" },
+  "2": { mobile: "/mockups/engine-02-mobile.png", desktop: "/mockups/engine-02-preview.png" },
+  "02": { mobile: "/mockups/engine-02-mobile.png", desktop: "/mockups/engine-02-preview.png" },
+  "3": { mobile: "/mockups/engine-03-mobile.png", desktop: "/mockups/engine-03-preview.png" },
+  "03": { mobile: "/mockups/engine-03-mobile.png", desktop: "/mockups/engine-03-preview.png" },
+  "4": { mobile: "/mockups/engine-04-mobile.png", desktop: "/mockups/engine-04-preview.png" },
+  "04": { mobile: "/mockups/engine-04-mobile.png", desktop: "/mockups/engine-04-preview.png" },
+  "5": { mobile: "/mockups/engine-05-mobile.png", desktop: "/mockups/engine-05-preview.png" },
+  "05": { mobile: "/mockups/engine-05-mobile.png", desktop: "/mockups/engine-05-preview.png" },
+  "6": { mobile: "/mockups/engine-06-mobile.png", desktop: "/mockups/engine-06-preview.png" },
+  "06": { mobile: "/mockups/engine-06-mobile.png", desktop: "/mockups/engine-06-preview.png" },
+};
+
 export const DemoViewer: React.FC<DemoViewerProps> = ({
   activeEngine,
   activeViewport,
@@ -42,21 +57,15 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
 
   if (!activeEngine) return null;
 
-  const normalizedId = activeEngine.id.padStart(2, '0');
-  const mobileImageSrc = `/mockups/engine-${normalizedId}-mobile.png`;
-  const desktopImageSrc = `/mockups/engine-${normalizedId}-preview.png`;
+  const imagePaths = MOCKUP_IMAGES[String(activeEngine.id)] || {
+    mobile: '/mockups/engine-01-mobile.png',
+    desktop: '/mockups/engine-01-preview.png'
+  };
 
-  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, type: 'mobile' | 'preview') => {
+  const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>, fallbackUrl: string) => {
     const target = e.currentTarget;
-    const currentSrc = target.src;
-    console.warn(`[DemoViewer] Image failed to load: ${currentSrc}`);
-    
-    // Primary fallback: try /images/ folder instead of /mockups/
-    if (currentSrc.includes('/mockups/')) {
-      target.src = `/images/engine-${normalizedId}-${type}.png`;
-    } else if (currentSrc.includes('/images/')) {
-      // Secondary fallback: unpadded ID or preview fallback
-      target.src = `/mockups/${normalizedId}-${type}.png`;
+    if (target.src !== fallbackUrl) {
+      target.src = fallbackUrl;
     }
   };
 
@@ -197,9 +206,9 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                 {/* On mobile (<md), always render clean phone frame. On md+, render only when activeViewport === 'mobile' */}
                 <div className={`w-full max-w-[320px] sm:max-w-[360px] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-black ${activeViewport === 'desktop' ? 'hidden md:block' : 'block'}`}>
                   <img
-                    src={mobileImageSrc}
+                    src={imagePaths.mobile}
                     alt={activeEngine.title}
-                    onError={(e) => handleImageError(e, 'mobile')}
+                    onError={(e) => handleImageError(e, `/images/engine-${String(activeEngine.id).padStart(2, '0')}-mobile.png`)}
                     className="w-full h-auto object-top block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges]"
                     style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                   />
@@ -209,9 +218,9 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                 {activeViewport === 'desktop' && (
                   <div className="hidden md:flex w-full max-w-4xl h-[65vh] lg:h-[72vh] rounded-xl border-2 border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex-col antialiased transform-gpu [backface-visibility:hidden] [perspective:1000px]">
                     <img
-                      src={desktopImageSrc}
+                      src={imagePaths.desktop}
                       alt={activeEngine.title}
-                      onError={(e) => handleImageError(e, 'preview')}
+                      onError={(e) => handleImageError(e, `/images/engine-${String(activeEngine.id).padStart(2, '0')}-preview.png`)}
                       className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges] antialiased transform-gpu [backface-visibility:hidden]"
                       style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                     />
