@@ -38,7 +38,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            I build fast, hand coded websites, interactive quote calculators, and 24/7 missed call quoting engines. Zero agency middle management, zero monthly lock-ins, and 100% code ownership.
+            I build fast, hand coded websites, interactive quote calculators, and 24 hour missed call quoting engines. Zero agency middle management, zero monthly lock-ins, and 100% code ownership.
           </p>
 
           {/* Call to Actions */}

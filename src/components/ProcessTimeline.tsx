@@ -7,7 +7,7 @@ const STEPS = [
     title: 'Discovery & Local Strategy',
     icon: <Search className="w-5 h-5 text-[#991b1b]" />,
     duration: '1 - 2 Days',
-    description: 'I review your target market across Cheshire, Stoke-on-Trent, or nationwide. I map out your key services, ideal lead profiles, and competitor gaps.'
+    description: 'I review your target market across Cheshire, Stoke on Trent, or nationwide. I map out your key services, ideal lead profiles, and competitor gaps.'
   },
   {
     step: '02',
@@ -18,17 +18,17 @@ const STEPS = [
   },
   {
     step: '03',
-    title: 'High-Performance React Build',
+    title: 'Hand Coded Build',
     icon: <Code className="w-5 h-5 text-[#991b1b]" />,
     duration: '7 - 10 Days',
-    description: 'Writing clean, ultralight React 19 + Vite code with 100/100 Lighthouse performance, zero plugin bloat, and full Schema JSON-LD markup.'
+    description: 'Writing clean, ultralight custom code with instant loading, no heavy plugins, and fully optimised for Google searches.'
   },
   {
     step: '04',
     title: 'SEO Audit & Live Handoff',
     icon: <Flag className="w-5 h-5 text-[#991b1b]" />,
     duration: '1 - 2 Days',
-    description: 'Final Core Web Vitals speed tests, Google Search Console indexing, domain configuration, and testing lead notifications.'
+    description: 'Final speed tests, Google Search Console indexing, domain configuration, and testing lead notifications.'
   }
 ];
 
@@ -43,7 +43,7 @@ export const ProcessTimeline: React.FC = () => {
             Predictable Execution
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-[#191c1e] mb-3">
-            The 4-Step Engineering Roadmap
+            The 4 Step Engineering Roadmap
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
           <p className="mt-4 text-[#45464d] max-w-xl text-sm sm:text-base">

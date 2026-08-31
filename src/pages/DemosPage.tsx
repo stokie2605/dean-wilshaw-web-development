@@ -9,103 +9,121 @@ import { StitchBot } from '../components/StitchBot';
 import { DemoViewer, EngineArchetype } from '../components/DemoViewer';
 import { Zap } from 'lucide-react';
 
-export const PORTFOLIO_ENGINES: EngineArchetype[] = [
+export const PORTFOLIO_ENGINES = [
   {
-    id: '01',
-    engineLabel: 'Engine 01',
-    title: 'Engine 01 // Rapid Emergency & Direct Response',
-    topBadge: 'INTERACTIVE DEMO • 375PX MOBILE NATIVE',
-    accentColor: '#DC2626',
-    description: 'High-urgency emergency conversion framework. Features sticky bottom tap-to-call bars, live status telemetry, and sub-minute SMS dispatch triggers.',
-    tags: ['Emergency Dispatch', 'Sticky Call Bar', 'Auto-SMS Fallback'],
-    defaultView: 'mobile',
+    id: "01",
+    title: "Engine 01 / Emergency Dispatch Layout",
+    badge: "Interactive Preview / Mobile First",
+    accent: "#DC2626",
+    defaultView: "mobile",
+    description: "Built for emergency callouts and fast customer contact. Places direct phone calling and WhatsApp messaging right at the bottom of the screen.",
+    tags: ["Direct Phone Link", "Instant Message Button", "Fixed Bottom Bar"],
     specs: {
-      telemetry: 'Speed Benchmark: 98/100 Mobile • Edge Cached',
-      schema: 'LocalBusiness + EmergencyService JSON-LD',
-      deployment: 'React 19 + Vercel Edge + Twilio SMS API',
-      conversionTriggers: ['Sticky Bottom Call Bar', '1-Click SMS Dispatch', 'Sub-minute SLA Anchors']
+      bestFor: "Emergency trades, breakdown recovery, and 24 hour repair services",
+      keyFeatures: [
+        "Fixed bottom calling bar for instant phone bookings",
+        "Clear pricing breakdown with no hidden fees",
+        "Live status notice showing active team availability"
+      ],
+      delivery: "Complete setup with your branding within 5 working days",
+      ownership: "100 percent code ownership with zero monthly software fees"
     }
   },
   {
-    id: '02',
-    engineLabel: 'Engine 02',
-    title: 'Engine 02 // Heavy Industrial & Blueprint Matrix',
-    topBadge: 'INTERACTIVE DEMO • COMMERCIAL DESKTOP',
-    accentColor: '#F59E0B',
-    description: 'Data-dense B2B infrastructure layout. Built for high-ticket commercial tenders with plant capacity gauges, ISO compliance matrices, and PDF spec sheet downloads.',
-    tags: ['Capacity Metrics', 'Tonnage Calculator', 'ISO Spec Matrix'],
-    defaultView: 'desktop',
+    id: "02",
+    title: "Engine 02 / Commercial Tender Layout",
+    badge: "Interactive Preview / Desktop First",
+    accent: "#F59E0B",
+    defaultView: "desktop",
+    description: "Built for commercial contractors and plant hire firms quoting on large contracts and site operations.",
+    tags: ["Tonnage Slider", "Safety Accreditations", "Spec Sheet Downloads"],
     specs: {
-      telemetry: 'Sub-900ms LCP • Large Asset Preloading',
-      schema: 'Organization + Product (B2B Spec) JSON-LD',
-      deployment: 'Next.js + PDF Generation Service',
-      conversionTriggers: ['Gated PDF Downloads', 'Dynamic Tonnage Calculators', 'ISO Trust Badges']
+      bestFor: "Commercial contractors, heavy plant hire, and logistics firms",
+      keyFeatures: [
+        "Interactive tonnage slider for fast job estimates",
+        "Safety accreditation showcase for quick vetting",
+        "Direct download buttons for equipment spec sheets"
+      ],
+      delivery: "Complete setup with your branding within 7 working days",
+      ownership: "100 percent code ownership with zero monthly software fees"
     }
   },
   {
-    id: '03',
-    engineLabel: 'Engine 03',
-    title: 'Engine 03 // Asymmetric Editorial & Atelier',
-    topBadge: 'INTERACTIVE DEMO • COMMERCIAL DESKTOP',
-    accentColor: '#0F766E',
-    description: 'High-ticket editorial monograph with bespoke serif typography, full-bleed visual curation, and quiet private commission intake drawers.',
-    tags: ['Editorial Serif', 'Process Reel', 'Private Intake Drawer'],
-    defaultView: 'desktop',
+    id: "03",
+    title: "Engine 03 / Bespoke Portfolio Layout",
+    badge: "Interactive Preview / Desktop First",
+    accent: "#0F766E",
+    defaultView: "desktop",
+    description: "Built for bespoke craftsmen, architects, and high end interior studios who need a clean visual showcase of their work.",
+    tags: ["Project Gallery", "Process Breakdown", "Direct Consultation Form"],
     specs: {
-      telemetry: '60fps Scroll Animations • Lazy-Loaded Video',
-      schema: 'ProfessionalService + Article JSON-LD',
-      deployment: 'React 19 + Framer Motion + Cloudinary',
-      conversionTriggers: ['Subtle Intake Drawers', 'High-Trust Process Reels', 'Exclusivity Copy']
+      bestFor: "Joinery studios, architects, bespoke builders, and designers",
+      keyFeatures: [
+        "Large project photo showcase with clean typography",
+        "Step by step client process breakdown",
+        "Simple consultation booking form"
+      ],
+      delivery: "Complete setup with your branding within 7 working days",
+      ownership: "100 percent code ownership with zero monthly software fees"
     }
   },
   {
-    id: '04',
-    engineLabel: 'Engine 04',
-    title: 'Engine 04 // Swiss Corporate & Advisory Framework',
-    topBadge: 'INTERACTIVE DEMO • 375PX MOBILE NATIVE',
-    accentColor: '#38BDF8',
-    description: 'Structured institutional advisory portal featuring an interactive fee and timeline estimator, multi-practice accordion grids, and RICS credibility markers.',
-    tags: ['Fee Estimator', 'Due Diligence Matrix', '48h SLA'],
-    defaultView: 'mobile',
+    id: "04",
+    title: "Engine 04 / Professional Advisory Layout",
+    badge: "Interactive Preview / Mobile First",
+    accent: "#38BDF8",
+    defaultView: "mobile",
+    description: "Built for chartered surveyors, valuers, and property consultants requiring a clear fee guide and trust markers.",
+    tags: ["Fee Calculator", "Compliance Badges", "Direct Enquiry Form"],
     specs: {
-      telemetry: 'Zero Layout Shift (CLS) • A11y Compliant',
-      schema: 'LegalService + FinancialService JSON-LD',
-      deployment: 'React 19 + Vercel Edge + Supabase',
-      conversionTriggers: ['Interactive Fee Estimator', 'Due Diligence Checklists', 'Authority Anchoring']
+      bestFor: "Surveyors, property consultants, and advisory firms",
+      keyFeatures: [
+        "Interactive survey fee and timeline estimator",
+        "Industry accreditation and insurance badges",
+        "Direct instruction button for new client briefs"
+      ],
+      delivery: "Complete setup with your branding within 5 working days",
+      ownership: "100 percent code ownership with zero monthly software fees"
     }
   },
   {
-    id: '05',
-    engineLabel: 'Engine 05',
-    title: 'Engine 05 // Modular Bento & Terminal Telemetry',
-    topBadge: 'INTERACTIVE DEMO • COMMERCIAL DESKTOP',
-    accentColor: '#10B981',
-    description: 'Modular Bento interface with real-time audio typing simulation, sub-second latency counters, and universal CRM/webhook connector status.',
-    tags: ['Live Terminal', '0.42s Latency Counter', 'API Webhook Grid'],
-    defaultView: 'desktop',
+    id: "05",
+    title: "Engine 05 / Systems & Lead Router Layout",
+    badge: "Interactive Preview / Desktop First",
+    accent: "#10B981",
+    defaultView: "desktop",
+    description: "Built for technology services, automation specialists, and businesses managing automated phone and lead capture pipelines.",
+    tags: ["Live System Log", "Direct CRM Links", "Fast Lead Routing"],
     specs: {
-      telemetry: 'WebSocket Live Sync • 0.42s Latency',
-      schema: 'SoftwareApplication JSON-LD',
-      deployment: 'React 19 + Socket.io + Redis Cache',
-      conversionTriggers: ['Live Telemetry Proof', 'Interactive Command Terminal', 'Social Proof Counters']
+      bestFor: "Automation consultants, tech providers, and system builders",
+      keyFeatures: [
+        "Interactive live simulation showing automated call routing",
+        "Integration badges for standard CRM and payment tools",
+        "Direct system booking and setup buttons"
+      ],
+      delivery: "Complete setup with your branding within 7 working days",
+      ownership: "100 percent code ownership with zero monthly software fees"
     }
   },
   {
-    id: '06',
-    engineLabel: 'Engine 06',
-    title: 'Engine 06 // Precision Studio & Configurator',
-    topBadge: 'INTERACTIVE DEMO • 375PX MOBILE NATIVE',
-    accentColor: '#2563EB',
-    description: 'High-contrast technical studio layout featuring live bay capacity telemetry, cleanroom surface specifications, and 3-tier package configurators.',
-    tags: ['Live Bay Telemetry', 'Package Matrix', '1-Tap Slot Reserve'],
-    defaultView: 'mobile',
+    id: "06",
+    title: "Engine 06 / Vehicle Studio & Package Layout",
+    badge: "Interactive Preview / Mobile First",
+    accent: "#2563EB",
+    defaultView: "mobile",
+    description: "Built for vehicle detailing studios, surface protection labs, and trade specialists offering tiered packages.",
+    tags: ["Tiered Packages", "Bay Availability", "WhatsApp Booking"],
     specs: {
-      telemetry: '99/100 Lighthouse • CSS Grid Architecture',
-      schema: 'AutoBodyShop + OfferCatalog JSON-LD',
-      deployment: 'React 19 + Vercel Edge + Stripe Elements',
-      conversionTriggers: ['Live Slot Availability', 'Tiered Price Anchoring', '1-Tap Reservations']
+      bestFor: "Detailing studios, surface protection, and specialist workshops",
+      keyFeatures: [
+        "Three tiered package comparison for easy package selection",
+        "Live bay availability status bar",
+        "One tap WhatsApp booking button"
+      ],
+      delivery: "Complete setup with your branding within 5 working days",
+      ownership: "100 percent code ownership with zero monthly software fees"
     }
-  },
+  }
 ];
 
 export const DemosPage: React.FC = () => {
@@ -154,11 +172,11 @@ export const DemosPage: React.FC = () => {
               Six Proven Trade Layout Archetypes
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
-              Hand-coded website architectures built for high conversion, instant loading speeds, and zero template bloat across UK trades and contractors.
+              Hand coded website architectures built for high conversion, instant loading speeds, and no template bloat across UK trades and contractors.
             </p>
           </div>
 
-          {/* 6-Engine Cardless Editorial Grid with Clean Dividers */}
+          {/* Six Engine Cardless Editorial Grid with Clean Dividers */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 divide-y md:divide-y-0 pt-4">
             {PORTFOLIO_ENGINES.map((engine, idx) => (
               <div
@@ -179,7 +197,7 @@ export const DemosPage: React.FC = () => {
                           <span className="w-2 h-2 rounded-full bg-emerald-400/80" />
                         </div>
                         <span className="text-[10px] font-mono text-slate-500 dark:text-zinc-400 truncate">
-                          {engine.engineLabel.toLowerCase()}.trade
+                          {'engine 0' + engine.id}.trade
                         </span>
                       </div>
                       <span className="text-[9px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-200 dark:bg-zinc-800 text-slate-600 dark:text-zinc-400 font-semibold">
@@ -214,8 +232,8 @@ export const DemosPage: React.FC = () => {
                   {/* Engine Details */}
                   <div className="space-y-2 mb-5">
                     <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="font-bold tracking-wide" style={{ color: engine.accentColor }}>
-                        {engine.engineLabel}
+                      <span className="font-bold tracking-wide" style={{ color: engine.accent }}>
+                        {engine.badge}
                       </span>
                       <span className="text-slate-400 dark:text-zinc-500 uppercase text-[10px] font-semibold">
                         Hand Coded
@@ -265,7 +283,7 @@ export const DemosPage: React.FC = () => {
               Want a custom combination of these engines?
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-              Every system is modular. We can combine tap-to-call bars, instant quote estimators, and 24/7 missed call text interceptors into your existing website.
+              Every system is modular. We can combine tap to call bars, instant quote estimators, and 24 7 missed call text interceptors into your existing website.
             </p>
             <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button

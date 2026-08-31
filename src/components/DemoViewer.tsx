@@ -3,18 +3,17 @@ import { X, Smartphone, Monitor, ArrowRight, Zap, CheckCircle2 } from 'lucide-re
 
 export type EngineArchetype = {
   id: string;
-  engineLabel: string;
   title: string;
-  topBadge: string;
+  badge: string;
+  accent: string;
+  defaultView: 'mobile' | 'desktop';
   description: string;
   tags: string[];
-  accentColor: string;
-  defaultView: 'mobile' | 'desktop';
   specs: {
-    telemetry: string;
-    schema: string;
-    deployment: string;
-    conversionTriggers: string[];
+    bestFor: string;
+    keyFeatures: string[];
+    delivery: string;
+    ownership: string;
   };
 };
 
@@ -71,21 +70,21 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden bg-zinc-950 relative">
           
           {/* Left Column (5 Cols) - Specs & Architecture */}
-          <div className="lg:col-span-5 p-6 md:p-8 border-b lg:border-b-0 lg:border-r border-zinc-800 flex flex-col justify-between overflow-y-auto bg-zinc-950/80 custom-scrollbar">
+          <div className="lg:col-span-5 p-6 md:p-8 border-b lg:border-b-0 lg:border-r border-zinc-800 flex flex-col justify-between overflow-y-auto scrollbar-none bg-zinc-950/80">
             
             {/* Header Area */}
             <div className="space-y-4 mb-8">
               <span 
                 className="inline-flex font-mono text-[11px] font-bold px-2.5 py-1 rounded"
-                style={{ backgroundColor: `${activeEngine.accentColor}18`, color: activeEngine.accentColor }}
+                style={{ backgroundColor: `${activeEngine.accent}18`, color: activeEngine.accent }}
               >
-                {activeEngine.engineLabel}
+                {activeEngine.badge}
               </span>
               <div>
                 <h2 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight leading-tight mb-2">
                   {activeEngine.title}
                 </h2>
-                <p className="text-zinc-400 text-sm leading-relaxed">
+                <p className="text-zinc-400 text-sm leading-relaxed mt-2">
                   {activeEngine.description}
                 </p>
               </div>
@@ -93,37 +92,37 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
 
             {/* Architecture Specs Bento */}
             <div className="space-y-4 mb-8 flex-1">
-              {/* Telemetry Row */}
+              {/* Best Suited For Row */}
               <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-                <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-1.5 tracking-wider">Performance Telemetry</h4>
+                <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-1.5 tracking-wider">Best Suited For</h4>
                 <div className="flex items-center gap-2 text-zinc-200 text-sm font-semibold">
                   <Zap className="w-4 h-4 text-amber-400" />
-                  {activeEngine.specs.telemetry}
+                  {activeEngine.specs.bestFor}
                 </div>
               </div>
 
-              {/* Conversion Triggers Row */}
+              {/* Included Features Row */}
               <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-                <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-2.5 tracking-wider">Conversion Triggers</h4>
+                <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-2.5 tracking-wider">Included Features</h4>
                 <ul className="space-y-2">
-                  {activeEngine.specs.conversionTriggers.map((trigger, idx) => (
+                  {activeEngine.specs.keyFeatures.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2 text-zinc-300 text-sm">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                      <span>{trigger}</span>
+                      <span>{feature}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              {/* Grid Row: Schema & Stack */}
+              {/* Grid Row: Delivery & Ownership */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-                  <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-1.5 tracking-wider">SEO / Schema</h4>
-                  <p className="text-zinc-200 text-sm font-mono leading-tight">{activeEngine.specs.schema}</p>
+                  <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-1.5 tracking-wider">Delivery Timeframe</h4>
+                  <p className="text-zinc-200 text-sm font-mono leading-tight">{activeEngine.specs.delivery}</p>
                 </div>
                 <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4">
-                  <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-1.5 tracking-wider">Deployment</h4>
-                  <p className="text-zinc-200 text-sm font-mono leading-tight">{activeEngine.specs.deployment}</p>
+                  <h4 className="text-[10px] uppercase font-mono text-zinc-500 mb-1.5 tracking-wider">Ownership</h4>
+                  <p className="text-zinc-200 text-sm font-mono leading-tight">{activeEngine.specs.ownership}</p>
                 </div>
               </div>
             </div>
@@ -138,7 +137,7 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                 }}
                 className="w-full py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm transition-all shadow-lg shadow-red-900/20 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
               >
-                <span>Deploy This Architecture</span>
+                <span>Commission This Layout</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -159,7 +158,7 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                 }`}
               >
                 <Smartphone className="w-3.5 h-3.5" />
-                <span>Mobile 375px</span>
+                <span>Mobile View</span>
               </button>
               <button
                 type="button"
@@ -171,7 +170,7 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                 }`}
               >
                 <Monitor className="w-3.5 h-3.5" />
-                <span>Desktop Spec</span>
+                <span>Desktop View</span>
               </button>
             </div>
 

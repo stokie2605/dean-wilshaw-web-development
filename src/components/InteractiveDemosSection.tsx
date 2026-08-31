@@ -34,7 +34,7 @@ export const InteractiveDemosSection: React.FC = () => {
         { sender: 'customer', text: 'No leaks, just completely cold radiators.' },
         { sender: 'bot', text: 'Understood. Dispatching an emergency triage alert to the on-call engineer now.' }
       ],
-      whatsappSummary: `EMERGENCY HEATING DISPATCH\n- Issue: Boiler F28 ignition lockout (no leak)\n- Urgency: Priority Morning Callout\n- Location: Postcode ST4 (Stoke-on-Trent)\n- Status: Ready for 1-tap quote reply`
+      whatsappSummary: `EMERGENCY HEATING DISPATCH\n- Issue: Boiler F28 ignition lockout (no leak)\n- Urgency: Priority Morning Callout\n- Location: Postcode ST4 (Stoke on Trent)\n- Status: Ready for 1-tap quote reply`
     },
     roof: {
       label: '🌧️ Active Ceiling Leak',
@@ -84,7 +84,7 @@ export const InteractiveDemosSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 1. TOP FULL-WIDTH SHOWCASE: 24/7 AI Trade Dispatcher (#ai-bot) */}
+        {/* 1. TOP FULL-WIDTH SHOWCASE: 24 hour AI Trade Dispatcher (#ai-bot) */}
         <div id="ai-bot" className="scroll-mt-28 mb-16">
           <div className="bg-white dark:bg-zinc-900/90 border border-slate-200 dark:border-zinc-800 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6">
             
@@ -93,13 +93,13 @@ export const InteractiveDemosSection: React.FC = () => {
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 border border-red-500/20 text-xs font-bold uppercase tracking-wider mb-2">
                   <Bot className="w-3.5 h-3.5" />
-                  24/7 Emergency Triage &amp; Dispatch
+                  24 hour Emergency Triage &amp; Dispatch
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white">
-                  24/7 AI Trade Dispatcher
+                  24 hour AI Trade Dispatcher
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1 font-medium">
-                  Your website working as a full-time receptionist 24/7: qualifying emergencies, filtering out time wasters, and capturing bookings while you sleep.
+                  Your website working as a full-time receptionist 24 hour: qualifying emergencies, filtering out time wasters, and capturing bookings while you sleep.
                 </p>
               </div>
 

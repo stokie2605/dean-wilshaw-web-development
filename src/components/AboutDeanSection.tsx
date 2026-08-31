@@ -62,7 +62,7 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <MapPin className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                Based in Cheshire & Stoke-on-Trent — local and accountable
+                Based in Cheshire & Stoke on Trent — local and accountable
               </span>
             </li>
 

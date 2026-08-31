@@ -475,14 +475,14 @@ const ScopeEstimator: React.FC<ScopeEstimatorProps> = ({ onOpenQuote }) => {
     const prompt = `Project Description: ${description.trim()}`;
     const system = `You are Dean Wilshaw's AI project assistant. Dean is a solo UK web developer based in Cheshire who builds fast, beautiful websites for local businesses and premium brands - typically delivered in 1 to 2 weeks.
 
-Dean always builds with: React + Vite, Tailwind CSS, deployed on Vercel. He does not build mobile apps, e-commerce platforms, or enterprise software. He builds marketing websites, portfolio sites, and lead generation pages.
+Dean always builds with: custom, Tailwind CSS, deployed on Vercel. He does not build mobile apps, e-commerce platforms, or enterprise software. He builds marketing websites, portfolio sites, and lead generation pages.
 
 The user will describe a project. Output ONLY a JSON object - no extra text, no markdown fences.
 
 Rules:
-- architecture: Always "React + Vite, Tailwind CSS, Vercel Edge CDN" - never suggest Next.js, GraphQL, microservices, or anything enterprise
+- architecture: Always "Hand coded, fully custom build" - never suggest Next.js, GraphQL, microservices, or anything enterprise
 - deliveryWindow: Always "1 - 2 Weeks" - no exceptions
-- performance: Always "100/100 Mobile Lighthouse score, loads in under 0.5 seconds on any phone"
+- performance: Always "Instant loading speed on any mobile connection"
 - features: Exactly 3 features in plain English a business owner would understand - no jargon. E.g. "Click-to-call button on every page", "WhatsApp enquiry button", "Photo gallery with instant loading"
 
 Return ONLY this JSON:
@@ -563,7 +563,7 @@ Return ONLY this JSON:
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">
                 <span className="p-1.5 bg-blue-500/10 text-blue-400 rounded">🛠️</span>Recommended Architecture
               </div>
-              <p className="text-lg font-bold text-white leading-snug">{parsedScope.architecture || 'React 19 + Vite, Tailwind CSS, Vercel Edge'}</p>
+              <p className="text-lg font-bold text-white leading-snug">{parsedScope.architecture || 'custom, Tailwind CSS, Vercel Edge'}</p>
             </div>
             <div className="mt-4 flex flex-wrap gap-1.5">
               {['React 19','Tailwind','Vite','Edge CDN'].map((t, i) => (
