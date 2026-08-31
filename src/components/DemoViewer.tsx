@@ -1,4 +1,4 @@
-﻿import React, { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { X, Smartphone, Monitor, ArrowRight, Zap, CheckCircle2 } from 'lucide-react';
 
 export type EngineArchetype = {
@@ -178,20 +178,22 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
             <div className="flex-1 w-full flex items-center justify-center p-4 pt-24 pb-8 overflow-hidden">
               {activeViewport === 'mobile' ? (
                 /* Clean 375px Mobile Frame */
-                <div className="w-[360px] max-w-full h-[65vh] md:h-[75vh] rounded-[36px] border-[5px] border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex flex-col relative">
+                <div className="w-[375px] max-w-full h-[65vh] md:h-[75vh] rounded-[36px] border-[5px] border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex flex-col relative antialiased transform-gpu [backface-visibility:hidden] [perspective:1000px]">
                   <img
                     src={mobileImageSrc}
                     alt={activeEngine.title}
-                    className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] transform-gpu"
+                    className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges] antialiased transform-gpu [backface-visibility:hidden]"
+                    style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                   />
                 </div>
               ) : (
                 /* Clean Desktop Frame */
-                <div className="w-full max-w-4xl h-[65vh] md:h-[75vh] rounded-xl border-2 border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex flex-col">
+                <div className="w-full max-w-4xl h-[65vh] md:h-[75vh] rounded-xl border-2 border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex flex-col antialiased transform-gpu [backface-visibility:hidden] [perspective:1000px]">
                   <img
                     src={desktopImageSrc}
                     alt={activeEngine.title}
-                    className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] transform-gpu"
+                    className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges] antialiased transform-gpu [backface-visibility:hidden]"
+                    style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
                   />
                 </div>
               )}
