@@ -149,26 +149,26 @@ export const VoiceToQuoteDemo: React.FC = () => {
       <div className="space-y-2.5">
         
         {/* Step 1: Intercept & Transcribe */}
-        <div className={`bg-zinc-50 dark:bg-zinc-900/60 border rounded-xl p-3.5 transition-all duration-300 ${
+        <div className={`bg-zinc-50 dark:bg-zinc-900/60 border rounded-xl p-4 sm:p-5 pb-5 transition-all duration-300 ${
           activeStep >= 1 ? 'border-emerald-400/70 dark:border-emerald-500/60 ring-1 ring-emerald-500/20' : 'border-zinc-200 dark:border-zinc-800'
         }`}>
           <div className="flex items-start gap-3">
             <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
               <PhoneIncoming className="w-4 h-4 text-[#D90429]" />
             </div>
-            <div className="space-y-0.5 flex-grow">
+            <div className="space-y-1 flex-grow">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase">Step 01</span>
                 <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">Inbound Call Intercepted</h4>
               </div>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-snug">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-normal">
                 When you're busy on the tools, the caller leaves a voicemail or hangs up. Audio is transcribed in seconds or an instant auto-text fires on hang-up.
               </p>
 
               {/* Active Embedded Box for Step 1 */}
               {activeStep >= 1 && (
-                <div className="mt-2.5 pt-2.5 border-t border-zinc-200 dark:border-zinc-800/80 transition-opacity duration-300">
-                  <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg py-1.5 px-2.5 space-y-1.5 shadow-sm">
+                <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-800/80 transition-opacity duration-300">
+                  <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-3 sm:p-3.5 space-y-2 pb-3.5 shadow-sm">
                     <div className="flex items-center justify-between text-[10px] font-mono">
                       <span className="text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5 font-semibold uppercase">
                         {/* Animated Equalizer Waveform Bars */}
@@ -179,11 +179,11 @@ export const VoiceToQuoteDemo: React.FC = () => {
                         </span>
                         Voicemail Transcribed
                       </span>
-                      <span className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/50 px-1.5 py-0.5 rounded text-[10px]">
+                      <span className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/50 px-2 py-0.5 rounded text-[10px]">
                         Audio: 1.8s
                       </span>
                     </div>
-                    <p className="text-zinc-800 dark:text-zinc-200 text-[11px] font-mono italic">
+                    <p className="text-zinc-800 dark:text-zinc-200 text-xs font-mono italic leading-relaxed break-words">
                       &ldquo;{typedText || fullTranscript}&rdquo;
                       {activeStep === 1 && typedText.length < fullTranscript.length && (
                         <span className="inline-block w-1 h-3 ml-0.5 bg-emerald-500 animate-pulse"></span>
@@ -197,31 +197,31 @@ export const VoiceToQuoteDemo: React.FC = () => {
         </div>
 
         {/* Step 2: Instant Scope & Price Matching */}
-        <div className={`bg-zinc-50 dark:bg-zinc-900/60 border rounded-xl p-3.5 transition-all duration-300 ${
+        <div className={`bg-zinc-50 dark:bg-zinc-900/60 border rounded-xl p-4 sm:p-5 pb-5 transition-all duration-300 ${
           activeStep >= 2 ? 'border-emerald-400/70 dark:border-emerald-500/60 ring-1 ring-emerald-500/20' : 'border-zinc-200 dark:border-zinc-800'
         }`}>
           <div className="flex items-start gap-3">
             <div className="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0 mt-0.5">
               <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
             </div>
-            <div className="space-y-0.5 flex-grow">
+            <div className="space-y-1 flex-grow">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase">Step 02</span>
                 <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">Instant Scope & Price Matching</h4>
               </div>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-snug">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-normal">
                 The engine extracts the customer's issue and matches it against your custom pricing rules and radius.
               </p>
 
               {/* Active Embedded Box for Step 2 */}
               {activeStep >= 2 && (
-                <div className="mt-2.5 pt-2.5 border-t border-zinc-200 dark:border-zinc-800/80 transition-opacity duration-300">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-left">
-                    <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2">
+                <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-800/80 transition-opacity duration-300">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-left">
+                    <div className="bg-white dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-lg p-2.5">
                       <div className="text-[10px] font-mono text-zinc-400 uppercase font-semibold">Scope Detected</div>
                       <div className="text-xs font-bold text-zinc-900 dark:text-white">Standard Callout & Diagnosis</div>
                     </div>
-                    <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 rounded-lg p-2">
+                    <div className="bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800/60 rounded-lg p-2.5">
                       <div className="text-[10px] font-mono text-emerald-800 dark:text-emerald-400 uppercase font-semibold">Calculated Bracket</div>
                       <div className="text-xs font-black text-emerald-700 dark:text-emerald-400">£95.00  /  £145.00 <span className="text-[10px] font-normal text-emerald-700 dark:text-emerald-500">+ VAT</span></div>
                     </div>
@@ -233,26 +233,26 @@ export const VoiceToQuoteDemo: React.FC = () => {
         </div>
 
         {/* Step 3: SMS Fallback Dispatched */}
-        <div className={`bg-zinc-50 dark:bg-zinc-900/60 border rounded-xl p-3.5 transition-all duration-300 ${
+        <div className={`bg-zinc-50 dark:bg-zinc-900/60 border rounded-xl p-4 sm:p-5 pb-5 transition-all duration-300 ${
           activeStep >= 3 ? 'border-emerald-400/70 dark:border-emerald-500/60 ring-1 ring-emerald-500/20' : 'border-zinc-200 dark:border-zinc-800'
         }`}>
           <div className="flex items-start gap-3">
             <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
               <Send className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             </div>
-            <div className="space-y-0.5 flex-grow">
+            <div className="space-y-1 flex-grow">
               <div className="flex items-center gap-2">
                 <span className="text-[10px] font-mono font-bold text-zinc-400 uppercase">Step 03</span>
                 <h4 className="text-sm font-semibold text-zinc-900 dark:text-white">Instant SMS Fallback & Alert to You</h4>
               </div>
-              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-snug">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-normal">
                 If you miss the call or the caller hangs up, an instant text asks them to reply with a couple of job photos so you can price it accurately without playing phone tag.
               </p>
 
               {/* Active Embedded Box for Step 3 */}
               {activeStep >= 3 && (
-                <div className="mt-2.5 pt-2.5 border-t border-zinc-200 dark:border-zinc-800/80 transition-opacity duration-300">
-                  <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-lg p-2.5 space-y-1.5">
+                <div className="mt-3 pt-3 border-t border-zinc-200 dark:border-zinc-800/80 transition-opacity duration-300">
+                  <div className="bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 rounded-lg p-3 space-y-2 pb-3">
                     <div className="flex items-center justify-between text-[10px] font-mono">
                       <span className="text-emerald-800 dark:text-emerald-400 font-bold uppercase flex items-center gap-1">
                         <MessageSquare className="w-3 h-3" />
@@ -262,7 +262,7 @@ export const VoiceToQuoteDemo: React.FC = () => {
                         Dispatched in 2.4s to 07712 345678
                       </span>
                     </div>
-                    <p className="text-xs text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium bg-white/90 dark:bg-black/40 border border-emerald-200/60 dark:border-emerald-900/30 rounded-md p-2">
+                    <p className="text-xs text-zinc-800 dark:text-zinc-200 leading-relaxed font-medium bg-white/90 dark:bg-black/40 border border-emerald-200/60 dark:border-emerald-900/30 rounded-md p-2.5">
                       &ldquo;Sorry I missed your call, currently on a job. Could you reply with a couple of photos of the issue and your postcode? I&rsquo;ll review and text you an estimate and availability right away.&rdquo;
                     </p>
                   </div>
