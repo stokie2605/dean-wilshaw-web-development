@@ -1,19 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Dean Wilshaw Web Development
 
-# Run and deploy your AI Studio app
+Official Portfolio & Commercial Web Development Agency Platform.
 
-This contains everything you need to run your app locally.
-https://ai.studio/apps/91644f34-dde3-4cfc-81ec-d9309ba196d2
+- **Author:** Dean Wilshaw
+- **Status:** Active Client Platform
 
-## Run Locally
+---
 
-**Prerequisites:**  Node.js
+## Overview
 
+A modern, high-performance web agency platform showcasing custom web applications, client digital transformations, and high-converting commercial tools built with React, Next.js, and bespoke design systems.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+---
+
+## Capabilities & Showcase
+
+1. **Bespoke UI Architecture:** High-end, responsive user interfaces built with custom semantic design tokens (no generic AI templates).
+2. **Speed & Conversion Optimization:** Sub-second page loads, mobile-first thumb ergonomics, and Core Web Vitals optimization.
+3. **Custom Business Tools:** Interactive quote calculators, appointment reminder engines, and local SEO schema integrations.
+
+---
+
+## Tech Stack
+
+- **Framework:** React / Next.js, TypeScript
+- **Styling:** Tailwind CSS + Bespoke CSS Grid/Flexbox
+- **Deployment:** Vercel Edge Network
+
+---
+
+## Local Setup
+
+```bash
+npm install
+npm run dev
+```
