@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { CheckCircle2, MessageSquare, ArrowRight, Gauge, FileText } from 'lucide-react';
 
 const AUDIT_WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20a%20%C2%A349%20website%20speed%20audit";
@@ -117,7 +117,7 @@ export const PricingSection: React.FC<PricingProps> = () => {
               <h3 className="font-extrabold text-slate-900 dark:text-zinc-100 text-lg mb-1 tracking-tight">{pkg.title}</h3>
 
               <div className="mb-5 mt-3">
-                <span className={`text-2xl font-black tracking-tight ${(pkg as any).popular ? 'text-[#D90429]' : 'text-slate-900 dark:text-white'}`}>
+                <span className="text-2xl font-black tracking-tight text-slate-900 dark:text-white">
                   {pkg.pricingNote}
                 </span>
               </div>
