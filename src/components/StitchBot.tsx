@@ -1,4 +1,4 @@
-﻿import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, Sparkles, MessageSquare, Minimize2, ChevronUp } from 'lucide-react';
 import { ChatMessage } from '../types';
 
@@ -14,7 +14,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
     {
       id: '1',
       sender: 'stitch',
-      text: "Hi there! I'm Dean's Client Support Assistant. Looking to grow your business with a website that actually works? I'm here to help.",
+      text: "Hi there! I am StitchBot, Dean's AI assistant. Looking to grow your trade business with a website that actually works? I am here to help.",
       timestamp: new Date(),
     },
   ]);
@@ -78,7 +78,13 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: messageText }),
+        body: JSON.stringify({
+          message: messageText,
+          history: messages.slice(-6).map((m) => ({
+            role: m.sender === 'user' ? 'user' : 'assistant',
+            content: m.text,
+          })),
+        }),
       });
 
       if (!response.ok) {
@@ -184,7 +190,7 @@ export const StitchBot: React.FC<StitchBotProps> = ({ isOpen, onClose, onOpenQuo
         {messages[messages.length - 1]?.sender === 'stitch' && !loading && (
           <div className="flex flex-col gap-2 mt-2 ml-10">
             {[
-              "I don't have a site yet - where do we start?",
+              "I don't have a website yet, where do we start?",
               "I have an old site that isn't getting calls",
               "How much effort is required on my end?",
               "Can I just send Dean a WhatsApp message?"

@@ -7,7 +7,17 @@ import dotenv from "dotenv";
 import { createOpenAI } from "@ai-sdk/openai";
 import { streamText } from "ai";
 
+import Groq from "groq-sdk";
+
 dotenv.config();
+
+let groqClient: Groq | null = null;
+function getGroq(): Groq | null {
+  if (!groqClient && process.env.GROQ_API_KEY) {
+    groqClient = new Groq({ apiKey: process.env.GROQ_API_KEY });
+  }
+  return groqClient;
+}
 
 let resendClient: Resend | null = null;
 
@@ -34,26 +44,22 @@ function getGeminiAI(): GoogleGenAI | null {
   return aiClient;
 }
 
-const STITCH_SYSTEM_PROMPT = `You are the Client Support Assistant for Design Systems Web based in Cheshire & Stoke-on-Trent, UK.
-Your tone is professional, friendly, concise, and focused on business growth and technical excellence.
+const STITCH_SYSTEM_PROMPT = `You are StitchBot, an AI assistant for Dean Wilshaw Web Development.
+Your role is to help tradespeople, contractors, and small business owners understand website packages, features, and pricing in clear, jargon-free British English.
 
-Key Studio Facts & Services:
-- Engineer: Design Systems Web (25 years operational discipline in logistics, now building high-performance web applications).
-- Specialty: Custom React + Vite websites designed for local business lead generation (Cheshire, Stoke-on-Trent, Manchester, & UK-wide).
-- Turnaround Times: ALL standard websites and landing pages are built and delivered strictly within 1 to 2 weeks. Never quote 3 weeks.
-- Comparison vs WordPress: WordPress templates are slow, plugin-heavy, vulnerable, and require constant maintenance. Dean's custom React builds are stateless, lightning fast, highly secure, and tailored 100% to brand goals.
+CORE BUSINESS FACTS & PRICING:
+- Founder & Developer: Dean Wilshaw.
+- Service: Custom, hand-crafted websites purpose-built for trade and commercial businesses (plumbers, electricians, builders, joiners, emergency dispatch, etc.).
+- Delivery Timeframe: Typically 5 to 7 working days from brief approval to live launch.
+- Ownership: 100 percent code and asset ownership transferred to the client. Zero proprietary lock-in.
+- Retainer & Site Care: Optional £49 per month managed care plan covering high-speed cloud hosting, security monitoring, regular backups, and direct content updates.
+- One-Off Build Pricing: Transparent, fixed project quotes based on scope. No hidden monthly platform software subscriptions.
 
-Contact Details (use ONLY these - never invent or guess):
-- WhatsApp / Phone: 07348 733365
-- Email: dean.wilshaw.web@gmail.com
-- Location: Cheshire & Stoke-on-Trent
-
-Strict Rules: 
-1. Answer technical FAQs (React vs WordPress, turnaround times, hosting, support).
-2. NEVER calculate custom prices, offer discounts, or give out specific price figures.
-3. If asked about pricing, kindly explain that Dean provides custom quotes after a quick discovery chat to understand the exact business requirements.
-4. If asked for a phone number, WhatsApp, or email - give ONLY the details above. Never fabricate contact information.
-5. ALWAYS end your response by directing them to use the "Book a Free Audit" or "WhatsApp Dean" links below to get in touch.`;
+CONVERSATIONAL RULES:
+- Tone: Grounded, professional, straightforward, and friendly British English. No buzzwords, hyphens, em-dashes, or exaggerated marketing claims.
+- Brevity: Keep responses concise (2 to 4 sentences). Tradespeople want direct answers, not essays.
+- Guardrail on Unlisted Info: If asked for custom integrations, bespoke features, or exact quotes outside standard packages, direct them to fill out the quick quote form or contact Dean directly.
+- Primary Call to Action: Encourage visitors to check the "Six Trade Concepts" on the Demos page or submit the quote form to discuss their project.`;
 
 async function startServer() {
   const app = express();
@@ -63,7 +69,7 @@ async function startServer() {
 
   // Health check
   app.get("/api/health", (_req, res) => {
-    res.json({ status: "ok", studio: "Design Systems Web" });
+    res.json({ status: "ok", studio: "Dean Wilshaw Web Development" });
   });
 
   // AI Chat endpoint (Stitch Virtual Assistant)
@@ -75,35 +81,62 @@ async function startServer() {
         return res.status(400).json({ error: "Message string is required" });
       }
 
-      const ai = getGeminiAI();
+      const groq = getGroq();
+      if (groq) {
+        const formattedHistory = Array.isArray(history)
+          ? history.slice(-6).map((item: { role: string; content: string }) => ({
+              role: item.role === "user" ? "user" : "assistant",
+              content: item.content,
+            }))
+          : [];
 
-      if (!ai) {
-        // Fallback response if GEMINI_API_KEY is not configured
-        const fallbackText = getSmartFallbackResponse(message);
-        return res.json({ response: fallbackText, fallback: true });
+        const messages = [
+          { role: "system", content: STITCH_SYSTEM_PROMPT },
+          ...formattedHistory,
+          { role: "user", content: message }
+        ];
+
+        const chatCompletion = await groq.chat.completions.create({
+          messages: messages as any,
+          model: "llama-3.3-70b-versatile",
+          temperature: 0.2,
+          max_tokens: 250,
+        });
+
+        const reply = chatCompletion.choices[0]?.message?.content;
+        if (reply) {
+          return res.json({ response: reply });
+        }
       }
 
-      // Format conversation history for Gemini chat if present
-      const formattedHistory = Array.isArray(history)
-        ? history.slice(-6).map((item: { role: string; content: string }) => ({
-            role: item.role === "user" ? "user" : "model",
-            parts: [{ text: item.content }],
-          }))
-        : [];
+      const ai = getGeminiAI();
+      if (ai) {
+        const formattedHistory = Array.isArray(history)
+          ? history.slice(-6).map((item: { role: string; content: string }) => ({
+              role: item.role === "user" ? "user" : "model",
+              parts: [{ text: item.content }],
+            }))
+          : [];
 
-      const chat = ai.chats.create({
-        model: "gemini-3.6-flash",
-        config: {
-          systemInstruction: STITCH_SYSTEM_PROMPT,
-          temperature: 0.7,
-        },
-        history: formattedHistory,
-      });
+        const chat = ai.chats.create({
+          model: "gemini-2.5-flash",
+          config: {
+            systemInstruction: STITCH_SYSTEM_PROMPT,
+            temperature: 0.2,
+            maxOutputTokens: 250,
+          },
+          history: formattedHistory,
+        });
 
-      const geminiResponse = await chat.sendMessage({ message });
-      const responseText = geminiResponse.text || "I'm ready to help answer any questions about Dean's web development services or provide a quick quote!";
+        const geminiResponse = await chat.sendMessage({ message });
+        const responseText = geminiResponse.text;
+        if (responseText) {
+          return res.json({ response: responseText });
+        }
+      }
 
-      return res.json({ response: responseText });
+      const fallbackText = getSmartFallbackResponse(message);
+      return res.json({ response: fallbackText, fallback: true });
     } catch (error) {
       console.error("Chat endpoint error:", error);
       const fallbackText = getSmartFallbackResponse(req.body?.message || "");
@@ -330,19 +363,25 @@ async function startServer() {
 
 function getSmartFallbackResponse(query: string): string {
   const q = query.toLowerCase();
-  if (q.includes("cost") || q.includes("price") || q.includes("quote") || q.includes("budget") || q.includes("how much")) {
-    return "Dean's bespoke websites range from £449 for a Local Tradesman Landing Page up to £749 for a Core Business Website, with a 10% early-bird discount available! Would you like to use our Quote form below to lock in a price or give Dean your number so he can call you?";
+  if (q.includes("cost") || q.includes("price") || q.includes("quote") || q.includes("budget") || q.includes("how much") || q.includes("pricing") || q.includes("charge") || q.includes("fee")) {
+    return "Pricing is transparent and fixed per project: Standalone Lead Tools from £149, Complete Trade Builds from £299, and Custom Infrastructure from £449, plus an optional £49 per month site care retainer. You own 100 percent of your code with zero ongoing platform lock in. Check the Pricing page or request a quick quote for your project.";
   }
-  if (q.includes("speed") || q.includes("performance") || q.includes("wordpress") || q.includes("slow")) {
-    return "Unlike WordPress templates that load 20+ plugins and heavy themes, Dean builds clean React applications with Vite. This guarantees sub-second load times, 100/100 Core Web Vitals scores, and significantly higher Google rankings and conversion rates.";
+  if (q.includes("how long") || q.includes("time") || q.includes("turnaround") || q.includes("deliver") || q.includes("deadline") || q.includes("quick") || q.includes("days")) {
+    return "Standard builds are typically completed and launched within 5 to 7 working days from brief approval. Dean works directly with you to get your site live quickly without delays.";
   }
-  if (q.includes("time") || q.includes("long") || q.includes("deadline")) {
-    return "Most builds are delivered in 1 to 2 weeks. Coming from 25 years in logistics operations, Dean maintains a strict operational policy: zero missed deadlines and complete transparency throughout the project.";
+  if (q.includes("retainer") || q.includes("care") || q.includes("hosting") || q.includes("support") || q.includes("maintain") || q.includes("maintenance") || q.includes("aftercare")) {
+    return "Dean offers an optional £49 per month managed care plan covering cloud hosting, security monitoring, regular backups, and direct content updates. You own your website outright with zero ongoing platform lock in.";
   }
-  if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("location") || q.includes("cheshire") || q.includes("stoke")) {
-    return "Dean is based in Cheshire & Stoke-on-Trent. You can reach him directly on WhatsApp at 07348 733365 or drop him an email at dean.wilshaw.web@gmail.com - he typically responds within a few hours.";
+  if (q.includes("demo") || q.includes("example") || q.includes("portfolio") || q.includes("concept") || q.includes("show") || q.includes("work")) {
+    return "You can explore live interactive prototypes in the Six Trade Concepts section on the Demos page. They showcase layouts built for emergency callouts, commercial tenders, bespoke craft, surveying, lead dispatch, and vehicle services.";
   }
-  return "Hi! I'm Dean's Client Support Assistant. Dean builds high-performance, bespoke websites that turn local Cheshire and Stoke traffic into paying customers. How can I help you today? Feel free to ask about pricing, timelines, or tech stack!";
+  if (q.includes("contact") || q.includes("whatsapp") || q.includes("email") || q.includes("phone") || q.includes("number") || q.includes("location") || q.includes("cheshire") || q.includes("stoke") || q.includes("reach") || q.includes("speak")) {
+    return "You can reach Dean directly on WhatsApp or phone at 07348 733365, or via email at dean.wilshaw.web@gmail.com. He typically replies within a few hours.";
+  }
+  if (q.includes("hi") || q.includes("hello") || q.includes("hey")) {
+    return "Hi there! I am StitchBot, Dean's AI assistant. I can answer questions about website packages, pricing, timelines, or tools. How can I help you today?";
+  }
+  return "Thanks for asking. For specific project details or custom requirements, please submit the quick quote form on this site or message Dean directly on WhatsApp at 07348 733365.";
 }
 
 startServer();

@@ -1,69 +1,48 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import Groq from 'groq-sdk';
 
-const STITCH_SYSTEM_PROMPT = `ROLE: You are the friendly, down-to-earth AI assistant for Dean Wilshaw, a freelance web developer in Cheshire & Stoke-on-Trent.
+const STITCH_SYSTEM_PROMPT = `You are StitchBot, an AI assistant for Dean Wilshaw Web Development.
+Your role is to help tradespeople, contractors, and small business owners understand website packages, features, and pricing in clear, jargon-free British English.
 
-TONE & VOICE:
-- Friendly, grounded, peer-to-peer, and direct.
-- Speak like a helpful local professional talking to another local business owner over coffee.
-- DO NOT be patronizing, talk down to users, or use childish ELI5 analogies.
-- Keep responses concise (2-4 sentences max), honest, and practical.
+CORE BUSINESS FACTS & PRICING:
+- Founder & Developer: Dean Wilshaw.
+- Service: Custom, hand-crafted websites purpose-built for trade and commercial businesses (plumbers, electricians, builders, joiners, emergency dispatch, etc.).
+- Delivery Timeframe: Typically 5 to 7 working days from brief approval to live launch.
+- Ownership: 100 percent code and asset ownership transferred to the client. Zero proprietary lock-in.
+- Retainer & Site Care: Optional £49 per month managed care plan covering high-speed cloud hosting, security monitoring, regular backups, and direct content updates.
+- One-Off Build Pricing: Transparent, fixed project quotes based on scope. No hidden monthly platform software subscriptions.
 
-KEY BEHAVIORS:
-- Treat visitors as smart business owners who value straightforward answers.
-- Avoid unnecessary dev jargon, but speak normally about standard website features (mobile layout, fast load times, quote calculators, contact widgets).
-- Pricing: Standalone Lead Tools start from £149, Full Website Builds start from £299 with optional £49/month site care, and Custom Portals from £449-£599 / Custom Quote. Client owns 100% source code outright.
-- Goal: Answer questions directly and invite them to request a quote or message Dean directly on WhatsApp at 07348 733365.`;
+CONVERSATIONAL RULES:
+- Tone: Grounded, professional, straightforward, and friendly British English. No buzzwords, hyphens, em-dashes, or exaggerated marketing claims.
+- Brevity: Keep responses concise (2 to 4 sentences). Tradespeople want direct answers, not essays.
+- Guardrail on Unlisted Info: If asked for custom integrations, bespoke features, or exact quotes outside standard packages, direct them to fill out the quick quote form or contact Dean directly.
+- Primary Call to Action: Encourage visitors to check the "Six Trade Concepts" on the Demos page or submit the quote form to discuss their project.`;
 
 function smartFallback(query: string): string {
   const q = query.toLowerCase();
 
-  if (q.includes('cost') || q.includes('price') || q.includes('much') || q.includes('pricing') || q.includes('charge') || q.includes('fee') || q.includes('afford') || q.includes('budget')) {
-    return "Pricing is structured in clear tiers: Standalone Lead Tools start from £149, Full Website Builds start from £299 with optional £49/month site care, and Custom Portals from £449-£599. Feel free to book a quick chat to discuss what suits your business best!";
+  if (q.includes('cost') || q.includes('price') || q.includes('much') || q.includes('pricing') || q.includes('charge') || q.includes('fee') || q.includes('budget')) {
+    return "Pricing is transparent and fixed per project: Standalone Lead Tools from £149, Complete Trade Builds from £299, and Custom Infrastructure from £449, plus an optional £49 per month site care retainer. You own 100 percent of your code with zero ongoing platform lock in. Check the Pricing page or request a quick quote for your project.";
   }
-  if (q.includes('triage') || q.includes('emergency') || q.includes('dispatch') || q.includes('receptionist') || q.includes('overnight') || q.includes('weekend') || q.includes('sunday')) {
-    return "The 24/7 AI Trade Dispatcher acts as a full-time receptionist: answering FAQs, diagnosing emergency job urgency with 3 smart questions, and routing qualified lead details straight to WhatsApp for a 1-tap quote reply.";
+  if (q.includes('how long') || q.includes('time') || q.includes('turnaround') || q.includes('deliver') || q.includes('deadline') || q.includes('quick') || q.includes('days')) {
+    return "Standard builds are typically completed and launched within 5 to 7 working days from brief approval. Dean works directly with you to get your site live quickly without delays.";
   }
-  if (q.includes('fast') || q.includes('speed') || q.includes('slow') || q.includes('load') || q.includes('performance') || q.includes('wordpress')) {
-    return "Dean builds custom React sites that load in under 1.5 seconds - significantly faster than typical trade sites. Fast mobile pages keep local customers from clicking away to competitors.";
+  if (q.includes('retainer') || q.includes('care') || q.includes('hosting') || q.includes('support') || q.includes('maintain') || q.includes('maintenance') || q.includes('aftercare')) {
+    return "Dean offers an optional £49 per month managed care plan covering cloud hosting, security monitoring, regular backups, and direct content updates. You own your website outright with zero ongoing platform lock in.";
   }
-  if (q.includes('cheshire') || q.includes('stoke') || q.includes('sandbach') || q.includes('alsager') || q.includes('congleton') || q.includes('crewe') || q.includes('nantwich') || q.includes('cover') || q.includes('area') || q.includes('location') || q.includes('local') || q.includes('where')) {
-    return "Yes! Dean is based in South Cheshire and primarily works with businesses across Cheshire and Stoke-on-Trent, though he works with clients UK-wide too.";
+  if (q.includes('demo') || q.includes('example') || q.includes('portfolio') || q.includes('concept') || q.includes('show') || q.includes('work')) {
+    return "You can explore live interactive prototypes in the Six Trade Concepts section on the Demos page. They showcase layouts built for emergency callouts, commercial tenders, bespoke craft, surveying, lead dispatch, and vehicle services.";
   }
-  if (q.includes('how long') || q.includes('time') || q.includes('deadline') || q.includes('quick') || q.includes('week') || q.includes('turnaround') || q.includes('deliver')) {
-    return "Standard builds are delivered in 3-5 days for single-page sites and 1-2 weeks for larger setups. Dean moves fast to get your business live.";
+  if (q.includes('contact') || q.includes('whatsapp') || q.includes('phone') || q.includes('email') || q.includes('call') || q.includes('reach') || q.includes('speak')) {
+    return "You can reach Dean directly on WhatsApp or phone at 07348 733365, or via email at dean.wilshaw.web@gmail.com. He typically replies within a few hours.";
   }
-  if (q.includes('aftercare') || q.includes('after care') || q.includes('support') || q.includes('maintain') || q.includes('maintenance') || q.includes('update') || q.includes('help after') || q.includes('ongoing') || q.includes('after build') || q.includes('once built')) {
-    return "After the site is live, Dean offers an optional £49/month site care retainer covering hosting, security, daily backups, and support. You own your site outright with zero lock-in.";
+  if (q.includes('cheshire') || q.includes('stoke') || q.includes('location') || q.includes('where') || q.includes('area') || q.includes('local')) {
+    return "Dean is based in Cheshire and Stoke on Trent, working directly with trades and small businesses locally and nationwide.";
   }
-  if (q.includes('experience') || q.includes('qualified') || q.includes('know') || q.includes('skill') || q.includes('what can you do') || q.includes('what do you do') || q.includes('background') || q.includes('trained') || q.includes('bootcamp')) {
-    return "Dean completed an AI-focused web development Skills Bootcamp and builds high-performance trade systems using React, Vite, and Tailwind CSS. You can view his live portfolio at dw-web-freelance.vercel.app.";
+  if (q.includes('hi') || q.includes('hello') || q.includes('hey')) {
+    return "Hi there! I am StitchBot, Dean's AI assistant. I can answer questions about website packages, pricing, timelines, or tools. How can I help you today?";
   }
-  if (q.includes('mobile') || q.includes('phone') || q.includes('responsive') || q.includes('iphone') || q.includes('android') || q.includes('tablet')) {
-    return "Every site Dean builds is mobile-first - meaning it is designed for phones before desktops. Most local trade customer enquiries happen on mobile, so this is essential.";
-  }
-  if (q.includes('google') || q.includes('seo') || q.includes('rank') || q.includes('search') || q.includes('find') || q.includes('traffic')) {
-    return "Dean builds sites for local SEO - fast, semantic HTML properly structured for searches like 'roofer in Stoke' or 'driveways Cheshire'.";
-  }
-  if (q.includes('contact') || q.includes('reach') || q.includes('whatsapp') || q.includes('email') || q.includes('call') || q.includes('get in touch') || q.includes('speak')) {
-    return "The easiest way to reach Dean is via WhatsApp at 07348 733365 or by filling in the quote form on this page.";
-  }
-  if (q.includes('redesign') || q.includes('existing') || q.includes('current site') || q.includes('old site') || q.includes('refresh') || q.includes('improve') || q.includes('update my')) {
-    return "Full website rebuilds start from £299. Dean takes your existing content and rebuilds it faster, cleaner, and mobile-friendly to increase conversion rates.";
-  }
-  if (q.includes('ai') || q.includes('chatbot') || q.includes('automation') || q.includes('bot') || q.includes('intelligent') || q.includes('machine learning') || q.includes('tool')) {
-    return "The 24/7 AI Lead Assistant & Trade Dispatcher qualifies emergency requests, diagnoses issues, and sends WhatsApp alerts directly to your phone. Standalone tools start from £149.";
-  }
-  if (q.includes('booking') || q.includes('appointment') || q.includes('calendar') || q.includes('schedule') || q.includes('reservation') || q.includes('system') || q.includes('dashboard') || q.includes('portal')) {
-    return "Custom booking portals and multi-page web applications are available from £449-£599 via custom quote based on your exact workflow.";
-  }
-  if (q.includes('example') || q.includes('portfolio') || q.includes('previous') || q.includes('work') || q.includes('seen') || q.includes('show') || q.includes('past') || q.includes('project')) {
-    return "You can explore live interactive demos and trade mockups directly on this site or request a free 24-hour preview for your business.";
-  }
-  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('morning') || q.includes('evening') || q.includes('afternoon')) {
-    return "Hi there! Great to hear from you. I am the 24/7 AI Assistant for Dean Wilshaw. How can I help with your trade website or quote today?";
-  }
-  return "Good question! The best way to get a proper answer is to fill in the quote form below or message Dean directly on WhatsApp at 07348 733365 - he typically replies within a few hours.";
+  return "Thanks for asking. For specific project details or custom requirements, please submit the quick quote form on this site or message Dean directly on WhatsApp at 07348 733365.";
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
@@ -102,7 +81,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const chatCompletion = await groq.chat.completions.create({
       messages: messages as any,
       model: 'llama-3.3-70b-versatile',
-      temperature: 0.7,
+      temperature: 0.2,
+      max_tokens: 250,
     });
 
     const reply = chatCompletion.choices[0]?.message?.content;
