@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { WhatsAppBar } from './trade-tools/WhatsAppBar';
 import { SocialProofBanner } from './trade-tools/SocialProofBanner';
@@ -52,7 +52,7 @@ export const InteractiveDemosSection: React.FC = () => {
     electrical: {
       label: '⚡ Tripped Fuse Board',
       trade: 'Approved Electrical Specialist',
-      urgency: 'HIGH-TICKET QUALIFIED',
+      urgency: 'QUALIFIED LEAD CAPTURED',
       urgencyBadge: 'bg-emerald-500/10 text-emerald-500 border-emerald-500/30',
       chat: [
         { sender: 'customer', text: 'Our main RCD tripped and the sockets on ground floor have no power.' },
@@ -99,7 +99,7 @@ export const InteractiveDemosSection: React.FC = () => {
                   24 hour AI Trade Dispatcher
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 mt-1 font-medium">
-                  Your website working as a full-time receptionist 24 hour: qualifying emergencies, filtering out time wasters, and capturing bookings while you sleep.
+                  Your website working as a full-time receptionist around the clock: qualifying emergencies, filtering out time wasters, and capturing bookings while you sleep.
                 </p>
               </div>
 

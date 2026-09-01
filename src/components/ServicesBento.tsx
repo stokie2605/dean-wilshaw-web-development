@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Gauge, TrendingUp, Search, Layers, ArrowUpRight, Check, X } from 'lucide-react';
 
 interface ServiceDetail {
@@ -25,7 +25,7 @@ const SERVICES: ServiceDetail[] = [
     tags: ['MOBILE', 'FAST', 'EASY TO USE'],
     features: [
       'Clean, lightweight mobile builds',
-      'Hand-crafted React responsive layout',
+      'Hand crafted custom responsive layout',
       'Flawless display across iOS & Android'
     ],
     techStack: '',
@@ -42,7 +42,7 @@ const SERVICES: ServiceDetail[] = [
     features: [
       'Sticky tap to call action buttons',
       'Instant WhatsApp lead routing',
-      'Frictionless mobile quote forms'
+      'Simple mobile quote forms that actually get filled in'
     ],
     techStack: '',
     roiImpact: ''
@@ -56,9 +56,9 @@ const SERVICES: ServiceDetail[] = [
     description: '',
     tags: ['GOOGLE', 'LOCAL', 'SEO'],
     features: [
-      'Built for local SEO & search ranking',
-      'Clean semantic HTML architecture',
-      'Structured local Schema markup'
+      'Built to rank for local Google searches',
+      'Clean code structure that search engines can read easily',
+      'Local area and service markup for maps and search results'
     ],
     techStack: '',
     roiImpact: ''
@@ -72,9 +72,9 @@ const SERVICES: ServiceDetail[] = [
     description: '',
     tags: ['HONEST', 'LOCAL', 'NO TRAPS'],
     features: [
-      'Zero proprietary template lock in contracts',
+      'No template platform fees or lock-in contracts',
       'Direct one to one developer support',
-      'Optional £49/month maintenance & care'
+      'Optional £49 per month maintenance and care'
     ],
     techStack: '',
     roiImpact: ''

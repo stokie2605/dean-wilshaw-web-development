@@ -1,4 +1,4 @@
-﻿import React from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { VoiceToQuoteDemo } from './tools/VoiceToQuoteDemo';
 import { Spotlight } from './ui/Spotlight';
@@ -33,7 +33,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Main Display Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-zinc-100 transition-colors duration-300">
-            High-Converting Websites and Lead Tools for UK Trades.
+            High Converting Websites and Lead Tools for UK Trades.
           </h1>
 
           {/* Subtitle */}

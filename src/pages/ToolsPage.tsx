@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
 import { Header } from '../components/Header';
@@ -50,7 +50,7 @@ const STAGE_TOOLS = [
     fullTabLabel: '03 WhatsApp Bar',
     shortTabLabel: '03 WhatsApp',
     title: 'Direct Trade WhatsApp Bar (Sticky Launcher)',
-    subtitle: 'Zero friction floating mobile bar for 1 tap messaging and photo attachments.',
+    subtitle: 'Simple floating mobile bar for 1 tap messaging and photo attachments.',
     demoRoute: '/demo/whatsapp-bar',
     icon: MessageSquare,
     component: (

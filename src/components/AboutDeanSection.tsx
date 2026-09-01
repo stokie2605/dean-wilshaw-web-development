@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin, Zap, ShieldCheck } from 'lucide-react';
 
@@ -54,7 +54,7 @@ export const AboutDeanSection: React.FC = () => {
           </h3>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
-            I build high-converting digital systems and web engines from scratch. Working with me means direct one to one contact with no middle management, no junior developers, and zero tech jargon.
+            I build websites and digital lead tools from scratch. Working with me means direct one to one contact with no middle management, no junior developers, and zero tech jargon.
           </p>
 
           {/* 3 Accountability Badges */}

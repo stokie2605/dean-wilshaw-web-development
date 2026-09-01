@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { BottomTabBar } from '../components/BottomTabBar';
@@ -200,7 +200,7 @@ export const PricingPage: React.FC = () => {
                 Simple, Honest Trade Pricing
               </h2>
               <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400">
-                No hidden fees, no agency markups, and zero platform contracts contracts. You own 100% of your source code outright.
+                No hidden fees, no agency markups, and zero platform lock-in contracts. You own 100% of your source code outright.
               </p>
             </div>
 
