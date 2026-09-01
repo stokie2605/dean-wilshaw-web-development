@@ -190,25 +190,23 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
               <div className="w-full flex justify-center py-2 sm:py-4">
                 {/* On mobile (<md), ALWAYS show phone frame regardless of activeViewport.
                     On md+, allow vertical scrolling inside phone chassis and hide when desktop view is active. */}
-                <div className={`w-full max-w-[320px] sm:max-w-[360px] md:h-[65vh] lg:h-[72vh] rounded-2xl sm:rounded-3xl overflow-y-auto overflow-x-hidden scrollbar-none border-2 border-zinc-800 shadow-2xl bg-black flex flex-col antialiased transform-gpu ${activeViewport === 'desktop' ? 'block md:hidden' : 'block'}`}>
+                <div className={`w-full max-w-[360px] md:max-w-[375px] md:h-[65vh] lg:h-[72vh] rounded-2xl sm:rounded-3xl overflow-y-auto overflow-x-hidden scrollbar-none border-2 border-zinc-800 shadow-2xl bg-black flex flex-col ${activeViewport === 'desktop' ? 'block md:hidden' : 'block'}`}>
                   <img
                     src={imagePaths.mobile}
                     alt={activeEngine.title}
                     onError={(e) => handleImageError(e, `/images/engine-${String(activeEngine.id).padStart(2, '0')}-mobile.png`)}
-                    className="w-full h-auto object-top block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges]"
-                    style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
+                    className="w-full h-auto block object-top select-none pointer-events-none"
                   />
                 </div>
 
                 {/* Desktop Spec Frame (visible on md+ when activeViewport === 'desktop') */}
                 {activeViewport === 'desktop' && (
-                  <div className="hidden md:flex w-full max-w-4xl h-[65vh] lg:h-[72vh] rounded-xl border-2 border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex-col antialiased transform-gpu [backface-visibility:hidden] [perspective:1000px]">
+                  <div className="hidden md:flex w-full max-w-4xl h-[65vh] lg:h-[72vh] rounded-xl border-2 border-zinc-800 bg-zinc-950 shadow-2xl overflow-y-auto overflow-x-hidden scrollbar-none flex-col">
                     <img
                       src={imagePaths.desktop}
                       alt={activeEngine.title}
                       onError={(e) => handleImageError(e, `/images/engine-${String(activeEngine.id).padStart(2, '0')}-preview.png`)}
-                      className="w-full h-auto block select-none [image-rendering:-webkit-optimize-contrast] [image-rendering:crisp-edges] antialiased transform-gpu [backface-visibility:hidden]"
-                      style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
+                      className="w-full h-auto block object-top select-none pointer-events-none"
                     />
                   </div>
                 )}
