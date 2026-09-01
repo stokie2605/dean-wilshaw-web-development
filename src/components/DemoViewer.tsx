@@ -200,11 +200,12 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
             </div>
 
             {/* Viewport Canvas Container: natural height on mobile, flex-1 centered on desktop */}
-            <div className="w-full flex items-center justify-center md:pt-16 md:pb-4">
+            <div className="w-full flex items-center justify-center lg:pt-16 lg:pb-4">
               {/* Mobile View: Natural full height mockup inside clean frame */}
               <div className="w-full flex justify-center py-2 sm:py-4">
-                {/* On mobile (<md), always render clean phone frame. On md+, render only when activeViewport === 'mobile' */}
-                <div className={`w-full max-w-[320px] sm:max-w-[360px] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-black ${activeViewport === 'desktop' ? 'hidden md:block' : 'block'}`}>
+                {/* On mobile (<md), ALWAYS show phone frame regardless of activeViewport.
+                    On md+, hide it only when desktop view is active (md:hidden when desktop). */}
+                <div className={`w-full max-w-[320px] sm:max-w-[360px] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-black ${activeViewport === 'desktop' ? 'block md:hidden' : 'block'}`}>
                   <img
                     src={imagePaths.mobile}
                     alt={activeEngine.title}

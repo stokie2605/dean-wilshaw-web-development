@@ -177,12 +177,12 @@ export const DemosPage: React.FC = () => {
           </div>
 
           {/* Six Engine Cardless Editorial Grid with Clean Dividers */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 divide-y md:divide-y-0 pt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-0 md:gap-y-12 pt-4">
             {PORTFOLIO_ENGINES.map((engine, idx) => (
               <div
                 key={engine.id}
                 onClick={() => openViewer(idx)}
-                className="pt-8 md:pt-0 flex flex-col justify-between group cursor-pointer"
+                className={`flex flex-col justify-between group cursor-pointer py-8 md:py-0 ${idx > 0 ? 'border-t border-slate-200 dark:border-zinc-800 md:border-t-0' : ''}`}
               >
                 <div>
                   {/* Mini Browser Header & Viewport Mockup */}
