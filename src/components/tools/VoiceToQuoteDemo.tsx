@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PhoneIncoming, Sparkles, Send, Zap, RotateCcw, Activity, MessageSquare } from 'lucide-react';
 
 export const VoiceToQuoteDemo: React.FC = () => {
@@ -6,7 +6,7 @@ export const VoiceToQuoteDemo: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0); // 0 = idle, 1 = step1, 2 = step2, 3 = step3
   const [typedText, setTypedText] = useState('');
 
-  const fullTranscript = "Hi, need an urgent repair callout today at our property in CW1, could you text over a price guide and earliest availability?";
+  const fullTranscript = "Hi, I need an urgent repair callout today at our property in CW1, could you text over a price guide and earliest availability?";
 
   useEffect(() => {
     let timer1: NodeJS.Timeout;
@@ -180,7 +180,7 @@ export const VoiceToQuoteDemo: React.FC = () => {
                         Voicemail Transcribed
                       </span>
                       <span className="text-emerald-700 dark:text-emerald-400 font-bold bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/50 px-1.5 py-0.5 rounded text-[10px]">
-                        Audio: 1.8s  /  99% Acc
+                        Audio: 1.8s
                       </span>
                     </div>
                     <p className="text-zinc-800 dark:text-zinc-200 text-[11px] font-mono italic">

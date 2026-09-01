@@ -252,7 +252,7 @@ export const PricingPage: React.FC = () => {
 
                       {/* Price */}
                       <div className="mb-6">
-                        <div className={`text-3xl sm:text-4xl font-black tracking-tight ${tier.popular ? 'text-[#D90429]' : 'text-slate-900 dark:text-white'}`}>
+                        <div className={`text-3xl sm:text-4xl font-black tracking-tight ${tier.popular ? 'text-[#D90429] dark:text-white' : 'text-slate-900 dark:text-white'}`}>
                           {tier.pricingNote}
                         </div>
                         {tier.pricingSubtextBadge ? (

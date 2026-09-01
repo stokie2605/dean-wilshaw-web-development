@@ -151,21 +151,6 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                 </div>
               </div>
             </div>
-
-            {/* Commercial Action Anchor (Desktop View) */}
-            <div className="hidden lg:block pt-4 border-t border-zinc-800/80 mt-auto">
-              <button
-                type="button"
-                onClick={() => {
-                  onClose();
-                  onOpenQuote();
-                }}
-                className="w-full py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm transition-all shadow-lg shadow-red-900/20 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
-              >
-                <span>Commission This Layout</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
           </div>
 
           {/* Right Column (7 Cols on desktop) - Hardware Viewport & Mobile Preview */}
@@ -201,11 +186,11 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
 
             {/* Viewport Canvas Container: natural height on mobile, flex-1 centered on desktop */}
             <div className="w-full flex items-center justify-center lg:pt-16 lg:pb-4">
-              {/* Mobile View: Natural full height mockup inside clean frame */}
+              {/* Mobile View: Natural full height mockup inside clean frame on phones, scrollable chassis on desktop */}
               <div className="w-full flex justify-center py-2 sm:py-4">
                 {/* On mobile (<md), ALWAYS show phone frame regardless of activeViewport.
-                    On md+, hide it only when desktop view is active (md:hidden when desktop). */}
-                <div className={`w-full max-w-[320px] sm:max-w-[360px] rounded-2xl sm:rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-black ${activeViewport === 'desktop' ? 'block md:hidden' : 'block'}`}>
+                    On md+, allow vertical scrolling inside phone chassis and hide when desktop view is active. */}
+                <div className={`w-full max-w-[320px] sm:max-w-[360px] md:h-[65vh] lg:h-[72vh] rounded-2xl sm:rounded-3xl overflow-y-auto overflow-x-hidden scrollbar-none border-2 border-zinc-800 shadow-2xl bg-black flex flex-col antialiased transform-gpu ${activeViewport === 'desktop' ? 'block md:hidden' : 'block'}`}>
                   <img
                     src={imagePaths.mobile}
                     alt={activeEngine.title}
@@ -228,21 +213,6 @@ export const DemoViewer: React.FC<DemoViewerProps> = ({
                   </div>
                 )}
               </div>
-            </div>
-
-            {/* Mobile Action Button (Placed cleanly beneath mockup with clear spacing on mobile) */}
-            <div className="block lg:hidden pt-4 pb-2 mt-2">
-              <button
-                type="button"
-                onClick={() => {
-                  onClose();
-                  onOpenQuote();
-                }}
-                className="w-full py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-sm transition-all shadow-lg shadow-red-900/20 active:scale-[0.98] cursor-pointer flex items-center justify-center gap-2"
-              >
-                <span>Commission This Layout</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
             </div>
 
           </div>
