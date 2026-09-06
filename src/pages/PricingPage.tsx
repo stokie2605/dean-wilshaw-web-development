@@ -22,6 +22,7 @@ type PricingTier = {
   pricingNote: string;
   pricingSubtext?: string;
   pricingSubtextBadge?: string;
+  turnaround: string;
   splitTerms?: string;
   popular?: boolean;
   isHighTech?: boolean;
@@ -29,7 +30,7 @@ type PricingTier = {
   badgeColor: string;
   bullets: { full: string; short: string }[];
   ctaText: string;
-  isQuoteTrigger?: boolean;
+  whatsappMessage: string;
   stripeLink?: string;
 };
 
@@ -40,6 +41,7 @@ const PRICING_TIERS: PricingTier[] = [
     subtitle: 'Add an interactive phone or quote generator to your existing site.',
     pricingNote: 'From £149',
     pricingSubtext: 'Ready to install',
+    turnaround: '48 Hour Turnaround',
     badge: 'Fast Integration',
     badgeColor: 'bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800',
     bullets: [
@@ -50,7 +52,7 @@ const PRICING_TIERS: PricingTier[] = [
       { full: 'Zero ongoing subscriptions on tools', short: '' },
     ],
     ctaText: 'Select a Tool (From £149)',
-    isQuoteTrigger: true,
+    whatsappMessage: "Hi Dean, I would like to add a standalone trade tool to my website, the £149 option. Could we discuss which tool suits my business?",
   },
   {
     id: 'landing-page',
@@ -58,6 +60,7 @@ const PRICING_TIERS: PricingTier[] = [
     subtitle: 'A complete, clean single page web engine engineered for calls.',
     pricingNote: 'From £299',
     pricingSubtext: '100% Client Code Ownership',
+    turnaround: '5 to 7 Day Turnaround',
     popular: true,
     badge: '★ RECOMMENDED',
     badgeColor: 'bg-red-50 text-[#D90429] border-red-200/80 dark:bg-red-500/10 dark:text-[#D90429] dark:border-red-500/30',
@@ -69,7 +72,7 @@ const PRICING_TIERS: PricingTier[] = [
       { full: 'Optional £49 per month managed site care retainer (hosting, SSL, maintenance)', short: '' },
     ],
     ctaText: 'Build My Landing Page (£299)',
-    isQuoteTrigger: true,
+    whatsappMessage: "Hi Dean, I would like to build a complete trade website, the £299 option. Could we discuss getting started?",
   },
   {
     id: 'custom-mixed',
@@ -77,6 +80,7 @@ const PRICING_TIERS: PricingTier[] = [
     subtitle: 'Bespoke portals and turnkey multi tool infrastructure.',
     pricingNote: 'From £449',
     pricingSubtext: 'Built to your specification',
+    turnaround: '7 to 14 Day Turnaround',
     badge: 'Custom Solutions',
     badgeColor: 'bg-emerald-50 text-emerald-700 border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50',
     isHighTech: true,
@@ -87,7 +91,7 @@ const PRICING_TIERS: PricingTier[] = [
       { full: 'Live booking systems and payment setups on request', short: '' },
     ],
     ctaText: 'Discuss a Custom Mix',
-    isQuoteTrigger: false,
+    whatsappMessage: "Hi Dean, I'd like to discuss a custom trade portal.",
   },
 ];
 
@@ -197,11 +201,13 @@ export const PricingPage: React.FC = () => {
                 const handleCardClick = () => {
                   if (tier.stripeLink) {
                     window.open(tier.stripeLink, '_blank', 'noopener,noreferrer');
-                  } else if (tier.isQuoteTrigger) {
-                    setQuoteModalOpen(true);
-                  } else {
-                    window.open("https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20to%20discuss%20a%20custom%20trade%20portal.", '_blank', 'noopener,noreferrer');
+                    return;
                   }
+                  window.open(
+                    `https://wa.me/447348733365?text=${encodeURIComponent(tier.whatsappMessage)}`,
+                    '_blank',
+                    'noopener,noreferrer'
+                  );
                 };
 
                 return (
@@ -236,6 +242,9 @@ export const PricingPage: React.FC = () => {
 
                       {/* Price */}
                       <div className="mb-6">
+                        <div className="text-[11px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-mono mb-1">
+                          {tier.turnaround}
+                        </div>
                         <div className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
                           {tier.pricingNote}
                         </div>

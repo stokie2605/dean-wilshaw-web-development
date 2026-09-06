@@ -124,7 +124,7 @@ export default function App() {
                       Trade Tool &amp; Website Simulator
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                      See how custom lead tools look and convert on your mobile and desktop site. Pick your trade, tick the tools you want, and generate a live preview with a voice quoting engine, price estimators, emergency intake, and a WhatsApp bar built in.
+                      See how custom lead tools look and convert on your mobile and desktop site. Enter your business name, tick the tools you want, and generate a live preview with a voice quoting engine, price estimators, emergency intake, and a WhatsApp bar built in.
                     </p>
                   </div>
                   <button
@@ -191,8 +191,8 @@ export default function App() {
       {/* Mobile Bottom Navigation Bar (<768px) */}
       <BottomTabBar />
 
-      {/* Floating WhatsApp Button - Bottom Left */}
-      <div className="fixed bottom-20 md:bottom-6 left-4 sm:left-6 z-[45] flex flex-col gap-3">
+      {/* Floating WhatsApp Button - Bottom Right (natural thumb zone) */}
+      <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-[45] flex flex-col gap-3">
         <button 
           onClick={() => setWhatsappModalOpen(true)}
           className="bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] flex items-center justify-center transition-transform hover:scale-105 border border-white/40"
@@ -202,9 +202,9 @@ export default function App() {
         </button>
       </div>
 
-      {/* Floating Ask AI Button - Bottom Right */}
+      {/* Floating Ask AI Button - Desktop only, stacked above WhatsApp */}
       {!stitchModalOpen && (
-        <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end gap-2 pointer-events-none">
+        <div className="fixed right-4 sm:right-6 md:bottom-24 z-40 hidden md:flex flex-col items-end gap-2 pointer-events-none">
           {showBubble && (
             <div 
               className="hidden md:flex bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] shadow-xl rounded-xl px-3.5 py-2 text-xs font-medium text-slate-800 dark:text-zinc-200 relative items-center gap-2 pr-7 cursor-pointer pointer-events-auto transition-all" 

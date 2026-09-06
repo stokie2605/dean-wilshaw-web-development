@@ -611,54 +611,32 @@ export const TradeSimulator: React.FC = () => {
   return (
     <div className="w-full max-w-6xl mx-auto text-slate-900 dark:text-white">
       <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-8 lg:gap-10 items-start">
-        {/* Left column: business inputs and checklist */}
-        <div className="space-y-6">
-          <div className="grid grid-cols-1 gap-4">
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Business Name</label>
-              <input
-                type="text"
-                value={businessName}
-                onChange={(e) => setBusinessName(e.target.value)}
-                placeholder="For example, Wilshaw Plumbing and Heating"
-                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Town / Area</label>
-              <input
-                type="text"
-                value={town}
-                onChange={(e) => setTown(e.target.value)}
-                placeholder="For example, Stoke on Trent"
-                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
-              />
-            </div>
-          </div>
-
+        {/* Block A: business inputs. Mobile order 1, desktop column 1 row 1 */}
+        <div className="order-1 lg:order-1 lg:col-start-1 lg:row-start-1 grid grid-cols-1 gap-4">
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">Tools and Features</label>
-              <span className="text-[11px] font-mono font-semibold text-slate-500 dark:text-zinc-400">
-                {selectedFeatures.size} of 2 selected
-              </span>
-            </div>
-            <div className="space-y-2.5">
-              {FEATURE_CONFIGS.map((feature) => (
-                <FeatureCheckbox
-                  key={feature.key}
-                  feature={feature}
-                  checked={selectedFeatures.has(feature.key)}
-                  onToggle={() => toggleFeature(feature.key)}
-                  disabled={!selectedFeatures.has(feature.key) && selectedFeatures.size >= 2}
-                />
-              ))}
-            </div>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Business Name</label>
+            <input
+              type="text"
+              value={businessName}
+              onChange={(e) => setBusinessName(e.target.value)}
+              placeholder="For example, Wilshaw Plumbing and Heating"
+              className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
+            />
+          </div>
+          <div>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Town / Area</label>
+            <input
+              type="text"
+              value={town}
+              onChange={(e) => setTown(e.target.value)}
+              placeholder="For example, Stoke on Trent"
+              className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
+            />
           </div>
         </div>
 
-        {/* Right column: live preview and claim CTA */}
-        <div className="space-y-4">
+        {/* Block B: viewport toggle, live preview and claim CTA. Mobile order 2, desktop column 2 spanning both rows */}
+        <div className="order-2 lg:order-2 lg:col-start-2 lg:row-start-1 lg:row-span-2 space-y-4">
           <div className="flex items-center justify-center gap-2">
             <SegmentButton active={viewport === 'mobile'} onClick={() => setViewport('mobile')}>
               <span className="flex items-center gap-1.5">
@@ -713,6 +691,27 @@ export const TradeSimulator: React.FC = () => {
               Enter your business name above to continue
             </p>
           )}
+        </div>
+
+        {/* Block C: tool checklist. Mobile order 3, desktop column 1 row 2 */}
+        <div className="order-3 lg:order-3 lg:col-start-1 lg:row-start-2">
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300">Tools and Features</label>
+            <span className="text-[11px] font-mono font-semibold text-slate-500 dark:text-zinc-400">
+              {selectedFeatures.size} of 2 selected
+            </span>
+          </div>
+          <div className="space-y-2.5">
+            {FEATURE_CONFIGS.map((feature) => (
+              <FeatureCheckbox
+                key={feature.key}
+                feature={feature}
+                checked={selectedFeatures.has(feature.key)}
+                onToggle={() => toggleFeature(feature.key)}
+                disabled={!selectedFeatures.has(feature.key) && selectedFeatures.size >= 2}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
