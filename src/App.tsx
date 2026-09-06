@@ -121,17 +121,17 @@ export default function App() {
                       Interactive Sandbox
                     </p>
                     <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
-                      Website &amp; Tool Generator
+                      Trade Tool &amp; Website Simulator
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                      Pick your trade, tick the tools you want, and generate a working preview of your own site with a voice quoting engine, price estimators, emergency intake, and a WhatsApp bar built in.
+                      See how custom lead tools look and convert on your mobile and desktop site. Pick your trade, tick the tools you want, and generate a live preview with a voice quoting engine, price estimators, emergency intake, and a WhatsApp bar built in.
                     </p>
                   </div>
                   <button
                     onClick={() => navigate('/simulator')}
                     className="self-start inline-flex items-center gap-2 text-sm font-bold text-[#D90429] hover:text-[#b80322] transition-colors group"
                   >
-                    Try the Generator
+                    Try the Simulator
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>

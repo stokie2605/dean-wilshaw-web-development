@@ -126,11 +126,19 @@ const TRADE_CONFIGS: TradeConfig[] = [
 ];
 
 function chipClass(active: boolean): string {
-  return `w-full text-left px-3 py-2.5 rounded-xl border text-xs font-medium transition-colors ${
+  return `w-full text-left px-3.5 py-3 rounded-2xl border text-xs font-medium transition-colors ${
     active
       ? 'border-[#D90429] bg-red-50 dark:bg-red-950/30 text-red-900 dark:text-red-400 font-semibold'
       : 'border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/50'
   }`;
+}
+
+function ChipButton({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
+  return (
+    <motion.button whileTap={{ scale: 0.97 }} type="button" onClick={onClick} className={chipClass(active)}>
+      {children}
+    </motion.button>
+  );
 }
 
 function SegmentButton({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
@@ -139,7 +147,7 @@ function SegmentButton({ active, onClick, children }: { active: boolean; onClick
       whileTap={{ scale: 0.96 }}
       type="button"
       onClick={onClick}
-      className={`py-2.5 px-2 rounded-xl text-[11px] font-bold font-mono text-center transition-all ${
+      className={`py-3 px-2 rounded-2xl text-[11px] font-bold font-mono text-center transition-all ${
         active
           ? 'bg-[#D90429] text-white shadow-sm'
           : 'bg-zinc-100 dark:bg-white/[0.04] border border-zinc-200 dark:border-white/[0.08] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white'
@@ -152,7 +160,7 @@ function SegmentButton({ active, onClick, children }: { active: boolean; onClick
 
 function PriceReadout({ value, caption }: { value: string; caption: string }) {
   return (
-    <div className="relative rounded-xl bg-slate-100 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-3.5 text-center overflow-hidden shadow-inner">
+    <div className="relative rounded-2xl bg-slate-100 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-4 text-center overflow-hidden shadow-inner">
       <p className="text-[9px] uppercase tracking-widest font-mono font-semibold text-slate-500 dark:text-zinc-400">
         Ballpark Estimate
       </p>
@@ -165,7 +173,7 @@ function PriceReadout({ value, caption }: { value: string; caption: string }) {
       >
         {value}
       </motion.p>
-      <p className="text-[9px] text-slate-500 dark:text-zinc-500">{caption}</p>
+      <p className="text-[9px] text-slate-500 dark:text-zinc-500 mt-0.5">{caption}</p>
     </div>
   );
 }
@@ -230,9 +238,9 @@ function HeatingPlumbingTool({ onSummaryChange }: ToolProps) {
       <p className="text-xs font-semibold text-slate-600 dark:text-zinc-300">What is the fault?</p>
       <div className="space-y-2">
         {FAULT_OPTIONS.map((f) => (
-          <button key={f.id} type="button" onClick={() => setFaultId(f.id)} className={chipClass(faultId === f.id)}>
+          <ChipButton key={f.id} active={faultId === f.id} onClick={() => setFaultId(f.id)}>
             {f.label}
-          </button>
+          </ChipButton>
         ))}
       </div>
 
@@ -271,9 +279,9 @@ function ElectricalTool({ onSummaryChange }: ToolProps) {
       <p className="text-xs font-semibold text-slate-600 dark:text-zinc-300">Select a service</p>
       <div className="space-y-2">
         {ELECTRICAL_OPTIONS.map((s) => (
-          <button key={s.id} type="button" onClick={() => setServiceId(s.id)} className={chipClass(serviceId === s.id)}>
+          <ChipButton key={s.id} active={serviceId === s.id} onClick={() => setServiceId(s.id)}>
             {s.label}
-          </button>
+          </ChipButton>
         ))}
       </div>
       <PriceReadout value={service.price} caption={service.note} />
@@ -379,9 +387,9 @@ function PainterDecoratorTool({ onSummaryChange }: ToolProps) {
       ) : (
         <div className="space-y-2">
           {EXTERIOR_TIERS.map((t) => (
-            <button key={t.id} type="button" onClick={() => setTierId(t.id)} className={chipClass(tierId === t.id)}>
+            <ChipButton key={t.id} active={tierId === t.id} onClick={() => setTierId(t.id)}>
               {t.label}
-            </button>
+            </ChipButton>
           ))}
         </div>
       )}
@@ -492,14 +500,14 @@ function GenericTriageTool({ jobOptions, allowFreeText, onSummaryChange, variant
                 value={customJob}
                 onChange={(e) => setCustomJob(e.target.value)}
                 placeholder="Briefly describe the job, for example a fence panel came down in the storm"
-                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-xl p-3 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500 resize-none"
+                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-xs text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500 resize-none"
               />
             ) : (
               <div className="space-y-2">
                 {jobOptions.map((opt) => (
-                  <button key={opt} type="button" onClick={() => setJobType(opt)} className={chipClass(jobType === opt)}>
+                  <ChipButton key={opt} active={jobType === opt} onClick={() => setJobType(opt)}>
                     {opt}
-                  </button>
+                  </ChipButton>
                 ))}
               </div>
             )}
@@ -508,7 +516,7 @@ function GenericTriageTool({ jobOptions, allowFreeText, onSummaryChange, variant
               type="button"
               disabled={!resolvedJob}
               onClick={() => setStep(2)}
-              className="w-full py-2.5 rounded-xl text-xs font-bold bg-[#D90429] text-white disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
+              className="w-full py-2.5 rounded-2xl text-xs font-bold bg-[#D90429] text-white disabled:opacity-40 disabled:cursor-not-allowed transition-opacity"
             >
               Next
             </motion.button>
@@ -536,7 +544,7 @@ function GenericTriageTool({ jobOptions, allowFreeText, onSummaryChange, variant
                 whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={() => setStep(1)}
-                className="flex-1 py-2.5 rounded-xl text-xs font-bold bg-zinc-100 dark:bg-white/[0.06] text-zinc-700 dark:text-zinc-300"
+                className="flex-1 py-2.5 rounded-2xl text-xs font-bold bg-zinc-100 dark:bg-white/[0.06] text-zinc-700 dark:text-zinc-300"
               >
                 Back
               </motion.button>
@@ -544,7 +552,7 @@ function GenericTriageTool({ jobOptions, allowFreeText, onSummaryChange, variant
                 whileTap={{ scale: 0.98 }}
                 type="button"
                 onClick={() => setStep(3)}
-                className="flex-1 py-2.5 rounded-xl text-xs font-bold bg-[#D90429] text-white"
+                className="flex-1 py-2.5 rounded-2xl text-xs font-bold bg-[#D90429] text-white"
               >
                 Next
               </motion.button>
@@ -565,7 +573,7 @@ function GenericTriageTool({ jobOptions, allowFreeText, onSummaryChange, variant
               whileTap={{ scale: 0.97 }}
               type="button"
               onClick={() => setMediaAdded((v) => !v)}
-              className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl text-xs font-semibold border transition-colors ${
+              className={`w-full flex items-center justify-center gap-2 py-3 rounded-2xl text-xs font-semibold border transition-colors ${
                 mediaAdded
                   ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-400'
                   : 'border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/50'
@@ -575,7 +583,7 @@ function GenericTriageTool({ jobOptions, allowFreeText, onSummaryChange, variant
               {mediaAdded ? 'Photo and voice note attached' : 'Simulate photo and voice note'}
             </motion.button>
 
-            <div className="rounded-xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-3">
+            <div className="rounded-2xl bg-slate-50 dark:bg-zinc-950 border border-slate-200 dark:border-zinc-800 p-3">
               <p className="text-[9px] uppercase tracking-widest font-mono font-semibold text-slate-500 dark:text-zinc-400 mb-1.5">
                 Triage Summary
               </p>
@@ -589,7 +597,7 @@ function GenericTriageTool({ jobOptions, allowFreeText, onSummaryChange, variant
               whileTap={{ scale: 0.98 }}
               type="button"
               onClick={() => setStep(1)}
-              className="w-full py-2.5 rounded-xl text-xs font-bold bg-zinc-100 dark:bg-white/[0.06] text-zinc-700 dark:text-zinc-300"
+              className="w-full py-2.5 rounded-2xl text-xs font-bold bg-zinc-100 dark:bg-white/[0.06] text-zinc-700 dark:text-zinc-300"
             >
               Start Over
             </motion.button>
@@ -662,13 +670,13 @@ function PreviewChatBubble({ businessName }: { businessName: string }) {
             </span>
           </div>
           <div className="p-3 space-y-2 max-h-48 overflow-y-auto hide-scrollbar">
-            <div className="bg-slate-100 dark:bg-zinc-800 rounded-xl rounded-bl-none p-2.5 text-[11px] text-slate-700 dark:text-zinc-300 leading-relaxed">
+            <div className="bg-slate-100 dark:bg-zinc-800 rounded-2xl rounded-bl-none p-2.5 text-[11px] text-slate-700 dark:text-zinc-300 leading-relaxed">
               Hi, I can help you book a job or get a quick price. What do you need today?
             </div>
             {conversation.map((line, i) => (
               <div
                 key={i}
-                className="bg-slate-100 dark:bg-zinc-800 rounded-xl rounded-bl-none p-2.5 text-[11px] text-slate-700 dark:text-zinc-300 leading-relaxed"
+                className="bg-slate-100 dark:bg-zinc-800 rounded-2xl rounded-bl-none p-2.5 text-[11px] text-slate-700 dark:text-zinc-300 leading-relaxed"
               >
                 {line}
               </div>
@@ -703,10 +711,29 @@ function PreviewChatBubble({ businessName }: { businessName: string }) {
 }
 
 /* Voice-to-quote wrapped in a scale container so its wide layout fits the phone column */
+const VOICE_QUOTE_SCALE = 0.62;
+
 function ScaledVoiceToQuote() {
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [scaledHeight, setScaledHeight] = useState(0);
+
+  useEffect(() => {
+    const el = contentRef.current;
+    if (!el) return;
+    const update = () => setScaledHeight(el.scrollHeight * VOICE_QUOTE_SCALE);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative w-full overflow-hidden" style={{ height: 300 }}>
-      <div className="absolute top-0 left-0 w-[420px] origin-top-left" style={{ transform: 'scale(0.6)' }}>
+    <div className="relative w-full" style={{ height: scaledHeight || undefined }}>
+      <div
+        ref={contentRef}
+        className="absolute top-0 left-0 origin-top-left"
+        style={{ width: `${100 / VOICE_QUOTE_SCALE}%`, transform: `scale(${VOICE_QUOTE_SCALE})` }}
+      >
         <VoiceToQuoteDemo />
       </div>
     </div>
@@ -847,7 +874,7 @@ function renderFeature(key: FeatureKey, ctx: RenderCtx, viewport: 'mobile' | 'de
     case 'voice_quote':
       return viewport === 'mobile' ? <ScaledVoiceToQuote /> : <VoiceToQuoteDemo />;
     case 'whatsapp_bar':
-      return <WhatsAppBar tradeName={ctx.businessName.trim() || ctx.resolvedTradeLabel} />;
+      return <WhatsAppBar tradeName={ctx.businessName.trim() || ctx.resolvedTradeLabel} compact />;
     case 'ai_chatbot':
       return null;
     default:
@@ -904,7 +931,7 @@ function SelectedFeaturesPanel({
       </div>
 
       {hasWhatsAppBar && (
-        <div className={viewport === 'mobile' ? 'sticky bottom-0 pt-2 pb-1 bg-gradient-to-t from-white dark:from-zinc-900 via-white/95 dark:via-zinc-900/95' : 'sticky bottom-0 px-6 pb-4 pt-2 bg-gradient-to-t from-white dark:from-zinc-900 via-white/95 dark:via-zinc-900/95'}>
+        <div className={viewport === 'mobile' ? 'sticky bottom-0 pt-3 pb-2 bg-gradient-to-t from-white dark:from-zinc-900 via-white/95 dark:via-zinc-900/95' : 'sticky bottom-0 px-6 pb-4 pt-3 bg-gradient-to-t from-white dark:from-zinc-900 via-white/95 dark:via-zinc-900/95'}>
           {renderFeature('whatsapp_bar', ctx, viewport, (summary) => onSummaryChange('whatsapp_bar', summary))}
         </div>
       )}
@@ -1059,7 +1086,7 @@ export const TradeSimulator: React.FC = () => {
                 value={businessName}
                 onChange={(e) => setBusinessName(e.target.value)}
                 placeholder="For example, Wilshaw Plumbing and Heating"
-                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
+                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
               />
             </div>
             <div>
@@ -1069,7 +1096,7 @@ export const TradeSimulator: React.FC = () => {
                 value={town}
                 onChange={(e) => setTown(e.target.value)}
                 placeholder="For example, Stoke on Trent"
-                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
+                className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
               />
             </div>
           </div>
@@ -1085,7 +1112,7 @@ export const TradeSimulator: React.FC = () => {
                     key={t.key}
                     type="button"
                     onClick={() => setTradeKey(t.key)}
-                    className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border text-left text-[11px] font-semibold transition-colors ${
+                    className={`flex items-center gap-2 px-3 py-2.5 rounded-2xl border text-left text-[11px] font-semibold transition-colors ${
                       active
                         ? 'border-[#D90429] bg-red-50 dark:bg-red-950/30 text-red-900 dark:text-red-400'
                         : 'border-slate-200 dark:border-zinc-800 text-slate-700 dark:text-zinc-300 hover:bg-slate-50 dark:hover:bg-zinc-800/50'
@@ -1104,7 +1131,7 @@ export const TradeSimulator: React.FC = () => {
                 value={customTradeLabel}
                 onChange={(e) => setCustomTradeLabel(e.target.value)}
                 placeholder="Tell us your trade, for example pest control or window cleaning"
-                className="mt-2 w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
+                className="mt-2 w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-700 rounded-2xl p-3 text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-zinc-600 focus:outline-none focus:border-red-500"
               />
             )}
           </div>
@@ -1129,7 +1156,7 @@ export const TradeSimulator: React.FC = () => {
               type="button"
               onClick={handleGenerate}
               disabled={!canGenerate || generationStatus === 'compiling'}
-              className={`w-full font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg ${
+              className={`w-full font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 text-sm transition shadow-lg ${
                 canGenerate
                   ? 'bg-[#D90429] hover:bg-[#b80322] text-white shadow-red-600/20'
                   : 'bg-slate-200 dark:bg-zinc-800 text-slate-400 dark:text-zinc-600 shadow-none cursor-not-allowed'
@@ -1242,7 +1269,7 @@ export const TradeSimulator: React.FC = () => {
             type="button"
             onClick={handleClaim}
             disabled={!canClaim}
-            className={`w-full max-w-[300px] lg:max-w-none mx-auto font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 text-sm transition shadow-lg font-mono ${
+            className={`w-full max-w-[300px] lg:max-w-none mx-auto font-bold py-3.5 px-4 rounded-2xl flex items-center justify-center gap-2 text-sm transition shadow-lg font-mono ${
               canClaim
                 ? 'bg-[#25D366] hover:bg-[#20ba5a] text-black shadow-[#25D366]/20'
                 : 'bg-slate-200 dark:bg-zinc-800 text-slate-400 dark:text-zinc-600 shadow-none cursor-not-allowed'

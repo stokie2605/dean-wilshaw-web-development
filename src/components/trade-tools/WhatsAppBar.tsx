@@ -5,11 +5,13 @@ import { MessageSquare, Phone, Camera, Send, Sparkles } from 'lucide-react';
 interface WhatsAppBarProps {
   phoneNumber?: string;
   tradeName?: string;
+  compact?: boolean;
 }
 
-export const WhatsAppBar: React.FC<WhatsAppBarProps> = ({ 
-  phoneNumber = "447348733365", 
-  tradeName = "Dean Wilshaw" 
+export const WhatsAppBar: React.FC<WhatsAppBarProps> = ({
+  phoneNumber = "447348733365",
+  tradeName = "Dean Wilshaw",
+  compact = false,
 }) => {
   const [photoSent, setPhotoSent] = useState(false);
   const encodedText = encodeURIComponent(`Hi ${tradeName}, I'm looking for a fast quote for some trade work.`);
@@ -19,6 +21,51 @@ export const WhatsAppBar: React.FC<WhatsAppBarProps> = ({
     setPhotoSent(true);
     setTimeout(() => setPhotoSent(false), 3000);
   };
+
+  const capsule = (
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-full px-4 py-2 shadow-2xl flex items-center justify-between gap-3 text-white max-w-sm w-full mx-auto"
+    >
+      <div className="flex items-center gap-2.5 min-w-0">
+        <div className="w-7 h-7 rounded-full bg-[#25D366] text-black flex items-center justify-center shrink-0 shadow-md">
+          <MessageSquare className="w-3.5 h-3.5 fill-current" />
+        </div>
+        <div className="text-left min-w-0">
+          <div className="text-xs font-bold font-mono tracking-tight leading-tight truncate">{tradeName}</div>
+          <div className="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+            <span>Active now</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-1.5 shrink-0">
+        <motion.a
+          whileTap={{ scale: 0.95 }}
+          href={`tel:${phoneNumber}`}
+          className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
+          title="Call Direct"
+        >
+          <Phone className="w-3.5 h-3.5" />
+        </motion.a>
+
+        <motion.a
+          whileTap={{ scale: 0.95 }}
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-black text-xs font-bold font-mono tracking-tight transition-colors shadow-sm"
+        >
+          Chat
+        </motion.a>
+      </div>
+    </motion.div>
+  );
+
+  if (compact) {
+    return <div className="w-full">{capsule}</div>;
+  }
 
   return (
     <div className="w-full max-w-md mx-auto space-y-5 text-slate-900 dark:text-white">
@@ -38,48 +85,8 @@ export const WhatsAppBar: React.FC<WhatsAppBarProps> = ({
 
       {/* Floating Dynamic Island Preview Stage */}
       <div className="p-4 sm:p-6 rounded-2xl bg-gradient-to-b from-slate-100 to-slate-200 dark:from-zinc-900/90 dark:to-black/95 border border-slate-200 dark:border-white/[0.08] flex flex-col items-center justify-center gap-4 relative overflow-hidden shadow-xl min-h-[160px]">
-        
-        {/* Dynamic Island Capsule */}
-        <motion.div 
-          whileHover={{ scale: 1.02 }}
-          className="bg-black/90 backdrop-blur-xl border border-white/20 rounded-full px-4 sm:px-6 py-2.5 sm:py-3 shadow-2xl flex items-center justify-between gap-3 text-white max-w-sm w-full mx-auto"
-        >
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-[#25D366] text-black flex items-center justify-center shrink-0 shadow-md">
-              <MessageSquare className="w-4 h-4 fill-current" />
-            </div>
-            <div className="text-left">
-              <div className="text-xs font-bold font-mono tracking-tight leading-tight">
-                Dean  /  Direct Line
-              </div>
-              <div className="text-[10px] text-emerald-400 font-mono flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span>Active now (ST7)</span>
-              </div>
-            </div>
-          </div>
 
-          <div className="flex items-center gap-1.5">
-            <motion.a
-              whileTap={{ scale: 0.95 }}
-              href={`tel:${phoneNumber}`}
-              className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors"
-              title="Call Direct"
-            >
-              <Phone className="w-3.5 h-3.5" />
-            </motion.a>
-
-            <motion.a
-              whileTap={{ scale: 0.95 }}
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 py-1.5 rounded-full bg-[#25D366] hover:bg-[#20ba5a] text-black text-xs font-bold font-mono tracking-tight transition-colors shadow-sm"
-            >
-              Chat
-            </motion.a>
-          </div>
-        </motion.div>
+        {capsule}
 
         {/* 1-Tap Job Photo Simulation Trigger */}
         <div className="flex items-center justify-center gap-2 w-full pt-1">
