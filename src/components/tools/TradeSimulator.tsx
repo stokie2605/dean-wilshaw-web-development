@@ -278,11 +278,28 @@ function ScaledVoiceToQuote() {
   useEffect(() => {
     const el = contentRef.current;
     if (!el) return;
-    const update = () => setScaledHeight(el.scrollHeight * VOICE_QUOTE_SCALE);
+
+    let lastMeasured = -1;
+    const update = () => {
+      const height = el.scrollHeight;
+      if (height !== lastMeasured) {
+        lastMeasured = height;
+        setScaledHeight(height * VOICE_QUOTE_SCALE);
+      }
+    };
+
     update();
     const observer = new ResizeObserver(update);
     observer.observe(el);
-    return () => observer.disconnect();
+
+    // Belt and braces: some rendering environments do not reliably dispatch
+    // ResizeObserver notifications, so also poll on a short interval.
+    const pollInterval = setInterval(update, 150);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(pollInterval);
+    };
   }, []);
 
   return (
