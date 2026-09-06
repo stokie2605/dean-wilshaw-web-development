@@ -108,18 +108,18 @@ export const PricingPage: React.FC = () => {
       <main className="flex-grow pt-24 sm:pt-28 pb-24 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
 
-          {/* DIRECTIONAL LINK TO DEMOS */}
+          {/* DIRECTIONAL LINK TO SIMULATOR */}
           <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
             <div>
-              <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1">Looking for complete site architectures?</h2>
-              <p className="text-sm text-slate-600 dark:text-zinc-400">View our bespoke layout engines and performance prototypes.</p>
+              <h2 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-1">Want to see your trade business live in 60 seconds?</h2>
+              <p className="text-sm text-slate-600 dark:text-zinc-400">Test our Universal Instant Trade Website &amp; Tool Simulator.</p>
             </div>
             <Link 
-              to="/demos"
+              to="/simulator"
               className="w-full sm:w-auto shrink-0 bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-slate-800 dark:hover:bg-slate-200 font-bold py-3 px-6 rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
             >
               <Zap className="w-4 h-4 text-[#D90429]" />
-              View Our Layout Showcases &rarr;
+              Launch Trade Simulator &rarr;
             </Link>
           </div>
 

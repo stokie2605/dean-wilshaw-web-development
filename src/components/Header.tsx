@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowRight, Sun, Moon } from 'lucide-react';
 
@@ -10,10 +10,10 @@ interface HeaderProps {
 
 // Clean 4-Page Navigation Structure (Desktop)
 const NAV_LINKS = [
-  { label: 'Home',    href: '/' },
-  { label: 'Tools',   href: '/tools' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Demos',   href: '/demos' },
+  { label: 'Home',      href: '/' },
+  { label: 'Simulator', href: '/simulator' },
+  { label: 'Tools',     href: '/tools' },
+  { label: 'Pricing',   href: '/pricing' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {

@@ -1,10 +1,9 @@
-﻿import { StrictMode } from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.tsx';
 import { ToolsPage } from './pages/ToolsPage';
 import { PricingPage } from './pages/PricingPage';
-import { DemosPage } from './pages/DemosPage';
 import { SimulatorPage } from './pages/SimulatorPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { AuthGate } from './components/AuthGate';
@@ -24,13 +23,13 @@ createRoot(document.getElementById('root')!).render(
       <ScrollToTop />
 
       <Routes>
-        {/* Core 3-Page Architecture */}
+        {/* Core Architecture */}
         <Route path="/" element={<App />} />
+        <Route path="/simulator" element={<SimulatorPage />} />
+        <Route path="/demos" element={<SimulatorPage />} />
         <Route path="/tools" element={<ToolsPage />} />
         <Route path="/lead-tools" element={<ToolsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/demos" element={<DemosPage />} />
-        <Route path="/simulator" element={<SimulatorPage />} />
 
         {/* Client Mockups & Special Routes */}
         <Route path="/dunham-wealth" element={<DunhamMockup />} />

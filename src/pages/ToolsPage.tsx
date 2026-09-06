@@ -8,7 +8,6 @@ import { WhatsAppBar } from '../components/trade-tools/WhatsAppBar';
 import { IntakeDeposit } from '../components/trade-tools/IntakeDeposit';
 import { QuoteEstimator } from '../components/tools/QuoteEstimator';
 import { VoiceToQuoteDemo } from '../components/tools/VoiceToQuoteDemo';
-import { TradeSimulator } from '../components/tools/TradeSimulator';
 import { QuoteForm } from '../components/QuoteForm';
 import { WhatsAppModal } from '../components/WhatsAppModal';
 import { StitchBot } from '../components/StitchBot';
@@ -70,16 +69,6 @@ const STAGE_TOOLS = [
     demoRoute: '/demo/voice-to-quote',
     icon: PhoneMissed,
     component: <VoiceToQuoteDemo />,
-  },
-  {
-    id: 'trade-simulator',
-    fullTabLabel: '05 Trade Simulator',
-    shortTabLabel: '05 Simulator',
-    title: 'Universal Instant Trade Website & Tool Simulator',
-    subtitle: 'Pick any trade, type your business name and town, and get a live branded mini-site with a working tool inside it.',
-    demoRoute: '/simulator',
-    icon: Sparkles,
-    component: <TradeSimulator />,
   },
 ];
 
