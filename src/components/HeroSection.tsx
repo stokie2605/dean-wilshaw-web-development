@@ -21,20 +21,10 @@ export const HeroSection: React.FC = () => {
         {/* Left Column: Hero Copy & Actions */}
         <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 items-start text-left z-10">
           
-          {/* Top Location & Performance Badges */}
+          {/* Top Badge */}
           <div className="flex flex-wrap gap-2 justify-start mb-1 w-full">
-            <button
-              type="button"
-              onClick={() => navigate('/simulator')}
-              className="bg-red-50 text-[#D90429] border border-red-200 dark:bg-red-950/40 dark:text-red-400 dark:border-red-900/50 text-xs px-3 py-1 rounded-full font-bold shadow-sm flex items-center gap-1.5 hover:scale-105 transition-all cursor-pointer"
-            >
-              <span>⚡ Try 60s Live Trade Simulator &rarr;</span>
-            </button>
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
-              <span>Cheshire and Stoke on Trent</span>
-            </div>
-            <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
-              <span>Zero Agency Bloat</span>
+              <span>Solo Local Engineer &bull; Stoke on Trent &amp; Cheshire &bull; 100% Code Ownership</span>
             </div>
           </div>
 
@@ -51,17 +41,17 @@ export const HeroSection: React.FC = () => {
           {/* Call to Actions */}
           <div className="flex flex-col sm:flex-row gap-3.5 mt-2 w-full max-w-xl">
             <button
-              onClick={() => navigate('/simulator')}
+              onClick={() => navigate('/pricing')}
               className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group"
             >
-              <span>Launch 60s Trade Simulator</span>
+              <span>View Web Packages (From £149)</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
             <button
-              onClick={() => navigate('/pricing')}
+              onClick={() => navigate('/simulator')}
               className="px-6 py-3.5 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 text-slate-800 dark:text-zinc-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 font-bold text-sm transition-all flex items-center justify-center gap-2"
             >
-              <span>View Packages (From £149)</span>
+              <span>Test Live Lead Tools Lab</span>
             </button>
           </div>
 

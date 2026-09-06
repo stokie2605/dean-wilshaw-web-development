@@ -1,5 +1,5 @@
 import React from 'react';
-import { Lock, MapPin, Star } from 'lucide-react';
+import { Lock, MapPin, Star, Sparkles } from 'lucide-react';
 
 export type IconType = React.ComponentType<{ className?: string }>;
 
@@ -20,17 +20,7 @@ export function PhoneFrame({ children, overlay }: { children: React.ReactNode; o
   );
 }
 
-export function PhonePreviewHero({
-  businessName,
-  town,
-  tradeLabel,
-  TradeIcon,
-}: {
-  businessName: string;
-  town: string;
-  tradeLabel: string;
-  TradeIcon: IconType;
-}) {
+export function PhonePreviewHero({ businessName, town }: { businessName: string; town: string }) {
   const displayName = businessName.trim() || 'Your Business Name';
   const displayTown = town.trim() || 'Your Area';
 
@@ -38,12 +28,9 @@ export function PhonePreviewHero({
     <div className="mb-4 rounded-2xl overflow-hidden bg-gradient-to-br from-[#111] to-[#1c1c1c] text-white p-4">
       <div className="flex items-center gap-2.5 mb-2.5">
         <div className="w-8 h-8 rounded-xl bg-[#D90429] flex items-center justify-center shrink-0">
-          <TradeIcon className="w-4 h-4 text-white" />
+          <Sparkles className="w-4 h-4 text-white" />
         </div>
-        <div className="min-w-0">
-          <p className="font-geist font-bold text-sm leading-tight truncate">{displayName}</p>
-          <p className="text-[10px] text-zinc-400 truncate">{tradeLabel}</p>
-        </div>
+        <p className="font-geist font-bold text-sm leading-tight truncate min-w-0">{displayName}</p>
       </div>
       <span className="inline-flex items-center gap-1 text-[10px] font-mono font-semibold px-2.5 py-1 rounded-full bg-white/10 border border-white/10">
         <MapPin className="w-2.5 h-2.5" /> Serving {displayTown}
@@ -106,17 +93,7 @@ export function DesktopFrame({
   );
 }
 
-export function DesktopPreviewHero({
-  businessName,
-  town,
-  tradeLabel,
-  TradeIcon,
-}: {
-  businessName: string;
-  town: string;
-  tradeLabel: string;
-  TradeIcon: IconType;
-}) {
+export function DesktopPreviewHero({ businessName, town }: { businessName: string; town: string }) {
   const displayName = businessName.trim() || 'Your Business Name';
   const displayTown = town.trim() || 'Your Area';
 
@@ -125,12 +102,9 @@ export function DesktopPreviewHero({
       <div className="flex items-center justify-between gap-6 px-8 py-5">
         <div className="flex items-center gap-3 min-w-0">
           <div className="w-10 h-10 rounded-xl bg-[#D90429] flex items-center justify-center shrink-0">
-            <TradeIcon className="w-5 h-5 text-white" />
+            <Sparkles className="w-5 h-5 text-white" />
           </div>
-          <div className="min-w-0">
-            <p className="font-geist font-bold text-lg text-slate-900 dark:text-white leading-tight truncate">{displayName}</p>
-            <p className="text-xs text-slate-500 dark:text-zinc-400 truncate">{tradeLabel}</p>
-          </div>
+          <p className="font-geist font-bold text-lg text-slate-900 dark:text-white leading-tight truncate min-w-0">{displayName}</p>
         </div>
 
         <nav className="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-400 dark:text-zinc-500 shrink-0">
@@ -154,7 +128,7 @@ export function DesktopPreviewHero({
           <span className="text-xs text-slate-500 dark:text-zinc-400 font-mono">5.0, 128 Google Reviews</span>
         </div>
         <h2 className="text-2xl xl:text-3xl font-black text-slate-900 dark:text-white tracking-tight max-w-xl leading-tight">
-          {displayName}, trusted {tradeLabel.toLowerCase()} covering {displayTown}
+          {displayName}, serving {displayTown}
         </h2>
       </div>
     </div>
