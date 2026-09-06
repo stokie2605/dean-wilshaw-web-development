@@ -102,11 +102,11 @@ export function ToolDemoPage() {
       {/* Top Bar with Back link & Theme Toggle */}
       <div className="w-full max-w-md mb-6 flex items-center justify-between">
         <button
-          onClick={() => navigate('/tools')}
+          onClick={() => navigate('/simulator')}
           className="flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors group"
         >
           <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" />
-          Back to Lead Tools
+          Back to Generator
         </button>
 
         <button

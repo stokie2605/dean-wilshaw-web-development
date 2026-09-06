@@ -24,14 +24,14 @@ export const SimulatorPage: React.FC = () => {
           <div className="max-w-3xl mx-auto text-center mb-10 md:mb-12">
             <div className="inline-flex items-center gap-1.5 justify-center px-3 py-1 mb-3 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              Universal Trade Simulator
+              Universal Website and Tool Generator
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight text-slate-900 dark:text-white">
-              See Your Trade Website &amp; Tool, Live, In 10 Seconds
+              Build Your Trade Website in Under a Minute
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400">
-              Pick your trade, drop in your business name and town, and watch a working mobile site with a real
-              lead-capture tool render instantly on the right. Claim it when you&apos;re ready.
+              Pick your trade, tick the tools you want, and generate a working mobile or desktop site built
+              from exactly what you chose. Claim it on WhatsApp when you are ready.
             </p>
           </div>
 

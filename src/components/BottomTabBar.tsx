@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Wrench, CreditCard, Sparkles } from 'lucide-react';
+import { Home, CreditCard, Sparkles } from 'lucide-react';
 
 export const BottomTabBar: React.FC = () => {
   const location = useLocation();
@@ -8,7 +8,6 @@ export const BottomTabBar: React.FC = () => {
   const tabs = [
     { label: 'Home',      path: '/',          icon: Home },
     { label: 'Simulator', path: '/simulator', icon: Sparkles },
-    { label: 'Tools',     path: '/tools',     icon: Wrench },
     { label: 'Pricing',   path: '/pricing',   icon: CreditCard },
   ];
 

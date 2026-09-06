@@ -2,7 +2,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.tsx';
-import { ToolsPage } from './pages/ToolsPage';
 import { PricingPage } from './pages/PricingPage';
 import { SimulatorPage } from './pages/SimulatorPage';
 import { ScrollToTop } from './components/ScrollToTop';
@@ -27,8 +26,6 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/" element={<App />} />
         <Route path="/simulator" element={<SimulatorPage />} />
         <Route path="/demos" element={<SimulatorPage />} />
-        <Route path="/tools" element={<ToolsPage />} />
-        <Route path="/lead-tools" element={<ToolsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
 
         {/* Client Mockups & Special Routes */}

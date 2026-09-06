@@ -107,10 +107,10 @@ export const MissedCallDemo: React.FC = () => {
         <span className="text-[11px]">Capture 100% of missed leads</span>
         <button
           type="button"
-          onClick={() => navigate('/tools')}
+          onClick={() => navigate('/simulator')}
           className="inline-flex items-center gap-1 font-bold text-slate-900 dark:text-white hover:text-[#D90429] dark:hover:text-[#D90429] transition-colors uppercase tracking-wider text-[11px]"
         >
-          <span>EXPLORE ALL LEAD TOOLS</span>
+          <span>EXPLORE THE GENERATOR</span>
           <ExternalLink className="w-3 h-3" />
         </button>
       </div>

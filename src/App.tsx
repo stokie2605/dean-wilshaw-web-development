@@ -114,24 +114,24 @@ export default function App() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-white/[0.08]">
 
-                {/* Column 1: Lead Tools Showroom */}
+                {/* Column 1: Website & Tool Generator */}
                 <div className="pb-10 md:pb-0 md:pr-12 flex flex-col gap-5">
                   <div>
                     <p className="text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider mb-2">
                       Interactive Sandbox
                     </p>
                     <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
-                      Lead Tools Showroom
+                      Website &amp; Tool Generator
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                      Test the 24/7 AI voice quoting engine, interactive cost estimators, emergency triage portals, and WhatsApp fast bars live in the browser.
+                      Pick your trade, tick the tools you want, and generate a working preview of your own site with a voice quoting engine, price estimators, emergency intake, and a WhatsApp bar built in.
                     </p>
                   </div>
                   <button
-                    onClick={() => navigate('/tools')}
+                    onClick={() => navigate('/simulator')}
                     className="self-start inline-flex items-center gap-2 text-sm font-bold text-[#D90429] hover:text-[#b80322] transition-colors group"
                   >
-                    Enter Tools Showroom
+                    Try the Generator
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
                 </div>

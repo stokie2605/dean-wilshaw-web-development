@@ -8,11 +8,10 @@ interface HeaderProps {
   onOpenStitch?: () => void;
 }
 
-// Clean 4-Page Navigation Structure (Desktop)
+// Clean 3-Page Navigation Structure (Desktop)
 const NAV_LINKS = [
   { label: 'Home',      href: '/' },
   { label: 'Simulator', href: '/simulator' },
-  { label: 'Tools',     href: '/tools' },
   { label: 'Pricing',   href: '/pricing' },
 ];
 
