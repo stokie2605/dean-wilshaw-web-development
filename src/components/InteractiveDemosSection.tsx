@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { WhatsAppBar } from './trade-tools/WhatsAppBar';
-import { SocialProofBanner } from './trade-tools/SocialProofBanner';
 import { IntakeDeposit } from './trade-tools/IntakeDeposit';
 import { QuoteEstimator } from './tools/QuoteEstimator';
-import { 
-  Target, 
-  Zap, 
+import {
+  Zap,
   Smartphone, 
   MessageSquare, 
   ArrowRight, 
@@ -251,28 +249,6 @@ export const InteractiveDemosSection: React.FC = () => {
             </div>
             <button
               onClick={() => navigate('/demo/whatsapp-bar')}
-              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
-            >
-              Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-
-          {/* Card 4: Live Trust & Credibility Bar (#trust-bar) */}
-          <div id="trust-bar" className="scroll-mt-28 flex flex-col">
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold flex items-center gap-2 mb-2 text-slate-900 dark:text-zinc-100">
-                <Target className="text-red-600 dark:text-red-500" />
-                Live Trust Indicators
-              </h3>
-              <p className="text-slate-600 dark:text-zinc-400 text-sm">
-                If people don't trust you, they won't contact you. This dynamic banner sits at the very top of your site, instantly proving you are local, insured, and 5-star rated.
-              </p>
-            </div>
-            <div className="p-4 sm:p-8 rounded-3xl bg-slate-50 dark:bg-zinc-900/50 border border-slate-200 dark:border-zinc-800 flex-grow flex items-center justify-center shadow-inner">
-              <SocialProofBanner />
-            </div>
-            <button
-              onClick={() => navigate('/demo/trust-bar')}
               className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-red-600 dark:text-red-400 hover:text-red-500 transition-colors self-end"
             >
               Open Full Demo Page <ArrowRight className="w-3.5 h-3.5" />

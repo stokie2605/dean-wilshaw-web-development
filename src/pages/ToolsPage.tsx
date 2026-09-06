@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
+import { motion, PanInfo } from 'framer-motion';
 import { Header } from '../components/Header';
 import { BottomTabBar } from '../components/BottomTabBar';
 import { Footer } from '../components/Footer';
@@ -8,6 +8,7 @@ import { WhatsAppBar } from '../components/trade-tools/WhatsAppBar';
 import { IntakeDeposit } from '../components/trade-tools/IntakeDeposit';
 import { QuoteEstimator } from '../components/tools/QuoteEstimator';
 import { VoiceToQuoteDemo } from '../components/tools/VoiceToQuoteDemo';
+import { TradeSimulator } from '../components/tools/TradeSimulator';
 import { QuoteForm } from '../components/QuoteForm';
 import { WhatsAppModal } from '../components/WhatsAppModal';
 import { StitchBot } from '../components/StitchBot';
@@ -21,7 +22,8 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
-  PhoneMissed
+  PhoneMissed,
+  Sparkles
 } from 'lucide-react';
 
 const STAGE_TOOLS = [
@@ -68,6 +70,16 @@ const STAGE_TOOLS = [
     demoRoute: '/demo/voice-to-quote',
     icon: PhoneMissed,
     component: <VoiceToQuoteDemo />,
+  },
+  {
+    id: 'trade-simulator',
+    fullTabLabel: '05 Trade Simulator',
+    shortTabLabel: '05 Simulator',
+    title: 'Universal Instant Trade Website & Tool Simulator',
+    subtitle: 'Pick any trade, type your business name and town, and get a live branded mini-site with a working tool inside it.',
+    demoRoute: '/simulator',
+    icon: Sparkles,
+    component: <TradeSimulator />,
   },
 ];
 
@@ -203,8 +215,7 @@ export const ToolsPage: React.FC = () => {
 
               {/* Animated Slide Body with Touch Drag/Swipe */}
               <div className="relative touch-pan-y px-1 sm:px-4 md:px-16">
-                <AnimatePresence mode="wait" custom={direction}>
-                  <motion.div
+                <motion.div
                     key={activeToolIndex}
                     custom={direction}
                     drag="x"
@@ -217,12 +228,6 @@ export const ToolsPage: React.FC = () => {
                       x: 0,
                       filter: 'blur(0px)',
                       transition: { duration: 0.35, ease: [0.16, 1, 0.3, 1] }
-                    }}
-                    exit={{
-                      opacity: 0,
-                      x: direction > 0 ? -40 : 40,
-                      filter: 'blur(4px)',
-                      transition: { duration: 0.25 }
                     }}
                     className="w-full flex flex-col space-y-6 cursor-grab active:cursor-grabbing"
                   >
@@ -242,7 +247,6 @@ export const ToolsPage: React.FC = () => {
                       {activeTool.component}
                     </div>
                   </motion.div>
-                </AnimatePresence>
               </div>
 
               {/* Bottom Row: Pagination Dots + Launch CTA */}

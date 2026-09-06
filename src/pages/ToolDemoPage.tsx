@@ -3,12 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Sun, Moon } from 'lucide-react';
 import { useToolParams } from '../hooks/useToolParams';
 import { QuoteEstimator } from '../components/tools/QuoteEstimator';
-import { AreaCalculator } from '../components/tools/AreaCalculator';
 import { MissedCallDemo } from '../components/trade-tools/MissedCallDemo';
-import { BeforeAfterSlider } from '../components/tools/BeforeAfterSlider';
 import { IntakeDeposit } from '../components/trade-tools/IntakeDeposit';
 import { WhatsAppBar } from '../components/trade-tools/WhatsAppBar';
-import { SocialProofBanner } from '../components/trade-tools/SocialProofBanner';
 import { VoiceToQuoteDemo } from '../components/tools/VoiceToQuoteDemo';
 
 const STRIPE_LINK = 'https://buy.stripe.com/28E28r8zO6r23Bw6wPaAw00';
@@ -17,13 +14,10 @@ const WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20
 function renderTool(toolId: string | undefined) {
   switch (toolId) {
     case 'quote-calculator': return <QuoteEstimator />;
-    case 'booking-form':     
+    case 'booking-form':
     case 'deposit-portal':   return <IntakeDeposit />;
     case 'whatsapp-bar':     return <WhatsAppBar />;
-    case 'trust-bar':        return <SocialProofBanner />;
     case 'missed-call':      return <MissedCallDemo />;
-    case 'area-calculator':  return <AreaCalculator />;
-    case 'before-after':     return <BeforeAfterSlider />;
     case 'voice-to-quote':   return <VoiceToQuoteDemo />;
     default:                 return <QuoteEstimator />;
   }
@@ -34,10 +28,7 @@ const TOOL_LABELS: Record<string, string> = {
   'booking-form':     '24/7 Emergency Web Triage',
   'deposit-portal':   '24/7 Emergency Web Triage',
   'whatsapp-bar':     'Direct Trade WhatsApp Bar',
-  'trust-bar':        'Live Trust Indicators',
   'missed-call':      'Instant Missed Call Auto Text',
-  'area-calculator':  'Area and Material Calculator',
-  'before-after':     'Before and After Showcase',
   'voice-to-quote':   '24/7 AI Phone to Quote Engine',
 };
 

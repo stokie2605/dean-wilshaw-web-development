@@ -5,6 +5,7 @@ import App from './App.tsx';
 import { ToolsPage } from './pages/ToolsPage';
 import { PricingPage } from './pages/PricingPage';
 import { DemosPage } from './pages/DemosPage';
+import { SimulatorPage } from './pages/SimulatorPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { AuthGate } from './components/AuthGate';
 import { AdminDashboard } from './components/AdminDashboard';
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/lead-tools" element={<ToolsPage />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/demos" element={<DemosPage />} />
+        <Route path="/simulator" element={<SimulatorPage />} />
 
         {/* Client Mockups & Special Routes */}
         <Route path="/dunham-wealth" element={<DunhamMockup />} />

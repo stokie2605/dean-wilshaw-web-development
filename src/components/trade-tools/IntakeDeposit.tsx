@@ -1,5 +1,5 @@
 ﻿import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CreditCard, CheckCircle2, Clock, ShieldCheck, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const PIPELINE_STEPS = [
@@ -79,13 +79,12 @@ export const IntakeDeposit: React.FC = () => {
       </div>
 
       {/* Step Content Stage */}
-      <AnimatePresence mode="wait">
+      <>
         {step === 1 && (
           <motion.div
             key="step1"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.2 }}
             className="space-y-3"
           >
@@ -130,7 +129,6 @@ export const IntakeDeposit: React.FC = () => {
             key="step2"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.2 }}
             className="space-y-3"
           >
@@ -187,7 +185,6 @@ export const IntakeDeposit: React.FC = () => {
             key="step3"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.2 }}
             className="space-y-3"
           >
@@ -245,7 +242,7 @@ export const IntakeDeposit: React.FC = () => {
             )}
           </motion.div>
         )}
-      </AnimatePresence>
+      </>
 
     </div>
   );
