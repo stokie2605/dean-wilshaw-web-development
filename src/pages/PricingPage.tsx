@@ -32,6 +32,8 @@ type PricingTier = {
   ctaText: string;
   whatsappMessage: string;
   stripeLink?: string;
+  mobileTabLabel: string;
+  mobileTabPrice: string;
 };
 
 const PRICING_TIERS: PricingTier[] = [
@@ -53,6 +55,8 @@ const PRICING_TIERS: PricingTier[] = [
     ],
     ctaText: 'Select a Tool (From £149)',
     whatsappMessage: "Hi Dean, I would like to add a standalone trade tool to my website, the £149 option. Could we discuss which tool suits my business?",
+    mobileTabLabel: 'Standalone',
+    mobileTabPrice: '£149',
   },
   {
     id: 'landing-page',
@@ -72,6 +76,8 @@ const PRICING_TIERS: PricingTier[] = [
     ],
     ctaText: 'Build My Landing Page (£299)',
     whatsappMessage: "Hi Dean, I would like to build a complete trade website, the £299 option. Could we discuss getting started?",
+    mobileTabLabel: 'Complete ★',
+    mobileTabPrice: '£299',
   },
   {
     id: 'custom-mixed',
@@ -91,14 +97,115 @@ const PRICING_TIERS: PricingTier[] = [
     ],
     ctaText: 'Discuss a Custom Mix',
     whatsappMessage: "Hi Dean, I'd like to discuss a custom trade portal.",
+    mobileTabLabel: 'Custom',
+    mobileTabPrice: '£449',
   },
 ];
+
+function PricingCard({ tier, compact = false }: { tier: PricingTier; compact?: boolean }) {
+  const isCustomMixed = tier.id === 'custom-mixed';
+  const isRecommended = tier.popular;
+
+  const handleCardClick = () => {
+    if (tier.stripeLink) {
+      window.open(tier.stripeLink, '_blank', 'noopener,noreferrer');
+      return;
+    }
+    window.open(
+      `https://wa.me/447348733365?text=${encodeURIComponent(tier.whatsappMessage)}`,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
+
+  return (
+    <div
+      className={`bg-white dark:bg-[#0A0D14] rounded-2xl ${compact ? 'p-4' : 'p-6 sm:p-8'} flex flex-col justify-between transition-all relative ${
+        isRecommended
+          ? 'border-2 border-[#D90429] shadow-xl dark:shadow-2xl'
+          : 'border border-slate-200 dark:border-white/[0.08] shadow-lg'
+      }`}
+    >
+      {isRecommended && (
+        <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#D90429] text-white font-mono text-[11px] font-bold uppercase tracking-wider shadow-md">
+          {tier.badge}
+        </div>
+      )}
+
+      <div>
+        {/* Badge for non-recommended cards */}
+        {!isRecommended && (
+          <span className={`inline-block self-start px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase font-mono border ${compact ? 'mb-3' : 'mb-4'} ${tier.badgeColor}`}>
+            {tier.badge}
+          </span>
+        )}
+
+        <h3 className={`text-xl sm:text-2xl font-extrabold mb-2 tracking-tight text-slate-900 dark:text-white ${isRecommended ? 'mt-2' : ''}`}>
+          {tier.title}
+        </h3>
+        <p className={`text-xs sm:text-sm ${compact ? 'mb-4' : 'mb-6'} text-slate-500 dark:text-zinc-400`}>
+          {tier.subtitle}
+        </p>
+
+        {/* Price */}
+        <div className={compact ? 'mb-4' : 'mb-6'}>
+          <div className="text-[11px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-mono mb-1">
+            {tier.turnaround}
+          </div>
+          <div className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+            {tier.pricingNote}
+          </div>
+          {tier.pricingSubtextBadge ? (
+            <div className="mt-2 inline-block px-2.5 py-1.5 rounded-md bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 font-mono text-[10px] sm:text-[11px] font-bold leading-tight">
+              {tier.pricingSubtextBadge}
+            </div>
+          ) : (
+            <div className="text-[11px] mt-1 font-mono text-slate-500 dark:text-zinc-400">
+              {tier.pricingSubtext}
+            </div>
+          )}
+        </div>
+
+        {/* Features */}
+        <ul className={compact ? 'space-y-2 mb-5' : 'space-y-3 mb-8'}>
+          {tier.bullets.map((bullet, i) => (
+            <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+              <span>{bullet.full}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* CTA Button */}
+      <button
+        type="button"
+        onClick={handleCardClick}
+        className={`w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 mt-4 ${
+          isCustomMixed
+            ? 'bg-[#25D366] text-black hover:bg-[#20ba5a] shadow-lg shadow-[#25D366]/20'
+            : isRecommended
+            ? 'bg-[#D90429] hover:bg-[#b80322] text-white shadow-lg shadow-red-600/20'
+            : 'bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-slate-800 dark:hover:bg-slate-200 shadow-md'
+        }`}
+      >
+        {isCustomMixed && <MessageSquare className="w-4 h-4 fill-current" />}
+        <span>{tier.ctaText}</span>
+        {!isCustomMixed && <ArrowRight className="w-3.5 h-3.5" />}
+      </button>
+    </div>
+  );
+}
 
 export const PricingPage: React.FC = () => {
   const navigate = useNavigate();
   const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [whatsappModalOpen, setWhatsappModalOpen] = useState(false);
   const [stitchModalOpen, setStitchModalOpen] = useState(false);
+  const [activeMobileTier, setActiveMobileTier] = useState(
+    PRICING_TIERS.find((t) => t.popular)?.id ?? PRICING_TIERS[0].id
+  );
+  const activeTier = PRICING_TIERS.find((t) => t.id === activeMobileTier) ?? PRICING_TIERS[0];
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#040507] text-slate-900 dark:text-white selection:bg-red-500/30 transition-colors duration-300 overflow-x-hidden">
@@ -191,103 +298,40 @@ export const PricingPage: React.FC = () => {
               </p>
             </div>
 
-            {/* 3 Structured Pricing Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-              {PRICING_TIERS.map((tier) => {
-                const isCustomMixed = tier.id === 'custom-mixed';
-                const isRecommended = tier.popular;
-
-                const handleCardClick = () => {
-                  if (tier.stripeLink) {
-                    window.open(tier.stripeLink, '_blank', 'noopener,noreferrer');
-                    return;
-                  }
-                  window.open(
-                    `https://wa.me/447348733365?text=${encodeURIComponent(tier.whatsappMessage)}`,
-                    '_blank',
-                    'noopener,noreferrer'
-                  );
-                };
-
-                return (
-                  <div
-                    key={tier.id}
-                    className={`bg-white dark:bg-[#0A0D14] rounded-2xl p-6 sm:p-8 flex flex-col justify-between transition-all relative ${
-                      isRecommended
-                        ? 'border-2 border-[#D90429] shadow-xl dark:shadow-2xl'
-                        : 'border border-slate-200 dark:border-white/[0.08] shadow-lg'
-                    }`}
-                  >
-                    {isRecommended && (
-                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-[#D90429] text-white font-mono text-[11px] font-bold uppercase tracking-wider shadow-md">
-                        {tier.badge}
-                      </div>
-                    )}
-
-                    <div>
-                      {/* Badge for non-recommended cards */}
-                      {!isRecommended && (
-                        <span className={`inline-block self-start px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase font-mono border mb-4 ${tier.badgeColor}`}>
-                          {tier.badge}
-                        </span>
-                      )}
-
-                      <h3 className={`text-xl sm:text-2xl font-extrabold mb-2 tracking-tight text-slate-900 dark:text-white ${isRecommended ? 'mt-2' : ''}`}>
-                        {tier.title}
-                      </h3>
-                      <p className="text-xs sm:text-sm mb-6 text-slate-500 dark:text-zinc-400">
-                        {tier.subtitle}
-                      </p>
-
-                      {/* Price */}
-                      <div className="mb-6">
-                        <div className="text-[11px] font-bold uppercase tracking-widest text-emerald-600 dark:text-emerald-400 font-mono mb-1">
-                          {tier.turnaround}
-                        </div>
-                        <div className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white">
-                          {tier.pricingNote}
-                        </div>
-                        {tier.pricingSubtextBadge ? (
-                          <div className="mt-2 inline-block px-2.5 py-1.5 rounded-md bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 font-mono text-[10px] sm:text-[11px] font-bold leading-tight">
-                            {tier.pricingSubtextBadge}
-                          </div>
-                        ) : (
-                          <div className="text-[11px] mt-1 font-mono text-slate-500 dark:text-zinc-400">
-                            {tier.pricingSubtext}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Features */}
-                      <ul className="space-y-3 mb-8">
-                        {tier.bullets.map((bullet, i) => (
-                          <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                            <span>{bullet.full}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* CTA Button */}
+            {/* Mobile: 3 tab switcher showing one active tier */}
+            <div className="md:hidden">
+              <div className="grid grid-cols-3 gap-1.5 p-1 rounded-2xl bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] mb-6">
+                {PRICING_TIERS.map((tier) => {
+                  const isActive = tier.id === activeMobileTier;
+                  return (
                     <button
+                      key={tier.id}
                       type="button"
-                      onClick={handleCardClick}
-                      className={`w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 mt-4 ${
-                        isCustomMixed
-                          ? 'bg-[#25D366] text-black hover:bg-[#20ba5a] shadow-lg shadow-[#25D366]/20'
-                          : isRecommended
-                          ? 'bg-[#D90429] hover:bg-[#b80322] text-white shadow-lg shadow-red-600/20'
-                          : 'bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-slate-800 dark:hover:bg-slate-200 shadow-md'
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setActiveMobileTier(tier.id)}
+                      className={`min-w-0 flex flex-col items-center justify-center gap-0.5 px-2 py-2.5 rounded-xl transition-colors ${
+                        isActive
+                          ? 'bg-[#D90429] text-white shadow-sm'
+                          : 'text-slate-600 dark:text-zinc-400 active:bg-white dark:active:bg-white/[0.06]'
                       }`}
                     >
-                      {isCustomMixed && <MessageSquare className="w-4 h-4 fill-current" />}
-                      <span>{tier.ctaText}</span>
-                      {!isCustomMixed && <ArrowRight className="w-3.5 h-3.5" />}
+                      <span className="text-[11px] font-semibold leading-tight">{tier.mobileTabLabel}</span>
+                      <span className="text-xs font-mono font-bold leading-tight">{tier.mobileTabPrice}</span>
                     </button>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              <div className="pt-3">
+                <PricingCard tier={activeTier} compact />
+              </div>
+            </div>
+
+            {/* Desktop: 3 Structured Pricing Cards side by side */}
+            <div className="hidden md:grid md:grid-cols-3 gap-8 items-stretch">
+              {PRICING_TIERS.map((tier) => (
+                <PricingCard key={tier.id} tier={tier} />
+              ))}
             </div>
           </div>
 

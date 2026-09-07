@@ -103,7 +103,7 @@ export default function App() {
           <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
             <div className="max-w-5xl mx-auto">
 
-              <div className="mb-10 md:mb-14">
+              <div className="mb-6 md:mb-14">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-4">
                   Explore The Platform
                 </div>
@@ -115,46 +115,60 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-200 dark:divide-white/[0.08]">
 
                 {/* Column 1: Website & Tool Generator */}
-                <div className="pb-10 md:pb-0 md:pr-12 flex flex-col gap-5">
+                <div className="pb-6 md:pb-0 md:pr-12 flex flex-col gap-4 md:gap-5">
                   <div>
                     <p className="text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider mb-2">
                       Interactive Sandbox
                     </p>
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-0 md:mb-3">
                       Trade Tool &amp; Website Simulator
                     </h3>
-                    <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                    <p className="hidden md:block text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
                       See how custom lead tools look and convert on your mobile and desktop site. Enter your business name, tick the tools you want, and generate a live preview with a voice quoting engine, price estimators, emergency intake, and a WhatsApp bar built in.
                     </p>
                   </div>
                   <button
                     onClick={() => navigate('/simulator')}
-                    className="self-start inline-flex items-center gap-2 text-sm font-bold text-[#D90429] hover:text-[#b80322] transition-colors group"
+                    className="hidden md:inline-flex self-start items-center gap-2 text-sm font-bold text-[#D90429] hover:text-[#b80322] transition-colors group"
                   >
                     Try the Simulator
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
+                  <button
+                    onClick={() => navigate('/simulator')}
+                    className="md:hidden w-full px-5 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
+                  >
+                    <span>Open Live Tool Simulator</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
                 </div>
 
                 {/* Column 2: Web Design & Pricing */}
-                <div className="pt-10 md:pt-0 md:pl-12 flex flex-col gap-5">
+                <div className="pt-6 md:pt-0 md:pl-12 flex flex-col gap-4 md:gap-5">
                   <div>
                     <p className="text-xs font-mono font-semibold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider mb-2">
                       Transparent Pricing
                     </p>
-                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
+                    <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-0 md:mb-3">
                       Web Design &amp; Prices
                     </h3>
-                    <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
+                    <p className="hidden md:block text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
                       A low risk £49 mobile audit, standalone add on tools from £149, and complete single page trade websites from £299.
                     </p>
                   </div>
                   <button
                     onClick={() => navigate('/pricing')}
-                    className="self-start inline-flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white hover:text-[#D90429] dark:hover:text-[#D90429] transition-colors group"
+                    className="hidden md:inline-flex self-start items-center gap-2 text-sm font-bold text-slate-900 dark:text-white hover:text-[#D90429] dark:hover:text-[#D90429] transition-colors group"
                   >
                     View Design &amp; Prices
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                  <button
+                    onClick={() => navigate('/pricing')}
+                    className="md:hidden w-full px-5 py-3.5 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 active:bg-slate-50 dark:active:bg-zinc-800 text-slate-800 dark:text-zinc-200 font-bold text-sm transition-all flex items-center justify-center gap-2"
+                  >
+                    <span>View Web Packages &amp; Prices (From £149)</span>
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
 

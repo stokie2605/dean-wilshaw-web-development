@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, Zap, ShieldCheck } from 'lucide-react';
+import { MapPin, Zap, ShieldCheck, Check } from 'lucide-react';
 
 export const AboutDeanSection: React.FC = () => {
   const navigate = useNavigate();
@@ -57,8 +57,29 @@ export const AboutDeanSection: React.FC = () => {
             I build websites and digital lead tools from scratch. Working with me means direct one to one contact with no middle management, no junior developers, and zero tech jargon.
           </p>
 
-          {/* 3 Accountability Badges */}
-          <ul className="space-y-3 pt-1">
+          {/* 3 Accountability Badges: compact checkmark list on mobile, full cards on desktop */}
+          <ul className="md:hidden space-y-2 pt-1">
+            <li className="flex items-start gap-2.5">
+              <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
+              <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
+                Local to Stoke &amp; Cheshire
+              </span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
+              <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
+                Direct one to one access with Dean
+              </span>
+            </li>
+            <li className="flex items-start gap-2.5">
+              <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
+              <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
+                100% website ownership
+              </span>
+            </li>
+          </ul>
+
+          <ul className="hidden md:block space-y-3 pt-1">
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <MapPin className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">

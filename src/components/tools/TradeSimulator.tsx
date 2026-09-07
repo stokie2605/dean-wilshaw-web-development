@@ -320,6 +320,7 @@ type FeatureKey = 'estimator' | 'triage' | 'whatsapp_bar' | 'voice_quote' | 'ai_
 interface FeatureConfig {
   key: FeatureKey;
   label: string;
+  shortLabel: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
 }
@@ -328,30 +329,35 @@ const FEATURE_CONFIGS: FeatureConfig[] = [
   {
     key: 'estimator',
     label: 'Interactive Price Estimator',
+    shortLabel: 'Price Estimator',
     description: 'A dynamic slider or chip based calculator giving instant ballpark pricing.',
     icon: Sparkles,
   },
   {
     key: 'triage',
     label: '24/7 Emergency Triage and Photo Intake Form',
+    shortLabel: 'Emergency Triage Form',
     description: 'A guided three step form that captures the job, urgency and a photo.',
     icon: Camera,
   },
   {
     key: 'whatsapp_bar',
     label: '1 Tap Sticky WhatsApp Mobile Bar',
+    shortLabel: 'Sticky WhatsApp Bar',
     description: 'A floating bar that lets visitors call or message you in one tap.',
     icon: MessageSquare,
   },
   {
     key: 'voice_quote',
     label: 'AI Voice to Quote and Missed Call Engine',
+    shortLabel: 'AI Voice to Quote',
     description: 'Catches missed calls and sends an instant text with pricing.',
     icon: Bot,
   },
   {
     key: 'ai_chatbot',
     label: '24/7 AI Chatbot Assistant',
+    shortLabel: '24/7 AI Chatbot',
     description: 'A floating chat bubble that answers common questions instantly.',
     icon: Bot,
   },
@@ -371,7 +377,7 @@ function FeatureCheckbox({
   const Icon = feature.icon;
   return (
     <label
-      className={`flex items-start gap-3 p-3.5 rounded-2xl border transition-colors ${
+      className={`flex items-center md:items-start gap-2.5 md:gap-3 p-2.5 md:p-3.5 rounded-xl md:rounded-2xl border transition-colors ${
         disabled ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer'
       } ${
         checked
@@ -381,7 +387,7 @@ function FeatureCheckbox({
     >
       <input type="checkbox" checked={checked} onChange={onToggle} disabled={disabled} className="sr-only" />
       <span
-        className={`mt-0.5 shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors ${
+        className={`mt-0 md:mt-0.5 shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors ${
           checked ? 'bg-[#D90429] border-[#D90429]' : 'border-slate-300 dark:border-zinc-600'
         }`}
       >
@@ -394,11 +400,12 @@ function FeatureCheckbox({
       <span className="min-w-0">
         <span className="flex items-center gap-1.5">
           <Icon className="w-3.5 h-3.5 text-[#D90429] shrink-0" />
-          <span className={`text-sm font-semibold ${checked ? 'text-red-900 dark:text-red-400' : 'text-slate-900 dark:text-white'}`}>
-            {feature.label}
+          <span className={`text-[13px] md:text-sm font-semibold leading-snug ${checked ? 'text-red-900 dark:text-red-400' : 'text-slate-900 dark:text-white'}`}>
+            <span className="md:hidden">{feature.shortLabel}</span>
+            <span className="hidden md:inline">{feature.label}</span>
           </span>
         </span>
-        <span className="block text-xs text-slate-500 dark:text-zinc-400 mt-1 leading-relaxed">{feature.description}</span>
+        <span className="hidden md:block text-xs text-slate-500 dark:text-zinc-400 mt-1 leading-relaxed">{feature.description}</span>
       </span>
     </label>
   );
@@ -718,7 +725,7 @@ export const TradeSimulator: React.FC = () => {
               {selectedFeatures.size} of 2 selected
             </span>
           </div>
-          <div className="space-y-2.5">
+          <div className="space-y-2 md:space-y-2.5">
             {FEATURE_CONFIGS.map((feature) => (
               <FeatureCheckbox
                 key={feature.key}
