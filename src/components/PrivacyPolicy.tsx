@@ -26,7 +26,7 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="font-geist font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mb-2">Privacy Policy</h1>
-        <p className="text-slate-500 dark:text-zinc-400 text-sm mb-8">Last updated: July 2025 - This policy explains how Dean Wilshaw (sole trader) collects and uses your personal data.</p>
+        <p className="text-slate-500 dark:text-zinc-400 text-sm mb-8">Last updated: September 2026 - This policy explains how Dean Wilshaw (sole trader) collects and uses your personal data.</p>
 
         <div className="space-y-8 text-slate-700 dark:text-zinc-300 leading-relaxed">
 
@@ -73,7 +73,7 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
 
           <section>
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">6. How Long I Keep Your Data</h2>
-            <p>I retain your enquiry details for up to 6 months from the date of submission, or until My project is complete - whichever is longer. After this period, your details are deleted from my inbox.</p>
+            <p>I retain your enquiry details for up to 6 months from the date of submission, or until my project is complete - whichever is longer. After this period, your details are deleted from my inbox.</p>
           </section>
 
           <section>
