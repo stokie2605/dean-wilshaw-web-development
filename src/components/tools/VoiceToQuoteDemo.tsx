@@ -155,9 +155,9 @@ export const VoiceToQuoteDemo: React.FC = () => {
         let charIndex = 0;
         typeInterval = setInterval(() => {
           if (!isMounted) return;
-          if (charIndex < FULL_TRANSCRIPT.length) {
-            setTypedText((prev) => prev + FULL_TRANSCRIPT.charAt(charIndex));
-            charIndex++;
+          charIndex++;
+          if (charIndex <= FULL_TRANSCRIPT.length) {
+            setTypedText(FULL_TRANSCRIPT.slice(0, charIndex));
           } else {
             clearInterval(typeInterval);
           }
@@ -217,7 +217,7 @@ export const VoiceToQuoteDemo: React.FC = () => {
           Watch a Missed Call Become a Booked Lead
         </h3>
         <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5 leading-normal">
-          Turn missed phone calls into booked jobs automatically while you are on the tools.
+          Turn missed phone calls into booked jobs automatically while you are on the job.
         </p>
       </div>
 
@@ -285,8 +285,8 @@ export const VoiceToQuoteDemo: React.FC = () => {
               <WaveformBars />
             )}
           </div>
-          <p className="text-zinc-800 dark:text-zinc-200 text-xs font-mono italic leading-relaxed break-words">
-            &ldquo;{typedText || FULL_TRANSCRIPT}&rdquo;
+          <p className="text-zinc-800 dark:text-zinc-200 text-xs font-mono leading-relaxed break-words">
+            {typedText}
             {stage === 'listening' && typedText.length < FULL_TRANSCRIPT.length && (
               <span className="inline-block w-1 h-3 ml-0.5 bg-emerald-500 animate-pulse"></span>
             )}
@@ -311,7 +311,7 @@ export const VoiceToQuoteDemo: React.FC = () => {
           </div>
 
           <SmsBubble align="outbound">
-            Sorry I missed your call, currently on the tools. Please reply with a couple of photos of the job and your postcode for an instant estimate.
+            Sorry I missed your call, currently on the job. Please reply with a couple of photos of the job and your postcode for an instant estimate.
           </SmsBubble>
 
           {stageAtLeast(stage, 'replied') && (

@@ -701,7 +701,7 @@ export const TradeSimulator: React.FC = () => {
             }`}
           >
             <MessageSquare className="w-4 h-4 fill-current" />
-            <span>Inquire About Adding These Tools to Your Business on WhatsApp</span>
+            <span>Enquire on WhatsApp</span>
           </motion.button>
           {!canClaim && (
             <p className="text-[11px] text-center text-slate-500 dark:text-zinc-500 -mt-2">

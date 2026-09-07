@@ -57,7 +57,7 @@ const SERVICES: ServiceDetail[] = [
     tags: ['GOOGLE', 'LOCAL', 'SEO'],
     features: [
       'Built to rank for local Google searches',
-      'Clean code structure that search engines can read easily',
+      'Clean structure that search engines can read easily',
       'Local area and service markup for maps and search results'
     ],
     techStack: '',
@@ -65,7 +65,7 @@ const SERVICES: ServiceDetail[] = [
   },
   {
     id: 'zero-stress',
-    title: '100% Code Ownership',
+    title: '100% Website Ownership',
     badge: 'Honest Pricing',
     icon: <Layers className="w-6 h-6 text-slate-900 dark:text-zinc-100" />,
     bgIconName: 'handshake',
@@ -94,7 +94,7 @@ export const ServicesBento: React.FC = () => {
             A Genuine Investment
           </span>
           <h2 className="font-geist font-bold text-2xl sm:text-4xl text-slate-900 dark:text-zinc-100 mb-3">
-            Honest, Hand Coded Build Web Design
+            Honest, Custom Build Web Design
           </h2>
           <div className="w-16 h-1 bg-[#dc2626] rounded-full"></div>
           <p className="mt-4 text-slate-600 dark:text-zinc-300 max-w-2xl text-sm sm:text-base">

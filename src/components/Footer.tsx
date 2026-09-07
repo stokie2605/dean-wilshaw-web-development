@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
             onClick={onOpenWhatsApp}
             className="hover:text-red-700 dark:hover:text-red-500 font-semibold underline transition-colors text-emerald-600 dark:text-emerald-400"
           >
-            WhatsApp Dean (07348 733365)
+            WhatsApp Dean
           </button>
 
           <button

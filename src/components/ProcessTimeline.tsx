@@ -18,10 +18,10 @@ const STEPS = [
   },
   {
     step: '03',
-    title: 'Hand Coded Build',
+    title: 'Custom Build',
     icon: <Code className="w-5 h-5 text-[#991b1b]" />,
     duration: '7 to 10 Days',
-    description: 'Writing clean, ultralight custom code with instant loading, no heavy plugins, and fully optimised for Google searches.'
+    description: 'Building a clean, ultralight custom site with instant loading, no heavy plugins, and fully optimised for Google searches.'
   },
   {
     step: '04',

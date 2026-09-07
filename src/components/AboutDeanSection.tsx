@@ -76,7 +76,7 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <ShieldCheck className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                100% Client Source Code Ownership and Transparent Pricing
+                100% Client Website Ownership and Transparent Pricing
               </span>
             </li>
           </ul>

@@ -146,7 +146,7 @@ export default function App() {
                       Web Design &amp; Prices
                     </h3>
                     <p className="text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                      Three layout archetypes, a low-risk £49 mobile audit, standalone add on tools from £149, and complete single page trade websites from £299.
+                      A low risk £49 mobile audit, standalone add on tools from £149, and complete single page trade websites from £299.
                     </p>
                   </div>
                   <button

@@ -59,14 +59,13 @@ const PRICING_TIERS: PricingTier[] = [
     title: 'Complete Trade Build',
     subtitle: 'A complete, clean single page web engine engineered for calls.',
     pricingNote: 'From £299',
-    pricingSubtext: '100% Client Code Ownership',
+    pricingSubtext: '100% Client Website Ownership',
     turnaround: '5 to 7 Day Turnaround',
     popular: true,
     badge: '★ RECOMMENDED',
     badgeColor: 'bg-red-50 text-[#D90429] border-red-200/80 dark:bg-red-500/10 dark:text-[#D90429] dark:border-red-500/30',
     bullets: [
-      { full: 'Hand coded lightweight custom single page build', short: '' },
-      { full: 'Includes 1 integrated trade tool of your choice', short: '' },
+      { full: 'Lightweight custom single page build', short: '' },
       { full: 'Complete service breakdown, customer reviews & local SEO setup', short: '' },
       { full: 'Tap to call mobile bar & trust badges', short: '' },
       { full: 'Optional £49 per month managed site care retainer (hosting, SSL, maintenance)', short: '' },
@@ -127,25 +126,25 @@ export const PricingPage: React.FC = () => {
                 </h2>
 
                 <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
-                  Wondering why your current site isn't generating calls? I will audit your live mobile speeds, find the problems stopping customers from calling, and deliver a personalised short video walkthrough with 3 actionable fixes within 24 hours.
+                  Wondering why your current website is not generating enquiries? I will review your live mobile performance, identify the bottlenecks stopping customers from getting in touch, and deliver a clear audit report within 24 hours.
                 </p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2 text-xs font-medium text-slate-700 dark:text-zinc-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Honest mobile speed review</span>
+                    <span>Live mobile speed and performance review</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Personalised video walkthrough</span>
+                    <span>Actionable written audit report within 24 hours</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>3 direct conversion fixes</span>
+                    <span>Clear breakdown of enquiry bottlenecks</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>£49 credited back if you build with me</span>
+                    <span>£49 fee credited back against future web services</span>
                   </div>
                 </div>
               </div>
@@ -188,7 +187,7 @@ export const PricingPage: React.FC = () => {
                 Simple, Honest Trade Pricing
               </h2>
               <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400">
-                No hidden fees, no agency markups, and zero platform lock-in contracts. You own 100% of your source code outright.
+                No hidden fees, no agency markups, and zero platform lock-in contracts. You own 100% of your website outright.
               </p>
             </div>
 
