@@ -13,7 +13,7 @@ import {
   Gauge,
 } from 'lucide-react';
 
-const AUDIT_WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I'd%20like%20a%20%C2%A349%20website%20speed%20audit";
+const AUDIT_WHATSAPP_URL = "https://wa.me/447348733365?text=Hi%20Dean,%20I%20would%20like%20to%20book%20the%20%C2%A329%20website%20speed%20audit%20for%20my%20business.";
 
 type PricingTier = {
   id: string;
@@ -217,7 +217,7 @@ export const PricingPage: React.FC = () => {
       <main className="flex-grow pt-24 sm:pt-28 pb-24 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-20">
 
-          {/* 1. SECTION: £49 MOBILE SPEED & LEAD HEALTH CHECK BANNER */}
+          {/* 1. SECTION: £29 MOBILE SPEED & LEAD HEALTH CHECK BANNER */}
           <div className="bg-white dark:bg-[#0A0D14] border-2 border-emerald-500/40 rounded-2xl p-6 sm:p-10 shadow-xl relative overflow-hidden">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
               
@@ -225,11 +225,11 @@ export const PricingPage: React.FC = () => {
               <div className="space-y-4 max-w-2xl text-center lg:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase">
                   <Gauge className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
-                  Low Risk Entry Offer
+                  Introductory Launch Offer
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white leading-tight">
-                  £49 Mobile Speed &amp; Lead Health Check
+                  £29 Mobile Speed &amp; Lead Health Check
                 </h2>
 
                 <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base leading-relaxed">
@@ -251,7 +251,7 @@ export const PricingPage: React.FC = () => {
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>£49 fee credited back against future web services</span>
+                    <span>£29 fee credited back against future web services</span>
                   </div>
                 </div>
               </div>
@@ -263,10 +263,13 @@ export const PricingPage: React.FC = () => {
                     24 Hour Turnaround
                   </div>
                   <div className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white">
-                    £49
+                    £29
                   </div>
                   <div className="text-xs text-slate-500 dark:text-zinc-400 font-mono">
                     One off payment  /  Zero obligation
+                  </div>
+                  <div className="text-xs text-emerald-600 dark:text-emerald-400 font-mono font-semibold">
+                    (Normally £49 &bull; First 10 businesses)
                   </div>
                 </div>
 
@@ -277,7 +280,7 @@ export const PricingPage: React.FC = () => {
                   className="w-full py-3.5 px-6 rounded-xl bg-[#25D366] text-black font-semibold hover:bg-[#20ba5a] text-sm transition-all shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
-                  <span>Book Audit via WhatsApp</span>
+                  <span>Book £29 Audit via WhatsApp</span>
                 </a>
               </div>
 

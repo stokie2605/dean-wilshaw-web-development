@@ -153,7 +153,7 @@ export default function App() {
                       Web Design &amp; Prices
                     </h3>
                     <p className="hidden md:block text-slate-600 dark:text-zinc-400 text-sm leading-relaxed">
-                      A low risk £49 mobile audit, standalone add on tools from £149, and complete single page trade websites from £299.
+                      An introductory £29 mobile audit, standalone add on tools from £149, and complete single page trade websites from £299.
                     </p>
                   </div>
                   <button
