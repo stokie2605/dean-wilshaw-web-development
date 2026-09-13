@@ -9,7 +9,6 @@ import {
   CheckCircle2,
   MessageSquare,
   ArrowRight,
-  ShieldCheck,
 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = '447348733365';
@@ -108,7 +107,7 @@ function PricingCard({ tier, compact = false }: { tier: PricingTier; compact?: b
         href={whatsappLink(tier.whatsappMessage)}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 mt-4 bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-[#D90429] shadow-lg shadow-red-600/20"
+        className="w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 mt-4 bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black shadow-lg shadow-red-600/20"
       >
         <MessageSquare className="w-4 h-4 fill-current" />
         <span>{tier.ctaText}</span>
@@ -186,54 +185,40 @@ export const PricingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Add On Retainer: Mobile Care Plan */}
-          <div className="max-w-4xl mx-auto">
+          {/* Optional Extra: Mobile Care Plan */}
+          <div className="max-w-3xl mx-auto">
             <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-lg">
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-                <div className="space-y-3 max-w-2xl">
-                  <span className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase font-mono border bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800">
-                    Add On Retainer
-                  </span>
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                    Mobile Care Plan
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-                    Rolling 30 day agreement. Cancel anytime with a WhatsApp message. No 12 month lock in. 100% client code ownership.
-                  </p>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                    {[
-                      'Fast edge hosting',
-                      'SSL management',
-                      'Uptime monitoring',
-                      'Up to 30 minutes of monthly text and photo updates',
-                    ].map((feature) => (
-                      <li key={feature} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
-                        <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="shrink-0 text-center lg:text-right">
-                  <div className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-1">
-                    £35 <span className="text-sm font-semibold text-slate-500 dark:text-zinc-400">/ month</span>
-                  </div>
-                  <div className="flex items-center justify-center lg:justify-end gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-mono font-semibold mb-4">
-                    <ShieldCheck className="w-3.5 h-3.5" />
-                    <span>No 12 month lock in</span>
-                  </div>
-                  <a
-                    href={whatsappLink('Hi Dean, I would like to add the £35 per month Mobile Care Plan to my website.')}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 text-slate-800 dark:text-zinc-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 font-bold text-sm transition-all shadow-sm"
-                  >
-                    <span>Add Mobile Care Plan</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
+              <span className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase font-mono border bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 mb-3">
+                Completely Optional
+              </span>
+              <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
+                Mobile Care Plan
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed mb-4">
+                If you would rather not think about your website again, I can look after it for you every month. There is no obligation to take this, and you can cancel anytime with a WhatsApp message.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-5">
+                {[
+                  'Your site kept fast and online',
+                  'Security kept up to date',
+                  'Regular checks so it never goes down',
+                  'Small text and photo changes each month',
+                ].map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <a
+                href={whatsappLink('Hi Dean, can you tell me more about the optional Mobile Care Plan for my website?')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 text-slate-800 dark:text-zinc-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 font-bold text-sm transition-all shadow-sm"
+              >
+                <span>Ask About the Care Plan</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
 

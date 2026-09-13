@@ -3,11 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Spotlight } from './ui/Spotlight';
 import { ArrowRight, MessageSquare, Phone, Wrench, BadgeCheck, Star } from 'lucide-react';
 
-interface HeroSectionProps {
-  onOpenWhatsApp?: () => void;
-}
-
-export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsApp }) => {
+export const HeroSection: React.FC = () => {
   const navigate = useNavigate();
 
   return (
@@ -38,21 +34,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsApp }) => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Fast, custom mobile websites engineered for local plumbers, electricians, roofers, and builders. Built mobile friendly from the ground up, with instant tap to call buttons, zero agency middle management, and 100% code ownership.
+            Fast, custom mobile websites engineered for local plumbers, electricians, roofers, and builders. Built mobile friendly from the ground up, with instant tap to call buttons and zero agency middle management.
           </p>
 
           {/* Call to Actions */}
           <div className="flex flex-col sm:flex-row gap-3.5 mt-2 w-full max-w-xl">
             <button
-              onClick={onOpenWhatsApp}
-              className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-[#D90429] font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group"
-            >
-              <MessageSquare className="w-4 h-4 fill-current" />
-              <span>Message on WhatsApp</span>
-            </button>
-            <button
               onClick={() => navigate('/pricing')}
-              className="px-6 py-3.5 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 text-slate-800 dark:text-zinc-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 font-bold text-sm transition-all flex items-center justify-center gap-2 group"
+              className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group"
             >
               <span>View Fixed Packages (£350 Founding Rate)</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
