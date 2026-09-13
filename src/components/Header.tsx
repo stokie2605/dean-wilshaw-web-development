@@ -5,14 +5,12 @@ import { ArrowRight, Sun, Moon } from 'lucide-react';
 interface HeaderProps {
   onOpenQuote: () => void;
   onOpenWhatsApp?: () => void;
-  onOpenStitch?: () => void;
 }
 
-// Clean 3-Page Navigation Structure (Desktop)
+// Clean Navigation Structure (Desktop)
 const NAV_LINKS = [
-  { label: 'Home',      href: '/' },
-  { label: 'Simulator', href: '/simulator' },
-  { label: 'Pricing',   href: '/pricing' },
+  { label: 'Home',    href: '/' },
+  { label: 'Pricing', href: '/pricing' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
