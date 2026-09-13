@@ -36,7 +36,6 @@ const PRICING_TIERS: PricingTier[] = [
     title: 'Trade Starter',
     subtitle: 'A complete mobile friendly site built to get the phone ringing.',
     price: '£450',
-    priceBadge: '£350 Founding Rate for First 5 Local Trades',
     bullets: [
       'Mobile friendly custom build',
       'Tap to call bar',
@@ -45,10 +44,10 @@ const PRICING_TIERS: PricingTier[] = [
       'Full code ownership',
       'Zero lock in',
     ],
-    ctaText: 'Claim £350 Founding Rate on WhatsApp',
-    whatsappMessage: 'Hi Dean, I would like to claim the £350 Founding Rate for the Trade Starter website package.',
+    ctaText: 'Claim Trade Starter on WhatsApp',
+    whatsappMessage: 'Hi Dean, I would like to ask about the Trade Starter website package.',
     mobileTabLabel: 'Trade Starter',
-    mobileTabPrice: '£350',
+    mobileTabPrice: '£450',
   },
   {
     id: 'pro-multi-section',

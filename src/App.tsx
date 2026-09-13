@@ -86,21 +86,13 @@ export default function App() {
             <AboutDeanSection />
           </div>
 
-          {/* 3. Streamlined Service Overview leading to WhatsApp or Pricing */}
-          <section className="py-16 md:py-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
+          {/* 3. Closing CTA leading to WhatsApp or Pricing */}
+          <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
             <div className="max-w-5xl mx-auto">
 
-              <div className="mb-6 md:mb-14 text-center">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase mb-4">
-                  Ready When You Are
-                </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                  One website, built to bring in the phone calls.
-                </h2>
-                <p className="mt-4 text-slate-600 dark:text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
-                  A mobile friendly custom build with tap to call and WhatsApp built in from day one, at a fixed price with no monthly lock in.
-                </p>
-              </div>
+              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight text-center mb-6">
+                Ready to get started?
+              </h2>
 
               <div className="flex flex-col sm:flex-row gap-3.5 max-w-xl mx-auto">
                 <button

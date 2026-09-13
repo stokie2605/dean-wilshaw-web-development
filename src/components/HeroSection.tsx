@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Spotlight } from './ui/Spotlight';
-import { ArrowRight, MessageSquare, Phone, Wrench, BadgeCheck, Star } from 'lucide-react';
+import { ArrowRight, MessageSquare, Phone, Wrench, Star } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Fast, custom mobile websites engineered for local plumbers, electricians, roofers, and builders. Built mobile friendly from the ground up, with instant tap to call buttons and zero agency middle management.
+            Fast, mobile friendly websites for local trades, with tap to call built in and no agency overhead.
           </p>
 
           {/* Call to Actions */}
@@ -43,7 +43,7 @@ export const HeroSection: React.FC = () => {
               onClick={() => navigate('/pricing')}
               className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group"
             >
-              <span>View Fixed Packages (£350 Founding Rate)</span>
+              <span>View Fixed Packages</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -121,20 +121,8 @@ export const HeroSection: React.FC = () => {
                       Called and had a reply in minutes. Job sorted the same day.
                     </p>
                   </div>
-
-                  <div className="bg-white rounded-xl p-3 border border-slate-100 flex items-center gap-2.5">
-                    <BadgeCheck className="w-5 h-5 text-emerald-500 shrink-0" />
-                    <span className="text-[11px] font-semibold text-slate-700 leading-tight">
-                      Mobile Friendly by Design
-                    </span>
-                  </div>
                 </div>
               </div>
-            </div>
-
-            <div className="mt-4 flex items-center justify-center gap-2 text-xs font-medium text-slate-500 dark:text-zinc-400">
-              <BadgeCheck className="w-4 h-4 text-emerald-500" />
-              <span>Live trade site mockup, built mobile first</span>
             </div>
           </div>
         </div>
