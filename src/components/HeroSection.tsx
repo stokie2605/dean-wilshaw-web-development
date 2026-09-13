@@ -91,30 +91,38 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsApp }) => {
               <div className="p-5 flex flex-col gap-4">
                 <div>
                   <span className="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">
-                    Independent Business
+                    Local Business Showcase
                   </span>
                   <h3 className="text-xl font-extrabold text-slate-900 dark:text-white mt-1 leading-tight">
-                    Your Business Name
+                    Moorland Services
                   </h3>
                   <p className="text-xs text-slate-600 dark:text-zinc-400 mt-1.5 leading-relaxed">
-                    Clear service description, genuine customer reviews, and direct contact buttons so local customers can reach you immediately.
+                    Domestic &amp; Commercial Services across Stoke-on-Trent and Cheshire.
                   </p>
                 </div>
 
                 <div className="space-y-2 pt-1">
-                  <div className="w-full bg-[#D90429] text-white font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
+                  <a
+                    href="tel:07348733365"
+                    className="w-full bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs transition-colors select-none"
+                  >
                     <Phone className="w-3.5 h-3.5" />
-                    <span>Call Direct: 01782 000000</span>
-                  </div>
-                  <div className="w-full bg-[#25D366] text-black font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
+                    <span>Call: 07348 733365</span>
+                  </a>
+                  <a
+                    href="https://wa.me/447348733365"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#25D366] hover:bg-[#20bd5a] active:bg-[#1ba851] text-black font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs transition-colors select-none"
+                  >
                     <MessageSquare className="w-3.5 h-3.5 fill-current" />
                     <span>Chat on WhatsApp</span>
-                  </div>
+                  </a>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 dark:border-zinc-800/80 flex items-center justify-between text-[11px] text-slate-500 dark:text-zinc-400">
-                  <span>Stoke &amp; Cheshire</span>
-                  <span className="font-semibold text-slate-700 dark:text-zinc-300">Fast Loading</span>
+                <div className="pt-2 border-t border-slate-100 dark:border-zinc-800/80 flex items-center justify-between gap-2 text-[11px] text-slate-500 dark:text-zinc-400">
+                  <span>Stoke-on-Trent &amp; Cheshire</span>
+                  <span className="font-semibold text-slate-700 dark:text-zinc-300">Mobile-Friendly</span>
                 </div>
               </div>
             </div>
