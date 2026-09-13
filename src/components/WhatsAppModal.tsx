@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { X, Send, MessageSquare, Phone, CheckCircle2 } from 'lucide-react';
 
 interface WhatsAppModalProps {
@@ -23,15 +23,14 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
 
   const getPresetMessage = () => {
     if (customMsg.trim()) return customMsg;
-    if (topic === 'quote') return "Hi Dean, I saw your web development studio and would like to get a quote for a high-performance website.";
-    if (topic === 'speed') return "Hi Dean, my current website feels slow. I'd like to talk about upgrading to a custom React build.";
-    if (topic === 'seo') return "Hi Dean, I need better Google search rankings for my local business in Cheshire / Stoke.";
-    return "Hi Dean, I'd like to discuss a new website project.";
+    if (topic === 'quote') return "Hi Dean, I would like to ask about getting a new website for my business.";
+    if (topic === 'update') return "Hi Dean, I have an existing website that needs updating or redesigning.";
+    if (topic === 'question') return "Hi Dean, I have a question about your web design services.";
+    return "Hi Dean, I would like to discuss a website project.";
   };
 
   const handleOpenWhatsAppLink = () => {
     const text = encodeURIComponent(getPresetMessage());
-    // UK WhatsApp standard format
     const whatsappUrl = `https://wa.me/447348733365?text=${text}`;
     window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
     onClose();
@@ -50,23 +49,21 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
         </button>
 
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center shrink-0">
-            <MessageSquare className="w-6 h-6" />
+          <div className="w-11 h-11 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center shrink-0">
+            <MessageSquare className="w-5 h-5 fill-current" />
           </div>
           <div>
-            <span className="text-[10px] font-mono bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">
-              DIRECT WHATSAPP CHANNEL
-            </span>
-            <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white">Message Dean Wilshaw</h3>
+            <h3 className="font-bold text-xl text-slate-900 dark:text-white">Message Dean Wilshaw</h3>
+            <p className="text-xs text-slate-500 dark:text-zinc-400">Direct response via WhatsApp</p>
           </div>
         </div>
 
         <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
-          Need a fast response? Dean responds directly on WhatsApp during business hours (Mon-Sat, 8am-7pm).
+          I respond directly on WhatsApp during normal business hours (Mon-Sat, 8am-7pm).
         </p>
 
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-slate-900 dark:text-white font-mono">Select Conversation Topic:</label>
+          <label className="block text-xs font-semibold text-slate-900 dark:text-white">Select what you need:</label>
           <div className="grid grid-cols-1 gap-2 text-xs">
             <button
               type="button"
@@ -75,36 +72,36 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
                 topic === 'quote' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
               }`}
             >
-              <span>Request a Website Quote</span>
+              <span>I need a new website</span>
               {topic === 'quote' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
             </button>
 
             <button
               type="button"
-              onClick={() => setTopic('speed')}
+              onClick={() => setTopic('update')}
               className={`p-2.5 rounded-lg border text-left transition-colors flex items-center justify-between ${
-                topic === 'speed' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
+                topic === 'update' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
               }`}
             >
-              <span>Replace Slow WordPress Site</span>
-              {topic === 'speed' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+              <span>I want to update an existing website</span>
+              {topic === 'update' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
             </button>
 
             <button
               type="button"
-              onClick={() => setTopic('seo')}
+              onClick={() => setTopic('question')}
               className={`p-2.5 rounded-lg border text-left transition-colors flex items-center justify-between ${
-                topic === 'seo' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
+                topic === 'question' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
               }`}
             >
-              <span>Local SEO & Google Rankings</span>
-              {topic === 'seo' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+              <span>General enquiry</span>
+              {topic === 'question' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
             </button>
           </div>
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-900 dark:text-white font-mono mb-1">Optional Message Preview:</label>
+          <label className="block text-xs font-semibold text-slate-900 dark:text-white mb-1">Message Preview:</label>
           <textarea
             rows={2}
             value={customMsg || getPresetMessage()}
@@ -115,15 +112,13 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
 
         <button
           onClick={handleOpenWhatsAppLink}
-          className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-semibold text-sm flex justify-center items-center gap-2 shadow-sm"
+          className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-black py-3 rounded-lg font-bold text-sm flex justify-center items-center gap-2 shadow-sm transition-colors"
         >
-          <Send className="w-4 h-4" />
-          Open WhatsApp & Start Chat
+          <MessageSquare className="w-4 h-4 fill-current" />
+          <span>Chat on WhatsApp</span>
         </button>
 
       </div>
     </div>
   );
 };
-
-

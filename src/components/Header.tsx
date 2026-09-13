@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
               Design Systems Web
             </span>
             <span className="text-[8px] sm:text-[10px] tracking-widest uppercase font-mono font-semibold text-slate-500 dark:text-zinc-400 mt-1 leading-none">
-              DIGITAL INFRASTRUCTURE
+              WEB DESIGN &amp; DEVELOPMENT
             </span>
           </div>
         </Link>

@@ -42,7 +42,7 @@ export const AboutDeanSection: React.FC = () => {
         <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-5 sm:gap-6">
           
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase w-fit">
-            Solo Local Engineer
+            Solo Web Developer
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
@@ -50,11 +50,11 @@ export const AboutDeanSection: React.FC = () => {
           </h2>
 
           <h3 className="text-lg sm:text-xl font-semibold text-[#D90429] leading-snug">
-            A local digital systems engineer helping UK trades capture more direct jobs.
+            A local web developer building clean, modern websites for independent businesses.
           </h3>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
-            I build websites and digital lead tools from scratch. Working with me means direct one to one contact with no middle management, no junior developers, and zero tech jargon.
+            I build websites from scratch with clean, modern layouts. Working with me means direct one to one contact with zero agency overhead and zero technical jargon.
           </p>
 
           {/* 3 Accountability Badges: compact checkmark list on mobile, full cards on desktop */}
@@ -62,19 +62,19 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
               <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
-                Local to Stoke &amp; Cheshire
+                Local to Stoke-on-Trent &amp; Cheshire
               </span>
             </li>
             <li className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
               <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
-                Direct one to one access with Dean
+                Direct one to one contact with Dean
               </span>
             </li>
             <li className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
               <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
-                100% website ownership
+                Full website ownership
               </span>
             </li>
           </ul>
@@ -83,21 +83,21 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <MapPin className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                Based in Cheshire & Stoke on Trent  /  local and accountable
+                Based in Stoke-on-Trent &amp; Cheshire, local and accountable
               </span>
             </li>
 
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <Zap className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                Direct One to One Access with Dean (Zero Junior Developers or Account Managers)
+                Direct One to One Contact with Dean (No Account Managers or Middlemen)
               </span>
             </li>
 
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <ShieldCheck className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                100% Client Website Ownership and Transparent Pricing
+                Full Client Website Ownership and Clear Pricing
               </span>
             </li>
           </ul>

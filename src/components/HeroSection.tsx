@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Spotlight } from './ui/Spotlight';
-import { ArrowRight, MessageSquare, Phone, Wrench, ShieldCheck, BadgeCheck } from 'lucide-react';
+import { ArrowRight, MessageSquare, Phone } from 'lucide-react';
 
 interface HeroSectionProps {
   onOpenWhatsApp?: () => void;
@@ -27,18 +27,18 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsApp }) => {
           {/* Top Badge */}
           <div className="flex flex-wrap gap-2 justify-start mb-1 w-full">
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
-              <span>Solo Local Engineer &bull; Stoke on Trent &amp; Cheshire &bull; 100% Website Ownership</span>
+              <span>Dean Wilshaw &bull; Web Developer &bull; Stoke-on-Trent &amp; Cheshire</span>
             </div>
           </div>
 
           {/* Main Display Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-zinc-100 transition-colors duration-300">
-            Websites and Lead Engines for UK Trades.
+            Clean, Fast Websites for Local Businesses.
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Fast, custom mobile websites engineered for local plumbers, electricians, roofers, and builders. Built mobile friendly from the ground up, with instant tap to call buttons, zero agency middle management, and 100% code ownership.
+            Modern, mobile-friendly websites for independent businesses across Stoke-on-Trent and Cheshire. Straightforward pricing, direct contact buttons, and zero monthly contracts.
           </p>
 
           {/* Call to Actions */}
@@ -54,7 +54,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsApp }) => {
               onClick={() => navigate('/pricing')}
               className="px-6 py-3.5 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 text-slate-800 dark:text-zinc-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 font-bold text-sm transition-all flex items-center justify-center gap-2 group"
             >
-              <span>View Fixed Packages (£350 Founding Rate)</span>
+              <span>View Packages &amp; Pricing</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
@@ -62,69 +62,61 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenWhatsApp }) => {
           {/* Visual Interactive Cards / Micro Proof Neutral Slate Pills */}
           <div className="flex flex-wrap gap-2.5 pt-3 border-t border-slate-200 dark:border-zinc-800 w-full max-w-2xl">
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              Mobile Friendly by Design
+              Mobile-Friendly Design
             </div>
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              Tap to Call Built In
+              Direct Contact Buttons
             </div>
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              No Multi Year Contracts
+              No Long-Term Contracts
             </div>
           </div>
         </div>
 
-        {/* Right Column: Mobile Showcase Card */}
+        {/* Right Column: Clean Business Preview Card */}
         <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center">
           <div className="w-full max-w-xs mx-auto">
-            <div className="rounded-[2.25rem] border-4 border-slate-900 dark:border-zinc-800 bg-slate-900 dark:bg-black shadow-2xl overflow-hidden">
-              <div className="rounded-[1.75rem] overflow-hidden bg-[#f4f7f9]">
+            <div className="rounded-2xl border border-slate-200 dark:border-zinc-800 bg-white dark:bg-[#0A0D14] shadow-xl overflow-hidden">
+              {/* Card Header */}
+              <div className="bg-slate-100 dark:bg-zinc-900 px-4 py-3 border-b border-slate-200 dark:border-zinc-800 flex items-center justify-between">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-zinc-700"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-zinc-700"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-zinc-700"></div>
+                </div>
+                <span className="text-[11px] font-medium text-slate-500 dark:text-zinc-400">Mobile View</span>
+              </div>
 
-                {/* Mock status bar */}
-                <div className="h-7 bg-slate-900 dark:bg-black flex items-center justify-center">
-                  <div className="w-16 h-1.5 rounded-full bg-slate-700"></div>
+              {/* Card Body */}
+              <div className="p-5 flex flex-col gap-4">
+                <div>
+                  <span className="text-[11px] font-semibold text-slate-500 dark:text-zinc-400 uppercase tracking-wider">
+                    Independent Business
+                  </span>
+                  <h3 className="text-xl font-extrabold text-slate-900 dark:text-white mt-1 leading-tight">
+                    Your Business Name
+                  </h3>
+                  <p className="text-xs text-slate-600 dark:text-zinc-400 mt-1.5 leading-relaxed">
+                    Clear service description, genuine customer reviews, and direct contact buttons so local customers can reach you immediately.
+                  </p>
                 </div>
 
-                {/* Trade site header */}
-                <div className="bg-white px-4 py-3 border-b border-slate-200 flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-[#D90429]/10 flex items-center justify-center">
-                    <Wrench className="w-3.5 h-3.5 text-[#D90429]" />
+                <div className="space-y-2 pt-1">
+                  <div className="w-full bg-[#D90429] text-white font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
+                    <Phone className="w-3.5 h-3.5" />
+                    <span>Call Direct: 01782 000000</span>
                   </div>
-                  <span className="font-bold text-slate-800 text-xs">Local Trade Co.</span>
-                </div>
-
-                {/* Content */}
-                <div className="p-4 flex flex-col gap-3">
-                  <div className="bg-[#D90429] rounded-2xl p-4 text-white shadow-lg">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-white/80 mb-1">
-                      Fast Response
-                    </p>
-                    <h3 className="text-lg font-bold mb-3 leading-tight">
-                      Need a Quote Today?
-                    </h3>
-                    <button className="w-full bg-white text-[#D90429] font-bold py-2.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-xs">
-                      <Phone className="w-3.5 h-3.5" />
-                      Tap to Call
-                    </button>
-                  </div>
-
-                  <button className="w-full bg-[#25D366] text-black font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
+                  <div className="w-full bg-[#25D366] text-black font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
                     <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                    Message on WhatsApp
-                  </button>
-
-                  <div className="bg-white rounded-xl p-3 border border-slate-100 flex items-center gap-2.5">
-                    <BadgeCheck className="w-5 h-5 text-emerald-500 shrink-0" />
-                    <span className="text-[11px] font-semibold text-slate-700 leading-tight">
-                      Mobile Friendly by Design
-                    </span>
+                    <span>Chat on WhatsApp</span>
                   </div>
+                </div>
+
+                <div className="pt-2 border-t border-slate-100 dark:border-zinc-800/80 flex items-center justify-between text-[11px] text-slate-500 dark:text-zinc-400">
+                  <span>Stoke &amp; Cheshire</span>
+                  <span className="font-semibold text-slate-700 dark:text-zinc-300">Fast Loading</span>
                 </div>
               </div>
-            </div>
-
-            <div className="mt-4 flex items-center justify-center gap-2 text-xs font-medium text-slate-500 dark:text-zinc-400">
-              <ShieldCheck className="w-4 h-4 text-emerald-500" />
-              <span>Live trade site mockup, built mobile first</span>
             </div>
           </div>
         </div>

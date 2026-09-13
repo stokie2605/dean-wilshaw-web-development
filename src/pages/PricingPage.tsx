@@ -35,46 +35,48 @@ type PricingTier = {
 
 const PRICING_TIERS: PricingTier[] = [
   {
-    id: 'trade-starter',
-    title: 'Trade Starter',
-    subtitle: 'A complete mobile friendly site built to get the phone ringing.',
+    id: 'single-page',
+    title: 'Single Page Website',
+    subtitle: 'A clean, modern website designed to help local customers find and contact you.',
     price: '£450',
-    priceBadge: '£350 Founding Rate for First 5 Local Trades',
+    priceBadge: '£350 Founding Rate for First 5 Local Clients',
     termLines: [
-      'Founding Rate: £175 deposit to start, £175 final balance upon sign off.',
-      'Standard Rate: £225 deposit to start, £225 final balance upon sign off.',
+      'Founding Rate: £175 deposit to start, £175 final balance upon launch.',
+      'Standard Rate: £225 deposit to start, £225 final balance upon launch.',
     ],
     bullets: [
-      'Mobile friendly custom build',
-      'Tap to call bar',
-      'WhatsApp integration',
-      'Google Business setup',
-      'Full code ownership',
-      'Zero lock in',
+      'Custom mobile-friendly design',
+      'Click to call phone link',
+      'WhatsApp message button',
+      'Contact and enquiry form',
+      'Full code and website ownership',
+      'Zero long-term contracts',
     ],
     ctaText: 'Claim £350 Founding Rate on WhatsApp',
-    whatsappMessage: 'Hi Dean, I would like to claim the £350 Founding Rate for the Trade Starter website package.',
+    whatsappMessage: 'Hi Dean, I would like to ask about the £350 single page website package.',
     popular: true,
-    mobileTabLabel: 'Trade Starter',
+    mobileTabLabel: 'Single Page',
     mobileTabPrice: '£350',
   },
   {
-    id: 'pro-multi-section',
-    title: 'Pro Multi Section Platform',
-    subtitle: 'A bigger, richer site for trades running multiple services.',
+    id: 'multi-page',
+    title: 'Multi-Page Website',
+    subtitle: 'A comprehensive website for businesses with several services or gallery work.',
     price: '£700',
     termLines: [
-      '50% deposit to start, 50% final balance upon sign off.',
+      '50% deposit to start, 50% final balance upon launch.',
     ],
     bullets: [
-      'Multi service breakdown',
-      'Before and after work galleries',
-      'Customer review integration',
-      'Interactive quote scope calculator',
+      'Dedicated pages for your services',
+      'Work and project photo gallery',
+      'Customer reviews section',
+      'Direct contact and enquiry forms',
+      'Full code and website ownership',
+      'Zero long-term contracts',
     ],
-    ctaText: 'Discuss a Multi Section Build',
-    whatsappMessage: 'Hi Dean, I would like to discuss the Pro Multi Section Platform package.',
-    mobileTabLabel: 'Pro Platform',
+    ctaText: 'Discuss a Multi-Page Build',
+    whatsappMessage: 'Hi Dean, I would like to discuss a multi-page website for my business.',
+    mobileTabLabel: 'Multi-Page',
     mobileTabPrice: '£700',
   },
 ];
@@ -173,10 +175,10 @@ export const PricingPage: React.FC = () => {
               Transparent Pricing
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 tracking-tight text-slate-900 dark:text-white">
-              Simple, Honest Trade Pricing
+              Simple, Honest Pricing for Local Businesses
             </h1>
             <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400">
-              Two fixed packages, no hidden fees, and zero platform lock in. You own 100% of your website outright.
+              Two clear packages, no hidden fees, and zero platform lock in. You own 100% of your website outright.
             </p>
           </div>
 
@@ -219,25 +221,25 @@ export const PricingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Add On Retainer: Mobile Care Plan */}
+          {/* Add On Retainer: Website Care Plan */}
           <div className="max-w-4xl mx-auto">
             <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 shadow-lg">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                 <div className="space-y-3 max-w-2xl">
                   <span className="inline-block px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase font-mono border bg-zinc-100 text-zinc-700 border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800">
-                    Add On Retainer
+                    Optional Monthly Care
                   </span>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                    Mobile Care Plan
+                    Website Care &amp; Hosting
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-                    Rolling 30 day agreement. Cancel anytime with a WhatsApp message. No 12 month lock in. 100% client code ownership.
+                    Rolling 30 day agreement. Cancel anytime with a WhatsApp message. No 12 month contract. You own your code outright.
                   </p>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                     {[
-                      'Fast edge hosting',
-                      'SSL management',
-                      'Uptime monitoring',
+                      'Fast, reliable website hosting',
+                      'Security and SSL certificate',
+                      'Performance and uptime monitoring',
                       'Up to 30 minutes of monthly text and photo updates',
                     ].map((feature) => (
                       <li key={feature} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-zinc-300">
