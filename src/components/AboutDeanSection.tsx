@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Zap, ShieldCheck, Check, MessageSquare, Clock, CheckCircle2 } from 'lucide-react';
+import { MapPin, Zap, ShieldCheck, Check } from 'lucide-react';
 
 export const AboutDeanSection: React.FC = () => {
   return (
@@ -17,52 +17,68 @@ export const AboutDeanSection: React.FC = () => {
               How It Works
             </h3>
 
-            <ul className="mt-5 divide-y divide-slate-100 dark:divide-white/[0.06]">
-              <li className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0">
-                <div className="flex items-start gap-2.5">
-                  <MessageSquare className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
-                  <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
-                    01 / Direct WhatsApp Consultation
-                  </span>
-                </div>
-                <span className="w-fit ml-[26px] bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
-                  Same Day (15 mins)
-                </span>
-                <p className="ml-[26px] text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-                  Quick message exchange to discuss your business, services, contact buttons, and photo assets.
-                </p>
-              </li>
+            <div className="relative mt-6">
+              <div className="absolute left-5 top-5 bottom-5 w-px bg-slate-200 dark:bg-white/10"></div>
 
-              <li className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0">
-                <div className="flex items-start gap-2.5">
-                  <Clock className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
-                  <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
-                    02 / Private Mobile Preview
-                  </span>
-                </div>
-                <span className="w-fit ml-[26px] bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
-                  Within 5 Working Days
-                </span>
-                <p className="ml-[26px] text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-                  I build your site on a private link. You review and tap through the layout on your phone before paying the final balance.
-                </p>
-              </li>
+              <ul className="space-y-7">
+                <li className="relative flex gap-4">
+                  <div className="relative z-10 w-10 h-10 rounded-full bg-[#D90429] text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-md">
+                    1
+                  </div>
+                  <div className="flex-1 pt-1.5">
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
+                        Direct WhatsApp Consultation
+                      </span>
+                      <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
+                        Same Day (15 mins)
+                      </span>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+                      Quick message exchange to discuss your business, services, contact buttons, and photo assets.
+                    </p>
+                  </div>
+                </li>
 
-              <li className="flex flex-col gap-2 py-4 first:pt-0 last:pb-0">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
-                  <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
-                    03 / Launch &amp; Full Ownership
-                  </span>
-                </div>
-                <span className="w-fit ml-[26px] bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
-                  Day 5 to 7
-                </span>
-                <p className="ml-[26px] text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-                  We connect your custom domain, test all phone and WhatsApp links, and hand over 100% of your website files.
-                </p>
-              </li>
-            </ul>
+                <li className="relative flex gap-4">
+                  <div className="relative z-10 w-10 h-10 rounded-full bg-[#D90429] text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-md">
+                    2
+                  </div>
+                  <div className="flex-1 pt-1.5">
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
+                        Private Mobile Preview
+                      </span>
+                      <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
+                        Within 5 Working Days
+                      </span>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+                      I build your site on a private link. You review and tap through the layout on your phone before paying the final balance.
+                    </p>
+                  </div>
+                </li>
+
+                <li className="relative flex gap-4">
+                  <div className="relative z-10 w-10 h-10 rounded-full bg-[#D90429] text-white font-bold text-sm flex items-center justify-center shrink-0 shadow-md">
+                    3
+                  </div>
+                  <div className="flex-1 pt-1.5">
+                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                      <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
+                        Launch &amp; Full Ownership
+                      </span>
+                      <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
+                        Day 5 to 7
+                      </span>
+                    </div>
+                    <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
+                      We connect your custom domain, test all phone and WhatsApp links, and hand over 100% of your website files.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

@@ -24,7 +24,6 @@ type PricingTier = {
   subtitle: string;
   price: string;
   priceBadge?: string;
-  termLines: string[];
   bullets: string[];
   ctaText: string;
   whatsappMessage: string;
@@ -39,10 +38,6 @@ const PRICING_TIERS: PricingTier[] = [
     subtitle: 'A complete mobile friendly site built to get the phone ringing.',
     price: '£450',
     priceBadge: '£350 Founding Rate for First 5 Local Trades',
-    termLines: [
-      'Founding Rate: £175 deposit to start, £175 final balance upon sign off.',
-      'Standard Rate: £225 deposit to start, £225 final balance upon sign off.',
-    ],
     bullets: [
       'Mobile friendly custom build',
       'Tap to call bar',
@@ -61,9 +56,6 @@ const PRICING_TIERS: PricingTier[] = [
     title: 'Pro Multi Section Platform',
     subtitle: 'A bigger, richer site for trades running multiple services.',
     price: '£700',
-    termLines: [
-      '50% deposit to start, 50% final balance upon sign off.',
-    ],
     bullets: [
       'Multi service breakdown',
       'Before and after work galleries',
@@ -98,13 +90,6 @@ function PricingCard({ tier, compact = false }: { tier: PricingTier; compact?: b
               {tier.priceBadge}
             </div>
           )}
-          <div className="mt-3 space-y-1">
-            {tier.termLines.map((line) => (
-              <p key={line} className="text-[11px] font-mono text-slate-500 dark:text-zinc-400 leading-snug">
-                {line}
-              </p>
-            ))}
-          </div>
         </div>
 
         {/* Features */}
@@ -123,7 +108,7 @@ function PricingCard({ tier, compact = false }: { tier: PricingTier; compact?: b
         href={whatsappLink(tier.whatsappMessage)}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 mt-4 bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white shadow-lg shadow-red-600/20"
+        className="w-full py-3.5 px-4 rounded-xl font-bold text-xs sm:text-sm transition-all flex items-center justify-center gap-2 mt-4 bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-[#D90429] shadow-lg shadow-red-600/20"
       >
         <MessageSquare className="w-4 h-4 fill-current" />
         <span>{tier.ctaText}</span>

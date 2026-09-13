@@ -105,7 +105,7 @@ export default function App() {
               <div className="flex flex-col sm:flex-row gap-3.5 max-w-xl mx-auto">
                 <button
                   onClick={handleOpenWhatsApp}
-                  className="flex-1 px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
+                  className="flex-1 px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-[#D90429] font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
                   <span>Message on WhatsApp</span>
