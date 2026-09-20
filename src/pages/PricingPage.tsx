@@ -23,6 +23,7 @@ type PricingTier = {
   subtitle: string;
   price: string;
   priceBadge?: string;
+  paymentTerms?: { label: string; text: string }[];
   bullets: string[];
   ctaText: string;
   whatsappMessage: string;
@@ -36,6 +37,11 @@ const PRICING_TIERS: PricingTier[] = [
     title: 'Trade Starter',
     subtitle: 'A complete mobile friendly site built to get the phone ringing.',
     price: '£450',
+    priceBadge: '£350 Founding Rate for First 5 Local Trades',
+    paymentTerms: [
+      { label: 'Founding rate', text: '£175 deposit to start, £175 final balance upon launch.' },
+      { label: 'Standard rate', text: '£225 deposit to start, £225 final balance upon launch.' },
+    ],
     bullets: [
       'Mobile friendly custom build',
       'Tap to call bar',
@@ -87,6 +93,16 @@ function PricingCard({ tier, compact = false }: { tier: PricingTier; compact?: b
             <div className="mt-2 inline-block px-2.5 py-1.5 rounded-md bg-emerald-100 text-emerald-800 dark:bg-emerald-900/40 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 font-mono text-[10px] sm:text-[11px] font-bold leading-tight">
               {tier.priceBadge}
             </div>
+          )}
+          {tier.paymentTerms && (
+            <dl className="mt-3 space-y-2">
+              {tier.paymentTerms.map((term) => (
+                <div key={term.label} className="text-xs text-slate-600 dark:text-zinc-400 leading-snug">
+                  <dt className="font-semibold text-slate-800 dark:text-zinc-200">{term.label}</dt>
+                  <dd>{term.text}</dd>
+                </div>
+              ))}
+            </dl>
           )}
         </div>
 
@@ -220,6 +236,7 @@ export const PricingPage: React.FC = () => {
               </a>
             </div>
           </div>
+
 
         </div>
       </main>
