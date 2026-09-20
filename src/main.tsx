@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App.tsx';
 import { PricingPage } from './pages/PricingPage';
+import { DemoPage } from './pages/DemoPage';
 import { SimulatorPage } from './pages/SimulatorPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { AuthGate } from './components/AuthGate';
@@ -37,6 +38,9 @@ createRoot(document.getElementById('root')!).render(
             <AdminDashboard />
           </AuthGate>
         } />
+
+        {/* Example trade site linked from the hero mockup */}
+        <Route path="/demo" element={<DemoPage />} />
 
         {/* Dedicated Missed-Call Demo Route */}
         <Route path="/demo/missed-call" element={<MissedCallDemoPage />} />

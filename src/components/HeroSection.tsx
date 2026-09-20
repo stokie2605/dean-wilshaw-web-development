@@ -1,7 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Spotlight } from './ui/Spotlight';
 import { ArrowRight, MessageSquare, Phone, Wrench, Star } from 'lucide-react';
+import { DEMO_BUSINESS } from '../lib/demoBusiness';
 
 export const HeroSection: React.FC = () => {
   const navigate = useNavigate();
@@ -65,6 +66,11 @@ export const HeroSection: React.FC = () => {
         {/* Right Column: Mobile Showcase Card */}
         <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center">
           <div className="w-full max-w-xs mx-auto">
+            <Link
+              to="/demo"
+              aria-label="View live example website"
+              className="block rounded-[2.25rem] transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D90429]"
+            >
             <div className="rounded-[2.25rem] border-4 border-slate-900 dark:border-zinc-800 bg-slate-900 dark:bg-black shadow-2xl overflow-hidden">
               <div className="rounded-[1.75rem] overflow-hidden bg-[#f4f7f9]">
 
@@ -78,16 +84,16 @@ export const HeroSection: React.FC = () => {
                   <div className="w-7 h-7 rounded-full bg-[#D90429]/10 flex items-center justify-center">
                     <Wrench className="w-3.5 h-3.5 text-[#D90429]" />
                   </div>
-                  <span className="font-bold text-slate-800 text-xs">Local Trade Co.</span>
+                  <span className="font-bold text-slate-800 text-xs">{DEMO_BUSINESS.name}</span>
                 </div>
 
                 {/* Content */}
                 <div className="p-4 flex flex-col gap-3">
                   {/* Services row */}
                   <div className="grid grid-cols-3 gap-1.5">
-                    {['Boiler Repair', 'Bathroom Fitting', 'Emergency Callout'].map((service) => (
-                      <div key={service} className="bg-white border border-slate-100 rounded-lg py-2 px-1 text-center shadow-sm">
-                        <span className="text-[9px] font-semibold text-slate-700 leading-tight">{service}</span>
+                    {DEMO_BUSINESS.services.map((service) => (
+                      <div key={service.name} className="bg-white border border-slate-100 rounded-lg py-2 px-1 text-center shadow-sm">
+                        <span className="text-[9px] font-semibold text-slate-700 leading-tight">{service.name}</span>
                       </div>
                     ))}
                   </div>
@@ -99,16 +105,16 @@ export const HeroSection: React.FC = () => {
                     <h3 className="text-lg font-bold mb-3 leading-tight">
                       Need a Quote Today?
                     </h3>
-                    <button className="w-full bg-white text-[#D90429] font-bold py-2.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-xs">
+                    <div className="w-full bg-white text-[#D90429] font-bold py-2.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-xs">
                       <Phone className="w-3.5 h-3.5" />
                       Tap to Call
-                    </button>
+                    </div>
                   </div>
 
-                  <button className="w-full bg-[#D90429] text-white font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
+                  <div className="w-full bg-[#D90429] text-white font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
                     <MessageSquare className="w-3.5 h-3.5 fill-current" />
                     Message on WhatsApp
-                  </button>
+                  </div>
 
                   {/* Review snippet */}
                   <div className="bg-white rounded-xl p-3 border border-slate-100 flex items-start gap-2.5">
@@ -118,12 +124,21 @@ export const HeroSection: React.FC = () => {
                       ))}
                     </div>
                     <p className="text-[10px] text-slate-600 leading-snug">
-                      Called and had a reply in minutes. Job sorted the same day.
+                      {DEMO_BUSINESS.review}
                     </p>
                   </div>
                 </div>
               </div>
             </div>
+            </Link>
+
+            <Link
+              to="/demo"
+              className="mt-4 flex items-center justify-center gap-2 text-sm font-semibold text-slate-700 dark:text-zinc-300 hover:text-[#D90429] dark:hover:text-white transition-colors group"
+            >
+              <span>View Live Example</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
         </div>
 
