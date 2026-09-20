@@ -5,6 +5,7 @@ import { BottomTabBar } from '../components/BottomTabBar';
 import { Footer } from '../components/Footer';
 import { QuoteForm } from '../components/QuoteForm';
 import { WhatsAppModal } from '../components/WhatsAppModal';
+import { PricingFaq } from '../components/PricingFaq';
 import {
   CheckCircle2,
   MessageSquare,
@@ -237,6 +238,8 @@ export const PricingPage: React.FC = () => {
             </div>
           </div>
 
+          {/* FAQ */}
+          <PricingFaq />
 
         </div>
       </main>
