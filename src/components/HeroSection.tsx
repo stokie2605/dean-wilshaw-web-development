@@ -73,73 +73,101 @@ export const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Column: Mobile Showcase Card */}
-        <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center">
-          <div className="w-full max-w-xs mx-auto">
+        {/* Right Column: 2026 Dark Obsidian Glass Showcase */}
+        <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center py-6">
+
+          {/* Ambient Frosted Glass Planes (Replicating Meta Ad Backdrop) */}
+          <div className="absolute -inset-4 sm:-inset-6 pointer-events-none flex items-center justify-center overflow-visible">
+            {/* Left Tilted Frosted Glass Pane with Red Refraction */}
+            <div className="absolute w-64 h-80 -rotate-12 -translate-x-12 -translate-y-3 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-t-[#D90429]/40 border-l-[#D90429]/30"></div>
+            
+            {/* Right Tilted Frosted Glass Pane with Emerald Refraction */}
+            <div className="absolute w-64 h-80 rotate-12 translate-x-12 translate-y-5 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-b-emerald-500/40 border-r-emerald-500/30"></div>
+
+            {/* Subtle Neon Line Accents */}
+            <div className="absolute w-72 h-px bg-gradient-to-r from-transparent via-[#D90429]/60 to-transparent -rotate-6 -translate-y-16"></div>
+            <div className="absolute w-72 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent rotate-6 translate-y-20"></div>
+          </div>
+
+          <div className="w-full max-w-xs mx-auto relative z-10">
             <Link
               to="/demo"
               aria-label="View live example website"
-              className="block rounded-[2.25rem] transition-transform hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D90429]"
+              className="block rounded-[2.5rem] transition-transform hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#D90429] group"
             >
-            <div className="rounded-[2.25rem] border-4 border-slate-900 dark:border-zinc-800 bg-slate-900 dark:bg-black shadow-2xl overflow-hidden">
-              <div className="rounded-[1.75rem] overflow-hidden bg-[#f4f7f9]">
+              {/* Titanium Outer Chassis */}
+              <div className="rounded-[2.5rem] p-1.5 bg-gradient-to-b from-slate-700 via-slate-900 to-black border-2 border-slate-600/50 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(217,4,41,0.18)]">
+                
+                {/* Inner Screen Display (Obsidian Dark Glass) */}
+                <div className="rounded-[2.15rem] overflow-hidden bg-[#07090E] border border-white/[0.08] relative">
 
-                {/* Mock status bar */}
-                <div className="h-7 bg-slate-900 dark:bg-black flex items-center justify-center">
-                  <div className="w-16 h-1.5 rounded-full bg-slate-700"></div>
-                </div>
-
-                {/* Trade site header */}
-                <div className="bg-white px-4 py-3 border-b border-slate-200 flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-full bg-[#D90429]/10 flex items-center justify-center">
-                    <Wrench className="w-3.5 h-3.5 text-[#D90429]" />
-                  </div>
-                  <span className="font-bold text-slate-800 text-xs">{DEMO_BUSINESS.name}</span>
-                </div>
-
-                {/* Content */}
-                <div className="p-4 flex flex-col gap-3">
-                  {/* Services row */}
-                  <div className="grid grid-cols-3 gap-1.5">
-                    {DEMO_BUSINESS.services.map((service) => (
-                      <div key={service.name} className="bg-white border border-slate-100 rounded-lg py-2 px-1 text-center shadow-sm">
-                        <span className="text-[9px] font-semibold text-slate-700 leading-tight">{service.name}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="bg-[#D90429] rounded-2xl p-4 text-white shadow-lg">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-white/80 mb-1">
-                      Fast Response
-                    </p>
-                    <h3 className="text-lg font-bold mb-3 leading-tight">
-                      Need a Quote Today?
-                    </h3>
-                    <div className="w-full bg-white text-[#D90429] font-bold py-2.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-xs">
-                      <Phone className="w-3.5 h-3.5" />
-                      Tap to Call
+                  {/* Top Glass Bezel / Speaker Notch */}
+                  <div className="h-6 bg-black flex items-center justify-center pt-1 relative z-20">
+                    <div className="w-20 h-3 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-end px-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500/80"></div>
                     </div>
                   </div>
 
-                  <div className="w-full bg-[#D90429] text-white font-bold py-2.5 rounded-xl shadow-sm flex items-center justify-center gap-2 text-xs">
-                    <MessageSquare className="w-3.5 h-3.5 fill-current" />
-                    Message on WhatsApp
+                  {/* Trade Site Header (Frosted Glass) */}
+                  <div className="bg-white/[0.04] backdrop-blur-md px-4 py-3 border-b border-white/[0.08] flex items-center justify-between relative z-10">
+                    <div className="flex items-center gap-2">
+                      <div className="w-7 h-7 rounded-xl bg-[#D90429]/20 border border-[#D90429]/40 flex items-center justify-center shadow-[0_0_10px_rgba(217,4,41,0.3)]">
+                        <Wrench className="w-3.5 h-3.5 text-[#D90429]" />
+                      </div>
+                      <span className="font-bold text-white text-xs tracking-tight">{DEMO_BUSINESS.name}</span>
+                    </div>
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></div>
                   </div>
 
-                  {/* Review snippet */}
-                  <div className="bg-white rounded-xl p-3 border border-slate-100 flex items-start gap-2.5">
-                    <div className="flex text-amber-400 shrink-0 mt-0.5">
-                      {[1, 2, 3, 4, 5].map((n) => (
-                        <Star key={n} className="w-3 h-3 fill-current" />
+                  {/* Screen Content */}
+                  <div className="p-4 flex flex-col gap-3 relative z-10 bg-gradient-to-b from-transparent via-transparent to-black/40">
+                    {/* Services row (Glass Chips) */}
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {DEMO_BUSINESS.services.map((service) => (
+                        <div key={service.name} className="bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] backdrop-blur-md rounded-xl py-2 px-1 text-center shadow-sm transition-colors">
+                          <span className="text-[9px] font-semibold text-zinc-300 leading-tight">{service.name}</span>
+                        </div>
                       ))}
                     </div>
-                    <p className="text-[10px] text-slate-600 leading-snug">
-                      {DEMO_BUSINESS.review}
-                    </p>
+
+                    {/* Primary Call Card (Luminous Red Glass) */}
+                    <div className="relative rounded-2xl p-4 text-white overflow-hidden bg-gradient-to-br from-[#D90429] via-[#b80322] to-[#7a0216] border border-red-400/30 shadow-[0_8px_30px_rgba(217,4,41,0.35)] backdrop-blur-lg">
+                      {/* Specular sheen reflection */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
+
+                      <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-red-100 mb-1">
+                        Fast Response
+                      </p>
+                      <h3 className="text-lg font-extrabold mb-3 leading-tight tracking-tight text-white drop-shadow-sm">
+                        Need a Quote Today?
+                      </h3>
+                      <div className="w-full bg-white text-slate-950 font-bold py-2.5 rounded-xl shadow-lg flex items-center justify-center gap-2 text-xs transition-transform group-hover:scale-[1.02]">
+                        <Phone className="w-3.5 h-3.5 text-[#D90429]" />
+                        <span>Tap to Call</span>
+                      </div>
+                    </div>
+
+                    {/* Secondary WhatsApp Button (Frosted Emerald/Dark Glass) */}
+                    <div className="w-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.12] text-white font-bold py-2.5 rounded-xl shadow-sm backdrop-blur-md flex items-center justify-center gap-2 text-xs transition-colors">
+                      <MessageSquare className="w-3.5 h-3.5 fill-current text-emerald-400" />
+                      <span>Message on WhatsApp</span>
+                    </div>
+
+                    {/* Review snippet (Frosted Glass Card) */}
+                    <div className="bg-white/[0.03] backdrop-blur-md rounded-xl p-3 border border-white/[0.08] flex items-start gap-2.5 shadow-sm">
+                      <div className="flex text-amber-400 shrink-0 mt-0.5">
+                        {[1, 2, 3, 4, 5].map((n) => (
+                          <Star key={n} className="w-3 h-3 fill-current" />
+                        ))}
+                      </div>
+                      <p className="text-[10px] text-zinc-300 leading-snug">
+                        {DEMO_BUSINESS.review}
+                      </p>
+                    </div>
                   </div>
+
                 </div>
               </div>
-            </div>
             </Link>
 
             <Link
