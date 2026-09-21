@@ -9,8 +9,7 @@ interface HeaderProps {
 
 // Clean Navigation Structure (Desktop)
 const NAV_LINKS = [
-  { label: 'Home',    href: '/' },
-  { label: 'Pricing', href: '/pricing' },
+  { label: 'Home', href: '/' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {

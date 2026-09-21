@@ -1,12 +1,14 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Spotlight } from './ui/Spotlight';
 import { ArrowRight, MessageSquare, Phone, Wrench, Star } from 'lucide-react';
 import { DEMO_BUSINESS } from '../lib/demoBusiness';
 
-export const HeroSection: React.FC = () => {
-  const navigate = useNavigate();
+const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
+  "Hi Dean, I'd like to get a quote for a website for my business."
+)}`;
 
+export const HeroSection: React.FC = () => {
   return (
     <section className="relative pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] overflow-hidden border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
 
@@ -39,14 +41,22 @@ export const HeroSection: React.FC = () => {
           </p>
 
           {/* Call to Actions */}
-          <div className="flex flex-col sm:flex-row gap-3.5 mt-2 w-full max-w-xl">
-            <button
-              onClick={() => navigate('/pricing')}
-              className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group"
-            >
-              <span>View Fixed Packages</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
+          <div className="flex flex-col gap-3 mt-2 w-full max-w-xl">
+            <div>
+              <a
+                href={WHATSAPP_QUOTE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 group w-full sm:w-auto"
+              >
+                <MessageSquare className="w-4 h-4 fill-current" />
+                <span>Message for a Quote</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium leading-relaxed">
+              Single page trade builds start from £350 for the first 5 founding clients. Message Dean on WhatsApp for an exact quote.
+            </p>
           </div>
 
           {/* Visual Interactive Cards / Micro Proof Neutral Slate Pills */}

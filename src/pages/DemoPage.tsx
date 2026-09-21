@@ -124,10 +124,15 @@ export const DemoPage: React.FC = () => {
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Dean Wilshaw Web Development</span>
           </Link>
-          <Link to="/pricing" className="inline-flex items-center gap-2 font-semibold text-[#D90429] hover:text-[#b80322]">
-            <span>See fixed packages</span>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 font-semibold text-[#D90429] hover:text-[#b80322]"
+          >
+            <span>Message for a Quote</span>
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </a>
         </div>
       </main>
 

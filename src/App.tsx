@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { BottomTabBar } from './components/BottomTabBar';
@@ -6,11 +6,16 @@ import { HeroSection } from './components/HeroSection';
 import { MessageSquare, ArrowRight } from 'lucide-react';
 
 const AboutDeanSection = lazy(() => import('./components/AboutDeanSection').then(m => ({ default: m.AboutDeanSection })));
+const PricingFaq = lazy(() => import('./components/PricingFaq').then(m => ({ default: m.PricingFaq })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 const WhatsAppModal = lazy(() => import('./components/WhatsAppModal').then(m => ({ default: m.WhatsAppModal })));
 const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
 const TermsConditions = lazy(() => import('./components/TermsConditions').then(m => ({ default: m.TermsConditions })));
+
+const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
+  "Hi Dean, I'd like to get a quote for a website for my business."
+)}`;
 
 export default function App() {
   const navigate = useNavigate();
@@ -86,29 +91,34 @@ export default function App() {
             <AboutDeanSection />
           </div>
 
-          {/* 3. Closing CTA leading to WhatsApp or Pricing */}
-          <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
-            <div className="max-w-5xl mx-auto">
+          {/* FAQ Accordion Section */}
+          <div className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
+            <PricingFaq />
+          </div>
 
-              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight text-center mb-6">
+          {/* 3. Closing CTA leading to WhatsApp Quote */}
+          <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
+            <div className="max-w-5xl mx-auto text-center">
+
+              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">
                 Ready to get started?
               </h2>
 
-              <div className="flex flex-col sm:flex-row gap-3.5 max-w-xl mx-auto">
-                <button
-                  onClick={handleOpenWhatsApp}
-                  className="flex-1 px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2"
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium max-w-md mx-auto mb-6">
+                Single page trade builds start from £350 for the first 5 founding clients. Message Dean on WhatsApp for an exact quote.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3.5 max-w-md mx-auto justify-center">
+                <a
+                  href={WHATSAPP_QUOTE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
-                  <span>Message on WhatsApp</span>
-                </button>
-                <button
-                  onClick={() => navigate('/pricing')}
-                  className="flex-1 px-6 py-3.5 rounded-xl bg-white dark:bg-zinc-900/60 border border-slate-200 dark:border-zinc-800 text-slate-800 dark:text-zinc-200 hover:bg-slate-50 dark:hover:bg-zinc-800 hover:border-slate-300 dark:hover:border-zinc-700 font-bold text-sm transition-all flex items-center justify-center gap-2 group"
-                >
-                  <span>View Fixed Packages</span>
+                  <span>Message for a Quote</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
+                </a>
               </div>
 
             </div>
