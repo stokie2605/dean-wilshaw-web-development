@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send, CheckCircle2, ShieldCheck, X } from 'lucide-react';
 
 interface QuoteFormProps {
@@ -53,7 +53,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
         setResult(json);
       } else {
         setResult({
-          refNumber: 'DW-' + Math.floor(100000 + Math.random() * 900000),
+          refNumber: 'DSW-' + Math.floor(100000 + Math.random() * 900000),
           clientName: formData.name || 'Valued Client',
           message: `Thank you, ${formData.name || 'friend'}! Your request has been logged. Dean will review your requirements and WhatsApp you at ${formData.phone} to arrange a time.`,
         });

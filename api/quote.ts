@@ -30,36 +30,36 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: 'Internal server configuration error.' });
   }
 
-  const refNumber = 'DW-' + Math.floor(100000 + Math.random() * 900000);
-  let estimatedCost = '£299 - £599';
-  let turnaround = '10 - 14 Business Days';
-  let packageLabel = 'Business Site';
+  const refNumber = 'DSW-' + Math.floor(100000 + Math.random() * 900000);
+  let estimatedCost = 'From £299';
+  let turnaround = '5 to 7 Business Days';
+  let packageLabel = 'Bespoke Trade Build';
 
-  if (projectType === 'custom-app') {
-    estimatedCost = '£599 - £1,200';
-    turnaround = '14 - 21 Business Days';
-    packageLabel = 'Custom App / Dashboard';
-  } else if (projectType === 'ai-integration') {
-    estimatedCost = '£399 - £799';
-    turnaround = '7 - 14 Business Days';
-    packageLabel = 'AI Integration';
+  if (projectType === 'custom-app' || projectType === 'custom-mixed') {
+    estimatedCost = 'From £449';
+    turnaround = '10 to 14 Business Days';
+    packageLabel = 'Custom Infrastructure';
+  } else if (projectType === 'standalone-tools' || projectType === 'ai-integration') {
+    estimatedCost = 'From £149';
+    turnaround = '3 to 5 Business Days';
+    packageLabel = 'Standalone Trade Tool';
   }
 
   try {
     await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['dean.wilshaw.web@gmail.com'],
-      subject: `New Quote Request [${refNumber}] - ${packageLabel} from ${name}`,
+      subject: `New Quote Request [${refNumber}]: ${packageLabel} from ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
           <div style="background: #dc2626; padding: 20px 24px;">
-            <h1 style="color: white; margin: 0; font-size: 18px;">New Quote Request - Dean Wilshaw Web</h1>
+            <h1 style="color: white; margin: 0; font-size: 18px;">New Quote Request: Design Systems Web</h1>
             <p style="color: #fecaca; margin: 4px 0 0; font-size: 12px;">Reference: ${refNumber}</p>
           </div>
           <div style="padding: 24px; background: #fff;">
             <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
               <tr><td style="padding: 8px 0; color: #6b7280; width: 140px;">Name</td><td style="padding: 8px 0; font-weight: 600; color: #111;">${name || 'Not provided'}</td></tr>
-              <tr><td style="padding: 8px 0; color: #6b7280;">Company</td><td style="padding: 8px 0; color: #111;">${company || 'Individual'}</td></tr>
+              <tr><td style="padding: 8px 0; color: #6b7280;">Business / Note</td><td style="padding: 8px 0; color: #111;">${company || 'Direct Enquiry'}</td></tr>
               <tr><td style="padding: 8px 0; color: #6b7280;">Email</td><td style="padding: 8px 0; color: #111;"><a href="mailto:${email}" style="color: #dc2626;">${email || 'Not provided'}</a></td></tr>
               <tr><td style="padding: 8px 0; color: #6b7280;">Phone</td><td style="padding: 8px 0; color: #111;">${phone || 'Not provided'}</td></tr>
               <tr><td style="padding: 8px 0; color: #6b7280;">Package</td><td style="padding: 8px 0; font-weight: 600; color: #dc2626;">${packageLabel}</td></tr>
@@ -72,7 +72,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
             </div>
           </div>
           <div style="background: #f9fafb; padding: 14px 24px; font-size: 11px; color: #9ca3af; border-top: 1px solid #e5e7eb;">
-            Sent from dw-web-freelance.vercel.app - ${new Date().toLocaleString('en-GB')}
+            Sent from designsystemsweb.co.uk: ${new Date().toLocaleString('en-GB')}
           </div>
         </div>
       `,

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dw-web-freelance.vercel.app/sitemap.xml
+Sitemap: https://www.designsystemsweb.co.uk/sitemap.xml
