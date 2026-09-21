@@ -158,7 +158,7 @@ export const HeroSection: React.FC = () => {
                           </span>
                         </div>
                         <h3 className="text-base font-extrabold mb-3 leading-tight tracking-tight text-white drop-shadow-sm">
-                          Need a {currentService.name} Quote?
+                          {currentService.headline}
                         </h3>
                         <button
                           type="button"
@@ -244,12 +244,12 @@ export const HeroSection: React.FC = () => {
                         {/* Chat Messages */}
                         <div className="flex flex-col gap-2">
                           <div className="self-end bg-emerald-700/80 border border-emerald-500/30 text-white text-[10px] rounded-xl rounded-tr-none px-3 py-2 max-w-[200px] shadow-sm">
-                            Hi, I need a quote for {currentService.name} in Stoke please.
+                            {currentService.chatInquiry}
                             <span className="block text-[8px] text-emerald-200 text-right mt-0.5">Just now</span>
                           </div>
 
                           <div className="self-start bg-white/[0.08] border border-white/[0.1] text-zinc-200 text-[10px] rounded-xl rounded-tl-none px-3 py-2 max-w-[200px] shadow-sm">
-                            Hi! Send a photo of the setup and your postcode, and I will price it up today.
+                            {currentService.chatResponse}
                             <span className="block text-[8px] text-zinc-400 text-right mt-0.5">Just now</span>
                           </div>
                         </div>

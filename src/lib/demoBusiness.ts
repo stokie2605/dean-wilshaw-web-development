@@ -1,17 +1,26 @@
 export const DEMO_BUSINESS = {
-  name: 'Local Trade Co.',
+  name: 'Your Trade Business',
   services: [
     {
-      name: 'Boiler Repair',
-      description: 'Fast fault finding and repairs on all major boiler brands. Most call outs are fixed on the first visit.',
-    },
-    {
-      name: 'Bathroom Fitting',
-      description: 'Full bathroom fitting, from a simple refresh to a complete refit. Fixed price quotes with no surprises.',
-    },
-    {
       name: 'Emergency Callout',
-      description: 'Burst pipe or no heating? Get in touch any time and expect a reply in minutes.',
+      headline: 'Need an Emergency Callout?',
+      chatInquiry: 'Hi, I have an urgent job that needs sorting in Stoke today.',
+      chatResponse: 'Hi! Send your address and what happened, I will give you an estimated arrival time right away.',
+      description: 'Urgent repairs, fault finding, and fast response callouts directly to your mobile.',
+    },
+    {
+      name: 'Fixed Price Quote',
+      headline: 'Need a Fixed Price Quote?',
+      chatInquiry: 'Hi, I would like an upfront quote for an upcoming project in Stoke.',
+      chatResponse: 'Hi! Send through a few details or photos, and I will get a fixed price across to you today.',
+      description: 'Transparent, upfront quotes for installations, refits, and project work.',
+    },
+    {
+      name: 'Repairs & Servicing',
+      headline: 'Need Repairs or Servicing?',
+      chatInquiry: 'Hi, I need maintenance and repair work priced up please.',
+      chatResponse: 'Hi! Let me know what needs servicing and your postcode, and I will price it up for you.',
+      description: 'Routine maintenance, servicing, and scheduled trade work.',
     },
   ],
   review: 'Called and had a reply in minutes. Job sorted the same day.',
