@@ -29,18 +29,18 @@ export const HeroSection: React.FC = () => {
           {/* Top Badge */}
           <div className="flex flex-wrap gap-2 justify-start mb-1 w-full">
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
-              <span>Solo Local Engineer &bull; Stoke on Trent &amp; Cheshire &bull; 100% Website Ownership</span>
+              <span>Solo Local Engineer &bull; Stoke on Trent &amp; Cheshire &bull; Websites &amp; Custom Web Apps</span>
             </div>
           </div>
 
           {/* Main Display Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-zinc-100 transition-colors duration-300">
-            Mobile First Websites for UK Trades.
+            Websites and Web Apps Built for Phones.
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Fast, mobile friendly websites for local trades, with tap to call built in and no agency overhead.
+            Fast, clean websites and custom web tools for local businesses and trades across Stoke on Trent and Cheshire. Direct contact, no agency contracts, and zero monthly platform fees.
           </p>
 
           {/* Call to Actions */}
@@ -58,17 +58,17 @@ export const HeroSection: React.FC = () => {
               </a>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium leading-relaxed">
-              Single page trade builds start from £350 for the first 5 founding clients. Message Dean on WhatsApp for an exact quote.
+              Single page builds start from £350 for the first 5 founding clients. Message Dean on WhatsApp for an exact quote.
             </p>
           </div>
 
           {/* Visual Interactive Cards / Micro Proof Neutral Slate Pills */}
           <div className="flex flex-wrap gap-2.5 pt-3 border-t border-slate-200 dark:border-zinc-800 w-full max-w-2xl">
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              Mobile Friendly by Design
+              Custom Websites
             </div>
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              Tap to Call Built In
+              Web Apps &amp; Tools
             </div>
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
               No Multi Year Contracts

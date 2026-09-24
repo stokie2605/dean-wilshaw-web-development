@@ -5,6 +5,7 @@ import { BottomTabBar } from './components/BottomTabBar';
 import { HeroSection } from './components/HeroSection';
 import { MessageSquare, ArrowRight } from 'lucide-react';
 
+const WebAppsSection = lazy(() => import('./components/WebAppsSection').then(m => ({ default: m.WebAppsSection })));
 const AboutDeanSection = lazy(() => import('./components/AboutDeanSection').then(m => ({ default: m.AboutDeanSection })));
 const PricingFaq = lazy(() => import('./components/PricingFaq').then(m => ({ default: m.PricingFaq })));
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
@@ -86,7 +87,10 @@ export default function App() {
 
         <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-[#D90429] border-t-transparent rounded-full animate-spin"></div></div>}>
           
-          {/* 2. Dean Profile Card (Solo Local Engineer ST7/Cheshire) */}
+          {/* 2. Custom Web Apps & Tools Section */}
+          <WebAppsSection />
+
+          {/* 3. Dean Profile Card (Solo Local Engineer ST7/Cheshire) */}
           <div className="bg-slate-50 dark:bg-[#040507]">
             <AboutDeanSection />
           </div>
@@ -96,7 +100,7 @@ export default function App() {
             <PricingFaq />
           </div>
 
-          {/* 3. Closing CTA leading to WhatsApp Quote */}
+          {/* 4. Closing CTA leading to WhatsApp Quote */}
           <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
             <div className="max-w-5xl mx-auto text-center">
 
@@ -105,7 +109,7 @@ export default function App() {
               </h2>
 
               <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium max-w-md mx-auto mb-6">
-                Single page trade builds start from £350 for the first 5 founding clients. Message Dean on WhatsApp for an exact quote.
+                Single page builds start from £350 for the first 5 founding clients. Message Dean on WhatsApp for an exact quote.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3.5 max-w-md mx-auto justify-center">
