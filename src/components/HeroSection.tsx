@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Spotlight } from './ui/Spotlight';
-import { ArrowRight, MessageSquare, Phone, Wrench, Star, PhoneCall, X, RotateCcw } from 'lucide-react';
+import { ArrowRight, MessageSquare, Phone, Wrench, PhoneCall, X, RotateCcw } from 'lucide-react';
 import { DEMO_BUSINESS } from '../lib/demoBusiness';
 
 const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
@@ -29,7 +29,7 @@ export const HeroSection: React.FC = () => {
           {/* Top Badge */}
           <div className="flex flex-wrap gap-2 justify-start mb-1 w-full">
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
-              <span>Solo Local Engineer &bull; Stoke on Trent &amp; Cheshire &bull; Websites &amp; Custom Web Apps</span>
+              <span>Local web designer, Stoke on Trent and Cheshire, Websites and custom web apps</span>
             </div>
           </div>
 
@@ -40,7 +40,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Fast, clean websites and custom web tools for local businesses and trades across Stoke on Trent and Cheshire. Direct contact, no agency contracts, and zero monthly platform fees.
+            Websites and custom web tools for local businesses and trades across Stoke on Trent and Cheshire. You deal directly with Dean.
           </p>
 
           {/* Call to Actions */}
@@ -58,7 +58,7 @@ export const HeroSection: React.FC = () => {
               </a>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium leading-relaxed">
-              Single page builds start from £350 for the first 5 founding clients. Message Dean on WhatsApp for an exact quote.
+              Message Dean on WhatsApp for a clear, fixed quote.
             </p>
           </div>
 
@@ -68,10 +68,7 @@ export const HeroSection: React.FC = () => {
               Custom Websites
             </div>
             <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              Web Apps &amp; Tools
-            </div>
-            <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              No Multi Year Contracts
+              Web Apps and Tools
             </div>
           </div>
         </div>
@@ -180,16 +177,9 @@ export const HeroSection: React.FC = () => {
                         <span>Message on WhatsApp</span>
                       </button>
 
-                      {/* Review snippet (Frosted Glass Card) */}
-                      <div className="bg-white/[0.03] backdrop-blur-md rounded-xl p-3 border border-white/[0.08] flex items-start gap-2.5 shadow-sm">
-                        <div className="flex text-amber-400 shrink-0 mt-0.5">
-                          {[1, 2, 3, 4, 5].map((n) => (
-                            <Star key={n} className="w-3 h-3 fill-current" />
-                          ))}
-                        </div>
-                        <p className="text-[10px] text-zinc-300 leading-snug">
-                          {DEMO_BUSINESS.review}
-                        </p>
+                      {/* Example layout note (Frosted Glass Card) */}
+                      <div className="bg-white/[0.03] backdrop-blur-md rounded-xl p-3 border border-white/[0.08] shadow-sm">
+                        <p className="text-[10px] text-zinc-300 leading-snug text-center">Example layout</p>
                       </div>
                     </>
                   )}

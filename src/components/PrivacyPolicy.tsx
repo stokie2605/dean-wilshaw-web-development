@@ -26,13 +26,13 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="font-geist font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mb-2">Privacy Policy</h1>
-        <p className="text-slate-500 dark:text-zinc-400 text-sm mb-8">Last updated: September 2026 - This policy explains how Dean Wilshaw (sole trader) collects and uses your personal data.</p>
+        <p className="text-slate-500 dark:text-zinc-400 text-sm mb-8">Last updated: September 2026. This policy explains how Dean Wilshaw (sole trader) collects and uses your personal data.</p>
 
         <div className="space-y-8 text-slate-700 dark:text-zinc-300 leading-relaxed">
 
           <section>
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">1. Who I Am</h2>
-            <p>Dean Wilshaw is a sole trader providing web development services, based in South Cheshire, UK. If you have any questions about how your data is used, you can contact me via the quote form or WhatsApp on this website.</p>
+            <p>Dean Wilshaw is a sole trader providing web development services, based in Alsager, Cheshire, UK. If you have any questions about how your data is used, you can contact me via the quote form or WhatsApp on this website.</p>
           </section>
 
           <section>
@@ -42,7 +42,6 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
               <li>Your name</li>
               <li>Your email address</li>
               <li>Your phone number</li>
-              <li>Your company or trade name (optional)</li>
               <li>Details about your project</li>
             </ul>
             <p className="mt-2">I do not collect any payment information through this website. I do not use cookies for tracking or analytics.</p>
@@ -57,23 +56,25 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">4. How I Use It</h2>
             <p className="mb-2">Your submitted details are:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li>Sent to my email inbox via Resend (a third-party email delivery service)</li>
-              <li>Stored only in my email inbox for the purpose of responding to you</li>
+              <li>Sent by email through Resend (a third party email delivery service), which keeps a copy for a limited period</li>
+              <li>Delivered to my Gmail inbox (Google), where they are kept only to respond to you</li>
               <li>Never sold, shared, or passed to any third party for marketing purposes</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">5. Third-Party Services</h2>
-            <p className="mb-2">This website uses the following third-party service:</p>
+            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">5. Third Party Services</h2>
+            <p className="mb-2">This website uses the following third party services:</p>
             <ul className="list-disc pl-5 space-y-1">
-              <li><strong>Resend</strong> (resend.com) - used to deliver your quote request to my inbox. Resend processes your submitted data in accordance with their own privacy policy.</li>
+              <li><strong>Resend</strong> (resend.com), used to deliver your quote request to my inbox. Resend keeps a copy of each email for a limited period and processes it in line with its own privacy policy.</li>
+              <li><strong>Google (Gmail)</strong>, where your quote request arrives and is stored.</li>
+              <li><strong>Google Fonts</strong>, used to display the text on this website. When a page loads, Google receives your IP address.</li>
             </ul>
           </section>
 
           <section>
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">6. How Long I Keep Your Data</h2>
-            <p>I retain your enquiry details for up to 6 months from the date of submission, or until my project is complete - whichever is longer. After this period, your details are deleted from my inbox.</p>
+            <p>I retain your enquiry details for up to 6 months from the date of submission, or until my project is complete, whichever is longer. After this period, your details are deleted from my inbox.</p>
           </section>
 
           <section>
@@ -90,7 +91,7 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
 
           <section>
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">8. Security</h2>
-            <p>I take reasonable precautions to protect your data. This website is hosted on Vercel, which maintains industry-standard security practices. Data submitted through the quote form is transmitted securely over HTTPS.</p>
+            <p>I take reasonable precautions to protect your data. This website is hosted on Vercel, which maintains industry standard security practices. Data submitted through the quote form is transmitted securely over HTTPS.</p>
           </section>
 
           <section>

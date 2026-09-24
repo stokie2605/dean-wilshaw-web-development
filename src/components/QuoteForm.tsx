@@ -53,9 +53,10 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
         setResult(json);
       } else {
         setResult({
-          refNumber: 'DSW-' + Math.floor(100000 + Math.random() * 900000),
+          refNumber: 'ERR-' + res.status,
           clientName: formData.name || 'Valued Client',
-          message: `Thank you, ${formData.name || 'friend'}! Your request has been logged. Dean will review your requirements and WhatsApp you at ${formData.phone} to arrange a time.`,
+          message: `I'm sorry, ${formData.name || 'friend'}. There was a problem sending your request. Please message Dean directly on WhatsApp.`,
+          failed: true,
         });
       }
     } catch (err) {
@@ -63,6 +64,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
         refNumber: 'ERR-500',
         clientName: formData.name || 'Valued Client',
         message: `I'm sorry, ${formData.name || 'friend'}. There was a network error sending your request. Please message Dean directly on WhatsApp.`,
+        failed: true,
       });
     } finally {
       setLoading(false);
@@ -182,7 +184,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
             </button>
             <div className="text-center pt-2 space-y-1.5">
               <p className="text-[11px] text-slate-500 dark:text-slate-500">
-                Your details go directly to Dean's inbox. No databases, no marketing lists, no spam.
+                Your details go straight to Dean and are only used to reply to you.
               </p>
             </div>
           </form>
@@ -207,9 +209,9 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                 </div>
                 <div>
                   <span className="text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border border-emerald-500/20 px-2 py-0.5 rounded font-bold">
-                    REQUEST RECEIVED #{result.refNumber}
+                    {result.failed ? 'NOT SENT' : `REQUEST RECEIVED #${result.refNumber}`}
                   </span>
-                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-zinc-100 mt-1">Request Logged!</h3>
+                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-zinc-100 mt-1">{result.failed ? 'Request not sent' : 'Request Logged!'}</h3>
                 </div>
               </div>
 

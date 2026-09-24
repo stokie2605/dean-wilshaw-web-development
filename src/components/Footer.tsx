@@ -17,10 +17,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
           <div className="flex flex-col items-center md:items-start gap-1.5 text-sm text-slate-800 dark:text-zinc-300 font-medium">
             <span className="flex items-center gap-2">Phone: 07348 733365</span>
             <span className="flex items-center gap-2">Email: dean.wilshaw.web@gmail.com</span>
-            <span className="flex items-center gap-2">Based in Cheshire & Stoke-on-Trent</span>
+            <span className="flex items-center gap-2">Based in Alsager, covering Stoke on Trent and Cheshire</span>
           </div>
           <div className="text-xs text-slate-600 dark:text-zinc-400 text-center md:text-left font-normal mt-2">
-            <p className="mb-1">Design Systems Web is a trading name of Dean Wilshaw, operating as a sole trader in Cheshire, UK.</p>
+            <p className="mb-1">Design Systems Web is a trading name of Dean Wilshaw, operating as a sole trader in Alsager, Cheshire, UK.</p>
             <p>&copy; {new Date().getFullYear()} Design Systems Web. All rights reserved.</p>
           </div>
         </div>
@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
             onClick={onOpenTerms}
             className="hover:text-red-700 dark:hover:text-red-500 underline transition-colors"
           >
-            Terms & Conditions
+            Terms and Conditions
           </button>
         </div>
 

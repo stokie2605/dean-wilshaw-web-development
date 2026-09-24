@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Sun, Moon } from 'lucide-react';
 
 interface HeaderProps {
@@ -7,14 +7,16 @@ interface HeaderProps {
   onOpenWhatsApp?: () => void;
 }
 
-// Clean Navigation Structure (Desktop)
+// In-page section links (Desktop)
 const NAV_LINKS = [
-  { label: 'Home', href: '/' },
+  { label: 'Web apps', href: '#web-apps' },
+  { label: 'How it works', href: '#how-it-works' },
+  { label: 'About', href: '#about' },
+  { label: 'Questions', href: '#questions' },
 ];
 
 export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
   const [isDark, setIsDark] = useState(false);
-  const location = useLocation();
 
   useEffect(() => {
     if (document.documentElement.classList.contains('dark')) {
@@ -52,29 +54,22 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
               Design Systems Web
             </span>
             <span className="text-[8px] sm:text-[10px] tracking-widest uppercase font-mono font-semibold text-slate-500 dark:text-zinc-400 mt-1 leading-none">
-              DIGITAL INFRASTRUCTURE
+              Websites and web apps
             </span>
           </div>
         </Link>
 
-        {/* Desktop Nav Links (Clean 3-Page Nav) */}
+        {/* Desktop Nav Links (In-page sections) */}
         <nav className="hidden md:flex items-center gap-2">
-          {NAV_LINKS.map(({ label, href }) => {
-            const isActive = location.pathname === href;
-            return (
-              <Link
-                key={href}
-                to={href}
-                className={`px-4 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-150 whitespace-nowrap ${
-                  isActive
-                    ? 'bg-red-50 dark:bg-red-950/40 text-[#D90429] dark:text-red-400 border border-red-200 dark:border-red-800/50'
-                    : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/[0.04]'
-                }`}
-              >
-                {label}
-              </Link>
-            );
-          })}
+          {NAV_LINKS.map(({ label, href }) => (
+            <a
+              key={href}
+              href={href}
+              className="px-4 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-150 whitespace-nowrap text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/[0.04]"
+            >
+              {label}
+            </a>
+          ))}
         </nav>
 
         {/* Right-side Actions (Theme Toggle + Red Quote Button) */}
@@ -85,7 +80,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
             type="button"
             onClick={toggleTheme}
             className="p-2 border border-slate-300 dark:border-white/[0.08] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.04] rounded-lg min-w-[36px] min-h-[36px] flex items-center justify-center transition-colors"
-            title="Toggle Dark/Light Mode"
+            title="Switch between light and dark mode"
+            aria-label="Switch between light and dark mode"
           >
             {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>

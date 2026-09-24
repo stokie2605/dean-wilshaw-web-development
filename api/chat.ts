@@ -45,7 +45,15 @@ function smartFallback(query: string): string {
   return "Thanks for asking. For specific project details or custom requirements, please submit the quick quote form on this site or message Dean directly on WhatsApp at 07348 733365.";
 }
 
+// StitchBot is retired: its prompt and fallback replies hold unconfirmed prices and claims.
+// Flip to true only after the copy above has been brought in line with the site's facts.
+const CHAT_ENABLED = false;
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  if (!CHAT_ENABLED) {
+    return res.status(404).json({ error: 'Not found' });
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }

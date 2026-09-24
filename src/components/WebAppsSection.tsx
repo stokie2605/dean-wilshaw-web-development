@@ -5,62 +5,56 @@ const WHATSAPP_APP_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
   "Hi Dean, I'd like to discuss a custom web app or customer tool for my business."
 )}`;
 
-const APP_FEATURES = [
+const APP_FEATURES: { title: string; tag?: string; description: string; points: string[] }[] = [
   {
-    title: 'Instant Quote & Scope Calculators',
-    tag: 'Pricing Engines',
-    description: 'Let customers configure jobs, calculate ballpark costs on their phone, and send the exact specification straight to your WhatsApp.',
+    title: 'Instant quote calculators',
+    description: 'Customers pick the job, see a rough price on their phone, and send the details straight to your WhatsApp.',
     points: [
-      'Reduces unpaid quotation site visits',
-      'Pre-qualifies serious enquiries',
+      'Filters out time wasters',
       'Works directly in any mobile browser',
     ],
   },
   {
-    title: 'Online Booking & Service Triage',
-    tag: 'Scheduling',
-    description: 'A 24/7 self-service scheduling engine where customers select services, pick available dates, and provide job details without endless phone tag.',
+    title: 'Online booking',
+    description: 'Customers pick a service and a time that suits them, day or night, without ringing round.',
     points: [
-      'Emergency callout triage',
-      'Calendar slot reservations',
+      'Urgent jobs flagged straight away',
+      'Customers pick their own time',
       'Instant WhatsApp or email alerts to your phone',
     ],
   },
   {
-    title: 'Customer Reminders & Service Portals',
-    tag: 'Client Retention',
+    title: 'Reminders that bring customers back',
     description: 'Keep your customers coming back every year with automated reminder systems for annual boiler servicing, MOTs, or recurring maintenance.',
     points: [
-      'Automated renewal notices',
-      'Customer service history lookups',
-      'Simple one-tap rebooking links',
+      "Automatic reminders when something's due",
+      'Simple one tap rebooking links',
     ],
   },
   {
     title: 'Installable Home Screen Web Apps',
-    tag: 'Progressive Web Apps',
+    tag: 'Home screen apps',
     description: 'Apps that customers open via a link and save straight to their iPhone or Android home screen with your business icon.',
     points: [
       'No App Store or Google Play downloads needed',
-      'Avoids 30 percent app store cuts and developer fees',
-      'Loads in milliseconds on mobile data',
+      'Far cheaper than a traditional app',
     ],
   },
 ];
 
 export const WebAppsSection: React.FC = () => {
   return (
-    <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
+    <section id="web-apps" className="scroll-mt-20 sm:scroll-mt-24 py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-3xl mx-auto text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center justify-center px-3 py-1 mb-3 rounded-full bg-red-500/10 text-[#D90429] dark:text-red-400 border border-red-500/20 font-mono text-[11px] font-semibold tracking-wider uppercase">
-            Custom Software &amp; Tools
+            Custom Software and Tools
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
             Need more than a standard website?
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            I build custom web applications and customer tools that run straight from a browser or pin to a phone home screen. No App Store gatekeepers, no download friction, and far lower cost than traditional native apps.
+            I build custom web applications and customer tools that run straight from a browser or pin to a phone home screen. No App Store needed, and far cheaper than a traditional app.
           </p>
         </div>
 
@@ -71,11 +65,13 @@ export const WebAppsSection: React.FC = () => {
               className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-lg transition-all hover:border-[#D90429]/40 group"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800">
-                    {feature.tag}
-                  </span>
-                </div>
+                {feature.tag && (
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800">
+                      {feature.tag}
+                    </span>
+                  </div>
+                )}
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight mb-2 group-hover:text-[#D90429] dark:group-hover:text-red-400 transition-colors">
                   {feature.title}
                 </h3>

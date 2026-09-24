@@ -25,8 +25,8 @@ export const TermsConditions: React.FC<TermsProps> = ({ onBack }) => {
 
       {/* Content */}
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="font-geist font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mb-2">Terms & Conditions</h1>
-        <p className="text-slate-500 dark:text-zinc-400 text-sm mb-8">Last updated: September 2026 - These terms apply to all web development work carried out by Dean Wilshaw (sole trader).</p>
+        <h1 className="font-geist font-bold text-3xl sm:text-4xl text-slate-900 dark:text-white mb-2">Terms and Conditions</h1>
+        <p className="text-slate-500 dark:text-zinc-400 text-sm mb-8">Last updated: September 2026. These terms apply to all web development work carried out by Dean Wilshaw (sole trader).</p>
 
         <div className="space-y-8 text-slate-700 dark:text-zinc-300 leading-relaxed">
 
@@ -36,7 +36,7 @@ export const TermsConditions: React.FC<TermsProps> = ({ onBack }) => {
           </section>
 
           <section>
-            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">2. Quotes & Project Scope</h2>
+            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">2. Quotes and Project Scope</h2>
             <p className="mb-2">All quotes are provided based on the information supplied by the Client at the time of enquiry. A quote is valid for 30 days from issue. Work begins only once both parties have agreed the scope in writing (email or WhatsApp is sufficient) and a deposit has been received.</p>
             <p>Any significant changes to the agreed scope after work has begun may result in additional charges, which will be discussed and agreed before proceeding.</p>
           </section>
@@ -54,31 +54,31 @@ export const TermsConditions: React.FC<TermsProps> = ({ onBack }) => {
           <section>
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">4. Revisions</h2>
             <p className="mb-2">All projects include <strong>two rounds of revisions</strong> as standard. A revision round means a consolidated set of changes provided by the Client in one go.</p>
-            <p>Additional revision rounds beyond the two included will be charged at <strong>£35 per hour</strong>, agreed in advance.</p>
+            <p>Additional revision rounds beyond the two included will be charged at an hourly rate agreed in advance.</p>
           </section>
 
           <section>
-            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">5. Timelines & Delivery</h2>
+            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">5. Timelines and Delivery</h2>
             <p className="mb-2">Estimated timelines are provided in good faith and I will always aim to meet them. However, timelines depend on the Client providing content (text, images, logos) in a timely manner.</p>
             <p>If the Client fails to provide required content within 14 days of being requested, the project may be delayed without penalty to me.</p>
           </section>
 
           <section>
-            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">6. Ownership & Intellectual Property</h2>
+            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">6. Ownership and Intellectual Property</h2>
             <p className="mb-2">Upon receipt of full payment, the Client owns the completed website and all associated code created specifically for their project.</p>
             <p className="mb-2">I retain the right to use the project in my portfolio and for promotional purposes unless the Client requests otherwise in writing.</p>
-            <p>Any third-party assets (stock images, fonts, plugins) remain subject to their respective licences. It is the Client's responsibility to ensure they have the rights to any content they provide to me.</p>
+            <p>Any third party assets (stock images, fonts, plugins) remain subject to their respective licences. It is the Client's responsibility to ensure they have the rights to any content they provide to me.</p>
           </section>
 
           <section>
-            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">7. Hosting & Domain</h2>
-            <p>Unless otherwise agreed, hosting and domain registration are the Client's responsibility. I am happy to advise on suitable providers. I am not liable for any downtime, data loss, or issues caused by third-party hosting or domain providers.</p>
+            <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">7. Hosting and Domain</h2>
+            <p>Unless otherwise agreed, hosting and domain registration are the Client's responsibility. I am happy to advise on suitable providers. I am not liable for any downtime, data loss, or issues caused by third party hosting or domain providers.</p>
           </section>
 
           <section>
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">8. Cancellation</h2>
             <ul className="list-disc pl-5 space-y-2">
-              <li>If the Client cancels after work has begun, the deposit is non-refundable.</li>
+              <li>If the Client cancels after work has begun, the deposit is non refundable.</li>
               <li>If I am unable to complete the project for any reason, I will refund any payments made for work not yet delivered.</li>
             </ul>
           </section>
@@ -90,8 +90,8 @@ export const TermsConditions: React.FC<TermsProps> = ({ onBack }) => {
 
           <section>
             <h2 className="font-geist font-bold text-lg text-slate-900 dark:text-white mb-3">10. Monthly Care Plan</h2>
-            <p className="mb-2">The Monthly Care Plan is a rolling monthly arrangement with no minimum term. Either party may cancel with <strong>30 days' written notice</strong> (WhatsApp or email).</p>
-            <p>The care plan covers minor content updates and priority support only. It does not include new features, redesigns, or significant new development work.</p>
+            <p className="mb-2">The Monthly Care Plan is optional. Clients can choose to add it at any time. It runs monthly with no minimum term, can be cancelled with <strong>30 days' written notice</strong>, and covers minor content updates and priority support only.</p>
+            <p>The care plan does not include new features, redesigns, or significant new development work.</p>
           </section>
 
           <section>

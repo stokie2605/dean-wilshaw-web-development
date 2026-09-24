@@ -19,6 +19,8 @@ function getGroq(): Groq | null {
   return groqClient;
 }
 
+const CHAT_ENABLED = false;
+
 let resendClient: Resend | null = null;
 
 function getResend(): Resend | null {
@@ -73,7 +75,12 @@ async function startServer() {
   });
 
   // AI Chat endpoint (Stitch Virtual Assistant)
+  // StitchBot is retired (see api/chat.ts): the route answers 404 until its copy is fixed.
   app.post("/api/chat", async (req, res) => {
+    if (!CHAT_ENABLED) {
+      return res.status(404).json({ error: "Not found" });
+    }
+
     try {
       const { message, history } = req.body;
 
@@ -146,23 +153,9 @@ async function startServer() {
 
   // Quote calculation / submission endpoint
   app.post("/api/quote", async (req, res) => {
-    const { name, company, email, phone, projectType, details } = req.body;
+    const { name, company, email, phone, details } = req.body;
 
     const refNumber = "DSW-" + Math.floor(100000 + Math.random() * 900000);
-
-    let estimatedCost = "From £299";
-    let turnaround = "5 to 7 Business Days";
-    let packageLabel = "Bespoke Trade Build";
-
-    if (projectType === "custom-app" || projectType === "custom-mixed") {
-      estimatedCost = "From £449";
-      turnaround = "10 to 14 Business Days";
-      packageLabel = "Custom Infrastructure";
-    } else if (projectType === "standalone-tools" || projectType === "ai-integration") {
-      estimatedCost = "From £149";
-      turnaround = "3 to 5 Business Days";
-      packageLabel = "Standalone Trade Tool";
-    }
 
     // Send email via Resend
     const resend = getResend();
@@ -171,7 +164,7 @@ async function startServer() {
         await resend.emails.send({
           from: "onboarding@resend.dev",
           to: ["dean.wilshaw.web@gmail.com"],
-          subject: `New Quote Request [${refNumber}]: ${packageLabel} from ${name || "Unknown"}`,
+          subject: `New Quote Request [${refNumber}] from ${name || "Unknown"}`,
           html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden;">
               <div style="background: #dc2626; padding: 20px 24px;">
@@ -184,9 +177,6 @@ async function startServer() {
                   <tr><td style="padding: 8px 0; color: #6b7280;">Business / Note</td><td style="padding: 8px 0; color: #111;">${company || "Direct Enquiry"}</td></tr>
                   <tr><td style="padding: 8px 0; color: #6b7280;">Email</td><td style="padding: 8px 0; color: #111;"><a href="mailto:${email}" style="color: #dc2626;">${email || "Not provided"}</a></td></tr>
                   <tr><td style="padding: 8px 0; color: #6b7280;">Phone</td><td style="padding: 8px 0; color: #111;">${phone || "Not provided"}</td></tr>
-                  <tr><td style="padding: 8px 0; color: #6b7280;">Package</td><td style="padding: 8px 0; font-weight: 600; color: #dc2626;">${packageLabel}</td></tr>
-                  <tr><td style="padding: 8px 0; color: #6b7280;">Est. Cost</td><td style="padding: 8px 0; color: #111;">${estimatedCost}</td></tr>
-                  <tr><td style="padding: 8px 0; color: #6b7280;">Turnaround</td><td style="padding: 8px 0; color: #111;">${turnaround}</td></tr>
                 </table>
                 <div style="margin-top: 16px; padding: 16px; background: #f9fafb; border-radius: 6px; border: 1px solid #e5e7eb;">
                   <p style="margin: 0 0 6px; font-weight: 600; font-size: 13px; color: #111;">Project Details:</p>
@@ -209,10 +199,7 @@ async function startServer() {
       refNumber,
       clientName: name || "Valued Client",
       email,
-      projectType: packageLabel,
-      estimatedCost,
-      turnaround,
-      message: `Thank you, ${name || 'friend'}! Your request has been logged under reference ${refNumber}. Dean will review your requirements and contact you at ${email || 'your email'} within 24 hours.`,
+      message: `Thank you, ${name || 'friend'}. Your request has been sent under reference ${refNumber}. Dean will reply to you at ${email || 'your email'}.`,
       receivedAt: new Date().toISOString(),
     });
   });

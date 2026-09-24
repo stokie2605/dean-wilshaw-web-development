@@ -23,10 +23,8 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
 
   const getPresetMessage = () => {
     if (customMsg.trim()) return customMsg;
-    if (topic === 'quote') return "Hi Dean, I saw your web development studio and would like to get a quote for a high-performance website.";
-    if (topic === 'speed') return "Hi Dean, my current website feels slow. I'd like to talk about upgrading to a custom React build.";
-    if (topic === 'seo') return "Hi Dean, I need better Google search rankings for my local business in Cheshire / Stoke.";
-    return "Hi Dean, I'd like to discuss a new website project.";
+    if (topic === 'webapp') return "Hi Dean, I'd like to discuss a custom web app or customer tool for my business.";
+    return "Hi Dean, I'd like to get a quote for a website for my business.";
   };
 
   const handleOpenWhatsAppLink = () => {
@@ -62,7 +60,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
         </div>
 
         <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
-          Need a fast response? Dean responds directly on WhatsApp during business hours (Mon-Sat, 8am-7pm).
+          Dean replies directly on WhatsApp, Mon to Sat, 8am to 7pm.
         </p>
 
         <div className="space-y-2">
@@ -81,24 +79,13 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
 
             <button
               type="button"
-              onClick={() => setTopic('speed')}
+              onClick={() => setTopic('webapp')}
               className={`p-2.5 rounded-lg border text-left transition-colors flex items-center justify-between ${
-                topic === 'speed' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
+                topic === 'webapp' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
               }`}
             >
-              <span>Replace Slow WordPress Site</span>
-              {topic === 'speed' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setTopic('seo')}
-              className={`p-2.5 rounded-lg border text-left transition-colors flex items-center justify-between ${
-                topic === 'seo' ? 'border-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-950 dark:text-emerald-400 font-semibold' : 'border-slate-200 dark:border-zinc-800 hover:bg-slate-50 dark:hover:bg-zinc-800/50 text-slate-700 dark:text-zinc-300'
-              }`}
-            >
-              <span>Local SEO & Google Rankings</span>
-              {topic === 'seo' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
+              <span>Discuss a Web App</span>
+              {topic === 'webapp' && <CheckCircle2 className="w-4 h-4 text-emerald-600" />}
             </button>
           </div>
         </div>
@@ -118,7 +105,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
           className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-semibold text-sm flex justify-center items-center gap-2 shadow-sm"
         >
           <Send className="w-4 h-4" />
-          Open WhatsApp & Start Chat
+          Open WhatsApp and Start Chat
         </button>
 
       </div>

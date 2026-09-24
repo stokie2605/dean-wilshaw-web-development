@@ -1,5 +1,5 @@
 export const DEMO_BUSINESS = {
-  name: 'Your Trade Business',
+  name: 'Your Business',
   services: [
     {
       name: 'Emergency Callout',
@@ -16,7 +16,7 @@ export const DEMO_BUSINESS = {
       description: 'Transparent, upfront quotes for installations, refits, and project work.',
     },
     {
-      name: 'Repairs & Servicing',
+      name: 'Repairs and Servicing',
       headline: 'Need Repairs or Servicing?',
       chatInquiry: 'Hi, I need maintenance and repair work priced up please.',
       chatResponse: 'Hi! Let me know what needs servicing and your postcode, and I will price it up for you.',

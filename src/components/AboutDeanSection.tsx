@@ -8,13 +8,9 @@ export const AboutDeanSection: React.FC = () => {
         
         {/* Left Column: 3-Step Process Menu Card */}
         <div className="lg:col-span-5 order-2 lg:order-1">
-          <div className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 shadow-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase w-fit">
-              Simple 3-Step Delivery
-            </div>
-
-            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight mt-3">
-              How It Works
+          <div id="how-it-works" className="scroll-mt-20 sm:scroll-mt-24 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 shadow-xl">
+            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
+              How it works
             </h3>
 
             <div className="relative mt-6">
@@ -30,12 +26,9 @@ export const AboutDeanSection: React.FC = () => {
                       <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
                         Direct WhatsApp Consultation
                       </span>
-                      <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
-                        Same Day (15 mins)
-                      </span>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-                      Quick message exchange to discuss your business, services, contact buttons, and photo assets.
+                      Quick message exchange to discuss your business, services, and what you want your website to do.
                     </p>
                   </div>
                 </li>
@@ -48,9 +41,6 @@ export const AboutDeanSection: React.FC = () => {
                     <div className="flex flex-wrap items-center gap-2 mb-1.5">
                       <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
                         Private Mobile Preview
-                      </span>
-                      <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
-                        Within 5 Working Days
                       </span>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
@@ -66,14 +56,14 @@ export const AboutDeanSection: React.FC = () => {
                   <div className="flex-1 pt-1.5">
                     <div className="flex flex-wrap items-center gap-2 mb-1.5">
                       <span className="font-bold text-sm text-slate-900 dark:text-white leading-snug">
-                        Launch &amp; Full Ownership
+                        Launch and Full Ownership
                       </span>
                       <span className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-[11px] px-2.5 py-1 rounded-full font-medium shadow-sm">
-                        Day 5 to 7
+                        5 to 7 working days
                       </span>
                     </div>
                     <p className="text-sm text-slate-600 dark:text-zinc-400 leading-relaxed">
-                      We connect your custom domain, test all phone and WhatsApp links, and hand over 100% of your website files.
+                      We connect your custom domain, test all phone and WhatsApp links, and the finished website is yours once it is paid for.
                     </p>
                   </div>
                 </li>
@@ -86,7 +76,7 @@ export const AboutDeanSection: React.FC = () => {
         <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-5 sm:gap-6">
           
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase w-fit">
-            Solo Local Engineer
+            Local web designer
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
@@ -94,11 +84,11 @@ export const AboutDeanSection: React.FC = () => {
           </h2>
 
           <h3 className="text-lg sm:text-xl font-semibold text-[#D90429] leading-snug">
-            A local digital systems engineer helping UK trades capture more direct jobs.
+            A local web designer helping local businesses and trades get more enquiries from their website.
           </h3>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
-            I build websites and digital lead tools from scratch. Working with me means direct one to one contact with no middle management, no junior developers, and zero tech jargon.
+            I build websites and tools that bring in enquiries. Working with me means direct one to one contact.
           </p>
 
           {/* 3 Accountability Badges: compact checkmark list on mobile, full cards on desktop */}
@@ -106,7 +96,7 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
               <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
-                Local to Stoke &amp; Cheshire
+                Based in Alsager, covering Stoke on Trent and Cheshire
               </span>
             </li>
             <li className="flex items-start gap-2.5">
@@ -118,7 +108,7 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
               <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
-                100% website ownership
+                You own your website once it is paid for, with a clear, fixed quote upfront
               </span>
             </li>
           </ul>
@@ -127,21 +117,21 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <MapPin className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                Based in Cheshire & Stoke on Trent  /  local and accountable
+                Based in Alsager, covering Stoke on Trent and Cheshire
               </span>
             </li>
 
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <Zap className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                Direct One to One Access with Dean (Zero Junior Developers or Account Managers)
+                Direct one to one access with Dean
               </span>
             </li>
 
             <li className="flex items-center gap-3 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] p-3.5 sm:p-4 rounded-xl shadow-sm">
               <ShieldCheck className="w-5 h-5 text-[#D90429] shrink-0" />
               <span className="font-semibold text-xs sm:text-sm text-slate-900 dark:text-white">
-                100% Client Website Ownership and Upfront Quotes
+                You own your website once it is paid for, with a clear, fixed quote upfront
               </span>
             </li>
           </ul>

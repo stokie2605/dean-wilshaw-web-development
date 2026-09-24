@@ -8,7 +8,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'What if I want changes later?',
-    answer: 'You can ask for updates any time. Small changes are often quick and low cost, bigger changes are quoted upfront before any work starts.',
+    answer: 'You can ask for updates any time. Changes are quoted upfront before any work starts.',
   },
   {
     question: 'Do I need to know anything technical?',

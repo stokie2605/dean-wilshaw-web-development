@@ -2,8 +2,6 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import App from './App.tsx';
-import { DemoPage } from './pages/DemoPage';
-import { SimulatorPage } from './pages/SimulatorPage';
 import { ScrollToTop } from './components/ScrollToTop';
 import { AuthGate } from './components/AuthGate';
 import { AdminDashboard } from './components/AdminDashboard';
@@ -11,8 +9,6 @@ import { DunhamMockup } from './pages/DunhamMockup';
 import { ReportPreview } from './pages/ReportPreview';
 import EvansElectricalLanding from './components/EvansElectricalLanding';
 import { EmbedPage } from './pages/EmbedPage';
-import { ToolDemoPage } from './pages/ToolDemoPage';
-import { MissedCallDemoPage } from './pages/MissedCallDemoPage';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -24,9 +20,14 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         {/* Core Architecture */}
         <Route path="/" element={<App />} />
-        <Route path="/simulator" element={<SimulatorPage />} />
-        <Route path="/demos" element={<SimulatorPage />} />
         <Route path="/pricing" element={<Navigate to="/" replace />} />
+
+        {/* Retired demo pages: send old links back to the homepage */}
+        <Route path="/simulator" element={<Navigate to="/" replace />} />
+        <Route path="/demos" element={<Navigate to="/" replace />} />
+        <Route path="/demo" element={<Navigate to="/" replace />} />
+        <Route path="/demo/*" element={<Navigate to="/" replace />} />
+        <Route path="/tools/*" element={<Navigate to="/" replace />} />
 
         {/* Client Mockups & Special Routes */}
         <Route path="/dunham-wealth" element={<DunhamMockup />} />
@@ -38,19 +39,8 @@ createRoot(document.getElementById('root')!).render(
           </AuthGate>
         } />
 
-        {/* Example trade site linked from the hero mockup */}
-        <Route path="/demo" element={<DemoPage />} />
-
-        {/* Dedicated Missed-Call Demo Route */}
-        <Route path="/demo/missed-call" element={<MissedCallDemoPage />} />
-        <Route path="/tools/missed-call" element={<MissedCallDemoPage />} />
-
         {/* Embed route - bare widget for client iframes */}
         <Route path="/embed/:toolId" element={<EmbedPage />} />
-
-        {/* Demo routes - outreach landing pages with Stripe CTA */}
-        <Route path="/demo/:toolId" element={<ToolDemoPage />} />
-        <Route path="/tools/:toolId" element={<ToolDemoPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
