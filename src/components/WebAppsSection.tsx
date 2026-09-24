@@ -5,7 +5,7 @@ const WHATSAPP_APP_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
   "Hi Dean, I'd like to discuss a custom web app or customer tool for my business."
 )}`;
 
-const APP_FEATURES: { title: string; tag?: string; description: string; points: string[] }[] = [
+const APP_FEATURES: { title: string; description: string; points: string[] }[] = [
   {
     title: 'Instant quote calculators',
     description: 'Customers pick the job, see a rough price on their phone, and send the details straight to your WhatsApp.',
@@ -33,7 +33,6 @@ const APP_FEATURES: { title: string; tag?: string; description: string; points: 
   },
   {
     title: 'Installable Home Screen Web Apps',
-    tag: 'Home screen apps',
     description: 'Apps that customers open via a link and save straight to their iPhone or Android home screen with your business icon.',
     points: [
       'No App Store or Google Play downloads needed',
@@ -65,13 +64,6 @@ export const WebAppsSection: React.FC = () => {
               className="bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-lg transition-all hover:border-[#D90429]/40 group"
             >
               <div>
-                {feature.tag && (
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-[10px] sm:text-xs font-mono font-semibold uppercase tracking-wider px-2.5 py-1 rounded bg-zinc-100 text-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800">
-                      {feature.tag}
-                    </span>
-                  </div>
-                )}
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight mb-2 group-hover:text-[#D90429] dark:group-hover:text-red-400 transition-colors">
                   {feature.title}
                 </h3>
