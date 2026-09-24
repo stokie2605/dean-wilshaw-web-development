@@ -9,6 +9,7 @@ import { DunhamMockup } from './pages/DunhamMockup';
 import { ReportPreview } from './pages/ReportPreview';
 import EvansElectricalLanding from './components/EvansElectricalLanding';
 import { EmbedPage } from './pages/EmbedPage';
+import { LegalPage } from './pages/LegalPage';
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
@@ -21,6 +22,8 @@ createRoot(document.getElementById('root')!).render(
         {/* Core Architecture */}
         <Route path="/" element={<App />} />
         <Route path="/pricing" element={<Navigate to="/" replace />} />
+        <Route path="/privacy" element={<LegalPage page="privacy" />} />
+        <Route path="/terms" element={<LegalPage page="terms" />} />
 
         {/* Retired demo pages: send old links back to the homepage */}
         <Route path="/simulator" element={<Navigate to="/" replace />} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { BottomTabBar } from './components/BottomTabBar';
@@ -11,8 +11,6 @@ const PricingFaq = lazy(() => import('./components/PricingFaq').then(m => ({ def
 const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })));
 const WhatsAppModal = lazy(() => import('./components/WhatsAppModal').then(m => ({ default: m.WhatsAppModal })));
 const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
-const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(m => ({ default: m.PrivacyPolicy })));
-const TermsConditions = lazy(() => import('./components/TermsConditions').then(m => ({ default: m.TermsConditions })));
 
 const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
   "Hi Dean, I'd like to get a quote for a website for my business."
@@ -20,29 +18,9 @@ const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent
 
 export default function App() {
   const navigate = useNavigate();
-  const [currentPage, setCurrentPage] = useState<'home' | 'privacy' | 'terms'>('home');
   const [quoteModalOpen, setQuoteModalOpen] = useState<boolean>(false);
   const [whatsappModalOpen, setWhatsappModalOpen] = useState<boolean>(false);
   const [capturedDetails, setCapturedDetails] = useState<any>(null);
-
-  useEffect(() => {
-    const handlePopState = () => {
-      const path = window.location.pathname;
-      if (path === '/privacy') setCurrentPage('privacy');
-      else if (path === '/terms') setCurrentPage('terms');
-      else setCurrentPage('home');
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
-
-  const handleOpenPage = (page: 'home' | 'privacy' | 'terms') => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
-    if (page === 'home') window.history.pushState({}, '', '/');
-    else window.history.pushState({}, '', `/${page}`);
-  };
 
   const handleOpenQuote = (details?: any) => {
     if (details) setCapturedDetails(details);
@@ -52,22 +30,6 @@ export default function App() {
   const handleOpenWhatsApp = () => {
     setWhatsappModalOpen(true);
   };
-
-  if (currentPage === 'privacy') {
-    return (
-      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-[#040507] flex items-center justify-center"><div className="w-8 h-8 border-4 border-[#D90429] border-t-transparent rounded-full animate-spin"></div></div>}>
-        <PrivacyPolicy onBack={() => handleOpenPage('home')} />
-      </Suspense>
-    );
-  }
-
-  if (currentPage === 'terms') {
-    return (
-      <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-[#040507] flex items-center justify-center"><div className="w-8 h-8 border-4 border-[#D90429] border-t-transparent rounded-full animate-spin"></div></div>}>
-        <TermsConditions onBack={() => handleOpenPage('home')} />
-      </Suspense>
-    );
-  }
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#040507] text-[#191c1e] dark:text-white font-sans selection:bg-red-500/30 transition-colors duration-300 overflow-x-hidden">
@@ -136,8 +98,8 @@ export default function App() {
         <Footer 
           onOpenWhatsApp={handleOpenWhatsApp} 
           onOpenQuote={handleOpenQuote}
-          onOpenPrivacy={() => handleOpenPage('privacy')}
-          onOpenTerms={() => handleOpenPage('terms')}
+          onOpenPrivacy={() => navigate('/privacy')}
+          onOpenTerms={() => navigate('/terms')}
         />
         <QuoteForm
           isOpen={quoteModalOpen} 
