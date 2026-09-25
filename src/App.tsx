@@ -5,6 +5,7 @@ import { BottomTabBar } from './components/BottomTabBar';
 import { HeroSection } from './components/HeroSection';
 import { MessageSquare, ArrowRight } from 'lucide-react';
 
+const WebsitesSection = lazy(() => import('./components/WebsitesSection').then(m => ({ default: m.WebsitesSection })));
 const WebAppsSection = lazy(() => import('./components/WebAppsSection').then(m => ({ default: m.WebAppsSection })));
 const AboutDeanSection = lazy(() => import('./components/AboutDeanSection').then(m => ({ default: m.AboutDeanSection })));
 const PricingFaq = lazy(() => import('./components/PricingFaq').then(m => ({ default: m.PricingFaq })));
@@ -49,10 +50,13 @@ export default function App() {
 
         <Suspense fallback={<div className="h-64 flex items-center justify-center"><div className="w-8 h-8 border-4 border-[#D90429] border-t-transparent rounded-full animate-spin"></div></div>}>
           
-          {/* 2. Custom Web Apps & Tools Section */}
+          {/* 2. Custom Trade Websites Section */}
+          <WebsitesSection />
+
+          {/* 3. Custom Web Apps & Tools Section */}
           <WebAppsSection />
 
-          {/* 3. Dean Profile Card and How it works */}
+          {/* 4. Dean Profile Card and How it works */}
           <div className="bg-slate-50 dark:bg-[#040507]">
             <AboutDeanSection />
           </div>
@@ -62,7 +66,7 @@ export default function App() {
             <PricingFaq />
           </div>
 
-          {/* 4. Closing CTA leading to WhatsApp Quote */}
+          {/* 5. Closing CTA leading to WhatsApp Quote */}
           <section className="py-12 md:py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08] transition-colors">
             <div className="max-w-5xl mx-auto text-center">
 
@@ -71,7 +75,7 @@ export default function App() {
               </h2>
 
               <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium max-w-md mx-auto mb-6">
-                Message Dean on WhatsApp for a clear, fixed quote.
+                Single page builds start from £350 for the first 5 founding clients. Message on WhatsApp for an exact quote.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3.5 max-w-md mx-auto justify-center">
@@ -79,7 +83,7 @@ export default function App() {
                   href={WHATSAPP_QUOTE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group"
+                  className="flex-1 px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 flex items-center justify-center gap-2 group min-h-[44px]"
                 >
                   <MessageSquare className="w-4 h-4 fill-current" />
                   <span>Message for a Quote</span>
@@ -112,8 +116,8 @@ export default function App() {
       {/* Mobile Bottom Navigation Bar (<768px) */}
       <BottomTabBar />
 
-      {/* Floating WhatsApp Button, anchored bottom right (natural thumb zone) */}
-      <div className="fixed bottom-20 md:bottom-6 right-4 sm:right-6 z-[45] flex flex-col gap-3">
+      {/* Floating WhatsApp Button (Desktop / Tablet only to prevent mobile overlap) */}
+      <div className="hidden md:flex fixed bottom-6 right-6 z-[45] flex-col gap-3">
         <button 
           onClick={() => setWhatsappModalOpen(true)}
           className="bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] flex items-center justify-center transition-transform hover:scale-105 border border-white/40"

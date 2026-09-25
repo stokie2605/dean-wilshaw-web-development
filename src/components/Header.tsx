@@ -9,9 +9,9 @@ interface HeaderProps {
 
 // In-page section links (Desktop)
 const NAV_LINKS = [
-  { label: 'Web apps', href: '#web-apps' },
+  { label: 'Websites', href: '#websites' },
+  { label: 'Web Apps', href: '#web-apps' },
   { label: 'How it works', href: '#how-it-works' },
-  { label: 'About', href: '#about' },
   { label: 'Questions', href: '#questions' },
 ];
 
@@ -65,7 +65,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
             <a
               key={href}
               href={href}
-              className="px-4 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-150 whitespace-nowrap text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/[0.04]"
+              className="px-4 py-2 rounded-xl text-xs xl:text-sm font-semibold transition-all duration-150 whitespace-nowrap text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-white/[0.04] min-h-[44px] inline-flex items-center"
             >
               {label}
             </a>
@@ -79,7 +79,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
           <button
             type="button"
             onClick={toggleTheme}
-            className="p-2 border border-slate-300 dark:border-white/[0.08] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.04] rounded-lg min-w-[36px] min-h-[36px] flex items-center justify-center transition-colors"
+            className="p-2 border border-slate-300 dark:border-white/[0.08] text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.04] rounded-xl min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors"
             title="Switch between light and dark mode"
             aria-label="Switch between light and dark mode"
           >
@@ -88,17 +88,19 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
 
           {/* Desktop CTA */}
           <button
+            type="button"
             onClick={onOpenQuote}
-            className="hidden sm:flex bg-[#D90429] hover:bg-[#b80322] text-white shadow-lg shadow-red-600/20 px-4 py-2 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all items-center gap-1.5"
+            className="hidden sm:flex bg-[#D90429] hover:bg-[#b80322] text-white shadow-lg shadow-red-600/20 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all items-center gap-1.5 min-h-[44px]"
           >
             Get a Quote
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
 
-          {/* Mobile CTA (Compact, No Hamburger Needed) */}
+          {/* Mobile CTA */}
           <button
+            type="button"
             onClick={onOpenQuote}
-            className="sm:hidden bg-[#D90429] hover:bg-[#b80322] text-white shadow-md shadow-red-600/20 px-3 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all"
+            className="sm:hidden bg-[#D90429] hover:bg-[#b80322] text-white shadow-md shadow-red-600/20 px-4 py-2 rounded-xl text-xs font-bold tracking-wide transition-all min-h-[44px] flex items-center justify-center"
           >
             Quote
           </button>

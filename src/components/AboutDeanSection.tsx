@@ -9,9 +9,9 @@ export const AboutDeanSection: React.FC = () => {
         {/* Left Column: 3-Step Process Menu Card */}
         <div className="lg:col-span-5 order-2 lg:order-1">
           <div id="how-it-works" className="scroll-mt-20 sm:scroll-mt-24 bg-white dark:bg-[#0A0D14] border border-slate-200 dark:border-white/[0.08] rounded-2xl p-6 shadow-xl">
-            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
               How it works
-            </h3>
+            </h2>
 
             <div className="relative mt-6">
               <div className="absolute left-5 top-5 bottom-5 w-px bg-slate-200 dark:bg-white/10"></div>
@@ -76,19 +76,19 @@ export const AboutDeanSection: React.FC = () => {
         <div className="lg:col-span-7 order-1 lg:order-2 flex flex-col gap-5 sm:gap-6">
           
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/80 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800/50 font-mono text-[11px] font-semibold tracking-wider uppercase w-fit">
-            Local web designer
+            Local web developer
           </div>
 
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white leading-tight tracking-tight">
             Hi, I'm Dean.
           </h2>
 
-          <h3 className="text-lg sm:text-xl font-semibold text-[#D90429] leading-snug">
-            A local web designer helping local businesses and trades get more enquiries from their website.
-          </h3>
+          <p className="text-lg sm:text-xl font-semibold text-[#D90429] leading-snug">
+            Based in Alsager, helping businesses and trades across Stoke and Cheshire get more enquiries online.
+          </p>
 
           <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
-            I build websites and tools that bring in enquiries. Working with me means direct one to one contact.
+            I engineer fast websites and custom tools that convert visitors into calls and messages. Working with me means direct communication with the person writing your code.
           </p>
 
           {/* 3 Accountability Badges: compact checkmark list on mobile, full cards on desktop */}
@@ -102,13 +102,13 @@ export const AboutDeanSection: React.FC = () => {
             <li className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
               <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
-                Direct one to one access with Dean
+                Direct phone and WhatsApp contact throughout your project
               </span>
             </li>
             <li className="flex items-start gap-2.5">
               <Check className="w-4 h-4 text-[#D90429] shrink-0 mt-0.5" />
               <span className="text-sm font-medium text-slate-700 dark:text-zinc-300 leading-snug">
-                You own your website once it is paid for, with a clear, fixed quote upfront
+                100 percent code ownership upon completion with zero platform lock in
               </span>
             </li>
           </ul>

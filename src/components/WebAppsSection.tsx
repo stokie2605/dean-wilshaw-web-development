@@ -53,7 +53,7 @@ export const WebAppsSection: React.FC = () => {
             Need more than a standard website?
           </h2>
           <p className="text-sm sm:text-base text-slate-600 dark:text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            I build custom web applications and customer tools that run straight from a browser or pin to a phone home screen. No App Store needed, and far cheaper than a traditional app.
+            I build custom web applications and interactive tools that run straight from a browser or pin to a phone home screen with zero download friction.
           </p>
         </div>
 
@@ -88,16 +88,16 @@ export const WebAppsSection: React.FC = () => {
             Have a custom tool or app idea?
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 max-w-xl mx-auto mb-6 leading-relaxed">
-            Tell me what you need your customers or team to do on their phone. I will map out the simplest way to build it and give you a clear, fixed quote.
+            Tell me what you need your customers or team to do on their phone. I will map out the build and provide an exact price upfront.
           </p>
           <a
             href={WHATSAPP_APP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 group"
+            className="w-full sm:w-auto px-5 sm:px-7 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-xs sm:text-sm transition-all shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 group min-h-[44px]"
           >
             <MessageSquare className="w-4 h-4 fill-current" />
-            <span>Discuss a Web App on WhatsApp</span>
+            <span>Message About a Web App</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </div>

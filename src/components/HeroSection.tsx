@@ -28,8 +28,8 @@ export const HeroSection: React.FC = () => {
 
           {/* Top Badge */}
           <div className="flex flex-wrap gap-2 justify-start mb-1 w-full">
-            <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1 rounded-full font-medium shadow-sm">
-              <span>Local web designer, Stoke on Trent and Cheshire, Websites and custom web apps</span>
+            <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3.5 py-1.5 rounded-full font-medium shadow-sm">
+              <span>Solo Web Developer &bull; Stoke on Trent &amp; Cheshire</span>
             </div>
           </div>
 
@@ -40,7 +40,7 @@ export const HeroSection: React.FC = () => {
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Websites and custom web tools for local businesses and trades across Stoke on Trent and Cheshire. You deal directly with Dean.
+            Fast, clean websites and custom web tools for local businesses and trades across Stoke on Trent and Cheshire. Direct communication with Dean from start to finish.
           </p>
 
           {/* Call to Actions */}
@@ -50,7 +50,7 @@ export const HeroSection: React.FC = () => {
                 href={WHATSAPP_QUOTE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 group w-full sm:w-auto"
+                className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 group w-full sm:w-auto min-h-[44px]"
               >
                 <MessageSquare className="w-4 h-4 fill-current" />
                 <span>Message for a Quote</span>
@@ -58,18 +58,24 @@ export const HeroSection: React.FC = () => {
               </a>
             </div>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium leading-relaxed">
-              Message Dean on WhatsApp for a clear, fixed quote.
+              Single page builds start from £350 for the first 5 founding clients. Message on WhatsApp for a fast quote.
             </p>
           </div>
 
-          {/* Visual Interactive Cards / Micro Proof Neutral Slate Pills */}
+          {/* Visual Interactive Links with 44px tap targets */}
           <div className="flex flex-wrap gap-2.5 pt-3 border-t border-slate-200 dark:border-zinc-800 w-full max-w-2xl">
-            <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
+            <a
+              href="#websites"
+              className="bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:hover:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3.5 py-2 rounded-full font-medium transition-colors shadow-sm inline-flex items-center min-h-[44px]"
+            >
               Custom Websites
-            </div>
-            <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3 py-1.5 rounded-full font-medium shadow-sm">
-              Web Apps and Tools
-            </div>
+            </a>
+            <a
+              href="#web-apps"
+              className="bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:hover:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3.5 py-2 rounded-full font-medium transition-colors shadow-sm inline-flex items-center min-h-[44px]"
+            >
+              Web Apps &amp; Tools
+            </a>
           </div>
         </div>
 
@@ -130,7 +136,7 @@ export const HeroSection: React.FC = () => {
                               key={service.name}
                               type="button"
                               onClick={() => setActiveService(idx)}
-                              className={`rounded-xl py-2 px-1 text-center shadow-sm transition-all duration-150 border ${
+                              className={`rounded-xl py-2.5 px-1 min-h-[42px] flex items-center justify-center text-center shadow-sm transition-all duration-150 border ${
                                 isSelected
                                   ? 'bg-[#D90429]/25 border-[#D90429] text-white shadow-[0_0_12px_rgba(217,4,41,0.35)]'
                                   : 'bg-white/[0.04] hover:bg-white/[0.08] border-white/[0.08] text-zinc-300'
@@ -154,13 +160,13 @@ export const HeroSection: React.FC = () => {
                             Tap to test
                           </span>
                         </div>
-                        <h3 className="text-base font-extrabold mb-3 leading-tight tracking-tight text-white drop-shadow-sm">
+                        <p className="text-base font-extrabold mb-3 leading-tight tracking-tight text-white drop-shadow-sm">
                           {currentService.headline}
-                        </h3>
+                        </p>
                         <button
                           type="button"
                           onClick={() => setSimState('calling')}
-                          className="w-full bg-white text-slate-950 hover:bg-zinc-100 font-bold py-2.5 rounded-xl shadow-lg flex items-center justify-center gap-2 text-xs transition-transform active:scale-[0.98]"
+                          className="w-full bg-white text-slate-950 hover:bg-zinc-100 font-bold py-3 min-h-[44px] rounded-xl shadow-lg flex items-center justify-center gap-2 text-xs transition-transform active:scale-[0.98]"
                         >
                           <Phone className="w-3.5 h-3.5 text-[#D90429]" />
                           <span>Tap to Call</span>
@@ -171,7 +177,7 @@ export const HeroSection: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => setSimState('chat')}
-                        className="w-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.12] text-white font-bold py-2.5 rounded-xl shadow-sm backdrop-blur-md flex items-center justify-center gap-2 text-xs transition-transform active:scale-[0.98]"
+                        className="w-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.12] text-white font-bold py-3 min-h-[44px] rounded-xl shadow-sm backdrop-blur-md flex items-center justify-center gap-2 text-xs transition-transform active:scale-[0.98]"
                       >
                         <MessageSquare className="w-3.5 h-3.5 fill-current text-emerald-400" />
                         <span>Message on WhatsApp</span>
