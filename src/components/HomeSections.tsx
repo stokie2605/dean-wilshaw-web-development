@@ -1,0 +1,414 @@
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { MessageSquare, X } from 'lucide-react';
+
+const WHATSAPP_WEBAPP_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
+  "Hi Dean, I'd like to talk about a web app for my business."
+)}`;
+
+const SECTION_CLASS =
+  'px-4 sm:px-6 lg:px-8 py-14 sm:py-20 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08]';
+
+const HEADING_CLASS =
+  'text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white';
+
+const PRIMARY_BUTTON_CLASS =
+  'inline-flex items-center justify-center gap-2 w-full sm:w-auto min-h-[48px] px-6 py-3 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-base transition-colors';
+
+/* ------------------------------------------------------------------ */
+/* What you get: hairline divider rows                                 */
+/* ------------------------------------------------------------------ */
+
+const DELIVERABLES = [
+  { title: 'Built for speed', text: 'Pages open quickly on any phone.' },
+  { title: 'One tap to contact you', text: 'Customers call or WhatsApp you straight away.' },
+  { title: 'Yours to keep', text: 'You own the finished site once it is paid in full.' },
+];
+
+export const DeliverablesSection: React.FC = () => (
+  <section aria-labelledby="deliverables-heading" className={SECTION_CLASS}>
+    <div className="max-w-5xl mx-auto">
+      <h2 id="deliverables-heading" className="sr-only">What you get</h2>
+      <ul className="border-t-2 border-slate-900 dark:border-white">
+        {DELIVERABLES.map((item) => (
+          <li
+            key={item.title}
+            className="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-8 py-6 sm:py-8 border-b border-slate-300 dark:border-white/[0.14]"
+          >
+            <h3 className="md:col-span-5 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              {item.title}
+            </h3>
+            <p className="md:col-span-7 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed md:pt-1.5">
+              {item.text}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
+
+/* ------------------------------------------------------------------ */
+/* Demos: one stage with a segmented switcher                          */
+/* ------------------------------------------------------------------ */
+
+const DEMOS = [
+  {
+    id: 'roofing',
+    tab: 'Roofing',
+    name: 'Etruria Roofing',
+    text: 'Roofing website with a leak report form.',
+    url: 'https://etruria-roofing-demo.netlify.app/',
+    preview: '/demos/roofing.webp',
+  },
+  {
+    id: 'plumbing',
+    tab: 'Plumbing',
+    name: 'Kiln Plumbing',
+    text: 'Plumbing and boiler website with callout requests.',
+    url: 'https://kiln-plumbing-demo.netlify.app/',
+    preview: '/demos/plumbing.webp',
+  },
+  {
+    id: 'garage',
+    tab: 'Garage',
+    name: 'Longport Motors',
+    text: 'Garage website with MOT and servicing bookings.',
+    url: 'https://longport-motors-demo.netlify.app/',
+    preview: '/demos/garage.webp',
+  },
+  {
+    id: 'salon',
+    tab: 'Salon',
+    name: 'Platform Hair Crewe',
+    text: 'Salon and barber website with treatments and bookings.',
+    url: 'https://platform-hair-crewe-demo.netlify.app/',
+    preview: '/demos/salon.webp',
+  },
+];
+
+type Demo = (typeof DEMOS)[number];
+
+// Lets the demo's own call, WhatsApp and booking links work inside the frame
+const DEMO_SANDBOX =
+  'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation';
+
+const MOBILE_QUERY = '(max-width: 767px)';
+
+function useIsMobile(): boolean {
+  const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_QUERY).matches);
+
+  useEffect(() => {
+    const mql = window.matchMedia(MOBILE_QUERY);
+    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
+
+  return isMobile;
+}
+
+/* Desktop: the live demo loads in the stage once its tab is selected */
+const DesktopDemoFrame: React.FC<{ demo: Demo }> = ({ demo }) => {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div className="relative w-full h-[600px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-white dark:bg-[#07090E]">
+      <div
+        aria-hidden="true"
+        className={`absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center transition-opacity duration-300 ${
+          loaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      >
+        <p className="text-lg font-bold text-slate-900 dark:text-white">{demo.name}</p>
+        <p className="text-base text-slate-600 dark:text-zinc-400">Loading the demo</p>
+      </div>
+      <iframe
+        src={demo.url}
+        title={`${demo.name} demo website`}
+        loading="lazy"
+        referrerPolicy="no-referrer"
+        sandbox={DEMO_SANDBOX}
+        onLoad={() => setLoaded(true)}
+        className={`relative w-full h-full border-0 transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      />
+    </div>
+  );
+};
+
+/* Mobile: full screen live demo, only mounted after a tap */
+const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo, onClose }) => {
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeRef.current?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${demo.name} demo`}
+      className="fixed inset-0 z-[60] flex flex-col bg-white dark:bg-[#07090E] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
+    >
+      <div className="flex items-center justify-between gap-2 px-3 py-1 border-b border-slate-200 dark:border-white/[0.1]">
+        <p className="min-w-0 truncate text-base font-bold text-slate-900 dark:text-white">{demo.name}</p>
+        <div className="flex items-center gap-1 shrink-0">
+          <a
+            href={demo.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center min-h-[48px] px-3 text-base font-semibold text-slate-700 dark:text-zinc-300 underline"
+          >
+            New tab
+          </a>
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            aria-label="Close the demo"
+            className="inline-flex items-center justify-center min-w-[48px] min-h-[48px] rounded-xl text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]"
+          >
+            <X className="w-6 h-6" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+      <iframe
+        src={demo.url}
+        title={`${demo.name} demo website`}
+        referrerPolicy="no-referrer"
+        sandbox={DEMO_SANDBOX}
+        className="flex-1 w-full border-0"
+      />
+    </div>
+  );
+};
+
+export const DemosSection: React.FC = () => {
+  const isMobile = useIsMobile();
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [viewerOpen, setViewerOpen] = useState(false);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const previewRef = useRef<HTMLButtonElement>(null);
+  const active = DEMOS[activeIndex];
+
+  const closeViewer = useCallback(() => {
+    setViewerOpen(false);
+    previewRef.current?.focus();
+  }, []);
+
+  const selectTab = (index: number) => {
+    setActiveIndex(index);
+    tabRefs.current[index]?.focus();
+  };
+
+  const handleTabKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
+    const last = DEMOS.length - 1;
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      selectTab(activeIndex === last ? 0 : activeIndex + 1);
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      selectTab(activeIndex === 0 ? last : activeIndex - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      selectTab(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      selectTab(last);
+    }
+  };
+
+  return (
+    <section id="demos" aria-labelledby="demos-heading" className={`scroll-mt-20 sm:scroll-mt-24 ${SECTION_CLASS}`}>
+      <div className="max-w-5xl mx-auto">
+        <h2 id="demos-heading" className={HEADING_CLASS}>
+          Example websites
+        </h2>
+        <p className="mt-3 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          Working mobile builds made for local trades and services.
+        </p>
+
+        {/* Segmented switcher */}
+        <div
+          role="tablist"
+          aria-label="Choose an example"
+          className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-px rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-300 dark:bg-white/[0.14]"
+        >
+          {DEMOS.map((demo, i) => {
+            const isActive = i === activeIndex;
+            return (
+              <button
+                key={demo.id}
+                ref={(el) => { tabRefs.current[i] = el; }}
+                type="button"
+                role="tab"
+                id={`demo-tab-${demo.id}`}
+                aria-selected={isActive}
+                aria-controls="demo-panel"
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => setActiveIndex(i)}
+                onKeyDown={handleTabKeyDown}
+                className={`min-h-[48px] px-3 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D90429] ${
+                  isActive
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black'
+                    : 'bg-white text-slate-700 hover:bg-slate-100 dark:bg-[#07090E] dark:text-zinc-300 dark:hover:bg-white/[0.06]'
+                }`}
+              >
+                {demo.tab}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Stage */}
+        <div id="demo-panel" role="tabpanel" aria-labelledby={`demo-tab-${active.id}`} className="mt-4">
+          {isMobile ? (
+            <button
+              ref={previewRef}
+              type="button"
+              onClick={() => setViewerOpen(true)}
+              aria-label={`Try the ${active.name} demo full screen`}
+              className="group relative block mx-auto w-full max-w-[360px] aspect-[378/780] max-h-[65dvh] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-white dark:bg-[#07090E]"
+            >
+              <img
+                key={active.id}
+                src={active.preview}
+                alt=""
+                width={378}
+                height={780}
+                loading="lazy"
+                decoding="async"
+                className="w-full h-full object-cover object-top"
+              />
+              <span className="absolute inset-x-0 bottom-0 flex justify-center pb-5 pt-16 bg-gradient-to-t from-black/70 to-transparent">
+                <span className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl bg-white text-slate-900 font-bold text-base shadow-md">
+                  Tap to try it
+                </span>
+              </span>
+            </button>
+          ) : (
+            <DesktopDemoFrame key={active.id} demo={active} />
+          )}
+
+          <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+                {active.name}
+              </h3>
+              <p className="mt-1 text-base text-slate-600 dark:text-zinc-400">{active.text}</p>
+            </div>
+            <a
+              href={active.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open the ${active.name} demo in a new tab`}
+              className="shrink-0 inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold text-base hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+            >
+              Open Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {isMobile && viewerOpen && <MobileDemoViewer demo={active} onClose={closeViewer} />}
+    </section>
+  );
+};
+
+/* ------------------------------------------------------------------ */
+/* Web apps: editorial split                                           */
+/* ------------------------------------------------------------------ */
+
+export const WebAppsTeaser: React.FC = () => (
+  <section id="web-apps" aria-labelledby="web-apps-heading" className={`scroll-mt-20 sm:scroll-mt-24 ${SECTION_CLASS}`}>
+    <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12">
+      <h2 id="web-apps-heading" className={`md:col-span-5 ${HEADING_CLASS}`}>
+        Need more than a standard website?
+      </h2>
+      <div className="md:col-span-7 md:border-l md:border-slate-300 md:dark:border-white/[0.14] md:pl-10 flex flex-col gap-5 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed">
+        <p>
+          I also build simple web apps that customers can save to their phone home screen, with no app store needed.
+        </p>
+        <p>
+          <strong className="font-bold text-slate-900 dark:text-white">Booking tools.</strong>{' '}
+          Mobile forms that let customers book a time with you.
+        </p>
+        <p>
+          <strong className="font-bold text-slate-900 dark:text-white">Quote calculators.</strong>{' '}
+          Customers enter their job details and the request comes straight to your phone.
+        </p>
+        <div className="pt-1">
+          <a href={WHATSAPP_WEBAPP_URL} target="_blank" rel="noopener noreferrer" className={PRIMARY_BUTTON_CLASS}>
+            <MessageSquare className="w-4 h-4 fill-current" aria-hidden="true" />
+            <span>Discuss a Web App on WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* ------------------------------------------------------------------ */
+/* How it works: continuous numbered timeline                          */
+/* ------------------------------------------------------------------ */
+
+const STEPS = [
+  {
+    title: 'Chat on WhatsApp',
+    text: 'Tell me what your business does and what you need customers to do on their phone.',
+  },
+  {
+    title: 'Test on your phone',
+    text: 'I send you a private link to try before you pay the balance.',
+  },
+  {
+    title: 'Go live',
+    text: 'Most sites go live in 5 to 7 working days.',
+  },
+];
+
+export const HowItWorksSection: React.FC = () => (
+  <section id="how-it-works" aria-labelledby="how-it-works-heading" className={`scroll-mt-20 sm:scroll-mt-24 ${SECTION_CLASS}`}>
+    <div className="max-w-5xl mx-auto">
+      <h2 id="how-it-works-heading" className={HEADING_CLASS}>
+        How it works
+      </h2>
+      <ol className="mt-10 max-w-2xl">
+        {STEPS.map((step, i) => (
+          <li key={step.title} className="relative pl-16 sm:pl-20 pb-10 last:pb-0">
+            {i < STEPS.length - 1 && (
+              <span
+                aria-hidden="true"
+                className="absolute left-[23.5px] sm:left-[27.5px] top-12 sm:top-14 bottom-0 w-px bg-slate-300 dark:bg-white/[0.18]"
+              />
+            )}
+            <span
+              aria-hidden="true"
+              className="absolute left-0 top-0 w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-[#D90429] bg-slate-50 dark:bg-[#040507] flex items-center justify-center font-geist font-extrabold text-lg sm:text-xl text-[#D90429]"
+            >
+              {i + 1}
+            </span>
+            <h3 className="pt-2.5 sm:pt-3 text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+              {step.title}
+            </h3>
+            <p className="mt-1.5 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed">
+              {step.text}
+            </p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+);

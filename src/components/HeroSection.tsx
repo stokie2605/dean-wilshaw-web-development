@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Spotlight } from './ui/Spotlight';
-import { ArrowRight, MessageSquare, Phone, Wrench, PhoneCall, X, RotateCcw } from 'lucide-react';
+import { MessageSquare, Phone, Wrench, PhoneCall, X, RotateCcw } from 'lucide-react';
 import { DEMO_BUSINESS } from '../lib/demoBusiness';
 
 const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
@@ -26,21 +26,14 @@ export const HeroSection: React.FC = () => {
         {/* Left Column: Hero Copy & Actions */}
         <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 items-start text-left z-10">
 
-          {/* Top Badge */}
-          <div className="flex flex-wrap gap-2 justify-start mb-1 w-full">
-            <div className="bg-zinc-100 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3.5 py-1.5 rounded-full font-medium shadow-sm">
-              <span>Solo Web Developer &bull; Stoke on Trent &amp; Cheshire</span>
-            </div>
-          </div>
-
           {/* Main Display Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-zinc-100 transition-colors duration-300">
-            Websites and Web Apps Built for Phones.
+            Websites and web apps built for phones.
           </h1>
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Fast, clean websites and custom web tools for local businesses and trades across Stoke on Trent and Cheshire. Direct communication with Dean from start to finish.
+            Fast websites and simple web apps for local businesses across Stoke on Trent and Cheshire. You deal directly with Dean from start to finish.
           </p>
 
           {/* Call to Actions */}
@@ -50,33 +43,14 @@ export const HeroSection: React.FC = () => {
                 href={WHATSAPP_QUOTE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-sm transition-all shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 group w-full sm:w-auto min-h-[44px]"
+                className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-base transition-colors shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 w-full sm:w-auto min-h-[48px]"
               >
-                <MessageSquare className="w-4 h-4 fill-current" />
-                <span>Message for a Quote</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <MessageSquare className="w-4 h-4 fill-current" aria-hidden="true" />
+                <span>Message Dean on WhatsApp</span>
               </a>
             </div>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400 font-medium leading-relaxed">
-              Single page builds start from £350 for the first 5 founding clients. Message on WhatsApp for a fast quote.
-            </p>
           </div>
 
-          {/* Visual Interactive Links with 44px tap targets */}
-          <div className="flex flex-wrap gap-2.5 pt-3 border-t border-slate-200 dark:border-zinc-800 w-full max-w-2xl">
-            <a
-              href="#websites"
-              className="bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:hover:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3.5 py-2 rounded-full font-medium transition-colors shadow-sm inline-flex items-center min-h-[44px]"
-            >
-              Custom Websites
-            </a>
-            <a
-              href="#web-apps"
-              className="bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border border-zinc-200 dark:bg-zinc-900/80 dark:hover:bg-zinc-800 dark:text-zinc-300 dark:border-zinc-800 text-xs px-3.5 py-2 rounded-full font-medium transition-colors shadow-sm inline-flex items-center min-h-[44px]"
-            >
-              Web Apps &amp; Tools
-            </a>
-          </div>
         </div>
 
         {/* Right Column: 2026 Dark Obsidian Glass Showcase Simulator */}
