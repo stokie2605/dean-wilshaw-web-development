@@ -1,11 +1,26 @@
-import React from 'react';
-import { ArrowLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowLeft, Check, Copy } from 'lucide-react';
 
 interface PrivacyProps {
   onBack: () => void;
 }
 
 export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText('dean.wilshaw.web@gmail.com');
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 3000);
+    window.open(
+      'https://mail.google.com/mail/?view=cm&fs=1&to=dean.wilshaw.web@gmail.com',
+      '_blank',
+      'noopener,noreferrer'
+    );
+  };
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-[#040507] text-slate-900 dark:text-zinc-100">
       {/* Header */}
@@ -39,7 +54,33 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
             </p>
             <p className="mt-2">
               Trading address: 9 Bankside Court, Alsager, Cheshire, ST7, UK.<br />
-              Email: <a href="mailto:dean.wilshaw.web@gmail.com" className="text-[#D90429] hover:underline">dean.wilshaw.web@gmail.com</a><br />
+              <span className="inline-flex items-center gap-2">
+                <span>Email:</span>
+                <a 
+                  href="mailto:dean.wilshaw.web@gmail.com" 
+                  onClick={handleEmailClick}
+                  className="text-[#D90429] hover:underline"
+                  title="Click to copy address and open Gmail"
+                >
+                  dean.wilshaw.web@gmail.com
+                </a>
+                {copied ? (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-mono font-semibold px-2 py-0.5 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-800">
+                    <Check className="w-3 h-3" />
+                    Copied!
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={handleEmailClick}
+                    className="inline-flex items-center gap-1 text-[11px] font-mono text-slate-500 hover:text-slate-800 dark:text-zinc-400 dark:hover:text-zinc-200 px-2 py-0.5 rounded border border-slate-200 dark:border-zinc-800 hover:bg-slate-200 dark:hover:bg-zinc-800 transition-colors"
+                    title="Copy email to clipboard and open Gmail"
+                  >
+                    <Copy className="w-3 h-3" />
+                    <span>Copy</span>
+                  </button>
+                )}
+              </span><br />
               Phone: <a href="tel:07348733365" className="text-[#D90429] hover:underline">07348 733365</a>
             </p>
           </section>
@@ -106,7 +147,15 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
               <li>Right to restrict processing: Limit how your data is used</li>
             </ul>
             <p className="mt-2">
-              To exercise these rights, contact Dean Wilshaw directly via WhatsApp on 07348 733365 or email dean.wilshaw.web@gmail.com. Requests are addressed within 30 calendar days without charge.
+              To exercise these rights, contact Dean Wilshaw directly via WhatsApp on 07348 733365 or email{' '}
+              <a 
+                href="mailto:dean.wilshaw.web@gmail.com" 
+                onClick={handleEmailClick}
+                className="text-[#D90429] hover:underline"
+                title="Click to copy address and open Gmail"
+              >
+                dean.wilshaw.web@gmail.com
+              </a>. Requests are addressed within 30 calendar days without charge.
             </p>
           </section>
 
