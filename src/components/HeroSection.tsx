@@ -3,10 +3,6 @@ import { Spotlight } from './ui/Spotlight';
 import { MessageSquare, Phone, Wrench, PhoneCall, X, RotateCcw } from 'lucide-react';
 import { DEMO_BUSINESS } from '../lib/demoBusiness';
 
-const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
-  "Hi Dean, I'd like to get a quote for a website for my business."
-)}`;
-
 export const HeroSection: React.FC = () => {
   const [activeService, setActiveService] = useState(0);
   const [simState, setSimState] = useState<'idle' | 'calling' | 'chat'>('idle');
@@ -23,7 +19,7 @@ export const HeroSection: React.FC = () => {
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
 
-        {/* Left Column: Hero Copy & Actions */}
+        {/* Left Column: Hero Copy */}
         <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 items-start text-left z-10">
 
           {/* Main Display Headline */}
@@ -35,22 +31,6 @@ export const HeroSection: React.FC = () => {
           <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
             Fast websites and simple web apps for local businesses across Stoke on Trent and Cheshire. You deal directly with Dean from start to finish.
           </p>
-
-          {/* Call to Actions */}
-          <div className="flex flex-col gap-3 mt-2 w-full max-w-xl">
-            <div>
-              <a
-                href={WHATSAPP_QUOTE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-base transition-colors shadow-lg shadow-red-600/20 inline-flex items-center justify-center gap-2 w-full sm:w-auto min-h-[48px]"
-              >
-                <MessageSquare className="w-4 h-4 fill-current" aria-hidden="true" />
-                <span>Message Dean on WhatsApp</span>
-              </a>
-            </div>
-          </div>
-
         </div>
 
         {/* Right Column: 2026 Dark Obsidian Glass Showcase Simulator */}

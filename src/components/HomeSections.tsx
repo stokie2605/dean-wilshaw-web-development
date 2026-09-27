@@ -1,18 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { MessageSquare, X } from 'lucide-react';
-
-const WHATSAPP_WEBAPP_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
-  "Hi Dean, I'd like to talk about a web app for my business."
-)}`;
+import { X } from 'lucide-react';
 
 const SECTION_CLASS =
   'px-4 sm:px-6 lg:px-8 py-14 sm:py-20 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08]';
 
 const HEADING_CLASS =
   'text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-white';
-
-const PRIMARY_BUTTON_CLASS =
-  'inline-flex items-center justify-center gap-2 w-full sm:w-auto min-h-[48px] px-6 py-3 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-base transition-colors';
 
 /* ------------------------------------------------------------------ */
 /* What you get: hairline divider rows                                 */
@@ -381,12 +374,7 @@ export const WebAppsTeaser: React.FC = () => (
           <strong className="font-bold text-slate-900 dark:text-white">Quote calculators.</strong>{' '}
           Customers enter their job details and the request comes straight to your phone.
         </p>
-        <div className="pt-1">
-          <a href={WHATSAPP_WEBAPP_URL} target="_blank" rel="noopener noreferrer" className={PRIMARY_BUTTON_CLASS}>
-            <MessageSquare className="w-4 h-4 fill-current" aria-hidden="true" />
-            <span>Discuss a Web App on WhatsApp</span>
-          </a>
-        </div>
+        <p>Message me with your idea and I will give you a clear price.</p>
       </div>
     </div>
   </section>

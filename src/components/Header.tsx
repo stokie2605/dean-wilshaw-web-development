@@ -5,9 +5,11 @@ import { Sun, Moon } from 'lucide-react';
 interface HeaderProps {
   onOpenQuote: () => void;
   onOpenWhatsApp?: () => void;
+  // True while the closing section's buttons are on screen, so the quote button is not shown twice
+  hideQuote?: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenQuote, hideQuote = false }) => {
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
@@ -69,18 +71,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenQuote }) => {
           <button
             type="button"
             onClick={() => onOpenQuote()}
-            className="hidden sm:flex bg-[#D90429] hover:bg-[#b80322] text-white shadow-lg shadow-red-600/20 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all items-center gap-1.5 min-h-[48px]"
+            aria-hidden={hideQuote}
+            tabIndex={hideQuote ? -1 : undefined}
+            className={`${hideQuote ? 'opacity-0 pointer-events-none' : 'opacity-100'} hidden md:flex bg-[#D90429] hover:bg-[#b80322] text-white shadow-lg shadow-red-600/20 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold tracking-wide transition-all items-center gap-1.5 min-h-[48px]`}
           >
             Get a Quote
-          </button>
-
-          {/* Mobile CTA */}
-          <button
-            type="button"
-            onClick={() => onOpenQuote()}
-            className="sm:hidden bg-[#D90429] hover:bg-[#b80322] text-white shadow-md shadow-red-600/20 px-4 py-2 rounded-xl text-sm font-bold tracking-wide transition-all min-h-[48px] flex items-center justify-center"
-          >
-            Quote
           </button>
         </div>
       </div>

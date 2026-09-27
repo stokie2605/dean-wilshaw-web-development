@@ -246,8 +246,6 @@ export const PricingPage: React.FC = () => {
 
       {/* Footer */}
       <Footer
-        onOpenWhatsApp={() => setWhatsappModalOpen(true)}
-        onOpenQuote={() => setQuoteModalOpen(true)}
         onOpenPrivacy={() => navigate('/privacy')}
         onOpenTerms={() => navigate('/terms')}
       />
@@ -264,7 +262,7 @@ export const PricingPage: React.FC = () => {
       />
 
       {/* Mobile Bottom Navigation Bar (<768px) */}
-      <BottomTabBar />
+      <BottomTabBar onOpenQuote={() => setQuoteModalOpen(true)} />
 
     </div>
   );

@@ -1,13 +1,11 @@
 import React from 'react';
 
 interface FooterProps {
-  onOpenWhatsApp: () => void;
-  onOpenQuote: () => void;
   onOpenPrivacy: () => void;
   onOpenTerms: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onOpenPrivacy, onOpenTerms }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) => {
   return (
     <footer className="bg-slate-100 dark:bg-[#07090E] text-slate-900 dark:text-zinc-100 w-full border-t border-slate-200 dark:border-white/[0.08] pt-10 pb-[calc(6rem+env(safe-area-inset-bottom))] md:pb-12 px-4 sm:px-6 lg:px-8 mt-auto transition-colors duration-300">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
@@ -37,24 +35,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
           </div>
         </div>
 
-        {/* Right Side: Direct Actions & Crawlable Legal Links */}
+        {/* Right Side: Crawlable Legal Links */}
         <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-1 text-base font-medium text-slate-600 dark:text-zinc-400">
-          <button
-            type="button"
-            onClick={onOpenWhatsApp}
-            className="hover:text-emerald-700 dark:hover:text-emerald-400 font-semibold underline transition-colors text-emerald-600 dark:text-emerald-500 inline-flex items-center min-h-[48px]"
-          >
-            Message Dean on WhatsApp
-          </button>
-
-          <button
-            type="button"
-            onClick={() => onOpenQuote()}
-            className="hover:text-[#D90429] dark:hover:text-red-400 underline transition-colors inline-flex items-center min-h-[48px]"
-          >
-            Get a Quote
-          </button>
-
           <a
             href="/privacy"
             onClick={(e) => {
