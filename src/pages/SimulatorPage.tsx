@@ -40,8 +40,6 @@ export const SimulatorPage: React.FC = () => {
       </main>
 
       <Footer
-        onOpenWhatsApp={() => setWhatsappModalOpen(true)}
-        onOpenQuote={() => setQuoteModalOpen(true)}
         onOpenPrivacy={() => navigate('/privacy')}
         onOpenTerms={() => navigate('/terms')}
       />
@@ -72,7 +70,7 @@ export const SimulatorPage: React.FC = () => {
         </div>
       )}
 
-      <BottomTabBar />
+      <BottomTabBar onOpenQuote={() => setQuoteModalOpen(true)} />
     </div>
   );
 };

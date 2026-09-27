@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from 'react';
+import React, { useEffect, useRef, useState, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { BottomTabBar } from './components/BottomTabBar';
@@ -31,12 +31,27 @@ export default function App() {
     setWhatsappModalOpen(true);
   };
 
+  // Desktop: while the closing buttons are on screen, fade the header quote button and the round
+  // WhatsApp button so no more than two contact buttons show at once. The closing buttons are
+  // hidden on mobile, so this never triggers there.
+  const closingButtonsRef = useRef<HTMLDivElement>(null);
+  const [closingButtonsInView, setClosingButtonsInView] = useState(false);
+
+  useEffect(() => {
+    const el = closingButtonsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setClosingButtonsInView(entry.isIntersecting));
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="min-h-dvh flex flex-col bg-slate-50 dark:bg-[#040507] text-[#191c1e] dark:text-white font-sans selection:bg-red-500/30 transition-colors duration-300 overflow-x-hidden">
       {/* Top Navigation */}
       <Header
         onOpenQuote={handleOpenQuote}
         onOpenWhatsApp={handleOpenWhatsApp}
+        hideQuote={closingButtonsInView}
       />
 
       {/* Main Page Content */}
@@ -68,26 +83,34 @@ export default function App() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
               Ready to get started?
             </h2>
-            <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-md mx-auto mb-6">
-              Send me a message on WhatsApp to talk about your project.
+            <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-md mx-auto md:mb-6">
+              Message me on WhatsApp or fill in the quote form, whichever suits you.
             </p>
-            <a
-              href={WHATSAPP_QUOTE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex w-full sm:w-auto px-6 py-3 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white dark:bg-white dark:hover:bg-zinc-200 dark:active:bg-zinc-300 dark:text-black font-bold text-base transition-colors shadow-lg shadow-red-600/20 items-center justify-center gap-2 min-h-[48px]"
-            >
-              <MessageSquare className="w-4 h-4 fill-current" aria-hidden="true" />
-              <span>Message Dean on WhatsApp</span>
-            </a>
+            {/* Desktop only: on mobile the bottom bar already shows these two */}
+            <div ref={closingButtonsRef} className="hidden md:flex gap-3 max-w-xl mx-auto">
+              <button
+                type="button"
+                onClick={() => handleOpenQuote()}
+                className="flex-1 inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl bg-[#D90429] hover:bg-[#b80322] active:bg-[#9a021c] text-white font-bold text-base whitespace-nowrap transition-colors shadow-lg shadow-red-600/20"
+              >
+                Get a Quote
+              </button>
+              <a
+                href={WHATSAPP_QUOTE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold text-base whitespace-nowrap transition-colors"
+              >
+                <MessageSquare className="w-4 h-4 fill-black" aria-hidden="true" />
+                <span>Message on WhatsApp</span>
+              </a>
+            </div>
           </div>
         </section>
 
       </main>
 
       <Footer
-        onOpenWhatsApp={handleOpenWhatsApp}
-        onOpenQuote={handleOpenQuote}
         onOpenPrivacy={() => navigate('/privacy')}
         onOpenTerms={() => navigate('/terms')}
       />
@@ -103,10 +126,15 @@ export default function App() {
       </Suspense>
 
       {/* Mobile Bottom Navigation Bar (<768px) */}
-      <BottomTabBar />
+      <BottomTabBar onOpenQuote={handleOpenQuote} />
 
       {/* Floating WhatsApp Button (Desktop / Tablet only to prevent mobile overlap) */}
-      <div className="hidden md:flex fixed bottom-6 right-6 z-[45] flex-col gap-3">
+      <div
+        aria-hidden={closingButtonsInView}
+        className={`hidden md:flex fixed bottom-6 right-6 z-[45] flex-col gap-3 transition-opacity duration-300 ${
+          closingButtonsInView ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      >
         <button 
           onClick={() => setWhatsappModalOpen(true)}
           className="bg-[#25D366] hover:bg-[#20bd5a] text-black font-semibold w-14 h-14 rounded-full shadow-[0_8px_30px_rgba(37,211,102,0.4)] flex items-center justify-center transition-transform hover:scale-105 border border-white/40"
