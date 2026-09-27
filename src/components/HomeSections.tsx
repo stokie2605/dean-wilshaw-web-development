@@ -28,7 +28,7 @@ export const DeliverablesSection: React.FC = () => (
   <section aria-labelledby="deliverables-heading" className={SECTION_CLASS}>
     <div className="max-w-5xl mx-auto">
       <h2 id="deliverables-heading" className="sr-only">What you get</h2>
-      <ul className="border-t-2 border-slate-900 dark:border-white">
+      <ul className="border-t border-slate-300 dark:border-white/[0.14]">
         {DELIVERABLES.map((item) => (
           <li
             key={item.title}
@@ -93,35 +93,53 @@ const DEMO_SANDBOX =
   'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation';
 
 const MOBILE_QUERY = '(max-width: 767px)';
+// Phones and tablets: no hover and a finger as the main pointer
+const TOUCH_QUERY = '(hover: none) and (pointer: coarse)';
 
-function useIsMobile(): boolean {
-  const [isMobile, setIsMobile] = useState(() => window.matchMedia(MOBILE_QUERY).matches);
+function useMediaQuery(query: string): boolean {
+  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
 
   useEffect(() => {
-    const mql = window.matchMedia(MOBILE_QUERY);
-    const onChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    const mql = window.matchMedia(query);
+    setMatches(mql.matches);
+    const onChange = (e: MediaQueryListEvent) => setMatches(e.matches);
     mql.addEventListener('change', onChange);
     return () => mql.removeEventListener('change', onChange);
-  }, []);
+  }, [query]);
 
-  return isMobile;
+  return matches;
 }
 
-/* Desktop: the live demo loads in the stage once its tab is selected */
-const DesktopDemoFrame: React.FC<{ demo: Demo }> = ({ demo }) => {
+/* Fills the frame in the page background colour until the demo has loaded */
+const DemoLoading: React.FC<{ name: string; visible: boolean }> = ({ name, visible }) => (
+  <div
+    aria-hidden="true"
+    className={`absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 px-6 text-center bg-slate-50 dark:bg-[#040507] transition-opacity duration-300 ${
+      visible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+    }`}
+  >
+    <p className="text-lg font-bold text-slate-900 dark:text-white">{name}</p>
+    <p className="text-base text-slate-600 dark:text-zinc-400">Loading</p>
+  </div>
+);
+
+const TapToTry: React.FC = () => (
+  <span className="absolute inset-x-0 bottom-0 flex justify-center pb-5 pt-16 bg-gradient-to-t from-black/70 to-transparent">
+    <span className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl bg-white text-slate-900 font-bold text-base shadow-md">
+      Tap to try it
+    </span>
+  </span>
+);
+
+/* Desktop and tablets: the live demo loads in the stage once its tab is selected.
+   On touch screens it stays inert under a Tap to try it layer so it cannot trap page scrolling. */
+const FramedDemo: React.FC<{ demo: Demo; isTouch: boolean }> = ({ demo, isTouch }) => {
   const [loaded, setLoaded] = useState(false);
+  const [activated, setActivated] = useState(false);
+  const interactive = !isTouch || activated;
 
   return (
-    <div className="relative w-full h-[600px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-white dark:bg-[#07090E]">
-      <div
-        aria-hidden="true"
-        className={`absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center transition-opacity duration-300 ${
-          loaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-      >
-        <p className="text-lg font-bold text-slate-900 dark:text-white">{demo.name}</p>
-        <p className="text-base text-slate-600 dark:text-zinc-400">Loading the demo</p>
-      </div>
+    <div className="relative w-full h-[600px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-50 dark:bg-[#040507]">
       <iframe
         src={demo.url}
         title={`${demo.name} demo website`}
@@ -129,8 +147,20 @@ const DesktopDemoFrame: React.FC<{ demo: Demo }> = ({ demo }) => {
         referrerPolicy="no-referrer"
         sandbox={DEMO_SANDBOX}
         onLoad={() => setLoaded(true)}
-        className={`relative w-full h-full border-0 transition-opacity duration-300 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        tabIndex={interactive ? undefined : -1}
+        className={`w-full h-full border-0 ${interactive ? '' : 'pointer-events-none'}`}
       />
+      <DemoLoading name={demo.name} visible={!loaded} />
+      {!interactive && (
+        <button
+          type="button"
+          onClick={() => setActivated(true)}
+          aria-label={`Try the ${demo.name} demo`}
+          className="absolute inset-0 z-20 w-full h-full"
+        >
+          <TapToTry />
+        </button>
+      )}
     </div>
   );
 };
@@ -138,6 +168,7 @@ const DesktopDemoFrame: React.FC<{ demo: Demo }> = ({ demo }) => {
 /* Mobile: full screen live demo, only mounted after a tap */
 const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo, onClose }) => {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -160,7 +191,7 @@ const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo,
       role="dialog"
       aria-modal="true"
       aria-label={`${demo.name} demo`}
-      className="fixed inset-0 z-[60] flex flex-col bg-white dark:bg-[#07090E] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
+      className="fixed inset-0 z-[60] flex flex-col bg-slate-50 dark:bg-[#040507] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
     >
       <div className="flex items-center justify-between gap-2 px-3 py-1 border-b border-slate-200 dark:border-white/[0.1]">
         <p className="min-w-0 truncate text-base font-bold text-slate-900 dark:text-white">{demo.name}</p>
@@ -184,19 +215,24 @@ const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo,
           </button>
         </div>
       </div>
-      <iframe
-        src={demo.url}
-        title={`${demo.name} demo website`}
-        referrerPolicy="no-referrer"
-        sandbox={DEMO_SANDBOX}
-        className="flex-1 w-full border-0"
-      />
+      <div className="relative flex-1">
+        <iframe
+          src={demo.url}
+          title={`${demo.name} demo website`}
+          referrerPolicy="no-referrer"
+          sandbox={DEMO_SANDBOX}
+          onLoad={() => setLoaded(true)}
+          className="absolute inset-0 w-full h-full border-0"
+        />
+        <DemoLoading name={demo.name} visible={!loaded} />
+      </div>
     </div>
   );
 };
 
 export const DemosSection: React.FC = () => {
-  const isMobile = useIsMobile();
+  const isMobile = useMediaQuery(MOBILE_QUERY);
+  const isTouch = useMediaQuery(TOUCH_QUERY);
   const [activeIndex, setActiveIndex] = useState(0);
   const [viewerOpen, setViewerOpen] = useState(false);
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -280,7 +316,7 @@ export const DemosSection: React.FC = () => {
               type="button"
               onClick={() => setViewerOpen(true)}
               aria-label={`Try the ${active.name} demo full screen`}
-              className="group relative block mx-auto w-full max-w-[360px] aspect-[378/780] max-h-[65dvh] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-white dark:bg-[#07090E]"
+              className="group relative block mx-auto w-full max-w-[360px] aspect-[378/780] max-h-[65dvh] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-50 dark:bg-[#040507]"
             >
               <img
                 key={active.id}
@@ -292,14 +328,10 @@ export const DemosSection: React.FC = () => {
                 decoding="async"
                 className="w-full h-full object-cover object-top"
               />
-              <span className="absolute inset-x-0 bottom-0 flex justify-center pb-5 pt-16 bg-gradient-to-t from-black/70 to-transparent">
-                <span className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl bg-white text-slate-900 font-bold text-base shadow-md">
-                  Tap to try it
-                </span>
-              </span>
+              <TapToTry />
             </button>
           ) : (
-            <DesktopDemoFrame key={active.id} demo={active} />
+            <FramedDemo key={active.id} demo={active} isTouch={isTouch} />
           )}
 
           <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">

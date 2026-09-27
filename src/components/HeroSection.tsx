@@ -13,7 +13,7 @@ export const HeroSection: React.FC = () => {
   const currentService = DEMO_BUSINESS.services[activeService];
 
   return (
-    <section className="relative pt-24 sm:pt-28 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] overflow-hidden border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
+    <section className="relative pt-24 sm:pt-28 pb-16 sm:pb-24 md:pb-14 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] overflow-hidden border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
 
       {/* Ambient Radial Spotlight Effect */}
       <Spotlight
