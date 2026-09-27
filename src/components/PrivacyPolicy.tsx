@@ -39,7 +39,7 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
             </p>
             <p className="mt-2">
               Trading address: 9 Bankside Court, Alsager, Cheshire, ST7, UK.<br />
-              Email: <a href="mailto:dean@designsystemsweb.co.uk" className="text-[#D90429] hover:underline">dean@designsystemsweb.co.uk</a><br />
+              Email: <a href="mailto:dean.wilshaw.web@gmail.com" className="text-[#D90429] hover:underline">dean.wilshaw.web@gmail.com</a><br />
               Phone: <a href="tel:07348733365" className="text-[#D90429] hover:underline">07348 733365</a>
             </p>
           </section>
@@ -106,7 +106,7 @@ export const PrivacyPolicy: React.FC<PrivacyProps> = ({ onBack }) => {
               <li>Right to restrict processing: Limit how your data is used</li>
             </ul>
             <p className="mt-2">
-              To exercise these rights, contact Dean Wilshaw directly via WhatsApp on 07348 733365 or email dean@designsystemsweb.co.uk. Requests are addressed within 30 calendar days without charge.
+              To exercise these rights, contact Dean Wilshaw directly via WhatsApp on 07348 733365 or email dean.wilshaw.web@gmail.com. Requests are addressed within 30 calendar days without charge.
             </p>
           </section>
 

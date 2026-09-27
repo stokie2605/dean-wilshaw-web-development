@@ -22,10 +22,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenWhatsApp, onOpenQuote, onO
               Phone: 07348 733365
             </a>
             <a 
-              href="mailto:dean@designsystemsweb.co.uk" 
+              href="mailto:dean.wilshaw.web@gmail.com" 
               className="hover:text-[#D90429] dark:hover:text-red-400 transition-colors inline-flex items-center min-h-[44px]"
             >
-              Email: dean@designsystemsweb.co.uk
+              Email: dean.wilshaw.web@gmail.com
             </a>
             <span className="text-xs sm:text-sm text-slate-600 dark:text-zinc-400">
               Based in Alsager, covering Stoke on Trent and Cheshire
