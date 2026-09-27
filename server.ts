@@ -245,7 +245,7 @@ async function startServer() {
             content: userPromptContent,
           }
         ],
-        maxTokens: 1024,
+        maxOutputTokens: 1024,
         onError: ({ error }) => {
           console.error("Groq streamText error:", error);
         },
@@ -254,9 +254,8 @@ async function startServer() {
       // Stream the response back as plain text
       res.setHeader("Content-Type", "text/plain; charset=utf-8");
       res.setHeader("Transfer-Encoding", "chunked");
-      res.setHeader("X-Vercel-AI-Data-Stream", "v1");
 
-      result.toDataStreamResponse().body
+      result.toTextStreamResponse().body
         ?.pipeTo(
           new WritableStream({
             write(chunk) {
