@@ -11,11 +11,7 @@ export const HeroSection: React.FC = () => {
   return (
     <section className="relative pt-24 sm:pt-28 pb-16 sm:pb-24 md:pb-14 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] overflow-hidden border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
 
-      {/* Ambient Radial Spotlight Effect */}
-      <Spotlight
-        className="-top-40 left-0 md:left-60 md:-top-20"
-        fill="#D90429"
-      />
+      {/* Ambient Radial Spotlight Effect - Removed to prevent neon glow */}
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
 
@@ -51,7 +47,7 @@ export const HeroSection: React.FC = () => {
 
           <div className="w-full max-w-xs mx-auto relative z-10">
             {/* Titanium Outer Chassis */}
-            <div className="rounded-[2.5rem] p-1.5 bg-gradient-to-b from-slate-700 via-slate-900 to-black border-2 border-slate-600/50 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8),0_0_40px_rgba(217,4,41,0.18)]">
+            <div className="rounded-[2.5rem] p-1.5 bg-[#000000] border-2 border-[#1c1c1c] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)]">
               
               {/* Inner Screen Display (Obsidian Dark Glass) */}
               <div className="rounded-[2.15rem] overflow-hidden bg-[#07090E] border border-white/[0.08] relative">
@@ -102,44 +98,42 @@ export const HeroSection: React.FC = () => {
                         })}
                       </div>
 
-                      {/* Primary Call Card (Luminous Red Glass) */}
-                      <div className="relative rounded-2xl p-4 text-white overflow-hidden bg-gradient-to-br from-[#D90429] via-[#b80322] to-[#7a0216] border border-red-400/30 shadow-[0_8px_30px_rgba(217,4,41,0.35)] backdrop-blur-lg">
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent pointer-events-none"></div>
-
-                        <div className="flex items-center justify-between mb-1">
-                          <p className="text-[9px] font-mono font-bold uppercase tracking-wider text-red-100">
+                      {/* Primary Call Card (Clean Minimal) */}
+                      <div className="rounded-xl p-4 bg-white/[0.03] border border-white/[0.08]">
+                        <div className="flex items-center justify-between mb-3">
+                          <p className="text-[10px] font-semibold tracking-wide text-zinc-400 uppercase">
                             Fast Response
                           </p>
-                          <span className="text-[8px] text-white/80 bg-black/30 px-2 py-0.5 rounded-full font-medium">
+                          <span className="text-[9px] text-zinc-400 font-medium bg-white/[0.04] px-1.5 py-0.5 rounded border border-white/[0.04]">
                             Tap to test
                           </span>
                         </div>
-                        <p className="text-base font-extrabold mb-3 leading-tight tracking-tight text-white drop-shadow-sm">
+                        <p className="text-[15px] font-bold mb-4 tracking-tight text-white">
                           {currentService.headline}
                         </p>
                         <button
                           type="button"
                           onClick={() => setSimState('calling')}
-                          className="w-full bg-white text-slate-950 hover:bg-zinc-100 font-bold py-3 min-h-[44px] rounded-xl shadow-lg flex items-center justify-center gap-2 text-xs transition-transform active:scale-[0.98]"
+                          className="w-full bg-white text-black hover:bg-zinc-200 font-bold py-3 min-h-[44px] rounded-lg flex items-center justify-center gap-2 text-xs transition-colors"
                         >
-                          <Phone className="w-3.5 h-3.5 text-[#D90429]" />
+                          <Phone className="w-3.5 h-3.5" />
                           <span>Tap to Call</span>
                         </button>
                       </div>
 
-                      {/* Secondary WhatsApp Button (Frosted Emerald/Dark Glass) */}
+                      {/* Secondary WhatsApp Button */}
                       <button
                         type="button"
                         onClick={() => setSimState('chat')}
-                        className="w-full bg-white/[0.06] hover:bg-white/[0.1] border border-white/[0.12] text-white font-bold py-3 min-h-[44px] rounded-xl shadow-sm backdrop-blur-md flex items-center justify-center gap-2 text-xs transition-transform active:scale-[0.98]"
+                        className="w-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] text-white font-semibold py-3 min-h-[44px] rounded-xl flex items-center justify-center gap-2 text-xs transition-colors"
                       >
-                        <MessageSquare className="w-3.5 h-3.5 fill-current text-emerald-400" />
+                        <MessageSquare className="w-3.5 h-3.5 fill-current text-[#25D366]" />
                         <span>Message on WhatsApp</span>
                       </button>
 
-                      {/* Example layout note (Frosted Glass Card) */}
-                      <div className="bg-white/[0.03] backdrop-blur-md rounded-xl p-3 border border-white/[0.08] shadow-sm">
-                        <p className="text-[10px] text-zinc-300 leading-snug text-center">Example layout</p>
+                      {/* Example layout note */}
+                      <div className="bg-white/[0.02] rounded-xl p-3 border border-white/[0.05]">
+                        <p className="text-[10px] text-zinc-500 font-medium text-center">Example layout</p>
                       </div>
                     </>
                   )}
