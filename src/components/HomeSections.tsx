@@ -12,9 +12,11 @@ const HEADING_CLASS =
 /* ------------------------------------------------------------------ */
 
 const DELIVERABLES = [
-  { title: 'Built for speed', text: 'Pages open quickly on any phone.' },
-  { title: 'One tap to contact you', text: 'Customers call or WhatsApp you straight away.' },
-  { title: 'Yours to keep', text: 'You own the finished site once it is paid in full.' },
+  { title: 'Top of Google Maps', text: 'I optimize your profile so you show up first when local customers search for your trade.' },
+  { title: 'Mobile Speed Boost', text: 'I fix slow websites to ensure they load instantly on mobile phones and stop you losing impatient customers.' },
+  { title: 'Instant Lead Alerts', text: 'I connect your site directly to your phone so you get a text the second a customer requests a quote.' },
+  { title: 'Accessible Design', text: 'I ensure your site is legally compliant and completely easy to use for all visitors.' },
+  { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can run your business.' },
 ];
 
 export const DeliverablesSection: React.FC = () => (
