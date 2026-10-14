@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MessageSquare, ArrowDown } from 'lucide-react';
 
 const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
@@ -9,7 +9,78 @@ const LATEST_BUILD = {
   name: 'Norden Carpets & Flooring',
   place: 'Rochdale',
   url: 'https://nordencarpets.co.uk/',
-  image: '/demos/norden.webp',
+};
+
+const SCREENS = [
+  { src: '/demos/norden-hero.webp', label: 'homepage' },
+  { src: '/demos/norden.webp', label: 'reviews' },
+  { src: '/demos/norden-jobs.webp', label: 'recent jobs gallery' },
+];
+
+/* Position of each slot: 0 front, 1 back right, 2 back left */
+const SLOT_CLASS = [
+  'z-30 translate-x-0 rotate-0 scale-100 opacity-100',
+  'z-10 translate-x-[38%] translate-y-4 rotate-[8deg] scale-[0.82] opacity-70 hover:opacity-100',
+  'z-10 -translate-x-[38%] translate-y-4 -rotate-[8deg] scale-[0.82] opacity-70 hover:opacity-100',
+];
+
+const PhoneStack: React.FC = () => {
+  const [front, setFront] = useState(0);
+
+  return (
+    <div className="relative w-full max-w-[420px] mx-auto h-[500px] sm:h-[560px] flex items-center justify-center">
+      {SCREENS.map((screen, i) => {
+        const slot = (i - front + SCREENS.length) % SCREENS.length;
+        const isFront = slot === 0;
+        const phone = (
+          <div className="rounded-[2.2rem] p-1.5 bg-black border-2 border-[#1c1c1c] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)]">
+            <div className="rounded-[1.9rem] overflow-hidden bg-white relative">
+              <div className="h-5 bg-black flex items-center justify-center pt-0.5">
+                <div className="w-16 h-2.5 rounded-full bg-zinc-900 border border-white/10"></div>
+              </div>
+              <img
+                src={screen.src}
+                alt={`${LATEST_BUILD.name} ${screen.label} on a phone`}
+                width={378}
+                height={780}
+                decoding="async"
+                fetchPriority={i === 0 ? 'high' : 'low'}
+                className="block w-full h-auto"
+                draggable={false}
+              />
+            </div>
+          </div>
+        );
+
+        const base = `absolute w-[210px] sm:w-[240px] transition-all duration-500 ease-out ${SLOT_CLASS[slot]}`;
+
+        return isFront ? (
+          <a
+            key={screen.src}
+            href={LATEST_BUILD.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open the ${LATEST_BUILD.name} website in a new tab`}
+            className={base}
+          >
+            {phone}
+          </a>
+        ) : (
+          <button
+            key={screen.src}
+            type="button"
+            onMouseEnter={() => setFront(i)}
+            onFocus={() => setFront(i)}
+            onClick={() => setFront(i)}
+            aria-label={`Show the ${screen.label} screen`}
+            className={`${base} cursor-pointer`}
+          >
+            {phone}
+          </button>
+        );
+      })}
+    </div>
+  );
 };
 
 export const HeroSection: React.FC = () => (
@@ -46,40 +117,9 @@ export const HeroSection: React.FC = () => (
         </div>
       </div>
 
-      {/* Right: latest real build in a phone frame */}
+      {/* Right: latest real build on three phones. Hover or tap a side phone to bring it to the front */}
       <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center py-6">
-
-        {/* Backdrop glass panes */}
-        <div aria-hidden="true" className="absolute -inset-4 sm:-inset-6 pointer-events-none flex items-center justify-center overflow-visible">
-          <div className="absolute w-64 h-80 -rotate-12 -translate-x-12 -translate-y-3 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-slate-200 dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
-          <div className="absolute w-64 h-80 rotate-12 translate-x-12 translate-y-5 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-slate-200 dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
-        </div>
-
-        <a
-          href={LATEST_BUILD.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Open the ${LATEST_BUILD.name} website in a new tab`}
-          className="group w-full max-w-[280px] mx-auto relative z-10 block"
-        >
-          {/* Phone chassis */}
-          <div className="rounded-[2.5rem] p-1.5 bg-black border-2 border-[#1c1c1c] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] transition-transform duration-200 group-hover:-translate-y-1">
-            <div className="rounded-[2.15rem] overflow-hidden bg-white relative">
-              <div className="h-6 bg-black flex items-center justify-center pt-1">
-                <div className="w-20 h-3 rounded-full bg-zinc-900 border border-white/10"></div>
-              </div>
-              <img
-                src={LATEST_BUILD.image}
-                alt={`${LATEST_BUILD.name} website on a phone`}
-                width={378}
-                height={780}
-                decoding="async"
-                fetchPriority="high"
-                className="block w-full h-auto"
-              />
-            </div>
-          </div>
-        </a>
+        <PhoneStack />
 
         <p className="relative z-10 mt-4 text-sm font-semibold text-slate-600 dark:text-zinc-400 text-center">
           Latest build:{' '}
