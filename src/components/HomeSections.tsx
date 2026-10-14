@@ -70,7 +70,7 @@ const DEMOS: DemoEntry[] = [
     id: 'norden',
     builtFor: 'For a family flooring business that wants more home measure bookings.',
     features: ['Free quote form that comes straight to the phone', 'WhatsApp and call buttons always on screen', 'Real reviews and a gallery of 42 job photos'],
-    tab: 'Norden Carpets',
+    tab: 'Norden',
     name: 'Norden Carpets & Flooring',
     text: 'Carpets and flooring business in Rochdale. A live client website.',
     url: 'https://nordencarpets.co.uk/',
@@ -345,7 +345,7 @@ export const DemosSection: React.FC = () => {
         <div
           role="tablist"
           aria-label="Choose an example"
-          className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-px rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-300 dark:bg-white/[0.14]"
+          className="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0 flex gap-6 sm:gap-8 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-b border-slate-300 dark:border-white/[0.14]"
         >
           {DEMOS.map((demo, i) => {
             const isActive = i === activeIndex;
@@ -359,12 +359,15 @@ export const DemosSection: React.FC = () => {
                 aria-selected={isActive}
                 aria-controls="demo-panel"
                 tabIndex={isActive ? 0 : -1}
-                onClick={() => setActiveIndex(i)}
+                onClick={(e) => {
+                  setActiveIndex(i);
+                  e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                }}
                 onKeyDown={handleTabKeyDown}
-                className={`${demo.kind === 'client' ? 'col-span-2 md:col-span-1 ' : ''}min-h-[48px] px-3 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D90429] ${
+                className={`relative shrink-0 min-h-[48px] pb-1 text-lg font-bold whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D90429] rounded-sm after:absolute after:left-0 after:right-0 after:-bottom-px after:h-[3px] after:rounded-full after:transition-colors ${
                   isActive
-                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black'
-                    : 'bg-white text-slate-700 hover:bg-slate-100 dark:bg-[#07090E] dark:text-zinc-300 dark:hover:bg-white/[0.06]'
+                    ? 'text-slate-900 dark:text-white after:bg-[#D90429]'
+                    : 'text-slate-500 hover:text-slate-800 dark:text-zinc-500 dark:hover:text-zinc-200 after:bg-transparent'
                 }`}
               >
                 {demo.tab}
