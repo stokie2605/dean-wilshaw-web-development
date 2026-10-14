@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { X } from 'lucide-react';
+import { X, Check, MessageSquare } from 'lucide-react';
 
 const SECTION_CLASS =
   'px-4 sm:px-6 lg:px-8 py-14 sm:py-20 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08]';
@@ -53,6 +53,10 @@ type DemoEntry = {
   text: string;
   url: string;
   kind: 'client' | 'concept';
+  /* Who the site is for, in one line */
+  builtFor: string;
+  /* Three things it does for the business */
+  features: [string, string, string];
   /* Phone screenshot (378 x 780 webp) shown on mobile before the live site loads */
   preview?: string;
   /* False when the site blocks being shown in a frame: desktop shows the preview image instead */
@@ -64,6 +68,8 @@ type DemoEntry = {
 const DEMOS: DemoEntry[] = [
   {
     id: 'norden',
+    builtFor: 'For a family flooring business that wants more home measure bookings.',
+    features: ['Free quote form that comes straight to the phone', 'WhatsApp and call buttons always on screen', 'Real reviews and a gallery of 42 job photos'],
     tab: 'Norden Carpets',
     name: 'Norden Carpets & Flooring',
     text: 'Carpets and flooring business in Rochdale. A live client website.',
@@ -75,6 +81,8 @@ const DEMOS: DemoEntry[] = [
   },
   {
     id: 'roofing',
+    builtFor: 'For a roofer who wants leak and storm damage jobs coming in.',
+    features: ['Leak report form for quick enquiries', 'Tap to call for emergency repairs', 'Services and areas covered, clear on a phone'],
     tab: 'Roofing',
     name: 'Etruria Roofing',
     text: 'Roofing website with a leak report form.',
@@ -84,6 +92,8 @@ const DEMOS: DemoEntry[] = [
   },
   {
     id: 'plumbing',
+    builtFor: 'For a plumber or heating engineer handling urgent callouts.',
+    features: ['Callout request form for leaks and breakdowns', 'Boiler service and repair enquiries', 'One tap call and WhatsApp buttons'],
     tab: 'Plumbing',
     name: 'Kiln Plumbing',
     text: 'Plumbing and boiler website with callout requests.',
@@ -93,6 +103,8 @@ const DEMOS: DemoEntry[] = [
   },
   {
     id: 'garage',
+    builtFor: 'For an independent garage that wants its diary filled.',
+    features: ['MOT and service booking requests', 'Repairs and diagnostics listed clearly', 'Opening hours and directions in one place'],
     tab: 'Garage',
     name: 'Longport Motors',
     text: 'Garage website with MOT and servicing bookings.',
@@ -102,6 +114,8 @@ const DEMOS: DemoEntry[] = [
   },
   {
     id: 'salon',
+    builtFor: 'For a salon or barber that wants fewer missed bookings.',
+    features: ['Treatments and prices laid out simply', 'Booking requests from the phone', 'Location and opening times easy to find'],
     tab: 'Salon',
     name: 'Platform Hair Crewe',
     text: 'Salon and barber website with treatments and bookings.',
@@ -416,16 +430,45 @@ export const DemosSection: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 {active.name}
               </h3>
-              <p className="mt-1 text-base text-slate-600 dark:text-zinc-400">{active.text}</p>
+              <p className="mt-1 text-base text-slate-600 dark:text-zinc-400">{active.builtFor}</p>
+              <ul className="mt-3 flex flex-col gap-1.5">
+                {active.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2 text-base text-slate-700 dark:text-zinc-300">
+                    <Check className="w-4 h-4 mt-1 shrink-0 text-[#D90429]" aria-hidden="true" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
             <a
               href={active.url}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Open the ${active.name} website in a new tab`}
-              className="shrink-0 inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold text-base hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+              className="sm:self-start shrink-0 inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold text-base hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
             >
               {active.kind === 'client' ? 'Visit Site' : 'Open Concept'}
+            </a>
+          </div>
+
+          {/* Invite: turn a concept into their own site */}
+          <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl border border-slate-300 dark:border-white/[0.14] bg-white dark:bg-white/[0.03] p-5 sm:p-6">
+            <div>
+              <p className="text-lg font-bold text-slate-900 dark:text-white">Like one of these?</p>
+              <p className="mt-1 text-base text-slate-600 dark:text-zinc-400">
+                I'll build it around your business, your photos and your area.
+              </p>
+            </div>
+            <a
+              href={`https://wa.me/447348733365?text=${encodeURIComponent(
+                `Hi Dean, I like the ${active.tab} example on your website. Could you build something like it for my business?`
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold text-base whitespace-nowrap transition-colors"
+            >
+              <MessageSquare className="w-4 h-4 fill-black" aria-hidden="true" />
+              <span>Ask about this on WhatsApp</span>
             </a>
           </div>
         </div>
