@@ -30,12 +30,13 @@ a{color:inherit}
 .btn-teal{background:var(--teal);color:var(--white)}
 .btn-ghost{background:var(--white);color:var(--teal);box-shadow:inset 0 0 0 2px var(--teal)}
 
+.top{background:var(--teal);color:var(--white)}
 .top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--teal)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--white)}
 .brand b{font-size:20px;font-weight:800;letter-spacing:-.02em;white-space:nowrap}
-.brand small{display:block;font-size:13px;color:var(--mute);font-weight:500;margin-top:-3px;white-space:nowrap}
+.brand small{display:block;font-size:13px;color:#BFD6DB;font-weight:500;margin-top:-3px;white-space:nowrap}
 .top nav{display:flex;gap:10px;align-items:center}
-.gas{font-size:14px;font-weight:600;color:var(--mute);padding:6px 12px;border:1.5px solid #CFDCDF;border-radius:999px}
+.gas{font-size:14px;font-weight:600;color:#BFD6DB;padding:6px 12px;border:1.5px solid #3E8794;border-radius:999px}
 @media (max-width:640px){.gas{display:none}.top .btn{min-height:44px;padding:0 16px;font-size:15px}}
 
 /* Hero: water level */
@@ -49,14 +50,14 @@ a{color:inherit}
 .water svg{position:absolute;top:-23px;left:0;width:100%;height:24px}
 
 /* Triage */
-.triage{background:var(--teal);color:var(--white);padding:24px 0 72px}
-.triage h2{font-size:clamp(30px,4.6vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.03em}
-.triage .lede{margin-top:10px;color:#BFD6DB;max-width:50ch}
+.triage{background:var(--teal);color:var(--white);padding:clamp(32px,6vw,72px) 0 72px;border-top:1px solid #1D6A79}
+.triage h1{font-size:clamp(48px,9vw,112px);line-height:.95;font-weight:800;letter-spacing:-.03em}
+.triage .lede{margin-top:16px;color:#BFD6DB;max-width:52ch;font-size:clamp(17px,2vw,20px)}
 .issues{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:28px}
 @media (min-width:860px){.issues{grid-template-columns:repeat(4,1fr)}}
-.issue{font:inherit;text-align:left;cursor:pointer;background:var(--teal-2);color:var(--white);border:2px solid transparent;border-radius:16px;padding:16px;min-height:96px;display:flex;flex-direction:column;justify-content:space-between;gap:10px}
-.issue svg{width:28px;height:28px}
-.issue span{font-weight:700;font-size:18px;line-height:1.2}
+.issue{font:inherit;text-align:left;cursor:pointer;background:var(--teal-2);color:var(--white);border:2px solid transparent;border-radius:20px;padding:18px;min-height:clamp(110px,16vw,170px);display:flex;flex-direction:column;justify-content:space-between;gap:10px}
+.issue svg{width:34px;height:34px}
+.issue span{font-weight:700;font-size:clamp(18px,2vw,22px);line-height:1.2}
 .issue:hover{border-color:#3E8794}
 .issue[aria-pressed="true"]{background:var(--white);color:var(--teal);border-color:var(--white)}
 .panel{margin-top:16px;background:var(--white);color:var(--ink);border-radius:20px;padding:clamp(20px,3vw,32px);display:grid;gap:28px}
@@ -77,6 +78,8 @@ form .btn{width:100%;margin-top:18px}
 .sent.show{display:block}
 
 /* Services */
+.svc-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:3px solid var(--teal);padding-bottom:12px}
+.kiln-sm{width:64px;height:64px;flex:none}
 .services{padding:72px 0}
 .services h2,.trust h2{font-size:clamp(30px,4.6vw,48px);line-height:1.05;font-weight:800;letter-spacing:-.03em;color:var(--teal)}
 .svc{margin-top:28px;display:grid;gap:0}
@@ -112,37 +115,20 @@ footer a{color:var(--white)}
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#">
-      <svg width="30" height="38" viewBox="0 0 30 38" aria-hidden="true"><path d="M11 2h8v5c0 3 9 9 9 19 0 6-3 10-6 10H8c-3 0-6-4-6-10 0-10 9-16 9-19z" fill="#0E4D5C"/><path d="M15 16c3 4 4 6 4 8a4 4 0 0 1-8 0c0-2 1-4 4-8z" fill="#C47A3A"/></svg>
+      <svg width="30" height="38" viewBox="0 0 30 38" aria-hidden="true"><path d="M11 2h8v5c0 3 9 9 9 19 0 6-3 10-6 10H8c-3 0-6-4-6-10 0-10 9-16 9-19z" fill="#FFFFFF"/><path d="M15 16c3 4 4 6 4 8a4 4 0 0 1-8 0c0-2 1-4 4-8z" fill="#C47A3A"/></svg>
       <span><b>Kiln Plumbing</b><small>& Heating, Stoke on Trent</small></span>
     </a>
     <nav>
       <span class="gas">Gas Safe registered</span>
-      <a class="btn btn-teal" href="tel:07700900537" data-demo="call">Call us</a>
+      <a class="btn btn-copper" href="tel:07700900537" data-demo="call">Call us</a>
     </nav>
   </div>
 </header>
 
-<section class="hero">
-  <div class="wrap">
-    <h1>Leaks, boilers and heating, sorted properly.</h1>
-    <p class="sub">A local plumbing and heating firm from the Potteries. Tell us what's going on and we'll tell you what to do right now, then get an engineer out.</p>
-    <div class="ctas">
-      <a class="btn btn-copper" href="#help">Get help with a problem</a>
-      <a class="btn btn-ghost" href="#services">Book a boiler service</a>
-    </div>
-  </div>
-  <svg class="kiln" viewBox="0 0 300 300" aria-hidden="true">
-    <path d="M118 20h64v34c0 18 70 60 70 160 0 30-8 64-14 86H62c-6-22-14-56-14-86 0-100 70-142 70-160z" fill="currentColor"/>
-    <rect x="128" y="236" width="44" height="64" rx="22" fill="#EEF3F4"/>
-    <path d="M150 120c16 22 22 34 22 46a22 22 0 0 1-44 0c0-12 6-24 22-46z" fill="#C47A3A"/>
-  </svg>
-  <div class="water"><svg viewBox="0 0 1200 24" preserveAspectRatio="none" aria-hidden="true"><path d="M0 12c100-14 200 14 300 0s200 14 300 0 200-14 300 0 200 14 300 0v12H0z" fill="#0E4D5C"/></svg></div>
-</section>
-
 <section class="triage" id="help">
   <div class="wrap">
-    <h2>What's going on?</h2>
-    <p class="lede">Pick the problem. You'll get the steps to take right now, and a callout request goes straight to the engineer's phone.</p>
+    <h1>What's going on?</h1>
+    <p class="lede">Plumbing and heating across Stoke on Trent. Pick the problem and we'll tell you what to do right now, then get an engineer out.</p>
     <div class="issues" role="group" aria-label="Choose your problem">
       <button class="issue" type="button" data-issue="leak" aria-pressed="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg><span>Water leaking</span></button>
@@ -180,7 +166,7 @@ footer a{color:var(--white)}
 
 <section class="services" id="services">
   <div class="wrap">
-    <h2>Everything we do</h2>
+    <div class="svc-head"><h2>Everything we do</h2><svg class="kiln-sm" viewBox="0 0 300 300" aria-hidden="true"><path d="M118 20h64v34c0 18 70 60 70 160 0 30-8 64-14 86H62c-6-22-14-56-14-86 0-100 70-142 70-160z" fill="#0E4D5C"/><rect x="128" y="236" width="44" height="64" rx="22" fill="#fff"/><path d="M150 120c16 22 22 34 22 46a22 22 0 0 1-44 0c0-12 6-24 22-46z" fill="#C47A3A"/></svg></div>
     <div class="svc">
       <div><h3>Boiler servicing</h3><p>Yearly service to keep your warranty valid and your boiler safe.</p></div>
       <div><h3>Boiler repairs</h3><p>Most makes fixed, with common parts carried on the van.</p></div>

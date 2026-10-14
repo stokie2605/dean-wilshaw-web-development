@@ -44,18 +44,27 @@ img,svg{display:block;max-width:100%}
 .brand b,.brand small{white-space:nowrap}
 
 /* Hero with pitched roof edge */
-.hero{background:var(--slate);color:var(--white);padding:40px 0 120px;clip-path:polygon(0 0,100% 0,100% calc(100% - 70px),50% 100%,0 calc(100% - 70px));position:relative}
+.hero{background:var(--slate);color:var(--white);padding:40px 0 110px;clip-path:polygon(0 0,100% 0,100% calc(100% - 70px),50% 100%,0 calc(100% - 70px));position:relative}
 .status{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:#D7DEE2;margin-bottom:18px}
 .status i{width:10px;height:10px;border-radius:50%;background:var(--hiviz);box-shadow:0 0 0 4px rgba(243,198,35,.2)}
-.hero h1{font-size:clamp(46px,9vw,104px);line-height:.92;font-weight:900;font-stretch:68%;letter-spacing:-.01em;max-width:11ch}
+.hero h1{font-size:clamp(46px,7.4vw,92px);line-height:.92;font-weight:900;font-stretch:68%;letter-spacing:-.01em;max-width:11ch}
 .hero p{margin-top:20px;font-size:clamp(17px,2vw,20px);color:#C9D2D7;max-width:46ch}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
 .hero-facts{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:34px;font-size:15px;color:#C9D2D7}
 .hero-facts strong{color:var(--white);font-weight:800}
 
-.hero::after{content:"";position:absolute;top:0;right:0;bottom:0;width:44%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='48'%3E%3Cg fill='none' stroke='%238E9AA2' stroke-width='2'%3E%3Cpath d='M0 23.5h80M0 47.5h80M20 0v24M60 0v24M0 24v24M40 24v24M80 24v24'/%3E%3C/g%3E%3C/svg%3E");opacity:.22;-webkit-mask-image:linear-gradient(90deg,transparent,#000 40%);mask-image:linear-gradient(90deg,transparent,#000 40%);pointer-events:none}
-@media (max-width:859px){.hero::after{display:none}}
 .hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;gap:32px;align-items:center}
+@media (min-width:900px){.hero-grid{grid-template-columns:1fr 1.05fr;gap:48px}}
+.hero .house{margin-top:0;background:var(--slate-2);border-color:var(--slate-3)}
+.hero .house rect[fill="#E6EAEC"]{fill:#E6EAEC}
+.hero .chip{background:transparent;color:var(--white);border-color:var(--slate-3)}
+.hero .chip[aria-pressed="true"]{background:var(--hiviz);border-color:var(--hiviz);color:var(--ink)}
+.hero .zone.on .shape,.hero .zone.on .shape.win{fill:var(--hiviz)}
+.finder-one{max-width:760px}
+.finder-one form.report{display:grid;gap:0}
+@media (min-width:700px){.finder-one .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}}
+.hero-facts-band{background:var(--white);border-bottom:1px solid #D9DFE2}
 /* Leak finder */
 .finder{padding:56px 0 64px}
 .finder-grid{display:grid;gap:32px;align-items:start}
@@ -145,28 +154,17 @@ footer a{color:var(--white)}
 </header>
 
 <section class="hero">
-  <div class="wrap">
-    <p class="status"><i></i>Taking emergency callouts today</p>
-    <h1>Roof leaking? We'll be out today.</h1>
-    <p>Slipped tiles, storm damage, leaking flat roofs and chimneys across Stoke on Trent. Tell us where the water's coming in and we'll call you back within the hour.</p>
-    <div class="ctas">
-      <a class="btn btn-hiviz" href="#report">Report a leak</a>
-      <a class="btn btn-line" href="tel:07700900412" data-demo="call">Call 07700 900412</a>
-    </div>
-    <div class="hero-facts">
-      <span><strong>Free</strong> roof checks</span>
-      <span><strong>10 year</strong> guarantee on new roofs</span>
-      <span><strong>Photos</strong> of every repair sent to you</span>
-    </div>
-  </div>
-</section>
-
-<section class="finder" id="report">
-  <div class="wrap finder-grid">
+  <div class="wrap hero-grid">
     <div>
-      <h2>Where's the water getting in?</h2>
-      <p class="lede">Tap the part of the house. It saves you explaining it on the phone, and we turn up with the right materials.</p>
-      <div class="house">
+      <p class="status"><i></i>Taking emergency callouts today</p>
+      <h1>Roof leaking? Show us where.</h1>
+      <p>Tap the part of the house where the water's getting in. We'll call you back within the hour and turn up with the right materials.</p>
+      <div class="ctas">
+        <a class="btn btn-hiviz" href="#report">Send a leak report</a>
+        <a class="btn btn-line" href="tel:07700900412" data-demo="call">Call 07700 900412</a>
+      </div>
+    </div>
+    <div class="house">
         <svg viewBox="0 0 520 360" role="group" aria-label="House diagram. Choose where the leak is">
           <g class="zone" data-zone="Chimney" tabindex="0" role="button" aria-label="Chimney">
             <rect class="shape" x="330" y="40" width="44" height="80"/>
@@ -200,8 +198,11 @@ footer a{color:var(--white)}
           <button class="chip" type="button" data-zone="Flat roof extension" aria-pressed="false">Flat roof</button>
         </div>
       </div>
-    </div>
+  </div>
+</section>
 
+<section class="finder" id="report">
+  <div class="wrap finder-one">
     <form class="report" novalidate>
       <h3>Report a leak</h3>
       <p class="picked">Leak location: <b id="picked">Main roof</b></p>
@@ -211,10 +212,12 @@ footer a{color:var(--white)}
         <label><input type="radio" name="urgency" value="today" checked> Dripping now</label>
         <label><input type="radio" name="urgency" value="week"> This week</label>
       </div>
-      <label for="r-name">Your name</label>
-      <input id="r-name" name="name" autocomplete="name" placeholder="First name is fine">
-      <label for="r-phone">Mobile number</label>
-      <input id="r-phone" name="phone" type="tel" autocomplete="tel" placeholder="So we can call you back">
+      <div class="two">
+        <div><label for="r-name">Your name</label>
+        <input id="r-name" name="name" autocomplete="name" placeholder="First name is fine"></div>
+        <div><label for="r-phone">Mobile number</label>
+        <input id="r-phone" name="phone" type="tel" autocomplete="tel" placeholder="So we can call you back"></div>
+      </div>
       <label for="r-post">Postcode</label>
       <input id="r-post" name="postcode" autocomplete="postal-code" placeholder="ST1 5">
       <button class="btn btn-hiviz" type="submit">Send leak report</button>
