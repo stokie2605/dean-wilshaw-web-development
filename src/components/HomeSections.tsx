@@ -46,13 +46,34 @@ export const DeliverablesSection: React.FC = () => (
 /* Demos: one stage with a segmented switcher                          */
 /* ------------------------------------------------------------------ */
 
-const DEMOS = [
+type DemoEntry = {
+  id: string;
+  tab: string;
+  name: string;
+  text: string;
+  url: string;
+  kind: 'client' | 'concept';
+  /* Phone screenshot (378 x 780 webp) shown on mobile before the live site loads */
+  preview?: string;
+};
+
+const DEMOS: DemoEntry[] = [
+  {
+    id: 'norden',
+    tab: 'Norden Carpets',
+    name: 'Norden Carpets & Flooring',
+    text: 'Carpets and flooring business in Rochdale. A live client website.',
+    url: 'https://nordencarpets.co.uk/',
+    kind: 'client',
+    preview: '/demos/norden.webp',
+  },
   {
     id: 'roofing',
     tab: 'Roofing',
     name: 'Etruria Roofing',
     text: 'Roofing website with a leak report form.',
     url: 'https://etruria-roofing-demo.netlify.app/',
+    kind: 'concept',
     preview: '/demos/roofing.webp',
   },
   {
@@ -61,6 +82,7 @@ const DEMOS = [
     name: 'Kiln Plumbing',
     text: 'Plumbing and boiler website with callout requests.',
     url: 'https://kiln-plumbing-demo.netlify.app/',
+    kind: 'concept',
     preview: '/demos/plumbing.webp',
   },
   {
@@ -69,6 +91,7 @@ const DEMOS = [
     name: 'Longport Motors',
     text: 'Garage website with MOT and servicing bookings.',
     url: 'https://longport-motors-demo.netlify.app/',
+    kind: 'concept',
     preview: '/demos/garage.webp',
   },
   {
@@ -77,11 +100,12 @@ const DEMOS = [
     name: 'Platform Hair Crewe',
     text: 'Salon and barber website with treatments and bookings.',
     url: 'https://platform-hair-crewe-demo.netlify.app/',
+    kind: 'concept',
     preview: '/demos/salon.webp',
   },
 ];
 
-type Demo = (typeof DEMOS)[number];
+type Demo = DemoEntry;
 
 // Lets the demo's own call, WhatsApp and booking links work inside the frame
 const DEMO_SANDBOX =
@@ -137,7 +161,7 @@ const FramedDemo: React.FC<{ demo: Demo; isTouch: boolean }> = ({ demo, isTouch 
     <div className="relative w-full h-[600px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-50 dark:bg-[#040507]">
       <iframe
         src={demo.url}
-        title={`${demo.name} demo website`}
+        title={`${demo.name} website`}
         loading="lazy"
         referrerPolicy="no-referrer"
         sandbox={DEMO_SANDBOX}
@@ -150,7 +174,7 @@ const FramedDemo: React.FC<{ demo: Demo; isTouch: boolean }> = ({ demo, isTouch 
         <button
           type="button"
           onClick={() => setActivated(true)}
-          aria-label={`Try the ${demo.name} demo`}
+          aria-label={`Try the ${demo.name} website`}
           className="absolute inset-0 z-20 w-full h-full"
         >
           <TapToTry />
@@ -185,7 +209,7 @@ const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo,
     <div
       role="dialog"
       aria-modal="true"
-      aria-label={`${demo.name} demo`}
+      aria-label={`${demo.name} website`}
       className="fixed inset-0 z-[60] flex flex-col bg-slate-50 dark:bg-[#040507] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
     >
       <div className="flex items-center justify-between gap-2 px-3 py-1 border-b border-slate-200 dark:border-white/[0.1]">
@@ -203,7 +227,7 @@ const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo,
             ref={closeRef}
             type="button"
             onClick={onClose}
-            aria-label="Close the demo"
+            aria-label="Close the website"
             className="inline-flex items-center justify-center min-w-[48px] min-h-[48px] rounded-xl text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06]"
           >
             <X className="w-6 h-6" aria-hidden="true" />
@@ -213,7 +237,7 @@ const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo,
       <div className="relative flex-1">
         <iframe
           src={demo.url}
-          title={`${demo.name} demo website`}
+          title={`${demo.name} website`}
           referrerPolicy="no-referrer"
           sandbox={DEMO_SANDBOX}
           onLoad={() => setLoaded(true)}
@@ -265,17 +289,17 @@ export const DemosSection: React.FC = () => {
     <section id="demos" aria-labelledby="demos-heading" className={`scroll-mt-20 sm:scroll-mt-24 ${SECTION_CLASS}`}>
       <div className="max-w-5xl mx-auto">
         <h2 id="demos-heading" className={HEADING_CLASS}>
-          Example websites
+          My work
         </h2>
         <p className="mt-3 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          Working mobile builds made for local trades and services.
+          A live client website, plus concept designs showing what I can build for your trade.
         </p>
 
         {/* Segmented switcher */}
         <div
           role="tablist"
           aria-label="Choose an example"
-          className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-px rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-300 dark:bg-white/[0.14]"
+          className="mt-8 grid grid-cols-2 md:grid-cols-5 gap-px rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-300 dark:bg-white/[0.14]"
         >
           {DEMOS.map((demo, i) => {
             const isActive = i === activeIndex;
@@ -291,7 +315,7 @@ export const DemosSection: React.FC = () => {
                 tabIndex={isActive ? 0 : -1}
                 onClick={() => setActiveIndex(i)}
                 onKeyDown={handleTabKeyDown}
-                className={`min-h-[48px] px-3 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D90429] ${
+                className={`${demo.kind === 'client' ? 'col-span-2 md:col-span-1 ' : ''}min-h-[48px] px-3 text-base font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#D90429] ${
                   isActive
                     ? 'bg-slate-900 text-white dark:bg-white dark:text-black'
                     : 'bg-white text-slate-700 hover:bg-slate-100 dark:bg-[#07090E] dark:text-zinc-300 dark:hover:bg-white/[0.06]'
@@ -310,19 +334,26 @@ export const DemosSection: React.FC = () => {
               ref={previewRef}
               type="button"
               onClick={() => setViewerOpen(true)}
-              aria-label={`Try the ${active.name} demo full screen`}
+              aria-label={`Try the ${active.name} website full screen`}
               className="group relative block mx-auto w-full max-w-[360px] aspect-[378/780] max-h-[65dvh] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-50 dark:bg-[#040507]"
             >
-              <img
-                key={active.id}
-                src={active.preview}
-                alt=""
-                width={378}
-                height={780}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-full object-cover object-top"
-              />
+              {active.preview ? (
+                <img
+                  key={active.id}
+                  src={active.preview}
+                  alt=""
+                  width={378}
+                  height={780}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover object-top"
+                />
+              ) : (
+                <span className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 pb-24 text-center">
+                  <span className="text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">{active.name}</span>
+                  <span className="text-base text-slate-600 dark:text-zinc-400">Live client website</span>
+                </span>
+              )}
               <TapToTry />
             </button>
           ) : (
@@ -331,6 +362,15 @@ export const DemosSection: React.FC = () => {
 
           <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
+              <p
+                className={`inline-flex items-center px-2.5 py-1 mb-2 rounded-md text-sm font-semibold ${
+                  active.kind === 'client'
+                    ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-500/15 dark:text-emerald-300'
+                    : 'bg-slate-200 text-slate-700 dark:bg-white/[0.08] dark:text-zinc-300'
+                }`}
+              >
+                {active.kind === 'client' ? 'Client site, live' : 'Concept design'}
+              </p>
               <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
                 {active.name}
               </h3>
@@ -340,10 +380,10 @@ export const DemosSection: React.FC = () => {
               href={active.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Open the ${active.name} demo in a new tab`}
+              aria-label={`Open the ${active.name} website in a new tab`}
               className="shrink-0 inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold text-base hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
             >
-              Open Demo
+              {active.kind === 'client' ? 'Visit Site' : 'Open Concept'}
             </a>
           </div>
         </div>

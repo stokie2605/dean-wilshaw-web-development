@@ -63,7 +63,7 @@ export default function App() {
         {/* 2. What you get */}
         <DeliverablesSection />
 
-        {/* 3. Example websites */}
+        {/* 3. My work: client site and concept designs */}
         <DemosSection />
 
         {/* 4. Web apps */}
