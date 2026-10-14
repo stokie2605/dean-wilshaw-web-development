@@ -1,230 +1,100 @@
-import React, { useState } from 'react';
-import { Spotlight } from './ui/Spotlight';
-import { MessageSquare, Phone, Wrench, PhoneCall, X, RotateCcw } from 'lucide-react';
-import { DEMO_BUSINESS } from '../lib/demoBusiness';
+import React from 'react';
+import { MessageSquare, ArrowDown } from 'lucide-react';
 
-export const HeroSection: React.FC = () => {
-  const [activeService, setActiveService] = useState(0);
-  const [simState, setSimState] = useState<'idle' | 'calling' | 'chat'>('idle');
-  const currentService = DEMO_BUSINESS.services[activeService];
+const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
+  "Hi Dean, I'd like to get a quote for a website for my business."
+)}`;
 
-  return (
-    <section className="relative pt-24 sm:pt-28 pb-16 sm:pb-24 md:pb-14 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] overflow-hidden border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
-
-      {/* Ambient Radial Spotlight Effect - Removed to prevent neon glow */}
-
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
-
-        {/* Left Column: Hero Copy */}
-        <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 items-start text-left z-10">
-
-          {/* Main Display Headline */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-zinc-100 transition-colors duration-300">
-            Websites and web apps built for phones.
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal transition-colors duration-300">
-            Fast websites and simple web apps for local businesses across Stoke on Trent and Cheshire. You deal directly with Dean from start to finish.
-          </p>
-        </div>
-
-        {/* Right Column: 2026 Dark Obsidian Glass Showcase Simulator */}
-        <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center py-6">
-
-          {/* Ambient Frosted Glass Planes (Replicating Meta Ad Backdrop) */}
-          <div className="absolute -inset-4 sm:-inset-6 pointer-events-none flex items-center justify-center overflow-visible">
-            {/* Left Tilted Frosted Glass Pane with Red Refraction */}
-            <div className="absolute w-64 h-80 -rotate-12 -translate-x-12 -translate-y-3 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-t-[#D90429]/40 border-l-[#D90429]/30"></div>
-            
-            {/* Right Tilted Frosted Glass Pane with Emerald Refraction */}
-            <div className="absolute w-64 h-80 rotate-12 translate-x-12 translate-y-5 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-b-emerald-500/40 border-r-emerald-500/30"></div>
-
-            {/* Subtle Neon Line Accents */}
-            <div className="absolute w-72 h-px bg-gradient-to-r from-transparent via-[#D90429]/60 to-transparent -rotate-6 -translate-y-16"></div>
-            <div className="absolute w-72 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent rotate-6 translate-y-20"></div>
-          </div>
-
-          <div className="w-full max-w-xs mx-auto relative z-10">
-            {/* Titanium Outer Chassis */}
-            <div className="rounded-[2.5rem] p-1.5 bg-[#000000] border-2 border-[#1c1c1c] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)]">
-              
-              {/* Inner Screen Display (Obsidian Dark Glass) */}
-              <div className="rounded-[2.15rem] overflow-hidden bg-[#07090E] border border-white/[0.08] relative">
-
-                {/* Top Glass Bezel / Speaker Notch */}
-                <div className="h-6 bg-black flex items-center justify-center pt-1 relative z-20">
-                  <div className="w-20 h-3 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-end px-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-500/80"></div>
-                  </div>
-                </div>
-
-                {/* Trade Site Header (Frosted Glass) */}
-                <div className="bg-white/[0.04] backdrop-blur-md px-4 py-3 border-b border-white/[0.08] flex items-center justify-between relative z-10">
-                  <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-xl bg-[#D90429]/20 border border-[#D90429]/40 flex items-center justify-center shadow-[0_0_10px_rgba(217,4,41,0.3)]">
-                      <Wrench className="w-3.5 h-3.5 text-[#D90429]" />
-                    </div>
-                    <span className="font-bold text-white text-xs tracking-tight">{DEMO_BUSINESS.name}</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"></span>
-                    <span className="text-[9px] font-mono text-emerald-400">ONLINE</span>
-                  </div>
-                </div>
-
-                {/* Screen Content */}
-                <div className="p-4 flex flex-col gap-3 relative z-10 bg-gradient-to-b from-transparent via-transparent to-black/40 min-h-[310px] justify-between">
-                  {simState === 'idle' && (
-                    <>
-                      {/* Services row (Interactive Glass Chips) */}
-                      <div className="grid grid-cols-3 gap-1.5">
-                        {DEMO_BUSINESS.services.map((service, idx) => {
-                          const isSelected = activeService === idx;
-                          return (
-                            <button
-                              key={service.name}
-                              type="button"
-                              onClick={() => setActiveService(idx)}
-                              className={`rounded-xl py-2.5 px-1 min-h-[42px] flex items-center justify-center text-center shadow-sm transition-all duration-150 border ${
-                                isSelected
-                                  ? 'bg-[#D90429]/25 border-[#D90429] text-white shadow-[0_0_12px_rgba(217,4,41,0.35)]'
-                                  : 'bg-white/[0.04] hover:bg-white/[0.08] border-white/[0.08] text-zinc-300'
-                              }`}
-                            >
-                              <span className="text-[9px] font-semibold leading-tight block truncate">{service.name}</span>
-                            </button>
-                          );
-                        })}
-                      </div>
-
-                      {/* Primary Call Card (Clean Minimal) */}
-                      <div className="rounded-xl p-4 bg-white/[0.03] border border-white/[0.08]">
-                        <div className="flex items-center justify-between mb-3">
-                          <p className="text-[10px] font-semibold tracking-wide text-zinc-400 uppercase">
-                            Fast Response
-                          </p>
-                          <span className="text-[9px] text-zinc-400 font-medium bg-white/[0.04] px-1.5 py-0.5 rounded border border-white/[0.04]">
-                            Tap to test
-                          </span>
-                        </div>
-                        <p className="text-[15px] font-bold mb-4 tracking-tight text-white">
-                          {currentService.headline}
-                        </p>
-                        <button
-                          type="button"
-                          onClick={() => setSimState('calling')}
-                          className="w-full bg-white text-black hover:bg-zinc-200 font-bold py-3 min-h-[44px] rounded-lg flex items-center justify-center gap-2 text-xs transition-colors"
-                        >
-                          <Phone className="w-3.5 h-3.5" />
-                          <span>Tap to Call</span>
-                        </button>
-                      </div>
-
-                      {/* Secondary WhatsApp Button */}
-                      <button
-                        type="button"
-                        onClick={() => setSimState('chat')}
-                        className="w-full bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] text-white font-semibold py-3 min-h-[44px] rounded-xl flex items-center justify-center gap-2 text-xs transition-colors"
-                      >
-                        <MessageSquare className="w-3.5 h-3.5 fill-current text-[#25D366]" />
-                        <span>Message on WhatsApp</span>
-                      </button>
-
-                      {/* Example layout note */}
-                      <div className="bg-white/[0.02] rounded-xl p-3 border border-white/[0.05]">
-                        <p className="text-[10px] text-zinc-500 font-medium text-center">Example layout</p>
-                      </div>
-                    </>
-                  )}
-
-                  {simState === 'calling' && (
-                    <div className="py-6 px-3 flex flex-col items-center justify-center text-center gap-3.5 rounded-2xl bg-gradient-to-b from-black/80 to-[#07090E] border border-white/[0.1] my-auto">
-                      <div className="w-14 h-14 rounded-full bg-emerald-500/20 border-2 border-emerald-400 flex items-center justify-center shadow-[0_0_20px_rgba(16,185,129,0.4)] animate-pulse">
-                        <PhoneCall className="w-6 h-6 text-emerald-400" />
-                      </div>
-
-                      <div>
-                        <p className="text-[9px] font-mono uppercase tracking-widest text-emerald-400 font-semibold mb-1">
-                          Simulated Call in Progress
-                        </p>
-                        <h4 className="text-sm font-bold text-white tracking-tight">
-                          {DEMO_BUSINESS.name}
-                        </h4>
-                        <p className="text-[11px] text-zinc-400 mt-0.5">
-                          Direct ring to your mobile handset
-                        </p>
-                      </div>
-
-                      <div className="bg-white/[0.04] border border-white/[0.08] rounded-xl p-2.5 text-[10px] text-zinc-300 max-w-[210px] leading-relaxed">
-                        Zero typing needed. Client taps once on your website and connects instantly to your phone.
-                      </div>
-
-                      <button
-                        type="button"
-                        onClick={() => setSimState('idle')}
-                        className="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs flex items-center gap-1.5 transition-colors shadow-lg shadow-red-600/30"
-                      >
-                        <X className="w-3.5 h-3.5" />
-                        <span>End Simulation</span>
-                      </button>
-                    </div>
-                  )}
-
-                  {simState === 'chat' && (
-                    <div className="py-3 px-3 flex flex-col justify-between rounded-2xl bg-gradient-to-b from-black/80 to-[#07090E] border border-white/[0.1] my-auto gap-3">
-                      <div>
-                        {/* WhatsApp Header */}
-                        <div className="flex items-center justify-between pb-2 border-b border-white/[0.08] mb-2.5">
-                          <div className="flex items-center gap-1.5">
-                            <div className="w-4 h-4 rounded-full bg-[#25D366] flex items-center justify-center">
-                              <MessageSquare className="w-2.5 h-2.5 text-black fill-current" />
-                            </div>
-                            <span className="text-[10px] font-bold text-white">WhatsApp Chat</span>
-                          </div>
-                          <span className="text-[8px] font-mono text-emerald-400">ONLINE</span>
-                        </div>
-
-                        {/* Chat Messages */}
-                        <div className="flex flex-col gap-2">
-                          <div className="self-end bg-emerald-700/80 border border-emerald-500/30 text-white text-[10px] rounded-xl rounded-tr-none px-3 py-2 max-w-[200px] shadow-sm">
-                            {currentService.chatInquiry}
-                            <span className="block text-[8px] text-emerald-200 text-right mt-0.5">Just now</span>
-                          </div>
-
-                          <div className="self-start bg-white/[0.08] border border-white/[0.1] text-zinc-200 text-[10px] rounded-xl rounded-tl-none px-3 py-2 max-w-[200px] shadow-sm">
-                            {currentService.chatResponse}
-                            <span className="block text-[8px] text-zinc-400 text-right mt-0.5">Just now</span>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="pt-2 border-t border-white/[0.08] flex items-center justify-between">
-                        <span className="text-[9px] text-zinc-400">Direct lead capture</span>
-                        <button
-                          type="button"
-                          onClick={() => setSimState('idle')}
-                          className="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-white font-medium text-[10px] flex items-center gap-1 transition-colors"
-                        >
-                          <RotateCcw className="w-3 h-3" />
-                          <span>Reset</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-              </div>
-            </div>
-
-            <div className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold text-slate-500 dark:text-zinc-400">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Interactive prototype. Tap buttons on phone to test.</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  );
+const LATEST_BUILD = {
+  name: 'Norden Carpets & Flooring',
+  place: 'Rochdale',
+  url: 'https://nordencarpets.co.uk/',
+  image: '/demos/norden.webp',
 };
+
+export const HeroSection: React.FC = () => (
+  <section className="relative pt-24 sm:pt-28 pb-16 sm:pb-24 md:pb-14 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] overflow-hidden border-b border-slate-200 dark:border-white/[0.08] transition-colors duration-300">
+    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
+
+      {/* Left: copy and actions */}
+      <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 items-start text-left z-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-zinc-100">
+          Websites and web apps built for phones.
+        </h1>
+
+        <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
+          Fast websites and simple web apps for local businesses across Stoke on Trent and Cheshire. You deal directly with Dean from start to finish.
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+          <a
+            href={WHATSAPP_QUOTE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold text-base whitespace-nowrap transition-colors"
+          >
+            <MessageSquare className="w-4 h-4 fill-black" aria-hidden="true" />
+            <span>Get a quote on WhatsApp</span>
+          </a>
+          <a
+            href="#demos"
+            className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl border-2 border-slate-900 dark:border-white text-slate-900 dark:text-white font-bold text-base whitespace-nowrap hover:bg-slate-900 hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+          >
+            <span>See my work</span>
+            <ArrowDown className="w-4 h-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+
+      {/* Right: latest real build in a phone frame */}
+      <div className="lg:col-span-5 relative w-full flex flex-col justify-center items-center py-6">
+
+        {/* Backdrop glass panes */}
+        <div aria-hidden="true" className="absolute -inset-4 sm:-inset-6 pointer-events-none flex items-center justify-center overflow-visible">
+          <div className="absolute w-64 h-80 -rotate-12 -translate-x-12 -translate-y-3 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-slate-200 dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
+          <div className="absolute w-64 h-80 rotate-12 translate-x-12 translate-y-5 rounded-3xl bg-white/[0.02] dark:bg-white/[0.03] backdrop-blur-xl border border-slate-200 dark:border-white/[0.12] shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.5)]"></div>
+        </div>
+
+        <a
+          href={LATEST_BUILD.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open the ${LATEST_BUILD.name} website in a new tab`}
+          className="group w-full max-w-[280px] mx-auto relative z-10 block"
+        >
+          {/* Phone chassis */}
+          <div className="rounded-[2.5rem] p-1.5 bg-black border-2 border-[#1c1c1c] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6)] transition-transform duration-200 group-hover:-translate-y-1">
+            <div className="rounded-[2.15rem] overflow-hidden bg-white relative">
+              <div className="h-6 bg-black flex items-center justify-center pt-1">
+                <div className="w-20 h-3 rounded-full bg-zinc-900 border border-white/10"></div>
+              </div>
+              <img
+                src={LATEST_BUILD.image}
+                alt={`${LATEST_BUILD.name} website on a phone`}
+                width={378}
+                height={780}
+                decoding="async"
+                fetchPriority="high"
+                className="block w-full h-auto"
+              />
+            </div>
+          </div>
+        </a>
+
+        <p className="relative z-10 mt-4 text-sm font-semibold text-slate-600 dark:text-zinc-400 text-center">
+          Latest build:{' '}
+          <a
+            href={LATEST_BUILD.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-900 dark:text-white underline underline-offset-2"
+          >
+            {LATEST_BUILD.name}
+          </a>
+          , {LATEST_BUILD.place}
+        </p>
+      </div>
+
+    </div>
+  </section>
+);
