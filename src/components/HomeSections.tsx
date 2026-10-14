@@ -55,6 +55,10 @@ type DemoEntry = {
   kind: 'client' | 'concept';
   /* Phone screenshot (378 x 780 webp) shown on mobile before the live site loads */
   preview?: string;
+  /* False when the site blocks being shown in a frame: desktop shows the preview image instead */
+  embed?: boolean;
+  /* Desktop screenshot (1280 x 768 webp) used instead of the frame when embed is false */
+  desktopPreview?: string;
 };
 
 const DEMOS: DemoEntry[] = [
@@ -66,6 +70,8 @@ const DEMOS: DemoEntry[] = [
     url: 'https://nordencarpets.co.uk/',
     kind: 'client',
     preview: '/demos/norden.webp',
+    embed: false,
+    desktopPreview: '/demos/norden-desktop.webp',
   },
   {
     id: 'roofing',
@@ -142,10 +148,10 @@ const DemoLoading: React.FC<{ name: string; visible: boolean }> = ({ name, visib
   </div>
 );
 
-const TapToTry: React.FC = () => (
+const TapToTry: React.FC<{ label?: string }> = ({ label = 'Tap to try it' }) => (
   <span className="absolute inset-x-0 bottom-0 flex justify-center pb-5 pt-16 bg-gradient-to-t from-black/70 to-transparent">
     <span className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl bg-white text-slate-900 font-bold text-base shadow-md">
-      Tap to try it
+      {label}
     </span>
   </span>
 );
@@ -183,6 +189,32 @@ const FramedDemo: React.FC<{ demo: Demo; isTouch: boolean }> = ({ demo, isTouch 
     </div>
   );
 };
+
+/* Desktop: for sites that cannot be framed, show the phone screenshot and link to the live site */
+const StaticPreview: React.FC<{ demo: Demo }> = ({ demo }) => (
+  <a
+    href={demo.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={`Open the ${demo.name} website in a new tab`}
+    className="group relative block w-full h-[600px] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-white"
+  >
+    <img
+      src={demo.desktopPreview ?? demo.preview}
+      alt={`${demo.name} homepage`}
+      width={1280}
+      height={768}
+      loading="lazy"
+      decoding="async"
+      className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-[1.01]"
+    />
+    <span className="absolute inset-x-0 bottom-0 flex justify-center pb-5 pt-16 bg-gradient-to-t from-black/50 to-transparent">
+      <span className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-xl bg-white text-slate-900 font-bold text-base shadow-md">
+        Visit the live site
+      </span>
+    </span>
+  </a>
+);
 
 /* Mobile: full screen live demo, only mounted after a tap */
 const MobileDemoViewer: React.FC<{ demo: Demo; onClose: () => void }> = ({ demo, onClose }) => {
@@ -333,7 +365,13 @@ export const DemosSection: React.FC = () => {
             <button
               ref={previewRef}
               type="button"
-              onClick={() => setViewerOpen(true)}
+              onClick={() => {
+                if (active.embed === false) {
+                  window.open(active.url, '_blank', 'noopener,noreferrer');
+                } else {
+                  setViewerOpen(true);
+                }
+              }}
               aria-label={`Try the ${active.name} website full screen`}
               className="group relative block mx-auto w-full max-w-[360px] aspect-[378/780] max-h-[65dvh] rounded-xl overflow-hidden border border-slate-300 dark:border-white/[0.14] bg-slate-50 dark:bg-[#040507]"
             >
@@ -354,10 +392,14 @@ export const DemosSection: React.FC = () => {
                   <span className="text-base text-slate-600 dark:text-zinc-400">Live client website</span>
                 </span>
               )}
-              <TapToTry />
+              <TapToTry label={active.embed === false ? 'Tap to visit the site' : undefined} />
             </button>
           ) : (
-            <FramedDemo key={active.id} demo={active} isTouch={isTouch} />
+            active.embed === false && (active.desktopPreview || active.preview) ? (
+              <StaticPreview demo={active} />
+            ) : (
+              <FramedDemo key={active.id} demo={active} isTouch={isTouch} />
+            )
           )}
 
           <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
