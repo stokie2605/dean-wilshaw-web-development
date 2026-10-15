@@ -79,50 +79,7 @@ const DEMOS: DemoEntry[] = [
     embed: false,
     desktopPreview: '/demos/norden-desktop.webp',
   },
-  {
-    id: 'roofing',
-    builtFor: 'For a roofer who wants leak and storm damage jobs coming in.',
-    features: ['Tap the house to show where the leak is', 'Leak report form marked by urgency', 'Emergency call button on every screen'],
-    tab: 'Roofing',
-    name: 'Etruria Roofing',
-    text: 'Roofing website where customers tap the house to show where the leak is.',
-    url: '/concepts/roofing/',
-    kind: 'concept',
-    preview: '/demos/roofing.webp',
-  },
-  {
-    id: 'plumbing',
-    builtFor: 'For a plumber or heating engineer handling urgent callouts.',
-    features: ['Pick the problem and get safety steps instantly', 'Callout request goes straight to the phone', 'Gas emergency number shown when it matters'],
-    tab: 'Plumbing',
-    name: 'Kiln Plumbing',
-    text: 'Plumbing and heating website that tells customers what to do right now.',
-    url: '/concepts/plumbing/',
-    kind: 'concept',
-    preview: '/demos/plumbing.webp',
-  },
-  {
-    id: 'garage',
-    builtFor: 'For an independent garage that wants its diary filled.',
-    features: ['Enter the reg and book in under a minute', 'Pick MOT, service or repair and a day', 'Prices and opening hours shown up front'],
-    tab: 'Garage',
-    name: 'Longport Motors',
-    text: 'Garage website with number plate booking.',
-    url: '/concepts/garage/',
-    kind: 'concept',
-    preview: '/demos/garage.webp',
-  },
-  {
-    id: 'salon',
-    builtFor: 'For a salon or barber that wants fewer missed bookings.',
-    features: ['Treatment menu styled like a station departure board', 'Tap a treatment to add it to a booking ticket', 'Team and opening times in one place'],
-    tab: 'Salon',
-    name: 'Platform Hair',
-    text: 'Salon and barber website with a treatment menu and booking ticket.',
-    url: '/concepts/salon/',
-    kind: 'concept',
-    preview: '/demos/salon.webp',
-  },
+
 ];
 
 type Demo = DemoEntry;
@@ -338,46 +295,53 @@ export const DemosSection: React.FC = () => {
           My work
         </h2>
         <p className="mt-3 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          A live client website, plus concept designs showing what I can build for your trade.
+          A live client website built for local business.
         </p>
 
         {/* Segmented switcher */}
-        <div
-          role="tablist"
-          aria-label="Choose an example"
-          className="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0 flex gap-6 sm:gap-8 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-b border-slate-300 dark:border-white/[0.14]"
-        >
-          {DEMOS.map((demo, i) => {
-            const isActive = i === activeIndex;
-            return (
-              <button
-                key={demo.id}
-                ref={(el) => { tabRefs.current[i] = el; }}
-                type="button"
-                role="tab"
-                id={`demo-tab-${demo.id}`}
-                aria-selected={isActive}
-                aria-controls="demo-panel"
-                tabIndex={isActive ? 0 : -1}
-                onClick={(e) => {
-                  setActiveIndex(i);
-                  e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }}
-                onKeyDown={handleTabKeyDown}
-                className={`relative shrink-0 min-h-[48px] pb-1 text-lg font-bold whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D90429] rounded-sm after:absolute after:left-0 after:right-0 after:-bottom-px after:h-[3px] after:rounded-full after:transition-colors ${
-                  isActive
-                    ? 'text-slate-900 dark:text-white after:bg-[#D90429]'
-                    : 'text-slate-500 hover:text-slate-800 dark:text-zinc-500 dark:hover:text-zinc-200 after:bg-transparent'
-                }`}
-              >
-                {demo.tab}
-              </button>
-            );
-          })}
-        </div>
+        {DEMOS.length > 1 && (
+          <div
+            role="tablist"
+            aria-label="Choose an example"
+            className="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0 flex gap-6 sm:gap-8 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-b border-slate-300 dark:border-white/[0.14]"
+          >
+            {DEMOS.map((demo, i) => {
+              const isActive = i === activeIndex;
+              return (
+                <button
+                  key={demo.id}
+                  ref={(el) => { tabRefs.current[i] = el; }}
+                  type="button"
+                  role="tab"
+                  id={`demo-tab-${demo.id}`}
+                  aria-selected={isActive}
+                  aria-controls="demo-panel"
+                  tabIndex={isActive ? 0 : -1}
+                  onClick={(e) => {
+                    setActiveIndex(i);
+                    e.currentTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                  }}
+                  onKeyDown={handleTabKeyDown}
+                  className={`relative shrink-0 min-h-[48px] pb-1 text-lg font-bold whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D90429] rounded-sm after:absolute after:left-0 after:right-0 after:-bottom-px after:h-[3px] after:rounded-full after:transition-colors ${
+                    isActive
+                      ? 'text-slate-900 dark:text-white after:bg-[#D90429]'
+                      : 'text-slate-500 hover:text-slate-800 dark:text-zinc-500 dark:hover:text-zinc-200 after:bg-transparent'
+                  }`}
+                >
+                  {demo.tab}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
         {/* Stage */}
-        <div id="demo-panel" role="tabpanel" aria-labelledby={`demo-tab-${active.id}`} className="mt-4">
+        <div
+          id="demo-panel"
+          role="region"
+          aria-labelledby={DEMOS.length > 1 ? `demo-tab-${active.id}` : 'demos-heading'}
+          className={DEMOS.length > 1 ? 'mt-4' : 'mt-8'}
+        >
           {isMobile ? (
             <button
               ref={previewRef}
@@ -454,24 +418,24 @@ export const DemosSection: React.FC = () => {
             </a>
           </div>
 
-          {/* Invite: turn a concept into their own site */}
+          {/* Invite: enquire about building a site */}
           <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl border border-slate-300 dark:border-white/[0.14] bg-white dark:bg-white/[0.03] p-5 sm:p-6">
             <div>
-              <p className="text-lg font-bold text-slate-900 dark:text-white">Like one of these?</p>
+              <p className="text-lg font-bold text-slate-900 dark:text-white">Want a website like this?</p>
               <p className="mt-1 text-base text-slate-600 dark:text-zinc-400">
-                I'll build it around your business, your photos and your area.
+                I will build it around your business, your photos and your area.
               </p>
             </div>
             <a
               href={`https://wa.me/447348733365?text=${encodeURIComponent(
-                `Hi Dean, I like the ${active.tab} example on your website. Could you build something like it for my business?`
+                'Hi Dean, I saw your work for Norden Carpets on your website. Could you build something like it for my business?'
               )}`}
               target="_blank"
               rel="noopener noreferrer"
               className="shrink-0 inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold text-base whitespace-nowrap transition-colors"
             >
               <MessageSquare className="w-4 h-4 fill-black" aria-hidden="true" />
-              <span>Ask about this on WhatsApp</span>
+              <span>Ask on WhatsApp</span>
             </a>
           </div>
         </div>
