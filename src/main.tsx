@@ -1,4 +1,4 @@
-import { StrictMode, lazy, Suspense } from 'react';
+import { StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import App from './App.tsx';
@@ -6,13 +6,6 @@ import { ScrollToTop } from './components/ScrollToTop';
 import { LegalPage } from './pages/LegalPage';
 import { HealthCheckPage } from './pages/HealthCheckPage';
 import './index.css';
-
-const AuthGate = lazy(() => import('./components/AuthGate').then(m => ({ default: m.AuthGate })));
-const AdminDashboard = lazy(() => import('./components/AdminDashboard').then(m => ({ default: m.AdminDashboard })));
-const DunhamMockup = lazy(() => import('./pages/DunhamMockup').then(m => ({ default: m.DunhamMockup })));
-const ReportPreview = lazy(() => import('./pages/ReportPreview').then(m => ({ default: m.ReportPreview })));
-const EvansElectricalLanding = lazy(() => import('./components/EvansElectricalLanding'));
-const EmbedPage = lazy(() => import('./pages/EmbedPage').then(m => ({ default: m.EmbedPage })));
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -36,18 +29,16 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/demo/*" element={<Navigate to="/" replace />} />
           <Route path="/tools/*" element={<Navigate to="/" replace />} />
 
-          {/* Client Mockups & Special Routes */}
-          <Route path="/dunham-wealth" element={<DunhamMockup />} />
-          <Route path="/evans" element={<EvansElectricalLanding />} />
-          <Route path="/report/preview/:slug" element={<ReportPreview />} />
-          <Route path="/admin" element={
-            <AuthGate>
-              <AdminDashboard />
-            </AuthGate>
-          } />
+          {/* Retired client mockups, tools and admin: send old links back to the homepage */}
+          <Route path="/dunham-wealth" element={<Navigate to="/" replace />} />
+          <Route path="/evans" element={<Navigate to="/" replace />} />
+          <Route path="/admin" element={<Navigate to="/" replace />} />
+          <Route path="/report/*" element={<Navigate to="/" replace />} />
+          <Route path="/embed/*" element={<Navigate to="/" replace />} />
+          <Route path="/concepts/*" element={<Navigate to="/" replace />} />
 
-          {/* Embed route - bare widget for client iframes */}
-          <Route path="/embed/:toolId" element={<EmbedPage />} />
+          {/* Anything else goes to the homepage */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
