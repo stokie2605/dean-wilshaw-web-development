@@ -1,9 +1,15 @@
 {
   "buildCommand": "vite build",
   "outputDirectory": "dist",
+  "functions": {
+    "api/health-check.ts": {
+      "maxDuration": 60
+    }
+  },
   "routes": [
     { "handle": "filesystem" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/check/?", "dest": "/check.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

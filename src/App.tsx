@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { BottomTabBar } from './components/BottomTabBar';
 import { HeroSection } from './components/HeroSection';
 import { DeliverablesSection, DemosSection, WebAppsTeaser, HowItWorksSection } from './components/HomeSections';
+import { WebsiteHealthCheck } from './components/WebsiteHealthCheck';
 import { PricingFaq } from './components/PricingFaq';
 import { Footer } from './components/Footer';
 import { MessageSquare } from 'lucide-react';
@@ -38,6 +39,10 @@ export default function App() {
   const [closingButtonsInView, setClosingButtonsInView] = useState(false);
 
   useEffect(() => {
+    document.title = 'Design Systems Web: Websites and Web Apps for Local Businesses';
+  }, []);
+
+  useEffect(() => {
     const el = closingButtonsRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(([entry]) => setClosingButtonsInView(entry.isIntersecting));
@@ -60,19 +65,22 @@ export default function App() {
         {/* 1. Hero */}
         <HeroSection />
 
-        {/* 2. What you get */}
+        {/* 2. Free Website Health Check */}
+        <WebsiteHealthCheck />
+
+        {/* 3. What you get */}
         <DeliverablesSection />
 
-        {/* 3. My work: client site */}
+        {/* 4. My work: client site */}
         <DemosSection />
 
-        {/* 4. Web apps */}
+        {/* 5. Web apps */}
         <WebAppsTeaser />
 
-        {/* 5. How it works */}
+        {/* 6. How it works */}
         <HowItWorksSection />
 
-        {/* 6. Questions */}
+        {/* 7. Questions */}
         <div id="questions" className="scroll-mt-20 sm:scroll-mt-24 py-14 sm:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08]">
           <PricingFaq />
         </div>

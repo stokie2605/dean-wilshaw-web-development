@@ -323,6 +323,12 @@ async function startServer() {
     });
   });
 
+  // Website Health Check endpoint
+  app.post("/api/health-check", async (req, res) => {
+    const { default: healthCheckHandler } = await import("./api/health-check");
+    return healthCheckHandler(req as any, res as any);
+  });
+
   // Vite middleware for development vs static serve for production
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
@@ -332,9 +338,48 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
+    const fs = await import("fs");
+    const zlib = await import("zlib");
+
+    const sendCompressedFile = (req: express.Request, res: express.Response, filePath: string) => {
+      const ext = path.extname(filePath).toLowerCase();
+      const mimeMap: Record<string, string> = {
+        ".html": "text/html; charset=utf-8",
+        ".css": "text/css; charset=utf-8",
+        ".js": "application/javascript; charset=utf-8",
+        ".svg": "image/svg+xml",
+        ".xml": "application/xml; charset=utf-8",
+        ".json": "application/json; charset=utf-8",
+      };
+      const mime = mimeMap[ext];
+      const acceptEncoding = String(req.headers["accept-encoding"] || "");
+      if (mime && acceptEncoding.includes("gzip") && fs.existsSync(filePath)) {
+        const raw = fs.readFileSync(filePath);
+        res.setHeader("Content-Type", mime);
+        res.setHeader("Content-Encoding", "gzip");
+        if (ext === ".css" || ext === ".js") {
+          res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+        }
+        return res.send(zlib.gzipSync(raw));
+      }
+      return res.sendFile(filePath);
+    };
+
+    app.get(["/check", "/check/"], (req, res) => {
+      sendCompressedFile(req, res, path.join(distPath, "check.html"));
+    });
+    app.use((req, res, next) => {
+      if (req.method === "GET") {
+        const candidate = path.join(distPath, req.path);
+        if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
+          return sendCompressedFile(req, res, candidate);
+        }
+      }
+      return next();
+    });
     app.use(express.static(distPath));
-    app.get("*", (_req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+    app.get("*", (req, res) => {
+      sendCompressedFile(req, res, path.join(distPath, "index.html"));
     });
   }
 

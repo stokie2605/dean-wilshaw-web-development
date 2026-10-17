@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface FooterProps {
   onOpenPrivacy: () => void;
@@ -37,6 +38,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
 
         {/* Right Side: Crawlable Legal Links */}
         <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-1 text-base font-medium text-slate-600 dark:text-zinc-400">
+          <Link
+            to="/check"
+            className="hover:text-[#D90429] dark:hover:text-red-400 underline transition-colors inline-flex items-center min-h-[48px]"
+          >
+            Free Website Check
+          </Link>
+
           <a
             href="/privacy"
             onClick={(e) => {
