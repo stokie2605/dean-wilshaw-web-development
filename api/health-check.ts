@@ -651,10 +651,58 @@ async function handleSendEmailReport(req: VercelRequest, res: VercelResponse, ip
         </div>
       </div>
       <div style="background: #f9fafb; padding: 14px 24px; font-size: 11px; color: #6b7280; border-top: 1px solid #e5e7eb;">
-        Sent from designsystemsweb.co.uk | Dean Wilshaw (07348 733365)
+        Sent from designsystemsweb.co.uk | Dean Wilshaw (07348 733365)<br/>
+        Design Systems Web, Alsager, Cheshire
       </div>
     </div>
   `;
+
+  const checksSummaryText = checksList
+    .map((c) => {
+      const statusWord = c.status === 'pass' ? 'PASS' : c.status === 'warning' ? 'WARNING' : 'FAIL';
+      return `[${statusWord}] ${c.label}${c.status !== 'pass' ? `: ${c.explanation}` : ''}`;
+    })
+    .join('\n');
+
+  const leadText = [
+    `New Health Check Report Requested`,
+    `Lead email: ${safeEmail}`,
+    `Website checked: ${report.checkedUrl}`,
+    `Grade: ${report.grade} (${refNumber})`,
+    ``,
+    `Overall Mobile Grade: Grade ${report.grade}`,
+    `Scores:`,
+    `Mobile Speed: ${perf}/100 | SEO: ${seo}/100 | Accessibility: ${a11y}/100 | Best Practices: ${bp}/100`,
+    `Time until page looks loaded on a phone: ${lcp} seconds`,
+    ``,
+    `Lead & Mobile Checklist:`,
+    checksSummaryText,
+    ``,
+    `Fix link: ${whatsappFixUrl}`,
+    ``,
+    `Sent from designsystemsweb.co.uk | Dean Wilshaw (07348 733365)`,
+    `Design Systems Web, Alsager, Cheshire`,
+  ].join('\n');
+
+  const visitorReportText = [
+    `Website Health Check Report`,
+    `Design Systems Web | Reference: ${refNumber}`,
+    ``,
+    `Checked website: ${report.checkedUrl}`,
+    `Overall Mobile Grade: Grade ${report.grade}`,
+    ``,
+    `Scores:`,
+    `Mobile Speed: ${perf}/100 | SEO: ${seo}/100 | Accessibility: ${a11y}/100 | Best Practices: ${bp}/100`,
+    `Time until page looks loaded on a phone: ${lcp} seconds`,
+    ``,
+    `Lead & Mobile Checklist:`,
+    checksSummaryText,
+    ``,
+    `WhatsApp Dean to fix these issues: ${whatsappFixUrl}`,
+    ``,
+    `Sent from designsystemsweb.co.uk | Dean Wilshaw (07348 733365)`,
+    `Design Systems Web, Alsager, Cheshire`,
+  ].join('\n');
 
   try {
     // Send lead notification + full report copy to Dean, and send user copy if Resend domain allows
@@ -663,6 +711,7 @@ async function handleSendEmailReport(req: VercelRequest, res: VercelResponse, ip
       to: ['dean.wilshaw.web@gmail.com'],
       replyTo: safeEmail,
       subject: `Health Check Lead [${refNumber}] Grade ${String(report.grade)}: ${String(report.checkedUrl)}`,
+      text: leadText,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto 16px; padding: 12px 16px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; font-size: 13px; color: #991b1b;">
           <strong>New Health Check Report Requested</strong><br/>
@@ -682,6 +731,7 @@ async function handleSendEmailReport(req: VercelRequest, res: VercelResponse, ip
           to: [safeEmail],
           replyTo: 'dean@designsystemsweb.co.uk',
           subject: `Your Website Health Check Report [${refNumber}]: Grade ${String(report.grade)}`,
+          text: visitorReportText,
           html: reportHtml,
         })
         .catch((userEmailErr) => {

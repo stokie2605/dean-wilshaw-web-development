@@ -584,9 +584,14 @@ export const WebsiteHealthCheck: React.FC<WebsiteHealthCheckProps> = ({ standalo
               </div>
 
               {emailSentRef && (
-                <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
-                  Report sent ({emailSentRef}) to {emailInput.trim()}.
-                </p>
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
+                    Report sent ({emailSentRef}) to {emailInput.trim()}.
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-zinc-400">
+                    Not there in a few minutes? Check your junk or spam folder.
+                  </p>
+                </div>
               )}
 
               {emailExpanded && !emailSentRef && (
