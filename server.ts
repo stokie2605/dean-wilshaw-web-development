@@ -37,7 +37,7 @@ async function startServer() {
     if (resend) {
       try {
         await resend.emails.send({
-          from: "onboarding@resend.dev",
+          from: "Dean Wilshaw <dean@designsystemsweb.co.uk>",
           to: ["dean.wilshaw.web@gmail.com"],
           subject: `New Quote Request [${refNumber}] from ${name || "Unknown"}`,
           html: `
