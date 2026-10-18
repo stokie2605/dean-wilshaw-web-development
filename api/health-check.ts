@@ -659,10 +659,10 @@ async function handleSendEmailReport(req: VercelRequest, res: VercelResponse, ip
   try {
     // Send lead notification + full report copy to Dean, and send user copy if Resend domain allows
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: 'Dean Wilshaw <dean@designsystemsweb.co.uk>',
       to: ['dean.wilshaw.web@gmail.com'],
       replyTo: safeEmail,
-      subject: `Health Check Lead [${refNumber}] Grade ${String(report.grade)} - ${String(report.checkedUrl)}`,
+      subject: `Health Check Lead [${refNumber}] Grade ${String(report.grade)}: ${String(report.checkedUrl)}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto 16px; padding: 12px 16px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; font-size: 13px; color: #991b1b;">
           <strong>New Health Check Report Requested</strong><br/>
@@ -678,9 +678,10 @@ async function handleSendEmailReport(req: VercelRequest, res: VercelResponse, ip
     if (safeEmail.toLowerCase() !== 'dean.wilshaw.web@gmail.com') {
       await resend.emails
         .send({
-          from: 'onboarding@resend.dev',
+          from: 'Dean Wilshaw <dean@designsystemsweb.co.uk>',
           to: [safeEmail],
-          subject: `Your Website Health Check Report [${refNumber}] - Grade ${String(report.grade)}`,
+          replyTo: 'dean@designsystemsweb.co.uk',
+          subject: `Your Website Health Check Report [${refNumber}]: Grade ${String(report.grade)}`,
           html: reportHtml,
         })
         .catch((userEmailErr) => {
