@@ -3,6 +3,14 @@ import { ChevronDown } from 'lucide-react';
 
 const FAQ_ITEMS = [
   {
+    question: 'How much does it cost?',
+    answer: "Every site is a fixed price agreed before I start. Message me and I'll give you a price within the day.",
+  },
+  {
+    question: 'Is this better than paying Checkatrade?',
+    answer: 'Directories rent you leads that are shared with other trades. Your own site and Google profile bring enquiries that are yours to keep.',
+  },
+  {
     question: 'How long does a build take?',
     answer: 'Most single page sites go live in 5 to 7 working days. Web apps depend on what you need.',
   },
@@ -28,16 +36,11 @@ export const PricingFaq: React.FC = () => {
       <h2 id="pricing-faq-heading" className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4 text-center">
         Common questions
       </h2>
-      <div className="space-y-3">
+      <div className="border-t border-slate-300 dark:border-white/[0.14]">
         {FAQ_ITEMS.map((item, i) => {
           const isOpen = openIndex === i;
           return (
-            <div
-              key={item.question}
-              className={`bg-white dark:bg-[#0A0D14] rounded-2xl border shadow-lg transition-colors ${
-                isOpen ? 'border-[#D90429]/60' : 'border-slate-200 dark:border-white/[0.08]'
-              }`}
-            >
+            <div key={item.question} className="border-b border-slate-300 dark:border-white/[0.14]">
               <h3>
                 <button
                   type="button"
@@ -45,7 +48,7 @@ export const PricingFaq: React.FC = () => {
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${i}`}
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between gap-4 text-left px-5 py-4 min-h-[48px] rounded-2xl"
+                  className="w-full flex items-center justify-between gap-4 text-left py-4 min-h-[48px] rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D90429]"
                 >
                   <span className="text-base font-bold text-slate-900 dark:text-white">{item.question}</span>
                   <ChevronDown
@@ -62,7 +65,7 @@ export const PricingFaq: React.FC = () => {
                 className={`grid transition-[grid-template-rows] duration-200 ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
               >
                 <div className="overflow-hidden">
-                  <p className="px-5 pb-4 text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
+                  <p className="pb-4 text-base text-slate-600 dark:text-zinc-400 leading-relaxed">
                     {item.answer}
                   </p>
                 </div>

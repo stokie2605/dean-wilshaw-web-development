@@ -11,12 +11,15 @@ const HEADING_CLASS =
 /* What you get: hairline divider rows                                 */
 /* ------------------------------------------------------------------ */
 
-const DELIVERABLES = [
-  { title: 'Top of Google Maps', text: 'I optimize your profile so you show up first when local customers search for your trade.' },
+type Deliverable = { title: string; text: string; href?: string };
+
+const DELIVERABLES: Deliverable[] = [
+  { title: 'Get Found on Google Maps', text: 'I set up and optimise your Google profile so you show up more often when local customers search for your trade.' },
   { title: 'Mobile Speed Boost', text: 'I fix slow websites to ensure they load instantly on mobile phones and stop you losing impatient customers.' },
   { title: 'Instant Lead Alerts', text: 'I connect your site directly to your phone so you get a text the second a customer requests a quote.' },
-  { title: 'Accessible Design', text: 'I ensure your site is legally compliant and completely easy to use for all visitors.' },
+  { title: 'Accessible Design', text: 'Built to accessibility standards, so your site is easy for everyone to use.' },
   { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can run your business.' },
+  { title: 'Free Website Check', text: "See what's costing you customers on phones in 20 seconds.", href: '/check' },
 ];
 
 export const DeliverablesSection: React.FC = () => (
@@ -30,7 +33,16 @@ export const DeliverablesSection: React.FC = () => (
             className="grid grid-cols-1 md:grid-cols-12 gap-1 md:gap-8 py-6 sm:py-8 border-b border-slate-300 dark:border-white/[0.14]"
           >
             <h3 className="md:col-span-5 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              {item.title}
+              {item.href ? (
+                <a
+                  href={item.href}
+                  className="underline decoration-[#D90429] decoration-2 underline-offset-[6px] hover:text-[#D90429] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D90429] rounded-sm"
+                >
+                  {item.title}
+                </a>
+              ) : (
+                item.title
+              )}
             </h3>
             <p className="md:col-span-7 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed md:pt-1.5">
               {item.text}
@@ -419,7 +431,7 @@ export const DemosSection: React.FC = () => {
           </div>
 
           {/* Invite: enquire about building a site */}
-          <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl border border-slate-300 dark:border-white/[0.14] bg-white dark:bg-white/[0.03] p-5 sm:p-6">
+          <div className="mt-8 pt-6 sm:pt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-t border-slate-300 dark:border-white/[0.14]">
             <div>
               <p className="text-lg font-bold text-slate-900 dark:text-white">Want a website like this?</p>
               <p className="mt-1 text-base text-slate-600 dark:text-zinc-400">
