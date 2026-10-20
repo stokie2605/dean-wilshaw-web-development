@@ -15,7 +15,7 @@ type Deliverable = { title: string; text: string; href?: string };
 
 const DELIVERABLES: Deliverable[] = [
   { title: 'Get Found on Google Maps', text: 'I set up and optimise your Google profile so you show up more often when local customers search for your trade.' },
-  { title: 'Mobile Speed Boost', text: 'I fix slow websites to ensure they load instantly on mobile phones and stop you losing impatient customers.' },
+  { title: 'Mobile Speed Boost', text: 'I fix slow websites to ensure they load instantly on mobile phones and stop you losing customers.' },
   { title: 'Instant Lead Alerts', text: 'I connect your site directly to your phone so you get a text the second a customer requests a quote.' },
   { title: 'Accessible Design', text: 'Built to accessibility standards, so your site is easy for everyone to use.' },
   { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can run your business.' },
