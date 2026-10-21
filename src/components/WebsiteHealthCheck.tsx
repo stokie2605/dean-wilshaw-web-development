@@ -299,7 +299,7 @@ export const WebsiteHealthCheck: React.FC<WebsiteHealthCheckProps> = ({ standalo
       >
         <div className="max-w-5xl mx-auto">
           <p className="text-xs font-mono uppercase tracking-widest font-bold text-[#D90429] dark:text-red-400 mb-2">
-            Free 20 Second Check
+            Free Website Check
           </p>
           <h2
             id="health-check-heading"
@@ -402,7 +402,7 @@ export const WebsiteHealthCheck: React.FC<WebsiteHealthCheckProps> = ({ standalo
     >
       <div className="max-w-3xl mx-auto">
         <p className="text-xs font-mono uppercase tracking-widest font-bold text-[#D90429] dark:text-red-400 mb-2">
-          Free 20 Second Check
+          Free Website Check
         </p>
         <h1
           id="health-check-heading"

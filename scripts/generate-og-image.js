@@ -81,7 +81,7 @@ async function generate() {
   </g>
 
   <rect x="80" y="138" width="296" height="44" rx="22" fill="#D90429" fill-opacity="0.16" stroke="#D90429" stroke-opacity="0.45" />
-  <text x="228" y="167" text-anchor="middle" font-family="${FONT}" font-size="20" font-weight="700" fill="#fca5a5">FREE 20 SECOND REPORT</text>
+  <text x="228" y="167" text-anchor="middle" font-family="${FONT}" font-size="20" font-weight="700" fill="#fca5a5">FREE WEBSITE REPORT</text>
 
   <text x="80" y="254" font-family="${FONT}" font-size="68" font-weight="700" fill="#ffffff">Website Health Check</text>
   <rect x="80" y="282" width="96" height="6" rx="3" fill="#D90429" />
