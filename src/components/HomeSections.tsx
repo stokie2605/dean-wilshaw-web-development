@@ -19,7 +19,7 @@ const DELIVERABLES: Deliverable[] = [
   { title: 'Instant Lead Alerts', text: 'I connect your site directly to your phone so you get a text the second a customer requests a quote.' },
   { title: 'Accessible Design', text: 'Built to accessibility standards, so your site is easy for everyone to use.' },
   { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can run your business.' },
-  { title: 'Free Website Check', text: "See what's costing you customers on phones in 20 seconds.", href: '/check' },
+  { title: 'Free Website Check', text: "See what's costing you customers on phones.", href: '/check' },
 ];
 
 export const DeliverablesSection: React.FC = () => (
