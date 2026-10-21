@@ -161,7 +161,7 @@ async function validateAndResolveUrl(rawInput: string): Promise<{ ok: true; url:
   try {
     const records = await dns.lookup(hostname, { all: true, verbatim: true });
     if (!records || records.length === 0) {
-      return { ok: false, message: 'We could not find that website address. Please check the spelling and try again.' };
+      return { ok: false, message: "I couldn't find that website. Check the spelling and try again." };
     }
     for (const rec of records) {
       if (isPrivateOrReservedIp(rec.address)) {
@@ -169,7 +169,7 @@ async function validateAndResolveUrl(rawInput: string): Promise<{ ok: true; url:
       }
     }
   } catch {
-    return { ok: false, message: 'We could not find that website address. Please check the spelling and try again.' };
+    return { ok: false, message: "I couldn't find that website. Check the spelling and try again." };
   }
 
   return { ok: true, url: parsed };
@@ -388,7 +388,7 @@ function analyzeHtml(html: string, finalUrl: URL): HtmlCheckItem[] {
     );
   checks.push({
     id: 'schema',
-    label: 'Local business schema data for Google',
+    label: 'Business details Google can read',
     status: hasLocalSchema ? 'pass' : 'warning',
     detail: hasLocalSchema ? 'Structured business data found' : 'No LocalBusiness schema found',
     explanation: hasLocalSchema

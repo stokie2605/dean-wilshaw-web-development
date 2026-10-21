@@ -52,19 +52,16 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
             <MessageSquare className="w-6 h-6" />
           </div>
           <div>
-            <span className="text-[10px] font-mono bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-bold">
-              DIRECT WHATSAPP CHANNEL
-            </span>
-            <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white">Message Dean Wilshaw</h3>
+            <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-white">Message me on WhatsApp</h3>
           </div>
         </div>
 
         <p className="text-xs text-slate-600 dark:text-zinc-400 leading-relaxed">
-          Dean replies directly on WhatsApp, Mon to Sat, 8am to 7pm.
+          I reply Monday to Saturday, 8am to 7pm.
         </p>
 
         <div className="space-y-2">
-          <label className="block text-xs font-semibold text-slate-900 dark:text-white font-mono">Select Conversation Topic:</label>
+          <label className="block text-xs font-semibold text-slate-900 dark:text-white font-mono">What's it about?</label>
           <div className="grid grid-cols-1 gap-2 text-xs">
             <button
               type="button"
@@ -91,7 +88,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-900 dark:text-white font-mono mb-1">Optional Message Preview:</label>
+          <label className="block text-xs font-semibold text-slate-900 dark:text-white font-mono mb-1">Your message</label>
           <textarea
             rows={2}
             value={customMsg || getPresetMessage()}
@@ -105,7 +102,7 @@ export const WhatsAppModal: React.FC<WhatsAppModalProps> = ({ isOpen, onClose })
           className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-lg font-semibold text-sm flex justify-center items-center gap-2 shadow-sm"
         >
           <Send className="w-4 h-4" />
-          Open WhatsApp and Start Chat
+          Open WhatsApp
         </button>
 
       </div>

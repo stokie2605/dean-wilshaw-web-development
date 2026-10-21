@@ -55,7 +55,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
         setResult({
           refNumber: 'ERR-' + res.status,
           clientName: formData.name || 'Valued Client',
-          message: `I'm sorry, ${formData.name || 'friend'}. There was a problem sending your request. Please message Dean directly on WhatsApp.`,
+          message: "Sorry, that didn't send. Please message me on WhatsApp instead.",
           failed: true,
         });
       }
@@ -63,7 +63,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
       setResult({
         refNumber: 'ERR-500',
         clientName: formData.name || 'Valued Client',
-        message: `I'm sorry, ${formData.name || 'friend'}. There was a network error sending your request. Please message Dean directly on WhatsApp.`,
+        message: "Sorry, that didn't send. Please message me on WhatsApp instead.",
         failed: true,
       });
     } finally {
@@ -97,7 +97,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
             Get a Quote
           </h2>
           <p className="text-slate-600 dark:text-zinc-300 text-sm sm:text-base max-w-lg">
-            Let's discuss your business goals and see if we're a good fit. Fill out the quick form below and I'll WhatsApp you to arrange a time.
+            Tell me a bit about your business and I'll get back to you to arrange a chat.
           </p>
         </div>
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -160,7 +160,7 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                 id="details"
                 rows={4}
                 required
-                placeholder="A brief overview of your business and what you're looking to achieve..."
+                placeholder="What does your business do, and what do you need?"
                 value={formData.details}
                 onChange={(e) => setFormData({ ...formData, details: e.target.value })}
                 className="w-full bg-slate-50 dark:bg-zinc-950 border border-slate-300 dark:border-zinc-800 rounded-lg px-3.5 py-2.5 text-sm text-slate-900 dark:text-zinc-100 placeholder-slate-400 dark:placeholder-slate-500 focus:border-red-600 focus:ring-1 focus:ring-red-600 focus:outline-none transition-colors"
@@ -174,10 +174,10 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
               className="w-full bg-red-600 hover:bg-red-500 text-white py-3.5 rounded-lg font-geist font-bold text-sm sm:text-base transition-all shadow-lg shadow-red-600/30 flex items-center justify-center gap-2"
             >
               {loading ? (
-                <span>Sending Request...</span>
+                <span>Sending...</span>
               ) : (
                 <>
-                  <span>Request Chat</span>
+                  <span>Send</span>
                   <Send className="w-4 h-4" />
                 </>
               )}
@@ -209,9 +209,9 @@ export const QuoteForm: React.FC<QuoteFormProps> = ({ isOpen, onClose, onOpenWha
                 </div>
                 <div>
                   <span className="text-[10px] font-mono bg-emerald-500/10 text-emerald-600 dark:text-emerald-500 border border-emerald-500/20 px-2 py-0.5 rounded font-bold">
-                    {result.failed ? 'NOT SENT' : `REQUEST RECEIVED #${result.refNumber}`}
+                    {result.failed ? 'NOT SENT' : 'SENT'}
                   </span>
-                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-zinc-100 mt-1">{result.failed ? 'Request not sent' : 'Request Logged!'}</h3>
+                  <h3 className="font-geist font-bold text-xl text-slate-900 dark:text-zinc-100 mt-1">{result.failed ? 'Not sent' : "Thanks, I've got your message"}</h3>
                 </div>
               </div>
 

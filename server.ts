@@ -119,7 +119,7 @@ async function startServer() {
       refNumber,
       clientName: trimmedName,
       email: trimmedEmail,
-      message: `Thank you, ${trimmedName}. Your request has been sent under reference ${refNumber}. Dean will reply to you at ${trimmedEmail}.`,
+      message: `Thanks, ${trimmedName}. I'll reply to you at ${trimmedEmail}.`,
       receivedAt: new Date().toISOString(),
     });
   });

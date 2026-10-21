@@ -89,7 +89,7 @@ export default function App() {
         <section className="py-14 md:py-20 px-4 sm:px-6 lg:px-8 bg-slate-50 dark:bg-[#040507] border-b border-slate-200 dark:border-white/[0.08]">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-3">
-              Ready to get started?
+              Got a job in mind?
             </h2>
             <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 max-w-md mx-auto md:mb-6">
               Message me on WhatsApp or fill in the quote form, whichever suits you.

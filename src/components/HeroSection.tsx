@@ -94,7 +94,7 @@ export const HeroSection: React.FC = () => (
         </h1>
 
         <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          Fast websites and simple web apps for local businesses across Stoke on Trent and Cheshire. You deal directly with Dean from start to finish.
+          Fast websites and simple web apps for local businesses across Stoke on Trent and Cheshire. You deal with me from start to finish.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
