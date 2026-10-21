@@ -7,10 +7,6 @@ const FAQ_ITEMS = [
     answer: "Every site is a fixed price agreed before I start. Message me and I'll give you a price within the day.",
   },
   {
-    question: 'Is this better than paying Checkatrade?',
-    answer: 'Directories rent you leads that are shared with other trades. Your own site and Google profile bring enquiries that are yours to keep.',
-  },
-  {
     question: 'How long does a build take?',
     answer: 'Most single page sites go live in 5 to 7 working days. Web apps depend on what you need.',
   },
