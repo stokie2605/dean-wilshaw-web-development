@@ -339,7 +339,7 @@ export const WebsiteHealthCheck: React.FC<WebsiteHealthCheckProps> = ({ standalo
     if (grade === 'A') {
       return {
         letterClass: 'text-emerald-600 dark:text-emerald-400',
-        summary: 'Your website handles the main phone basics well, with room for small tweaks to convert more visitors.',
+        summary: 'Your website handles the main phone basics well, with a few small fixes that could bring in more enquiries.',
       };
     }
     if (grade === 'B') {
@@ -357,7 +357,7 @@ export const WebsiteHealthCheck: React.FC<WebsiteHealthCheckProps> = ({ standalo
     return {
       letterClass:
         'text-[#D90429] dark:text-red-500 drop-shadow-[0_0_24px_rgba(217,4,41,0.45)]',
-      summary: 'Slow mobile loading or missing tap to call actions are likely costing you local enquiries on phones.',
+      summary: 'Slow loading or no tap to call button is probably costing you local enquiries on phones.',
     };
   };
 

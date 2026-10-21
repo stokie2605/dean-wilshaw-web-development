@@ -15,10 +15,10 @@ type Deliverable = { title: string; text: string; href?: string };
 
 const DELIVERABLES: Deliverable[] = [
   { title: 'Get Found on Google Maps', text: 'I set up and optimise your Google profile so you show up more often when local customers search for your trade.' },
-  { title: 'Mobile Speed Boost', text: 'I fix slow websites to ensure they load instantly on mobile phones and stop you losing customers.' },
+  { title: 'Mobile Speed Boost', text: 'I speed up slow websites so they load fast on phones and you stop losing customers.' },
   { title: 'Instant Lead Alerts', text: 'I connect your site directly to your phone so you get a text the second a customer requests a quote.' },
   { title: 'Accessible Design', text: 'Built to accessibility standards, so your site is easy for everyone to use.' },
-  { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can run your business.' },
+  { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can get on with your work.' },
   { title: 'Free Website Check', text: "See what's costing you customers on phones.", href: '/check' },
 ];
 
@@ -307,7 +307,7 @@ export const DemosSection: React.FC = () => {
           My work
         </h2>
         <p className="mt-3 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          A live client website built for local business.
+          A live website I built for a local business.
         </p>
 
         {/* Segmented switcher */}
@@ -435,7 +435,7 @@ export const DemosSection: React.FC = () => {
             <div>
               <p className="text-lg font-bold text-slate-900 dark:text-white">Want a website like this?</p>
               <p className="mt-1 text-base text-slate-600 dark:text-zinc-400">
-                I will build it around your business, your photos and your area.
+                I'll build it around your business, your photos and your area.
               </p>
             </div>
             <a
@@ -480,7 +480,7 @@ export const WebAppsTeaser: React.FC = () => (
           <strong className="font-bold text-slate-900 dark:text-white">Quote calculators.</strong>{' '}
           Customers enter their job details and the request comes straight to your phone.
         </p>
-        <p>Message me with your idea and I will give you a clear price.</p>
+        <p>Message me with your idea and I'll give you a clear price.</p>
       </div>
     </div>
   </section>

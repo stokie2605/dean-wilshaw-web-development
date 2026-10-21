@@ -107,7 +107,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       success: true,
       refNumber,
       clientName: trimmedName,
-      message: `Thank you, ${trimmedName}. Your request has been sent under reference ${refNumber}. Dean will reply to you at ${trimmedEmail}.`,
+      message: `Thanks, ${trimmedName}. I'll reply to you at ${trimmedEmail}.`,
     });
   } catch (emailErr) {
     console.error('Resend execution error:', emailErr);
