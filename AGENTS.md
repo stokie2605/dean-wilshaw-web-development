@@ -2,7 +2,7 @@
 
 ## Read first
 
-1. The Second memory vault at `C:\Users\Wilshaw\Documents\Second memory`: `AGENTS.md`, then `02 Areas/Task Router.md`, then the project note `01 Projects/Dean Wilshaw Web Development/Dean Wilshaw Web Development.md`.
+1. The Second memory vault at `C:\Users\Wilshaw\Documents\Second memory`: `AGENTS.md`, then `02 Areas/Task Router.md`, then the project note `30 My Projects/Design Systems Web/Design Systems Web.md`.
 2. Read only the Task Router row for the job in hand.
 3. Follow section 8 of the vault AGENTS.md (Phil's method). Plan first and wait for Dean to say proceed.
 
