@@ -14,12 +14,12 @@ const HEADING_CLASS =
 type Deliverable = { title: string; text: string; href?: string };
 
 const DELIVERABLES: Deliverable[] = [
-  { title: 'Get Found on Google Maps', text: 'I set up and optimise your Google profile so you show up more often when local customers search for your trade.' },
+  { title: 'Free Website Health Check', text: 'Test your website speed in 10 seconds and see what is slowing it down on phones.', href: '/check' },
   { title: 'Mobile Speed Boost', text: 'I speed up slow websites so they load fast on phones and you stop losing customers.' },
   { title: 'Instant Lead Alerts', text: 'I connect your site directly to your phone so you get a text the second a customer requests a quote.' },
   { title: 'Accessible Design', text: 'Built to accessibility standards, so your site is easy for everyone to use.' },
   { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can get on with your work.' },
-  { title: 'Free Website Check', text: "See what's costing you customers on phones.", href: '/check' },
+  { title: 'Custom Calculators & Tools', text: 'Need more than a standard page? I build interactive calculators, quote tools, and screens.' },
 ];
 
 export const DeliverablesSection: React.FC = () => (
@@ -471,6 +471,10 @@ export const WebAppsTeaser: React.FC = () => (
       <div className="md:col-span-7 md:border-l md:border-slate-300 md:dark:border-white/[0.14] md:pl-10 flex flex-col gap-5 text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed">
         <p>
           I also build simple web apps that customers can save to their phone home screen, with no app store needed.
+        </p>
+        <p>
+          <strong className="font-bold text-slate-900 dark:text-white">Event and kiosk screens.</strong>{' '}
+          Standalone software for events and exhibitions that runs full-screen and works completely offline.
         </p>
         <p>
           <strong className="font-bold text-slate-900 dark:text-white">Booking tools.</strong>{' '}

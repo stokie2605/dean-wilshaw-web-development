@@ -14,7 +14,7 @@ const WhatsAppModal = lazy(() => import('./components/WhatsAppModal').then(m => 
 const QuoteForm = lazy(() => import('./components/QuoteForm').then(m => ({ default: m.QuoteForm })));
 
 const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
-  "Hi Dean, I'd like to get a quote for a website for my business."
+  "Hi Dean, I'd like to talk about a project."
 )}`;
 
 export default function App() {
@@ -39,7 +39,7 @@ export default function App() {
   const [closingButtonsInView, setClosingButtonsInView] = useState(false);
 
   useEffect(() => {
-    document.title = 'Design Systems Web: Websites and Web Apps for Local Businesses';
+    document.title = 'Design Systems Web: Websites, Custom Tools & Audits';
   }, []);
 
   useEffect(() => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MessageSquare, ArrowDown } from 'lucide-react';
 
 const WHATSAPP_QUOTE_URL = `https://wa.me/447348733365?text=${encodeURIComponent(
-  "Hi Dean, I'd like to get a quote for a website for my business."
+  "Hi Dean, I'd like to talk about a project."
 )}`;
 
 const LATEST_BUILD = {
@@ -90,11 +90,11 @@ export const HeroSection: React.FC = () => (
       {/* Left: copy and actions */}
       <div className="lg:col-span-7 flex flex-col gap-5 sm:gap-6 items-start text-left z-10">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-slate-900 dark:text-zinc-100">
-          Websites and web apps built for phones.
+          Got an idea, a project, or a website that isn't working?
         </h1>
 
         <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          Fast websites and simple web apps for local businesses across Stoke on Trent and Cheshire. You deal with me from start to finish.
+          I build fast websites, custom calculators, event screens, and interactive tools. You tell me what you need, and I build it so it runs properly on every screen. You deal with me directly from start to finish.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -105,7 +105,7 @@ export const HeroSection: React.FC = () => (
             className="inline-flex items-center justify-center gap-2 min-h-[48px] px-6 rounded-xl bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold text-base whitespace-nowrap transition-colors"
           >
             <MessageSquare className="w-4 h-4 fill-black" aria-hidden="true" />
-            <span>Get a quote on WhatsApp</span>
+            <span>Chat on WhatsApp</span>
           </a>
           <a
             href="#demos"
@@ -115,6 +115,10 @@ export const HeroSection: React.FC = () => (
             <ArrowDown className="w-4 h-4" aria-hidden="true" />
           </a>
         </div>
+
+        <p className="text-sm font-semibold text-slate-500 dark:text-zinc-400 pt-1">
+          Got a website already? Test your mobile speed free in 10 seconds below.
+        </p>
       </div>
 
       {/* Right: latest real build on three phones. Hover or tap a side phone to bring it to the front */}
