@@ -27,7 +27,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               Email: dean.wilshaw.web@gmail.com
             </a>
             <span className="text-base text-slate-600 dark:text-zinc-400">
-              Based in Alsager, covering Stoke on Trent and Cheshire
+              Based in Alsager, Cheshire. Working with clients anywhere.
             </span>
           </div>
           <div className="text-base text-slate-600 dark:text-zinc-400 text-center md:text-left font-normal mt-2 leading-relaxed max-w-md">

@@ -39,7 +39,7 @@ export default function App() {
   const [closingButtonsInView, setClosingButtonsInView] = useState(false);
 
   useEffect(() => {
-    document.title = 'Design Systems Web: Websites, Custom Tools & Audits';
+    document.title = 'Design Systems Web: Websites, Web Tools & a Free Speed Check';
   }, []);
 
   useEffect(() => {

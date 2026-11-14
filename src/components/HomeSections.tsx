@@ -14,12 +14,11 @@ const HEADING_CLASS =
 type Deliverable = { title: string; text: string; href?: string };
 
 const DELIVERABLES: Deliverable[] = [
-  { title: 'Free Website Health Check', text: 'Test your website speed in 10 seconds and see what is slowing it down on phones.', href: '/check' },
-  { title: 'Mobile Speed Boost', text: 'I speed up slow websites so they load fast on phones and you stop losing customers.' },
-  { title: 'Instant Lead Alerts', text: 'I connect your site directly to your phone so you get a text the second a customer requests a quote.' },
-  { title: 'Accessible Design', text: 'Built to accessibility standards, so your site is easy for everyone to use.' },
+  { title: 'Free Website Health Check', text: 'Test your website speed and see what is slowing it down on phones.', href: '/check' },
+  { title: 'Mobile Speed Boost', text: 'I speed up slow websites so they load faster on phones.' },
+  { title: 'Instant Lead Alerts', text: 'I connect your site to your phone so quote requests reach you straight away by WhatsApp or email.' },
   { title: 'Website Care (Optional)', text: 'I offer an optional monthly plan to handle your hosting and security updates so you can get on with your work.' },
-  { title: 'Custom Calculators & Tools', text: 'Need more than a standard page? I build interactive calculators, quote tools, and screens.' },
+  { title: 'Quote Forms & Screens', text: 'Need more than a standard page? I build quote forms, simple web tools and event screens.' },
 ];
 
 export const DeliverablesSection: React.FC = () => (
@@ -476,14 +475,6 @@ export const WebAppsTeaser: React.FC = () => (
           <strong className="font-bold text-slate-900 dark:text-white">Event and kiosk screens.</strong>{' '}
           Standalone software for events and exhibitions that runs full-screen and works completely offline.
         </p>
-        <p>
-          <strong className="font-bold text-slate-900 dark:text-white">Booking tools.</strong>{' '}
-          Mobile forms that let customers book a time with you.
-        </p>
-        <p>
-          <strong className="font-bold text-slate-900 dark:text-white">Quote calculators.</strong>{' '}
-          Customers enter their job details and the request comes straight to your phone.
-        </p>
         <p>Message me with your idea and I'll give you a clear price.</p>
       </div>
     </div>
@@ -505,7 +496,7 @@ const STEPS = [
   },
   {
     title: 'Go live',
-    text: 'Most sites go live in 5 to 7 working days.',
+    text: "I'll agree a timeline with you before I start.",
   },
 ];
 
