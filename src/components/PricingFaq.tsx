@@ -8,7 +8,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'How long does a build take?',
-    answer: 'Most single page sites go live in 5 to 7 working days. Web apps depend on what you need.',
+    answer: "I'll agree a timeline with you before I start, based on what you need.",
   },
   {
     question: 'What if I need updates later?',
@@ -20,7 +20,7 @@ const FAQ_ITEMS = [
   },
   {
     question: 'Can you build custom tools?',
-    answer: 'Yes. I build quote calculators, booking systems and other tools for customers. Message me with what you need.',
+    answer: 'Yes. I build quote forms, simple web tools and event screens. Message me with what you need.',
   },
 ];
 

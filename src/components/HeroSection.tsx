@@ -94,7 +94,7 @@ export const HeroSection: React.FC = () => (
         </h1>
 
         <p className="text-base sm:text-lg text-slate-600 dark:text-zinc-400 leading-relaxed max-w-2xl">
-          I build fast websites, custom calculators, event screens, and interactive tools. You tell me what you need, and I build it so it runs properly on every screen. You deal with me directly from start to finish.
+          I build fast websites, event screens and simple web tools. You tell me what you need, and I build it so it runs properly on phones, tablets and desktops. You deal with me directly from start to finish.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -117,7 +117,7 @@ export const HeroSection: React.FC = () => (
         </div>
 
         <p className="text-sm font-semibold text-slate-500 dark:text-zinc-400 pt-1">
-          Got a website already? Test your mobile speed free in 10 seconds below.
+          Got a website already? Test your mobile speed free below.
         </p>
       </div>
 
