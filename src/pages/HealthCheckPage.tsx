@@ -20,6 +20,9 @@ export const HealthCheckPage: React.FC = () => {
 
   useEffect(() => {
     document.title = 'Free Website Health Check for Trades | Design Systems Web';
+    document
+      .querySelector('link[rel="canonical"]')
+      ?.setAttribute('href', 'https://www.designsystemsweb.co.uk/check');
   }, []);
 
   const handleOpenQuote = (details?: any) => {

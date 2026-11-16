@@ -10,6 +10,8 @@
     { "handle": "filesystem" },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/check/?", "dest": "/check.html" },
+    { "src": "/privacy/?", "dest": "/privacy.html" },
+    { "src": "/terms/?", "dest": "/terms.html" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }

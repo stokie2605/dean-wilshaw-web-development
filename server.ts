@@ -169,6 +169,12 @@ async function startServer() {
     app.get(["/check", "/check/"], (req, res) => {
       sendCompressedFile(req, res, path.join(distPath, "check.html"));
     });
+    app.get(["/privacy", "/privacy/"], (req, res) => {
+      sendCompressedFile(req, res, path.join(distPath, "privacy.html"));
+    });
+    app.get(["/terms", "/terms/"], (req, res) => {
+      sendCompressedFile(req, res, path.join(distPath, "terms.html"));
+    });
     app.use((req, res, next) => {
       if (req.method === "GET") {
         const candidate = path.join(distPath, req.path);

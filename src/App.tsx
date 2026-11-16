@@ -40,6 +40,9 @@ export default function App() {
 
   useEffect(() => {
     document.title = 'Design Systems Web: Websites, Web Tools & a Free Speed Check';
+    document
+      .querySelector('link[rel="canonical"]')
+      ?.setAttribute('href', 'https://www.designsystemsweb.co.uk/');
   }, []);
 
   useEffect(() => {
