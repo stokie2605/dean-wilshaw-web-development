@@ -21,6 +21,16 @@ export const LegalPage: React.FC<LegalPageProps> = ({ page }) => {
   const navigate = useNavigate();
   const handleBack = () => navigate('/');
 
+  useEffect(() => {
+    document.title =
+      page === 'privacy'
+        ? 'Privacy Policy | Design Systems Web'
+        : 'Terms and Conditions | Design Systems Web';
+    document
+      .querySelector('link[rel="canonical"]')
+      ?.setAttribute('href', `https://www.designsystemsweb.co.uk/${page}`);
+  }, [page]);
+
   return (
     <Suspense fallback={<div className="min-h-screen bg-slate-50 dark:bg-[#040507] flex items-center justify-center"><div className="w-8 h-8 border-4 border-[#D90429] border-t-transparent rounded-full animate-spin"></div></div>}>
       <ScrollToTopOnMount key={page} />
