@@ -2,9 +2,9 @@
 
 ## Read first
 
-1. The Second memory vault at `C:\Users\Wilshaw\Documents\Second memory`: `AGENTS.md`, then `02 Areas/Task Router.md`, then the project note `30 My Projects/Design Systems Web/Design Systems Web.md`.
-2. Read only the Task Router row for the job in hand.
-3. Follow section 8 of the vault AGENTS.md (Phil's method). Plan first and wait for Dean to say proceed.
+1. This project's vault note: `C:\Users\Wilshaw\Documents\Second memory\30 My Projects\Design Systems Web\Design Systems Web.md`. It holds live status and the Project profile. Never open another project's folder or the vault's project list.
+2. The Project profile in that note: its loop and the parts of the library it names. If the vault's `02 Areas` folder is one of this project's folders, read only the Task Router row for the job in hand.
+3. The global rules load automatically and carry the charter essentials. Plan first and wait for Dean to say proceed.
 
 Live status (done, waiting, next) lives only in the vault project note. Update it at the end of every session.
 
